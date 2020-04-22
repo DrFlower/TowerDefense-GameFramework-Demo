@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97a92b0d8cf4ef195477adef7115950, type: 3}
+  m_Name: Level_2_TowerLibrary
+  m_EditorClassIdentifier: 
+  configurations:
+  - {fileID: 114126723238285906, guid: 7c0dba931e033498aa3fcfdf50adb263, type: 2}
+  - {fileID: 114941124655423822, guid: 0b6a68f73243844f2a8484744e5309de, type: 2}
+  - {fileID: 114328276777919300, guid: 1e8fc0d9d18c8408baa941efc8b49d4b, type: 2}
+  - {fileID: 114249057418921680, guid: bb71db365cb6e4757aa6d7368e5d7967, type: 2}

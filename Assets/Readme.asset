@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 4a1863317fbe94d869ec6060d1d90972, type: 3}
+  title: Tower Defense Template
+  sections:
+  - heading: Read the Manual
+    text: 'This is a template project which has an accompanying written manual :'
+    linkText: Open the manual in your browser
+    url: https://unity3d.com/learn/tutorials/s/tower-defense-template
+  - heading: Feedback and Support
+    text: Each project has a dedicated forum thread to accompany it. If you need help,
+      visit the forum and ask!
+    linkText: Visit the dedicated Forum Thread
+    url: https://forum.unity.com/threads/tower-defense-template-project-feedback.513222/
+  loadedLayout: 1

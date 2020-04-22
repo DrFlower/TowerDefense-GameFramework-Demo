@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910bcb715cd3344619df786cb0658efb, type: 3}
+  m_Name: Super Hoverbuggy
+  m_EditorClassIdentifier: 
+  agentName: Super Hoverbuggy
+  agentDescription: Light and fast
+  agentPrefab: {fileID: 114982529450900332, guid: ad7d940de7ce2459790897534b93482d,
+    type: 2}
+  agentData:
+    projectile: {fileID: 1797349743178286, guid: efcfdd276fd9a4bce9c848912a90dc0b,
+      type: 2}
+    moveSpeed: 4.8
+    maxHealth: 14
+    damage: 1
+    fireRate: 1
+    searchRate: 1
