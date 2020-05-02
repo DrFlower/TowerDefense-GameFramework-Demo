@@ -1,0 +1,5 @@
+﻿#	默认配置		
+#	配置项	策划备注	配置值
+	Game.Id		Star Force
+	Scene.GameStart		1
+	Scene.Menu		2

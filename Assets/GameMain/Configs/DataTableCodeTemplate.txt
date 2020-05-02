@@ -1,0 +1,45 @@
+﻿//------------------------------------------------------------
+// Game Framework
+// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Homepage: https://gameframework.cn/
+// Feedback: mailto:ellan@gameframework.cn
+//------------------------------------------------------------
+// 此文件由工具自动生成，请勿直接修改。
+// 生成时间：__DATA_TABLE_CREATE_TIME__
+//------------------------------------------------------------
+
+using GameFramework;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using UnityEngine;
+using UnityGameFramework.Runtime;
+
+namespace __DATA_TABLE_NAME_SPACE__
+{
+    /// <summary>
+    /// __DATA_TABLE_COMMENT__
+    /// </summary>
+    public class __DATA_TABLE_CLASS_NAME__ : DataRowBase
+    {
+        private int m_Id = 0;
+
+        /// <summary>
+        /// __DATA_TABLE_ID_COMMENT__
+        /// </summary>
+        public override int Id
+        {
+            get
+            {
+                return m_Id;
+            }
+        }
+
+__DATA_TABLE_PROPERTIES__
+
+__DATA_TABLE_PARSER__
+
+__DATA_TABLE_PROPERTY_ARRAY__
+    }
+}
