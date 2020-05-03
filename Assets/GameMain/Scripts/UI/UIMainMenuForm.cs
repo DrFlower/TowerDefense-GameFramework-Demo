@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityGameFramework.Runtime;
+
+namespace Flower
+{
+    public class UIMainMenuForm : UGuiForm
+    {
+        public Button levelSelectButton;
+        public Button optionButton;
+        public Button quitButton;
+
+        protected override void OnInit(object userData)
+        {
+            base.OnInit(userData);
+
+            levelSelectButton.onClick.AddListener(OnLevelSelectButtonClick);
+            optionButton.onClick.AddListener(OnOptionButtonClick);
+            quitButton.onClick.AddListener(OnQuitButtonClick);
+        }
+
+        protected override void OnOpen(object userData)
+        {
+            base.OnOpen(userData);
+
+        }
+
+        protected override void OnClose(bool isShutdown, object userData)
+        {
+            base.OnClose(isShutdown, userData);
+        }
+
+        private void OnLevelSelectButtonClick()
+        {
+
+        }
+
+        private void OnOptionButtonClick()
+        {
+            GameEntry.UI.OpenUIForm(UIFormId.Options);
+        }
+
+        private void OnQuitButtonClick()
+        {
+            UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit);
+        }
+
+    }
+}
+
+

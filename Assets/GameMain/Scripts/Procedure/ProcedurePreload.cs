@@ -14,6 +14,7 @@ namespace Flower
         public static readonly string[] dataTableNames = new string[]
         {
             "Scene",
+            "UIForm",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
@@ -31,6 +32,8 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
             GameEntry.Event.Subscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
             GameEntry.Event.Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
+            GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
+            GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
             PreloadResources();
         }
@@ -59,6 +62,8 @@ namespace Flower
             GameEntry.Event.Unsubscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
             GameEntry.Event.Unsubscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
             GameEntry.Event.Unsubscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
+            GameEntry.Event.Unsubscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
+            GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
@@ -76,6 +81,9 @@ namespace Flower
             {
                 LoadDataTable(dataTableName);
             }
+
+            // Preload dictionaries
+            LoadDictionary("Default");
         }
 
         private void LoadConfig(string configName)
@@ -89,6 +97,12 @@ namespace Flower
         {
             m_LoadedFlag.Add(Utility.Text.Format("DataTable.{0}", dataTableName), false);
             GameEntry.DataTable.LoadDataTable(dataTableName, true, this);
+        }
+
+        private void LoadDictionary(string dictionaryName)
+        {
+            m_LoadedFlag.Add(Utility.Text.Format("Dictionary.{0}", dictionaryName), false);
+            GameEntry.Localization.LoadDictionary(dictionaryName, false, this);
         }
 
         private void OnLoadConfigSuccess(object sender, GameEventArgs e)
@@ -135,6 +149,29 @@ namespace Flower
             }
 
             Log.Error("Can not load data table '{0}' from '{1}' with error message '{2}'.", ne.DataTableName, ne.DataTableAssetName, ne.ErrorMessage);
+        }
+
+        private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
+        {
+            LoadDictionarySuccessEventArgs ne = (LoadDictionarySuccessEventArgs)e;
+            if (ne.UserData != this)
+            {
+                return;
+            }
+
+            m_LoadedFlag[Utility.Text.Format("Dictionary.{0}", ne.DictionaryName)] = true;
+            Log.Info("Load dictionary '{0}' OK.", ne.DictionaryName);
+        }
+
+        private void OnLoadDictionaryFailure(object sender, GameEventArgs e)
+        {
+            LoadDictionaryFailureEventArgs ne = (LoadDictionaryFailureEventArgs)e;
+            if (ne.UserData != this)
+            {
+                return;
+            }
+
+            Log.Error("Can not load dictionary '{0}' from '{1}' with error message '{2}'.", ne.DictionaryName, ne.DictionaryAssetName, ne.ErrorMessage);
         }
 
     }

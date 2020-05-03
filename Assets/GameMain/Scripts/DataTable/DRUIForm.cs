@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-05-03 20:32:56.717
+// 生成时间：2020-05-03 20:32:56.729
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,14 +19,14 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// 场景配置表。
+    /// 界面配置表。
     /// </summary>
-    public class DRScene : DataRowBase
+    public class DRUIForm : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取场景编号。
+        /// 获取界面编号。
         /// </summary>
         public override int Id
         {
@@ -46,9 +46,27 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取流程名称。
+        /// 获取界面组名称。
         /// </summary>
-        public string Procedure
+        public string UIGroupName
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取是否允许多个界面实例。
+        /// </summary>
+        public bool AllowMultiInstance
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取是否暂停被其覆盖的界面。
+        /// </summary>
+        public bool PauseCoveredUIForm
         {
             get;
             private set;
@@ -70,7 +88,9 @@ namespace Flower
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
                 AssetName = columnTexts[index++];
-                Procedure = columnTexts[index++];
+                UIGroupName = columnTexts[index++];
+                AllowMultiInstance = bool.Parse(columnTexts[index++]);
+                PauseCoveredUIForm = bool.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -81,7 +101,9 @@ namespace Flower
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         AssetName = strings[binaryReader.Read7BitEncodedInt32()];
-                        Procedure = strings[binaryReader.Read7BitEncodedInt32()];
+                        UIGroupName = strings[binaryReader.Read7BitEncodedInt32()];
+                        AllowMultiInstance = binaryReader.ReadBoolean();
+                        PauseCoveredUIForm = binaryReader.ReadBoolean();
                     }
                 }
             }

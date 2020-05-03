@@ -14,7 +14,7 @@ namespace Flower.Editor.DataTableTools
 {
     public sealed class DataTableGeneratorMenu
     {
-        [MenuItem("Star Force/Generate DataTables")]
+        [MenuItem("Tools/Generate DataTables")]
         private static void GenerateDataTables()
         {
             foreach (string dataTableName in ProcedurePreload.dataTableNames)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameFramework.DataTable;
 using GameFramework.Event;
 using GameFramework.Procedure;
-using UnityEngine;
+using System;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -11,6 +11,9 @@ namespace Flower
 {
     public class ProcedureLoadingScene : ProcedureBase
     {
+        private bool loadSceneCompleted = false;
+        private DRScene drScene = null;
+
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
@@ -19,6 +22,8 @@ namespace Flower
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
+
+            loadSceneCompleted = false;
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
@@ -33,9 +38,8 @@ namespace Flower
             }
 
             int sceneId = procedureOwner.GetData<VarInt>(Constant.ProcedureData.NextSceneId).Value;
-            //m_ChangeToMenu = sceneId == MenuSceneId;
             IDataTable<DRScene> dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
-            DRScene drScene = dtScene.GetDataRow(sceneId);
+            drScene = dtScene.GetDataRow(sceneId);
             if (drScene == null)
             {
                 Log.Warning("Can not load scene '{0}' from data table.", sceneId.ToString());
@@ -48,6 +52,19 @@ namespace Flower
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+
+            if (loadSceneCompleted)
+            {
+                Type procedureType = Type.GetType(string.Format("Flower.{0}", drScene.Procedure));
+                if (null != procedureType)
+                {
+
+                    ChangeState(procedureOwner, procedureType);
+                }
+                else
+                    Log.Warning("Can not change state,scene procedure '{0}' error, from scene '{1}.{2}'.", drScene.Procedure.ToString(), drScene.Id, drScene.AssetName);
+            }
+
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -68,6 +85,8 @@ namespace Flower
             {
                 return;
             }
+
+            loadSceneCompleted = true;
 
             Log.Info("Load scene '{0}' OK.", ne.SceneAssetName);
         }

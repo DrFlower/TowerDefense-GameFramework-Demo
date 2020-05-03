@@ -23,7 +23,7 @@ namespace Flower
 
         public static string GetDictionaryAsset(string assetName, bool fromBytes)
         {
-            return Utility.Text.Format("Assets/GameMain/Localization/{0}/Dictionaries/{1}.{2}", GameEntry.Localization.Language.ToString(), assetName, fromBytes ? "bytes" : "xml");
+            return Utility.Text.Format("Assets/GameMain/Localization/{0}/Dictionaries/{1}.{2}", GameEntry.Localization.Language.ToString(), assetName, fromBytes ? "bytes" : "json");
         }
 
         public static string GetFontAsset(string assetName)
