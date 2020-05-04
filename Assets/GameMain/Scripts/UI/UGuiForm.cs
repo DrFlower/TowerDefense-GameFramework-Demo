@@ -58,7 +58,7 @@ namespace Flower
 
         public void PlayUISound(int uiSoundId)
         {
-            //GameEntry.Sound.PlayUISound(uiSoundId);
+            GameEntry.Sound.PlaySound(uiSoundId);
         }
 
         public static void SetMainFont(Font mainFont)

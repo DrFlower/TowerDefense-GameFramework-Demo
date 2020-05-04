@@ -4,8 +4,12 @@ using GameFramework;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using GameFramework.Procedure;
+using GameFramework.DataTable;
 using UnityEngine;
+
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using LoadDataTableSuccessEventArgs = UnityGameFramework.Runtime.LoadDataTableSuccessEventArgs;
+using LoadDataTableFailureEventArgs = UnityGameFramework.Runtime.LoadDataTableFailureEventArgs;
 
 namespace Flower
 {
@@ -15,6 +19,10 @@ namespace Flower
         {
             "Scene",
             "UIForm",
+            "Sound",
+            "SoundGroup",
+            "SoundAssets",
+            "SoundPlayParam",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
@@ -35,7 +43,7 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
-            PreloadResources();
+            PreloadResources();            
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -48,6 +56,7 @@ namespace Flower
                     return;
             }
 
+            SetComponents();
             procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureLoadingScene>(procedureOwner);
 
@@ -84,6 +93,22 @@ namespace Flower
 
             // Preload dictionaries
             LoadDictionary("Default");
+        }
+
+        private void SetComponents()
+        {
+            SetSoundComponent();
+
+        }
+
+        private void SetSoundComponent()
+        {
+            IDataTable<DRSoundGroup> dtSoundGroup = GameEntry.DataTable.GetDataTable<DRSoundGroup>();
+            DRSoundGroup[] dRSoundGroups = dtSoundGroup.GetAllDataRows();
+            foreach (var item in dRSoundGroups)
+            {
+                GameEntry.Sound.AddSoundGroup(item.Name, item.AvoidBeingReplacedBySamePriority, item.Mute, item.Volume, item.SoundAgentCount);
+            }
         }
 
         private void LoadConfig(string configName)

@@ -1,167 +1,154 @@
-﻿////------------------------------------------------------------
-//// Game Framework
-//// Copyright © 2013-2020 Jiang Yin. All rights reserved.
-//// Homepage: https://gameframework.cn/
-//// Feedback: mailto:ellan@gameframework.cn
-////------------------------------------------------------------
+﻿//------------------------------------------------------------
+// Game Framework
+// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Homepage: https://gameframework.cn/
+// Feedback: mailto:ellan@gameframework.cn
+//------------------------------------------------------------
 
-//using GameFramework;
-//using GameFramework.DataTable;
-//using GameFramework.Sound;
-//using UnityGameFramework.Runtime;
+using GameFramework;
+using GameFramework.DataTable;
+using GameFramework.Sound;
+using UnityGameFramework.Runtime;
 
-//namespace Flower
-//{
-//    public static class SoundExtension
-//    {
-//        private const float FadeVolumeDuration = 1f;
-//        private static int? s_MusicSerialId = null;
+namespace Flower
+{
+    public static class SoundExtension
+    {
+        private const float FadeVolumeDuration = 1f;
+        private static int? s_MusicSerialId = null;
 
-//        public static int? PlayMusic(this SoundComponent soundComponent, int musicId, object userData = null)
-//        {
-//            soundComponent.StopMusic();
+        public static int? PlayMusic(this SoundComponent soundComponent, int musicId, object userData = null)
+        {
+            soundComponent.StopMusic();
+            s_MusicSerialId = soundComponent.PlaySound(musicId, null, userData);
 
-//            IDataTable<DRMusic> dtMusic = GameEntry.DataTable.GetDataTable<DRMusic>();
-//            DRMusic drMusic = dtMusic.GetDataRow(musicId);
-//            if (drMusic == null)
-//            {
-//                Log.Warning("Can not load music '{0}' from data table.", musicId.ToString());
-//                return null;
-//            }
+            return s_MusicSerialId;
+        }
 
-//            PlaySoundParams playSoundParams = PlaySoundParams.Create();
-//            playSoundParams.Priority = 64;
-//            playSoundParams.Loop = true;
-//            playSoundParams.VolumeInSoundGroup = 1f;
-//            playSoundParams.FadeInSeconds = FadeVolumeDuration;
-//            playSoundParams.SpatialBlend = 0f;
-//            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
-//            return s_MusicSerialId;
-//        }
+        public static void StopMusic(this SoundComponent soundComponent)
+        {
+            if (!s_MusicSerialId.HasValue)
+            {
+                return;
+            }
 
-//        public static void StopMusic(this SoundComponent soundComponent)
-//        {
-//            if (!s_MusicSerialId.HasValue)
-//            {
-//                return;
-//            }
+            soundComponent.StopSound(s_MusicSerialId.Value, FadeVolumeDuration);
+            s_MusicSerialId = null;
+        }
 
-//            soundComponent.StopSound(s_MusicSerialId.Value, FadeVolumeDuration);
-//            s_MusicSerialId = null;
-//        }
+        public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)
+        {
 
-//        public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)
-//        {
-//            IDataTable<DRSound> dtSound = GameEntry.DataTable.GetDataTable<DRSound>();
-//            DRSound drSound = dtSound.GetDataRow(soundId);
-//            if (drSound == null)
-//            {
-//                Log.Warning("Can not load sound '{0}' from data table.", soundId.ToString());
-//                return null;
-//            }
+            IDataTable<DRSound> dtSound = GameEntry.DataTable.GetDataTable<DRSound>();
+            DRSound drSound = dtSound.GetDataRow(soundId);
+            if (drSound == null)
+            {
+                Log.Warning("Can not load music '{0}' from data table.", soundId.ToString());
+                return null;
+            }
 
-//            PlaySoundParams playSoundParams = PlaySoundParams.Create();
-//            playSoundParams.Priority = drSound.Priority;
-//            playSoundParams.Loop = drSound.Loop;
-//            playSoundParams.VolumeInSoundGroup = drSound.Volume;
-//            playSoundParams.SpatialBlend = drSound.SpatialBlend;
-//            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
-//        }
+            IDataTable<DRSoundAssets> dtSoundAssets = GameEntry.DataTable.GetDataTable<DRSoundAssets>();
+            DRSoundAssets dRSoundAssets = dtSoundAssets.GetDataRow(drSound.AssetId);
+            string assetPath = dRSoundAssets.AssetPath;
 
-//        public static int? PlayUISound(this SoundComponent soundComponent, int uiSoundId, object userData = null)
-//        {
-//            IDataTable<DRUISound> dtUISound = GameEntry.DataTable.GetDataTable<DRUISound>();
-//            DRUISound drUISound = dtUISound.GetDataRow(uiSoundId);
-//            if (drUISound == null)
-//            {
-//                Log.Warning("Can not load UI sound '{0}' from data table.", uiSoundId.ToString());
-//                return null;
-//            }
+            IDataTable<DRSoundGroup> dtSoundGroup = GameEntry.DataTable.GetDataTable<DRSoundGroup>();
+            DRSoundGroup dRSoundGroup = dtSoundGroup.GetDataRow(drSound.SoundGroupId);
 
-//            PlaySoundParams playSoundParams = PlaySoundParams.Create();
-//            playSoundParams.Priority = drUISound.Priority;
-//            playSoundParams.Loop = false;
-//            playSoundParams.VolumeInSoundGroup = drUISound.Volume;
-//            playSoundParams.SpatialBlend = 0f;
-//            return soundComponent.PlaySound(AssetUtility.GetUISoundAsset(drUISound.AssetName), "UISound", Constant.AssetPriority.UISoundAsset, playSoundParams, userData);
-//        }
+            IDataTable<DRSoundPlayParam> dtSoundPlayParam = GameEntry.DataTable.GetDataTable<DRSoundPlayParam>();
+            DRSoundPlayParam dRSoundPlayParam = dtSoundPlayParam.GetDataRow(drSound.SoundPlayParamId);
 
-//        public static bool IsMuted(this SoundComponent soundComponent, string soundGroupName)
-//        {
-//            if (string.IsNullOrEmpty(soundGroupName))
-//            {
-//                Log.Warning("Sound group is invalid.");
-//                return true;
-//            }
+            PlaySoundParams playSoundParams = PlaySoundParams.Create();
+            playSoundParams.Time = dRSoundPlayParam.Time;
+            playSoundParams.MuteInSoundGroup = dRSoundPlayParam.Mute;
+            playSoundParams.Loop = dRSoundPlayParam.Loop;
+            playSoundParams.Priority = dRSoundPlayParam.Priority;
+            playSoundParams.VolumeInSoundGroup = dRSoundPlayParam.Volume;
+            playSoundParams.FadeInSeconds = dRSoundPlayParam.FadeInSeconds;
+            playSoundParams.Pitch = dRSoundPlayParam.Pitch;
+            playSoundParams.PanStereo = dRSoundPlayParam.PanStereo;
+            playSoundParams.SpatialBlend = dRSoundPlayParam.SpatialBlend;
+            playSoundParams.MaxDistance = dRSoundPlayParam.MaxDistance;
+            playSoundParams.DopplerLevel = dRSoundPlayParam.DopplerLevel;
 
-//            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
-//            if (soundGroup == null)
-//            {
-//                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
-//                return true;
-//            }
+            return soundComponent.PlaySound(assetPath, dRSoundGroup.Name, Constant.AssetPriority.MusicAsset, playSoundParams, bindingEntity, userData);
+        }
 
-//            return soundGroup.Mute;
-//        }
+        public static bool IsMuted(this SoundComponent soundComponent, string soundGroupName)
+        {
+            if (string.IsNullOrEmpty(soundGroupName))
+            {
+                Log.Warning("Sound group is invalid.");
+                return true;
+            }
 
-//        public static void Mute(this SoundComponent soundComponent, string soundGroupName, bool mute)
-//        {
-//            if (string.IsNullOrEmpty(soundGroupName))
-//            {
-//                Log.Warning("Sound group is invalid.");
-//                return;
-//            }
+            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
+            if (soundGroup == null)
+            {
+                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
+                return true;
+            }
 
-//            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
-//            if (soundGroup == null)
-//            {
-//                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
-//                return;
-//            }
+            return soundGroup.Mute;
+        }
 
-//            soundGroup.Mute = mute;
+        public static void Mute(this SoundComponent soundComponent, string soundGroupName, bool mute)
+        {
+            if (string.IsNullOrEmpty(soundGroupName))
+            {
+                Log.Warning("Sound group is invalid.");
+                return;
+            }
 
-//            GameEntry.Setting.SetBool(Utility.Text.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);
-//            GameEntry.Setting.Save();
-//        }
+            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
+            if (soundGroup == null)
+            {
+                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
+                return;
+            }
 
-//        public static float GetVolume(this SoundComponent soundComponent, string soundGroupName)
-//        {
-//            if (string.IsNullOrEmpty(soundGroupName))
-//            {
-//                Log.Warning("Sound group is invalid.");
-//                return 0f;
-//            }
+            soundGroup.Mute = mute;
 
-//            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
-//            if (soundGroup == null)
-//            {
-//                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
-//                return 0f;
-//            }
+            GameEntry.Setting.SetBool(Utility.Text.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);
+            GameEntry.Setting.Save();
+        }
 
-//            return soundGroup.Volume;
-//        }
+        public static float GetVolume(this SoundComponent soundComponent, string soundGroupName)
+        {
+            if (string.IsNullOrEmpty(soundGroupName))
+            {
+                Log.Warning("Sound group is invalid.");
+                return 0f;
+            }
 
-//        public static void SetVolume(this SoundComponent soundComponent, string soundGroupName, float volume)
-//        {
-//            if (string.IsNullOrEmpty(soundGroupName))
-//            {
-//                Log.Warning("Sound group is invalid.");
-//                return;
-//            }
+            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
+            if (soundGroup == null)
+            {
+                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
+                return 0f;
+            }
 
-//            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
-//            if (soundGroup == null)
-//            {
-//                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
-//                return;
-//            }
+            return soundGroup.Volume;
+        }
 
-//            soundGroup.Volume = volume;
+        public static void SetVolume(this SoundComponent soundComponent, string soundGroupName, float volume)
+        {
+            if (string.IsNullOrEmpty(soundGroupName))
+            {
+                Log.Warning("Sound group is invalid.");
+                return;
+            }
 
-//            GameEntry.Setting.SetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);
-//            GameEntry.Setting.Save();
-//        }
-//    }
-//}
+            ISoundGroup soundGroup = soundComponent.GetSoundGroup(soundGroupName);
+            if (soundGroup == null)
+            {
+                Log.Warning("Sound group '{0}' is invalid.", soundGroupName);
+                return;
+            }
+
+            soundGroup.Volume = volume;
+
+            GameEntry.Setting.SetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);
+            GameEntry.Setting.Save();
+        }
+    }
+}

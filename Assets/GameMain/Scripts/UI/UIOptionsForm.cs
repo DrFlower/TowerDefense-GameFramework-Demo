@@ -18,6 +18,9 @@ namespace Flower
             base.OnInit(userData);
 
             backButton.onClick.AddListener(OnBackButtonClick);
+            masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeSliderChange);
+            sFXVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChange);
+            musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChange);
         }
 
         protected override void OnOpen(object userData)

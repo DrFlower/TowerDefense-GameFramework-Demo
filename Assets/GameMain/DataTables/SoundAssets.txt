@@ -1,0 +1,53 @@
+﻿#	声音资源配置表		
+#	Id		AssetPath
+#	int		string
+#	声音编号	策划备注	资源名称
+	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
+	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3
+	20001	Enemy Fire	Assets/GameMain/Sounds/SFX/Enemy Fire.wav
+	20002	Macross Placement	Assets/GameMain/Sounds/SFX/Macross Placement.wav
+	20003	Weapon Placement 1	Assets/GameMain/Sounds/SFX/Weapon Placement 1.wav
+	20004	Weapon Placement 2	Assets/GameMain/Sounds/SFX/Weapon Placement 2.wav
+	21001	base_attack	Assets/GameMain/Sounds/SFX/Base Attack/base_attack.wav
+	21002	zone_enter	Assets/GameMain/Sounds/SFX/Base Attack/zone_enter.wav
+	22001	Enemies Exploding 1	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 1.wav
+	22002	Enemies Exploding 2	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 2.wav
+	22003	Enemies Exploding 3	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 3.wav
+	22004	Enemies Exploding 4	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 4.wav
+	22005	Enemies Exploding 5	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 5.wav
+	23001	Destruction 1	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 1.wav
+	23002	Destruction 2	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 2.wav
+	23003	Destruction 3	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 3.wav
+	23004	Destruction 4	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 4.wav
+	23005	Destruction 5	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 5.wav
+	24001	LaserFire	Assets/GameMain/Sounds/SFX/Towers/Laser/LaserFire.wav
+	25001	MG 1	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 1.wav
+	25002	MG 2	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 2.wav
+	25003	MG 3	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 3.wav
+	25004	MG 4	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 4.wav
+	25005	MG 5	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 5.wav
+	25006	MG 6	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 6.wav
+	25007	MG 7	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 7.wav
+	25008	MG 8	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 8.wav
+	25009	MG 9	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 9.wav
+	25010	MG 10	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 10.wav
+	25011	MG 11	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 11.wav
+	25012	MG 12	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 12.wav
+	25013	MG 13	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 13.wav
+	25014	MG 14	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 14.wav
+	26001	Rocket Tower Shoot	Assets/GameMain/Sounds/SFX/Towers/RocketLauncher/Rocket Tower Shoot.wav
+	27001	Super Tower Shot 1	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 1.wav
+	27002	Super Tower Shot 2	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 2.wav
+	27003	Super Tower Shot 3	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 3.wav
+	27004	Super Tower Shot 4	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 4.wav
+	27005	Super Tower Shot 5	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 5.wav
+	27006	Super Tower Shot 6	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 6.wav
+	27007	Super Tower Shot 7	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 7.wav
+	30001	TD Currency	Assets/GameMain/Sounds/SFX/UI/TD Currency.wav
+	30002	TD Defeat	Assets/GameMain/Sounds/SFX/UI/TD Defeat .wav
+	30003	TD EMP Idle	Assets/GameMain/Sounds/SFX/UI/TD EMP Idle.wav
+	30004	TD Tower Sell	Assets/GameMain/Sounds/SFX/UI/TD Tower Sell.wav
+	30005	TD Tower Upgrade	Assets/GameMain/Sounds/SFX/UI/TD Tower Upgrade.wav
+	30006	TD Victory	Assets/GameMain/Sounds/SFX/UI/TD Victory.wav
+	30007	ui_sound_back	Assets/GameMain/Sounds/SFX/UI/ui_sound_back.wav
+	30008	ui_sound_forward	Assets/GameMain/Sounds/SFX/UI/ui_sound_forward.wav

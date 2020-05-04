@@ -22,6 +22,7 @@ namespace Flower
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
             GameEntry.UI.OpenUIForm(UIFormId.MainMenu);
+            GameEntry.Sound.PlayMusic(10002);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -33,6 +34,7 @@ namespace Flower
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
+            GameEntry.Sound.StopMusic();
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
