@@ -39,6 +39,7 @@ namespace Flower
 
         private void OnOptionButtonClick()
         {
+            GameEntry.Sound.PlaySound(30008);
             GameEntry.UI.OpenUIForm(UIFormId.Options);
         }
 

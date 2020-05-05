@@ -49,5 +49,5 @@
 	30004	TD Tower Sell	Assets/GameMain/Sounds/SFX/UI/TD Tower Sell.wav
 	30005	TD Tower Upgrade	Assets/GameMain/Sounds/SFX/UI/TD Tower Upgrade.wav
 	30006	TD Victory	Assets/GameMain/Sounds/SFX/UI/TD Victory.wav
-	30007	ui_sound_back	Assets/GameMain/Sounds/SFX/UI/ui_sound_back.wav
-	30008	ui_sound_forward	Assets/GameMain/Sounds/SFX/UI/ui_sound_forward.wav
+	30007	ui_sound_back	Assets/GameMain/Sounds/UI/ui_sound_back.mp3
+	30008	ui_sound_forward	Assets/GameMain/Sounds/UI/ui_sound_forward.mp3

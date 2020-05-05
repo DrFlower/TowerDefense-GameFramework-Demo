@@ -35,6 +35,7 @@ namespace Flower
 
         private void OnBackButtonClick()
         {
+            GameEntry.Sound.PlaySound(30007);
             Close();
         }
 
