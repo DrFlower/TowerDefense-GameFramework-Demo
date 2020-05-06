@@ -52,7 +52,8 @@ namespace Flower
                 string fullPath = path + "/" + fileName;
 
                 File.WriteAllText(fullPath, json);
-
+                AssetDatabase.Refresh();
+                Debug.Log(json);
                 Debug.Log("Generate English Localization Dictionay Success! Path:" + fullPath);
             }
             catch (Exception e)
