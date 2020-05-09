@@ -14,7 +14,7 @@ namespace Flower.Editor.DataTableTools
 {
     public sealed class DataTableGeneratorMenu
     {
-        [MenuItem("Tools/Generate DataTables")]
+        [MenuItem("Tools/Generate DataTables", false, 1)]
         private static void GenerateDataTables()
         {
             foreach (string dataTableName in ProcedurePreload.dataTableNames)
@@ -26,11 +26,30 @@ namespace Flower.Editor.DataTableTools
                     break;
                 }
 
-                DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
                 DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
             }
 
             AssetDatabase.Refresh();
         }
+
+
+        [MenuItem("Tools/Generate DataTable Code", false, 2)]
+        private static void GenerateDataTableCode()
+        {
+            foreach (string dataTableName in ProcedurePreload.dataTableNames)
+            {
+                DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(dataTableName);
+                if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
+                {
+                    Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
+                    break;
+                }
+
+                DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
+            }
+
+            AssetDatabase.Refresh();
+        }
+
     }
 }
