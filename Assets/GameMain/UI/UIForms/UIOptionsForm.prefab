@@ -1065,7 +1065,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MUSIC VOLUME
+  m_Text: UI VOLUME
 --- !u!1 &6776183600071548319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1596,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MASTER VOLUME
+  m_Text: MUSIC VOLUME
 --- !u!1 &6776183600535493794
 GameObject:
   m_ObjectHideFlags: 0
