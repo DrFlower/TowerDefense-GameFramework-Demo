@@ -3,20 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameFramework.Localization;
 
 namespace Flower
 {
     public class UIOptionsForm : UGuiForm
     {
+        [System.Serializable]
+        public class ToggleLanguage
+        {
+            public Language language;
+            public Toggle toggle;
+        }
+
+
         public Slider masterVolumeSlider;
         public Slider sFXVolumeSlider;
         public Slider musicVolumeSlider;
 
-        public Toggle chineseSimplifiedToggle;
-        public Toggle chineseTraditionalToggle;
-        public Toggle englishToggle;
+        public ToggleLanguage[] languageToggle;
 
         public Button backButton;
+
+        public GameObject tipsGO;
+        public Button confirmButton;
+        public Button cancelButton;
+
+        private Language currentLanguage;
+        private Language selectLanguage;
 
         protected override void OnInit(object userData)
         {
@@ -28,18 +42,32 @@ namespace Flower
             sFXVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChange);
             musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChange);
 
-            chineseSimplifiedToggle.onValueChanged.AddListener(SelectChineseSimplifiedLanguage);
-            chineseTraditionalToggle.onValueChanged.AddListener(SelectChineseTraditionalLanguage);
-            englishToggle.onValueChanged.AddListener(SelectEnglishLanguage);
+            foreach (var item in languageToggle)
+            {
+                item.toggle.onValueChanged.AddListener((isOn) => OnLanguageToggleChange(isOn, item.language));
+            }
+
+            confirmButton.onClick.AddListener(OnConfirmButtonClick);
+            cancelButton.onClick.AddListener(OnCancelButtonClick);
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            masterVolumeSlider.value= GameEntry.Sound.GetVolume("Music");
+            masterVolumeSlider.value = GameEntry.Sound.GetVolume("Music");
             sFXVolumeSlider.value = GameEntry.Sound.GetVolume("SFX");
             musicVolumeSlider.value = GameEntry.Sound.GetVolume("UI");
+
+            currentLanguage = (Language)GameEntry.Setting.GetInt(Constant.Setting.Language, (int)Language.English);
+            selectLanguage = currentLanguage;
+
+            foreach (var item in languageToggle)
+            {
+                item.toggle.isOn = item.language == currentLanguage;
+            }
+
+            tipsGO.SetActive(false);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -68,19 +96,39 @@ namespace Flower
             GameEntry.Sound.SetVolume("UI", value);
         }
 
-        private void SelectChineseSimplifiedLanguage(bool isOn)
-        {
 
+        private void OnLanguageToggleChange(bool isOn, Language language)
+        {
+            if (!isOn)
+                return;
+
+            selectLanguage = language;
+            tipsGO.SetActive(language != currentLanguage);
         }
 
-        private void SelectChineseTraditionalLanguage(bool isOn)
+        private void OnConfirmButtonClick()
         {
+            GameEntry.Setting.SetInt(Constant.Setting.Language, (int)selectLanguage);
+            GameEntry.Setting.Save();
 
+            GameEntry.Sound.StopMusic();
+            UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Restart);
         }
 
-        private void SelectEnglishLanguage(bool isOn)
+        private void OnCancelButtonClick()
         {
+            CancelLanguageChange();
+            tipsGO.SetActive(false);
+        }
 
+        private void CancelLanguageChange()
+        {
+            foreach (var item in languageToggle)
+            {
+                item.toggle.isOn = item.language == currentLanguage;
+            }
+
+            selectLanguage = currentLanguage;
         }
 
     }

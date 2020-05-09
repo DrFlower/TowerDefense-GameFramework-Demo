@@ -5,7 +5,17 @@
       "TOWER DEFENSE": "塔防",
       "LEVEL SELECT": "选择关卡",
       "OPTIONS": "设置",
-      "QUIT": "退出"
+      "QUIT": "退出",
+      "MUSIC VOLUME": "音乐音量",
+      "SFX VOLUME": "特效音量",
+      "UI VOLUME": "界面音量",
+      "LANGUAGES": "语言",
+      "CHINESE SIMPLIFIED": "简体中文",
+      "CHINESE TRADITIONAL": "繁体中文",
+      "ENGLISH": "英语",
+      "CHANGE LANGUAGE NEED RESTART": "更改语言需要重启游戏",
+      "Confirm": "确认",
+      "Cancel": "取消"
     }
   }
 ]
