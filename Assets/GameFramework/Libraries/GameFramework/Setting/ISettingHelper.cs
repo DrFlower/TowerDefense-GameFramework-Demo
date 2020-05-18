@@ -16,7 +16,7 @@ namespace GameFramework.Setting
     public interface ISettingHelper
     {
         /// <summary>
-        /// 获取游戏配置数量。
+        /// 获取游戏配置项数量。
         /// </summary>
         int Count
         {
@@ -58,7 +58,8 @@ namespace GameFramework.Setting
         /// 移除指定游戏配置项。
         /// </summary>
         /// <param name="settingName">要移除游戏配置项的名称。</param>
-        void RemoveSetting(string settingName);
+        /// <returns>是否移除指定游戏配置项成功。</returns>
+        bool RemoveSetting(string settingName);
 
         /// <summary>
         /// 清空所有游戏配置项。
