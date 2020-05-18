@@ -1,0 +1,855 @@
+fileFormatVersion: 2
+guid: 87e47e3172ee14b53a135e99633fe791
+timeCreated: 1501249068
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bunker_01
+    100002: bunker_02
+    100004: bunker_03
+    100006: bunker_04
+    100008: bunker_05
+    100010: bunker_06
+    100012: bunker_07
+    100014: bunker_08
+    100016: bunker_09
+    100018: //RootNode
+    100020: Gen_Terrain
+    100022: group_Small_Rocks
+    100024: groupBarracks1
+    100026: groupBunkers
+    100028: groupForrest_01
+    100030: groupForrest_02
+    100032: groupForrest_03
+    100034: groupForrest_04
+    100036: groupForrest_05
+    100038: groupForrest_06
+    100040: groupForrests
+    100042: groupOutlying_Mountains
+    100044: groupTerrain
+    100046: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D
+    100048: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D1
+    100050: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D2
+    100052: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D3
+    100054: Main_Base_Bunker
+    100056: Med_Cliffs
+    100058: pCube43
+    100060: pCube44
+    100062: pCube45
+    100064: pCube53
+    100066: pCube57
+    100068: polySurface114
+    100070: polySurface115
+    100072: polySurface116
+    100074: polySurface117
+    100076: polySurface118
+    100078: polySurface119
+    100080: polySurface120
+    100082: polySurface121
+    100084: polySurface122
+    100086: polySurface354
+    100088: polySurface393
+    100090: polySurface394
+    100092: polySurface394 1
+    100094: polySurface394 2
+    100096: polySurface394 3
+    100098: polySurface394 4
+    100100: polySurface394 5
+    100102: polySurface395
+    100104: polySurface395 1
+    100106: polySurface395 2
+    100108: polySurface395 3
+    100110: polySurface395 4
+    100112: polySurface395 5
+    100114: polySurface396
+    100116: polySurface396 1
+    100118: polySurface396 2
+    100120: polySurface396 3
+    100122: polySurface396 4
+    100124: polySurface396 5
+    100126: polySurface397
+    100128: polySurface397 1
+    100130: polySurface397 2
+    100132: polySurface397 3
+    100134: polySurface397 4
+    100136: polySurface397 5
+    100138: polySurface398
+    100140: polySurface398 1
+    100142: polySurface398 2
+    100144: polySurface398 3
+    100146: polySurface398 4
+    100148: polySurface398 5
+    100150: polySurface399
+    100152: polySurface399 1
+    100154: polySurface399 2
+    100156: polySurface399 3
+    100158: polySurface399 4
+    100160: polySurface399 5
+    100162: polySurface400
+    100164: polySurface400 1
+    100166: polySurface400 2
+    100168: polySurface400 3
+    100170: polySurface400 4
+    100172: polySurface400 5
+    100174: polySurface401
+    100176: polySurface401 1
+    100178: polySurface401 2
+    100180: polySurface401 3
+    100182: polySurface401 4
+    100184: polySurface401 5
+    100186: polySurface414
+    100188: polySurface414 1
+    100190: polySurface414 2
+    100192: polySurface415
+    100194: polySurface415 1
+    100196: polySurface415 2
+    100198: polySurface418
+    100200: polySurface427
+    100202: polySurface428
+    100204: polySurface429
+    100206: polySurface430
+    100208: polySurface431
+    100210: polySurface432
+    100212: polySurface433
+    100214: polySurface434
+    100216: polySurface435
+    100218: polySurface436
+    100220: polySurface437
+    100222: polySurface438
+    100224: polySurface439
+    100226: polySurface440
+    100228: polySurface441
+    100230: polySurface86
+    100232: polySurface88
+    100234: pPipe3
+    100236: pPipe6
+    100238: smallRocks_Set_01
+    100240: smallRocks_Set_02
+    100242: smallRocks_Set_03
+    100244: polySurface428_MeshPart0
+    100246: polySurface428_MeshPart1
+    100248: Level_02_Enviro
+    100250: Level_02_Enviro_MeshPart0
+    100252: Level_02_Enviro_MeshPart1
+    100254: Level_02_Road
+    100256: Leve02_Enviro01
+    100258: Leve02_Enviro010
+    100260: Leve02_Enviro02
+    100262: Leve02_Enviro03
+    100264: Leve02_Enviro04
+    100266: Leve02_Enviro05
+    100268: Leve02_Enviro06
+    100270: Leve02_Enviro07
+    100272: Leve02_Enviro08
+    100274: Leve02_Enviro11
+    100276: Leve02_Enviro12
+    100278: Leve02_Enviro13
+    100280: Leve02_Road01
+    100282: Leve02_Road02
+    100284: Leve02_Road03
+    100286: Leve02_Road04
+    100288: Leve02_Road05
+    100290: Leve04_Enviro01
+    100292: Leve04_Enviro010
+    100294: Leve04_Enviro02
+    100296: Leve04_Enviro03
+    100298: Leve04_Enviro04
+    100300: Leve04_Enviro05
+    100302: Leve04_Enviro06
+    100304: Leve04_Enviro07
+    100306: Leve04_Enviro08
+    100308: Leve04_Enviro11
+    100310: Leve04_Road03
+    100312: Leve04_Road04
+    100314: Leve04_Road05
+    100316: Level04_Enviro12
+    100318: Level04_Enviro13
+    100320: Level04_Road01
+    100322: Level04_Road02
+    400000: bunker_01
+    400002: bunker_02
+    400004: bunker_03
+    400006: bunker_04
+    400008: bunker_05
+    400010: bunker_06
+    400012: bunker_07
+    400014: bunker_08
+    400016: bunker_09
+    400018: //RootNode
+    400020: Gen_Terrain
+    400022: group_Small_Rocks
+    400024: groupBarracks1
+    400026: groupBunkers
+    400028: groupForrest_01
+    400030: groupForrest_02
+    400032: groupForrest_03
+    400034: groupForrest_04
+    400036: groupForrest_05
+    400038: groupForrest_06
+    400040: groupForrests
+    400042: groupOutlying_Mountains
+    400044: groupTerrain
+    400046: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D
+    400048: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D1
+    400050: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D2
+    400052: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D3
+    400054: Main_Base_Bunker
+    400056: Med_Cliffs
+    400058: pCube43
+    400060: pCube44
+    400062: pCube45
+    400064: pCube53
+    400066: pCube57
+    400068: polySurface114
+    400070: polySurface115
+    400072: polySurface116
+    400074: polySurface117
+    400076: polySurface118
+    400078: polySurface119
+    400080: polySurface120
+    400082: polySurface121
+    400084: polySurface122
+    400086: polySurface354
+    400088: polySurface393
+    400090: polySurface394
+    400092: polySurface394 1
+    400094: polySurface394 2
+    400096: polySurface394 3
+    400098: polySurface394 4
+    400100: polySurface394 5
+    400102: polySurface395
+    400104: polySurface395 1
+    400106: polySurface395 2
+    400108: polySurface395 3
+    400110: polySurface395 4
+    400112: polySurface395 5
+    400114: polySurface396
+    400116: polySurface396 1
+    400118: polySurface396 2
+    400120: polySurface396 3
+    400122: polySurface396 4
+    400124: polySurface396 5
+    400126: polySurface397
+    400128: polySurface397 1
+    400130: polySurface397 2
+    400132: polySurface397 3
+    400134: polySurface397 4
+    400136: polySurface397 5
+    400138: polySurface398
+    400140: polySurface398 1
+    400142: polySurface398 2
+    400144: polySurface398 3
+    400146: polySurface398 4
+    400148: polySurface398 5
+    400150: polySurface399
+    400152: polySurface399 1
+    400154: polySurface399 2
+    400156: polySurface399 3
+    400158: polySurface399 4
+    400160: polySurface399 5
+    400162: polySurface400
+    400164: polySurface400 1
+    400166: polySurface400 2
+    400168: polySurface400 3
+    400170: polySurface400 4
+    400172: polySurface400 5
+    400174: polySurface401
+    400176: polySurface401 1
+    400178: polySurface401 2
+    400180: polySurface401 3
+    400182: polySurface401 4
+    400184: polySurface401 5
+    400186: polySurface414
+    400188: polySurface414 1
+    400190: polySurface414 2
+    400192: polySurface415
+    400194: polySurface415 1
+    400196: polySurface415 2
+    400198: polySurface418
+    400200: polySurface427
+    400202: polySurface428
+    400204: polySurface429
+    400206: polySurface430
+    400208: polySurface431
+    400210: polySurface432
+    400212: polySurface433
+    400214: polySurface434
+    400216: polySurface435
+    400218: polySurface436
+    400220: polySurface437
+    400222: polySurface438
+    400224: polySurface439
+    400226: polySurface440
+    400228: polySurface441
+    400230: polySurface86
+    400232: polySurface88
+    400234: pPipe3
+    400236: pPipe6
+    400238: smallRocks_Set_01
+    400240: smallRocks_Set_02
+    400242: smallRocks_Set_03
+    400244: polySurface428_MeshPart0
+    400246: polySurface428_MeshPart1
+    400248: Level_02_Enviro
+    400250: Level_02_Enviro_MeshPart0
+    400252: Level_02_Enviro_MeshPart1
+    400254: Level_02_Road
+    400256: Leve02_Enviro01
+    400258: Leve02_Enviro010
+    400260: Leve02_Enviro02
+    400262: Leve02_Enviro03
+    400264: Leve02_Enviro04
+    400266: Leve02_Enviro05
+    400268: Leve02_Enviro06
+    400270: Leve02_Enviro07
+    400272: Leve02_Enviro08
+    400274: Leve02_Enviro11
+    400276: Leve02_Enviro12
+    400278: Leve02_Enviro13
+    400280: Leve02_Road01
+    400282: Leve02_Road02
+    400284: Leve02_Road03
+    400286: Leve02_Road04
+    400288: Leve02_Road05
+    400290: Leve04_Enviro01
+    400292: Leve04_Enviro010
+    400294: Leve04_Enviro02
+    400296: Leve04_Enviro03
+    400298: Leve04_Enviro04
+    400300: Leve04_Enviro05
+    400302: Leve04_Enviro06
+    400304: Leve04_Enviro07
+    400306: Leve04_Enviro08
+    400308: Leve04_Enviro11
+    400310: Leve04_Road03
+    400312: Leve04_Road04
+    400314: Leve04_Road05
+    400316: Level04_Enviro12
+    400318: Level04_Enviro13
+    400320: Level04_Road01
+    400322: Level04_Road02
+    2300000: bunker_01
+    2300002: bunker_02
+    2300004: bunker_03
+    2300006: bunker_04
+    2300008: bunker_05
+    2300010: bunker_06
+    2300012: bunker_07
+    2300014: bunker_08
+    2300016: bunker_09
+    2300018: Gen_Terrain
+    2300020: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D
+    2300022: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D1
+    2300024: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D2
+    2300026: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D3
+    2300028: Main_Base_Bunker
+    2300030: Med_Cliffs
+    2300032: pCube43
+    2300034: pCube44
+    2300036: pCube45
+    2300038: pCube53
+    2300040: pCube57
+    2300042: polySurface114
+    2300044: polySurface115
+    2300046: polySurface116
+    2300048: polySurface117
+    2300050: polySurface118
+    2300052: polySurface119
+    2300054: polySurface120
+    2300056: polySurface121
+    2300058: polySurface122
+    2300060: polySurface354
+    2300062: polySurface393
+    2300064: polySurface394
+    2300066: polySurface394 1
+    2300068: polySurface394 2
+    2300070: polySurface394 3
+    2300072: polySurface394 4
+    2300074: polySurface394 5
+    2300076: polySurface395
+    2300078: polySurface395 1
+    2300080: polySurface395 2
+    2300082: polySurface395 3
+    2300084: polySurface395 4
+    2300086: polySurface395 5
+    2300088: polySurface396
+    2300090: polySurface396 1
+    2300092: polySurface396 2
+    2300094: polySurface396 3
+    2300096: polySurface396 4
+    2300098: polySurface396 5
+    2300100: polySurface397
+    2300102: polySurface397 1
+    2300104: polySurface397 2
+    2300106: polySurface397 3
+    2300108: polySurface397 4
+    2300110: polySurface397 5
+    2300112: polySurface398
+    2300114: polySurface398 1
+    2300116: polySurface398 2
+    2300118: polySurface398 3
+    2300120: polySurface398 4
+    2300122: polySurface398 5
+    2300124: polySurface399
+    2300126: polySurface399 1
+    2300128: polySurface399 2
+    2300130: polySurface399 3
+    2300132: polySurface399 4
+    2300134: polySurface399 5
+    2300136: polySurface400
+    2300138: polySurface400 1
+    2300140: polySurface400 2
+    2300142: polySurface400 3
+    2300144: polySurface400 4
+    2300146: polySurface400 5
+    2300148: polySurface401
+    2300150: polySurface401 1
+    2300152: polySurface401 2
+    2300154: polySurface401 3
+    2300156: polySurface401 4
+    2300158: polySurface401 5
+    2300160: polySurface414
+    2300162: polySurface414 1
+    2300164: polySurface414 2
+    2300166: polySurface415
+    2300168: polySurface415 1
+    2300170: polySurface415 2
+    2300172: polySurface418
+    2300174: polySurface427
+    2300176: polySurface428
+    2300178: polySurface429
+    2300180: polySurface430
+    2300182: polySurface431
+    2300184: polySurface432
+    2300186: polySurface433
+    2300188: polySurface434
+    2300190: polySurface435
+    2300192: polySurface436
+    2300194: polySurface437
+    2300196: polySurface438
+    2300198: polySurface439
+    2300200: polySurface440
+    2300202: polySurface441
+    2300204: polySurface86
+    2300206: polySurface88
+    2300208: pPipe3
+    2300210: pPipe6
+    2300212: smallRocks_Set_01
+    2300214: smallRocks_Set_02
+    2300216: smallRocks_Set_03
+    2300218: polySurface428_MeshPart0
+    2300220: polySurface428_MeshPart1
+    2300222: Level_02_Enviro_MeshPart0
+    2300224: Level_02_Enviro_MeshPart1
+    2300226: Level_02_Road
+    2300228: Leve02_Enviro01
+    2300230: Leve02_Enviro010
+    2300232: Leve02_Enviro02
+    2300234: Leve02_Enviro03
+    2300236: Leve02_Enviro04
+    2300238: Leve02_Enviro05
+    2300240: Leve02_Enviro06
+    2300242: Leve02_Enviro07
+    2300244: Leve02_Enviro08
+    2300246: Leve02_Enviro11
+    2300248: Leve02_Enviro12
+    2300250: Leve02_Enviro13
+    2300252: Leve02_Road01
+    2300254: Leve02_Road02
+    2300256: Leve02_Road03
+    2300258: Leve02_Road04
+    2300260: Leve02_Road05
+    2300262: Leve04_Enviro01
+    2300264: Leve04_Enviro010
+    2300266: Leve04_Enviro02
+    2300268: Leve04_Enviro03
+    2300270: Leve04_Enviro04
+    2300272: Leve04_Enviro05
+    2300274: Leve04_Enviro06
+    2300276: Leve04_Enviro07
+    2300278: Leve04_Enviro08
+    2300280: Leve04_Enviro11
+    2300282: Leve04_Road03
+    2300284: Leve04_Road04
+    2300286: Leve04_Road05
+    2300288: Level04_Enviro12
+    2300290: Level04_Enviro13
+    2300292: Level04_Road01
+    2300294: Level04_Road02
+    3300000: bunker_01
+    3300002: bunker_02
+    3300004: bunker_03
+    3300006: bunker_04
+    3300008: bunker_05
+    3300010: bunker_06
+    3300012: bunker_07
+    3300014: bunker_08
+    3300016: bunker_09
+    3300018: Gen_Terrain
+    3300020: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D
+    3300022: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D1
+    3300024: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D2
+    3300026: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D3
+    3300028: Main_Base_Bunker
+    3300030: Med_Cliffs
+    3300032: pCube43
+    3300034: pCube44
+    3300036: pCube45
+    3300038: pCube53
+    3300040: pCube57
+    3300042: polySurface114
+    3300044: polySurface115
+    3300046: polySurface116
+    3300048: polySurface117
+    3300050: polySurface118
+    3300052: polySurface119
+    3300054: polySurface120
+    3300056: polySurface121
+    3300058: polySurface122
+    3300060: polySurface354
+    3300062: polySurface393
+    3300064: polySurface394
+    3300066: polySurface394 1
+    3300068: polySurface394 2
+    3300070: polySurface394 3
+    3300072: polySurface394 4
+    3300074: polySurface394 5
+    3300076: polySurface395
+    3300078: polySurface395 1
+    3300080: polySurface395 2
+    3300082: polySurface395 3
+    3300084: polySurface395 4
+    3300086: polySurface395 5
+    3300088: polySurface396
+    3300090: polySurface396 1
+    3300092: polySurface396 2
+    3300094: polySurface396 3
+    3300096: polySurface396 4
+    3300098: polySurface396 5
+    3300100: polySurface397
+    3300102: polySurface397 1
+    3300104: polySurface397 2
+    3300106: polySurface397 3
+    3300108: polySurface397 4
+    3300110: polySurface397 5
+    3300112: polySurface398
+    3300114: polySurface398 1
+    3300116: polySurface398 2
+    3300118: polySurface398 3
+    3300120: polySurface398 4
+    3300122: polySurface398 5
+    3300124: polySurface399
+    3300126: polySurface399 1
+    3300128: polySurface399 2
+    3300130: polySurface399 3
+    3300132: polySurface399 4
+    3300134: polySurface399 5
+    3300136: polySurface400
+    3300138: polySurface400 1
+    3300140: polySurface400 2
+    3300142: polySurface400 3
+    3300144: polySurface400 4
+    3300146: polySurface400 5
+    3300148: polySurface401
+    3300150: polySurface401 1
+    3300152: polySurface401 2
+    3300154: polySurface401 3
+    3300156: polySurface401 4
+    3300158: polySurface401 5
+    3300160: polySurface414
+    3300162: polySurface414 1
+    3300164: polySurface414 2
+    3300166: polySurface415
+    3300168: polySurface415 1
+    3300170: polySurface415 2
+    3300172: polySurface418
+    3300174: polySurface427
+    3300176: polySurface428
+    3300178: polySurface429
+    3300180: polySurface430
+    3300182: polySurface431
+    3300184: polySurface432
+    3300186: polySurface433
+    3300188: polySurface434
+    3300190: polySurface435
+    3300192: polySurface436
+    3300194: polySurface437
+    3300196: polySurface438
+    3300198: polySurface439
+    3300200: polySurface440
+    3300202: polySurface441
+    3300204: polySurface86
+    3300206: polySurface88
+    3300208: pPipe3
+    3300210: pPipe6
+    3300212: smallRocks_Set_01
+    3300214: smallRocks_Set_02
+    3300216: smallRocks_Set_03
+    3300218: polySurface428_MeshPart0
+    3300220: polySurface428_MeshPart1
+    3300222: Level_02_Enviro_MeshPart0
+    3300224: Level_02_Enviro_MeshPart1
+    3300226: Level_02_Road
+    3300228: Leve02_Enviro01
+    3300230: Leve02_Enviro010
+    3300232: Leve02_Enviro02
+    3300234: Leve02_Enviro03
+    3300236: Leve02_Enviro04
+    3300238: Leve02_Enviro05
+    3300240: Leve02_Enviro06
+    3300242: Leve02_Enviro07
+    3300244: Leve02_Enviro08
+    3300246: Leve02_Enviro11
+    3300248: Leve02_Enviro12
+    3300250: Leve02_Enviro13
+    3300252: Leve02_Road01
+    3300254: Leve02_Road02
+    3300256: Leve02_Road03
+    3300258: Leve02_Road04
+    3300260: Leve02_Road05
+    3300262: Leve04_Enviro01
+    3300264: Leve04_Enviro010
+    3300266: Leve04_Enviro02
+    3300268: Leve04_Enviro03
+    3300270: Leve04_Enviro04
+    3300272: Leve04_Enviro05
+    3300274: Leve04_Enviro06
+    3300276: Leve04_Enviro07
+    3300278: Leve04_Enviro08
+    3300280: Leve04_Enviro11
+    3300282: Leve04_Road03
+    3300284: Leve04_Road04
+    3300286: Leve04_Road05
+    3300288: Level04_Enviro12
+    3300290: Level04_Enviro13
+    3300292: Level04_Road01
+    3300294: Level04_Road02
+    4300000: bunker_01
+    4300002: bunker_02
+    4300004: bunker_03
+    4300006: bunker_04
+    4300008: bunker_05
+    4300010: bunker_06
+    4300012: bunker_07
+    4300014: bunker_08
+    4300016: bunker_09
+    4300018: Main_Base_Bunker
+    4300020: polySurface86
+    4300022: smallRocks_Set_02
+    4300024: polySurface88
+    4300026: smallRocks_Set_01
+    4300028: polySurface434
+    4300030: polySurface114
+    4300032: polySurface115
+    4300034: polySurface117
+    4300036: polySurface119
+    4300038: polySurface120
+    4300040: polySurface122
+    4300042: polySurface435
+    4300044: polySurface116
+    4300046: polySurface436
+    4300048: polySurface118
+    4300050: polySurface437
+    4300052: polySurface438
+    4300054: polySurface121
+    4300056: polySurface439
+    4300058: polySurface354
+    4300060: smallRocks_Set_03
+    4300062: polySurface440
+    4300064: polySurface441
+    4300066: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D3
+    4300068: polySurface433
+    4300070: polySurface418
+    4300072: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D
+    4300074: polySurface430
+    4300076: polySurface427
+    4300078: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D2
+    4300080: Large_Rocls_Sharp_01_Geo_001_ZBrushPolyMesh3D1
+    4300082: polySurface432
+    4300084: Med_Cliffs
+    4300086: Gen_Terrain
+    4300088: pCube45
+    4300090: pPipe3
+    4300092: pPipe6
+    4300094: pCube53
+    4300096: pCube57
+    4300098: pCube44
+    4300100: pCube43
+    4300102: polySurface394
+    4300104: polySurface395
+    4300106: polySurface396
+    4300108: polySurface397
+    4300110: polySurface398
+    4300112: polySurface399
+    4300114: polySurface400
+    4300116: polySurface401
+    4300118: polySurface393
+    4300120: polySurface394
+    4300122: polySurface395
+    4300124: polySurface396
+    4300126: polySurface397
+    4300128: polySurface398
+    4300130: polySurface399
+    4300132: polySurface400
+    4300134: polySurface401
+    4300136: polySurface414
+    4300138: polySurface415
+    4300140: polySurface394
+    4300142: polySurface395
+    4300144: polySurface396
+    4300146: polySurface397
+    4300148: polySurface398
+    4300150: polySurface399
+    4300152: polySurface400
+    4300154: polySurface401
+    4300156: polySurface414
+    4300158: polySurface415
+    4300160: polySurface394
+    4300162: polySurface395
+    4300164: polySurface396
+    4300166: polySurface397
+    4300168: polySurface398
+    4300170: polySurface399
+    4300172: polySurface400
+    4300174: polySurface401
+    4300176: polySurface414
+    4300178: polySurface415
+    4300180: polySurface394
+    4300182: polySurface395
+    4300184: polySurface396
+    4300186: polySurface397
+    4300188: polySurface398
+    4300190: polySurface399
+    4300192: polySurface400
+    4300194: polySurface401
+    4300196: polySurface428
+    4300198: polySurface429
+    4300200: polySurface431
+    4300202: polySurface394
+    4300204: polySurface395
+    4300206: polySurface396
+    4300208: polySurface397
+    4300210: polySurface398
+    4300212: polySurface399
+    4300214: polySurface400
+    4300216: polySurface401
+    4300218: polySurface428_MeshPart0
+    4300220: polySurface428_MeshPart1
+    4300222: Level_02_Enviro_MeshPart0
+    4300224: Level_02_Enviro_MeshPart1
+    4300226: Level_02_Road
+    4300228: Leve02_Enviro01
+    4300230: Leve02_Enviro02
+    4300232: Leve02_Enviro03
+    4300234: Leve02_Enviro04
+    4300236: Leve02_Enviro05
+    4300238: Leve02_Enviro06
+    4300240: Leve02_Enviro07
+    4300242: Leve02_Enviro08
+    4300244: Leve02_Enviro010
+    4300246: Leve02_Enviro11
+    4300248: Leve02_Enviro12
+    4300250: Leve02_Enviro13
+    4300252: Leve02_Road01
+    4300254: Leve02_Road02
+    4300256: Leve02_Road03
+    4300258: Leve02_Road04
+    4300260: Leve02_Road05
+    4300262: Leve04_Enviro01
+    4300264: Leve04_Enviro02
+    4300266: Leve04_Enviro03
+    4300268: Leve04_Enviro04
+    4300270: Leve04_Enviro05
+    4300272: Leve04_Enviro06
+    4300274: Leve04_Enviro07
+    4300276: Leve04_Enviro08
+    4300278: Leve04_Enviro010
+    4300280: Leve04_Enviro11
+    4300282: Level04_Enviro12
+    4300284: Level04_Enviro13
+    4300286: Level04_Road01
+    4300288: Level04_Road02
+    4300290: Leve04_Road03
+    4300292: Leve04_Road04
+    4300294: Leve04_Road05
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

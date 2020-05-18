@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 17fbcc5a385a4c0398a25d0f3018c34a
+timeCreated: 1500902736
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_PlacementTilePrefab: {fileID: 1479808366027836, guid: 8ce97201eea4a404b86d7d0906b89847,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

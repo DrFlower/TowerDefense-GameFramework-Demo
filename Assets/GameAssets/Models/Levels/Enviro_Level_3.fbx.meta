@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 1ba446b13ace04844b8a65c7f903c2a1
+timeCreated: 1501825628
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Level 4_MeshPart0
+    100004: Level 4_MeshPart1
+    100006: Level04_CLeanup:Level04_Enviro1
+    100008: Level04_CLeanup:Level04_Enviro1_MeshPart0
+    100010: Level04_CLeanup:Level04_Enviro1_MeshPart1
+    100012: Level04_CLeanup:Level04_Road
+    100014: Level04_Enviro01
+    100016: Level04_Enviro02
+    100018: Level04_Enviro03
+    100020: Level04_Enviro04
+    100022: Level04_Enviro05
+    100024: Level04_Enviro06
+    100026: Level04_Enviro07
+    100028: Level04_Enviro08
+    100030: Level04_Enviro09
+    100032: Level04_Road01
+    100034: Level04_Road05
+    100036: Level04_Road07
+    100038: Level03_Enviro01
+    100040: Level03_Enviro02
+    100042: Level03_Enviro03
+    100044: Level03_Enviro04
+    100046: Level03_Enviro05
+    100048: Level03_Enviro06
+    100050: Level03_Enviro07
+    100052: Level03_Enviro08
+    100054: Level03_Enviro09
+    100056: Level03_Road01
+    100058: Level03_Road05
+    100060: Level03_Road07
+    400000: //RootNode
+    400002: Level 4_MeshPart0
+    400004: Level 4_MeshPart1
+    400006: Level04_CLeanup:Level04_Enviro1
+    400008: Level04_CLeanup:Level04_Enviro1_MeshPart0
+    400010: Level04_CLeanup:Level04_Enviro1_MeshPart1
+    400012: Level04_CLeanup:Level04_Road
+    400014: Level04_Enviro01
+    400016: Level04_Enviro02
+    400018: Level04_Enviro03
+    400020: Level04_Enviro04
+    400022: Level04_Enviro05
+    400024: Level04_Enviro06
+    400026: Level04_Enviro07
+    400028: Level04_Enviro08
+    400030: Level04_Enviro09
+    400032: Level04_Road01
+    400034: Level04_Road05
+    400036: Level04_Road07
+    400038: Level03_Enviro01
+    400040: Level03_Enviro02
+    400042: Level03_Enviro03
+    400044: Level03_Enviro04
+    400046: Level03_Enviro05
+    400048: Level03_Enviro06
+    400050: Level03_Enviro07
+    400052: Level03_Enviro08
+    400054: Level03_Enviro09
+    400056: Level03_Road01
+    400058: Level03_Road05
+    400060: Level03_Road07
+    2300000: Level 4_MeshPart0
+    2300002: Level 4_MeshPart1
+    2300004: Level04_CLeanup:Level04_Enviro1_MeshPart0
+    2300006: Level04_CLeanup:Level04_Enviro1_MeshPart1
+    2300008: Level04_CLeanup:Level04_Road
+    2300010: Level04_Enviro01
+    2300012: Level04_Enviro02
+    2300014: Level04_Enviro03
+    2300016: Level04_Enviro04
+    2300018: Level04_Enviro05
+    2300020: Level04_Enviro06
+    2300022: Level04_Enviro07
+    2300024: Level04_Enviro08
+    2300026: Level04_Enviro09
+    2300028: Level04_Road01
+    2300030: Level04_Road05
+    2300032: Level04_Road07
+    2300034: Level03_Enviro01
+    2300036: Level03_Enviro02
+    2300038: Level03_Enviro03
+    2300040: Level03_Enviro04
+    2300042: Level03_Enviro05
+    2300044: Level03_Enviro06
+    2300046: Level03_Enviro07
+    2300048: Level03_Enviro08
+    2300050: Level03_Enviro09
+    2300052: Level03_Road01
+    2300054: Level03_Road05
+    2300056: Level03_Road07
+    3300000: Level 4_MeshPart0
+    3300002: Level 4_MeshPart1
+    3300004: Level04_CLeanup:Level04_Enviro1_MeshPart0
+    3300006: Level04_CLeanup:Level04_Enviro1_MeshPart1
+    3300008: Level04_CLeanup:Level04_Road
+    3300010: Level04_Enviro01
+    3300012: Level04_Enviro02
+    3300014: Level04_Enviro03
+    3300016: Level04_Enviro04
+    3300018: Level04_Enviro05
+    3300020: Level04_Enviro06
+    3300022: Level04_Enviro07
+    3300024: Level04_Enviro08
+    3300026: Level04_Enviro09
+    3300028: Level04_Road01
+    3300030: Level04_Road05
+    3300032: Level04_Road07
+    3300034: Level03_Enviro01
+    3300036: Level03_Enviro02
+    3300038: Level03_Enviro03
+    3300040: Level03_Enviro04
+    3300042: Level03_Enviro05
+    3300044: Level03_Enviro06
+    3300046: Level03_Enviro07
+    3300048: Level03_Enviro08
+    3300050: Level03_Enviro09
+    3300052: Level03_Road01
+    3300054: Level03_Road05
+    3300056: Level03_Road07
+    4300000: Level 4_MeshPart0
+    4300002: Level 4_MeshPart1
+    4300004: Level04_CLeanup:Level04_Road
+    4300006: Level04_CLeanup:Level04_Enviro1_MeshPart0
+    4300008: Level04_CLeanup:Level04_Enviro1_MeshPart1
+    4300010: Level04_Enviro08
+    4300012: Level04_Enviro07
+    4300014: Level04_Enviro06
+    4300016: Level04_Enviro04
+    4300018: Level04_Enviro03
+    4300020: Level04_Enviro02
+    4300022: Level04_Enviro01
+    4300024: Level04_Road01
+    4300026: Level04_Road05
+    4300028: Level04_Enviro05
+    4300030: Level04_Road07
+    4300032: Level04_Enviro09
+    4300034: Level03_Enviro08
+    4300036: Level03_Enviro07
+    4300038: Level03_Enviro06
+    4300040: Level03_Enviro04
+    4300042: Level03_Enviro03
+    4300044: Level03_Enviro02
+    4300046: Level03_Enviro01
+    4300048: Level03_Road01
+    4300050: Level03_Road05
+    4300052: Level03_Enviro05
+    4300054: Level03_Road07
+    4300056: Level03_Enviro09
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
