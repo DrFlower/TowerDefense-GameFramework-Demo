@@ -15,7 +15,7 @@ namespace GameFramework.Item
         /// <summary>
         /// 获取物品组中物品数量。
         /// </summary>
-        int EntityCount
+        int ItemCount
         {
             get;
         }
@@ -67,42 +67,42 @@ namespace GameFramework.Item
         /// <summary>
         /// 物品组中是否存在物品。
         /// </summary>
-        /// <param name="entityId">物品序列编号。</param>
+        /// <param name="itemId">物品序列编号。</param>
         /// <returns>物品组中是否存在物品。</returns>
         bool HasItem(int itemId);
 
         /// <summary>
         /// 物品组中是否存在物品。
         /// </summary>
-        /// <param name="entityAssetName">物品资源名称。</param>
+        /// <param name="itemAssetName">物品资源名称。</param>
         /// <returns>物品组中是否存在物品。</returns>
         bool HasItem(string itemAssetName);
 
         /// <summary>
         /// 从物品组中获取物品。
         /// </summary>
-        /// <param name="entityId">物品序列编号。</param>
+        /// <param name="itemId">物品序列编号。</param>
         /// <returns>要获取的物品。</returns>
         IItem GetItem(int itemId);
 
         /// <summary>
         /// 从物品组中获取物品。
         /// </summary>
-        /// <param name="entityAssetName">物品资源名称。</param>
+        /// <param name="itemAssetName">物品资源名称。</param>
         /// <returns>要获取的物品。</returns>
         IItem GetItem(string itemAssetName);
 
         /// <summary>
         /// 从物品组中获取物品。
         /// </summary>
-        /// <param name="entityAssetName">物品资源名称。</param>
+        /// <param name="itemAssetName">物品资源名称。</param>
         /// <returns>要获取的物品。</returns>
         IItem[] GetItems(string itemAssetName);
 
         /// <summary>
         /// 从物品组中获取物品。
         /// </summary>
-        /// <param name="entityAssetName">物品资源名称。</param>
+        /// <param name="itemAssetName">物品资源名称。</param>
         /// <param name="results">要获取的物品。</param>
         void GetItem(string itemAssetName, List<IItem> results);
 
@@ -110,27 +110,27 @@ namespace GameFramework.Item
         /// 从物品组中获取所有物品。
         /// </summary>
         /// <returns>物品组中的所有物品。</returns>
-        IItem[] GetAllEntities();
+        IItem[] GetAllitems();
 
         /// <summary>
         /// 从物品组中获取所有物品。
         /// </summary>
         /// <param name="results">物品组中的所有物品。</param>
-        void GetAllEntities(List<IItem> results);
+        void GetAllitems(List<IItem> results);
 
         /// <summary>
         /// 设置物品实例是否被加锁。
         /// </summary>
-        /// <param name="entityInstance">物品实例。</param>
+        /// <param name="itemInstance">物品实例。</param>
         /// <param name="locked">物品实例是否被加锁。</param>
-        void SetEntityInstanceLocked(object entityInstance, bool locked);
+        void SetItemInstanceLocked(object itemInstance, bool locked);
 
         /// <summary>
         /// 设置物品实例的优先级。
         /// </summary>
-        /// <param name="entityInstance">物品实例。</param>
+        /// <param name="itemInstance">物品实例。</param>
         /// <param name="priority">物品实例优先级。</param>
-        void SetEntityInstancePriority(object entityInstance, int priority);
+        void SetItemInstancePriority(object itemInstance, int priority);
     }
 }
 

@@ -31,7 +31,7 @@ namespace GameFramework.Item
             m_EntitiesBeingLoaded = new Dictionary<int, int>();
             m_EntitiesToReleaseOnLoad = new HashSet<int>();
             m_RecycleQueue = new Queue<ItemInfo>();
-            //m_LoadAssetCallbacks = new LoadAssetCallbacks(LoadAssetSuccessCallback, LoadAssetFailureCallback, LoadAssetUpdateCallback, LoadAssetDependencyAssetCallback);
+            m_LoadAssetCallbacks = new LoadAssetCallbacks(LoadAssetSuccessCallback, LoadAssetFailureCallback, LoadAssetUpdateCallback, LoadAssetDependencyAssetCallback);
             m_ObjectPoolManager = null;
             m_ResourceManager = null;
             m_ItemHelper = null;
@@ -52,6 +52,92 @@ namespace GameFramework.Item
         internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
 
+        }
+
+
+
+
+        private void LoadAssetSuccessCallback(string ItemAssetName, object ItemAsset, float duration, object userData)
+        {
+            ShowItemInfo showItemInfo = (ShowItemInfo)userData;
+            if (showItemInfo == null)
+            {
+                throw new GameFrameworkException("Show Item info is invalid.");
+            }
+
+            if (m_EntitiesToReleaseOnLoad.Contains(showItemInfo.SerialId))
+            {
+                m_EntitiesToReleaseOnLoad.Remove(showItemInfo.SerialId);
+                ReferencePool.Release(showItemInfo);
+                m_ItemHelper.ReleaseItem(ItemAsset, null);
+                return;
+            }
+
+            m_EntitiesBeingLoaded.Remove(showItemInfo.ItemId);
+            ItemInstanceObject ItemInstanceObject = ItemInstanceObject.Create(ItemAssetName, ItemAsset, m_ItemHelper.InstantiateItem(ItemAsset), m_ItemHelper);
+            showItemInfo.ItemGroup.RegisterItemInstanceObject(ItemInstanceObject, true);
+
+            InternalShowItem(showItemInfo.ItemId, ItemAssetName, showItemInfo.ItemGroup, ItemInstanceObject.Target, true, duration, showItemInfo.UserData);
+            ReferencePool.Release(showItemInfo);
+        }
+
+        private void LoadAssetFailureCallback(string ItemAssetName, LoadResourceStatus status, string errorMessage, object userData)
+        {
+            ShowItemInfo showItemInfo = (ShowItemInfo)userData;
+            if (showItemInfo == null)
+            {
+                throw new GameFrameworkException("Show Item info is invalid.");
+            }
+
+            if (m_EntitiesToReleaseOnLoad.Contains(showItemInfo.SerialId))
+            {
+                m_EntitiesToReleaseOnLoad.Remove(showItemInfo.SerialId);
+                return;
+            }
+
+            m_EntitiesBeingLoaded.Remove(showItemInfo.ItemId);
+            string appendErrorMessage = Utility.Text.Format("Load Item failure, asset name '{0}', status '{1}', error message '{2}'.", ItemAssetName, status.ToString(), errorMessage);
+            if (m_ShowItemFailureEventHandler != null)
+            {
+                ShowItemFailureEventArgs showItemFailureEventArgs = ShowItemFailureEventArgs.Create(showItemInfo.ItemId, ItemAssetName, showItemInfo.ItemGroup.Name, appendErrorMessage, showItemInfo.UserData);
+                m_ShowItemFailureEventHandler(this, showItemFailureEventArgs);
+                ReferencePool.Release(showItemFailureEventArgs);
+                return;
+            }
+
+            throw new GameFrameworkException(appendErrorMessage);
+        }
+
+        private void LoadAssetUpdateCallback(string ItemAssetName, float progress, object userData)
+        {
+            ShowItemInfo showItemInfo = (ShowItemInfo)userData;
+            if (showItemInfo == null)
+            {
+                throw new GameFrameworkException("Show Item info is invalid.");
+            }
+
+            if (m_ShowItemUpdateEventHandler != null)
+            {
+                ShowItemUpdateEventArgs showItemUpdateEventArgs = ShowItemUpdateEventArgs.Create(showItemInfo.ItemId, ItemAssetName, showItemInfo.ItemGroup.Name, progress, showItemInfo.UserData);
+                m_ShowItemUpdateEventHandler(this, showItemUpdateEventArgs);
+                ReferencePool.Release(showItemUpdateEventArgs);
+            }
+        }
+
+        private void LoadAssetDependencyAssetCallback(string ItemAssetName, string dependencyAssetName, int loadedCount, int totalCount, object userData)
+        {
+            ShowItemInfo showItemInfo = (ShowItemInfo)userData;
+            if (showItemInfo == null)
+            {
+                throw new GameFrameworkException("Show Item info is invalid.");
+            }
+
+            if (m_ShowItemDependencyAssetEventHandler != null)
+            {
+                ShowItemDependencyAssetEventArgs showItemDependencyAssetEventArgs = ShowItemDependencyAssetEventArgs.Create(showItemInfo.ItemId, ItemAssetName, showItemInfo.ItemGroup.Name, dependencyAssetName, loadedCount, totalCount, showItemInfo.UserData);
+                m_ShowItemDependencyAssetEventHandler(this, showItemDependencyAssetEventArgs);
+                ReferencePool.Release(showItemDependencyAssetEventArgs);
+            }
         }
     }
 }
