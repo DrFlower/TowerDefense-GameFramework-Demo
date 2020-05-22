@@ -104,19 +104,19 @@ namespace GameFramework.Item
         /// </summary>
         /// <param name="itemAssetName">物品资源名称。</param>
         /// <param name="results">要获取的物品。</param>
-        void GetItem(string itemAssetName, List<IItem> results);
+        void GetItems(string itemAssetName, List<IItem> results);
 
         /// <summary>
         /// 从物品组中获取所有物品。
         /// </summary>
         /// <returns>物品组中的所有物品。</returns>
-        IItem[] GetAllitems();
+        IItem[] GetAllItems();
 
         /// <summary>
         /// 从物品组中获取所有物品。
         /// </summary>
         /// <param name="results">物品组中的所有物品。</param>
-        void GetAllitems(List<IItem> results);
+        void GetAllItems(List<IItem> results);
 
         /// <summary>
         /// 设置物品实例是否被加锁。

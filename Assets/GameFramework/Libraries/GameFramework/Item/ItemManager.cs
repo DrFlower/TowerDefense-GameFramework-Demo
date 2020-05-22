@@ -15,7 +15,7 @@ namespace GameFramework.Item
         private readonly LoadAssetCallbacks m_LoadAssetCallbacks;
         private IObjectPoolManager m_ObjectPoolManager;
         private IResourceManager m_ResourceManager;
-        private IItemManager m_ItemHelper;
+        private IItemHelper m_ItemHelper;
         private int m_Serial;
         private bool m_IsShutdown;
         private EventHandler<ShowItemSuccessEventArgs> m_ShowItemSuccessEventHandler;
@@ -54,7 +54,46 @@ namespace GameFramework.Item
 
         }
 
+        private void InternalShowItem(int itemId, string itemAssetName, ItemGroup itemGroup, object itemInstance, bool isNewInstance, float duration, object userData)
+        {
+            try
+            {
+                IItem item = m_ItemHelper.CreateItem(itemInstance, itemGroup, userData);
+                if (item == null)
+                {
+                    throw new GameFrameworkException("Can not create entity in helper.");
+                }
 
+                ItemInfo entityInfo = ItemInfo.Create(item);
+                m_ItemInfos.Add(itemId, entityInfo);
+                entityInfo.Status = ItemStatus.WillInit;
+                item.OnInit(itemId, itemAssetName, itemGroup, isNewInstance, userData);
+                entityInfo.Status = ItemStatus.Inited;
+                itemGroup.AddItem(item);
+                entityInfo.Status = ItemStatus.WillShow;
+                item.OnShow(userData);
+                entityInfo.Status = ItemStatus.Showed;
+
+                if (m_ShowItemSuccessEventHandler != null)
+                {
+                    ShowItemSuccessEventArgs showItemSuccessEventArgs = ShowItemSuccessEventArgs.Create(item, duration, userData);
+                    m_ShowItemSuccessEventHandler(this, showItemSuccessEventArgs);
+                    ReferencePool.Release(showItemSuccessEventArgs);
+                }
+            }
+            catch (Exception exception)
+            {
+                if (m_ShowItemFailureEventHandler != null)
+                {
+                    ShowItemFailureEventArgs showItemFailureEventArgs = ShowItemFailureEventArgs.Create(itemId, itemAssetName, itemGroup.Name, exception.ToString(), userData);
+                    m_ShowItemFailureEventHandler(this, showItemFailureEventArgs);
+                    ReferencePool.Release(showItemFailureEventArgs);
+                    return;
+                }
+
+                throw;
+            }
+        }
 
 
         private void LoadAssetSuccessCallback(string ItemAssetName, object ItemAsset, float duration, object userData)
@@ -74,10 +113,10 @@ namespace GameFramework.Item
             }
 
             m_EntitiesBeingLoaded.Remove(showItemInfo.ItemId);
-            ItemInstanceObject ItemInstanceObject = ItemInstanceObject.Create(ItemAssetName, ItemAsset, m_ItemHelper.InstantiateItem(ItemAsset), m_ItemHelper);
-            showItemInfo.ItemGroup.RegisterItemInstanceObject(ItemInstanceObject, true);
+            ItemInstanceObject itemInstanceObject = ItemInstanceObject.Create(ItemAssetName, ItemAsset, m_ItemHelper.InstantiateItem(ItemAsset), m_ItemHelper);
+            showItemInfo.ItemGroup.RegisterItemInstanceObject(itemInstanceObject, true);
 
-            InternalShowItem(showItemInfo.ItemId, ItemAssetName, showItemInfo.ItemGroup, ItemInstanceObject.Target, true, duration, showItemInfo.UserData);
+            InternalShowItem(showItemInfo.ItemId, ItemAssetName, showItemInfo.ItemGroup, itemInstanceObject.Target, true, duration, showItemInfo.UserData);
             ReferencePool.Release(showItemInfo);
         }
 

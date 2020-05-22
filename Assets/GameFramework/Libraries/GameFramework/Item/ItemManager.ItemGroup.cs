@@ -10,41 +10,41 @@ namespace GameFramework.Item
             private readonly string m_Name;
             private readonly IItemGroupHelper m_ItemGroupHelper;
             private readonly IObjectPool<ItemInstanceObject> m_InstancePool;
-            private readonly GameFrameworkLinkedList<IItem> m_Entities;
+            private readonly GameFrameworkLinkedList<IItem> m_Items;
             private LinkedListNode<IItem> m_CachedNode;
 
             /// <summary>
-            /// 初始化物品组的新实例。
+            /// 初始化实体组的新实例。
             /// </summary>
-            /// <param name="name">物品组名称。</param>
-            /// <param name="instanceAutoReleaseInterval">物品实例对象池自动释放可释放对象的间隔秒数。</param>
-            /// <param name="instanceCapacity">物品实例对象池容量。</param>
-            /// <param name="instanceExpireTime">物品实例对象池对象过期秒数。</param>
-            /// <param name="instancePriority">物品实例对象池的优先级。</param>
-            /// <param name="itemGroupHelper">物品组辅助器。</param>
+            /// <param name="name">实体组名称。</param>
+            /// <param name="instanceAutoReleaseInterval">实体实例对象池自动释放可释放对象的间隔秒数。</param>
+            /// <param name="instanceCapacity">实体实例对象池容量。</param>
+            /// <param name="instanceExpireTime">实体实例对象池对象过期秒数。</param>
+            /// <param name="instancePriority">实体实例对象池的优先级。</param>
+            /// <param name="ItemGroupHelper">实体组辅助器。</param>
             /// <param name="objectPoolManager">对象池管理器。</param>
-            public ItemGroup(string name, float instanceAutoReleaseInterval, int instanceCapacity, float instanceExpireTime, int instancePriority, IItemGroupHelper itemGroupHelper, IObjectPoolManager objectPoolManager)
+            public ItemGroup(string name, float instanceAutoReleaseInterval, int instanceCapacity, float instanceExpireTime, int instancePriority, IItemGroupHelper ItemGroupHelper, IObjectPoolManager objectPoolManager)
             {
                 if (string.IsNullOrEmpty(name))
                 {
                     throw new GameFrameworkException("Item group name is invalid.");
                 }
 
-                if (itemGroupHelper == null)
+                if (ItemGroupHelper == null)
                 {
                     throw new GameFrameworkException("Item group helper is invalid.");
                 }
 
                 m_Name = name;
-                m_ItemGroupHelper = itemGroupHelper;
+                m_ItemGroupHelper = ItemGroupHelper;
                 m_InstancePool = objectPoolManager.CreateSingleSpawnObjectPool<ItemInstanceObject>(Utility.Text.Format("Item Instance Pool ({0})", name), instanceCapacity, instanceExpireTime, instancePriority);
                 m_InstancePool.AutoReleaseInterval = instanceAutoReleaseInterval;
-                m_Entities = new GameFrameworkLinkedList<IItem>();
+                m_Items = new GameFrameworkLinkedList<IItem>();
                 m_CachedNode = null;
             }
 
             /// <summary>
-            /// 获取物品组名称。
+            /// 获取实体组名称。
             /// </summary>
             public string Name
             {
@@ -55,18 +55,18 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 获取物品组中物品数量。
+            /// 获取实体组中实体数量。
             /// </summary>
             public int ItemCount
             {
                 get
                 {
-                    return m_Entities.Count;
+                    return m_Items.Count;
                 }
             }
 
             /// <summary>
-            /// 获取或设置物品组实例对象池自动释放可释放对象的间隔秒数。
+            /// 获取或设置实体组实例对象池自动释放可释放对象的间隔秒数。
             /// </summary>
             public float InstanceAutoReleaseInterval
             {
@@ -81,7 +81,7 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 获取或设置物品组实例对象池的容量。
+            /// 获取或设置实体组实例对象池的容量。
             /// </summary>
             public int InstanceCapacity
             {
@@ -96,7 +96,7 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 获取或设置物品组实例对象池对象过期秒数。
+            /// 获取或设置实体组实例对象池对象过期秒数。
             /// </summary>
             public float InstanceExpireTime
             {
@@ -111,7 +111,7 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 获取或设置物品组实例对象池的优先级。
+            /// 获取或设置实体组实例对象池的优先级。
             /// </summary>
             public int InstancePriority
             {
@@ -126,7 +126,7 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 获取物品组辅助器。
+            /// 获取实体组辅助器。
             /// </summary>
             public IItemGroupHelper Helper
             {
@@ -137,13 +137,13 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 物品组轮询。
+            /// 实体组轮询。
             /// </summary>
             /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
             /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
             public void Update(float elapseSeconds, float realElapseSeconds)
             {
-                LinkedListNode<IItem> current = m_Entities.First;
+                LinkedListNode<IItem> current = m_Items.First;
                 while (current != null)
                 {
                     m_CachedNode = current.Next;
@@ -154,15 +154,15 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 物品组中是否存在物品。
+            /// 实体组中是否存在实体。
             /// </summary>
-            /// <param name="itemId">物品序列编号。</param>
-            /// <returns>物品组中是否存在物品。</returns>
-            public bool HasItem(int itemId)
+            /// <param name="ItemId">实体序列编号。</param>
+            /// <returns>实体组中是否存在实体。</returns>
+            public bool HasItem(int ItemId)
             {
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    if (item.Id == itemId)
+                    if (Item.Id == ItemId)
                     {
                         return true;
                     }
@@ -172,20 +172,20 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 物品组中是否存在物品。
+            /// 实体组中是否存在实体。
             /// </summary>
-            /// <param name="itemAssetName">物品资源名称。</param>
-            /// <returns>物品组中是否存在物品。</returns>
-            public bool HasItem(string itemAssetName)
+            /// <param name="ItemAssetName">实体资源名称。</param>
+            /// <returns>实体组中是否存在实体。</returns>
+            public bool HasItem(string ItemAssetName)
             {
-                if (string.IsNullOrEmpty(itemAssetName))
+                if (string.IsNullOrEmpty(ItemAssetName))
                 {
                     throw new GameFrameworkException("Item asset name is invalid.");
                 }
 
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    if (item.ItemAssetName == itemAssetName)
+                    if (Item.ItemAssetName == ItemAssetName)
                     {
                         return true;
                     }
@@ -195,17 +195,17 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 从物品组中获取物品。
+            /// 从实体组中获取实体。
             /// </summary>
-            /// <param name="itemId">物品序列编号。</param>
-            /// <returns>要获取的物品。</returns>
-            public IItem GetItem(int itemId)
+            /// <param name="ItemId">实体序列编号。</param>
+            /// <returns>要获取的实体。</returns>
+            public IItem GetItem(int ItemId)
             {
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    if (item.Id == itemId)
+                    if (Item.Id == ItemId)
                     {
-                        return item;
+                        return Item;
                     }
                 }
 
@@ -213,22 +213,22 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 从物品组中获取物品。
+            /// 从实体组中获取实体。
             /// </summary>
-            /// <param name="itemAssetName">物品资源名称。</param>
-            /// <returns>要获取的物品。</returns>
-            public IItem GetItem(string itemAssetName)
+            /// <param name="ItemAssetName">实体资源名称。</param>
+            /// <returns>要获取的实体。</returns>
+            public IItem GetItem(string ItemAssetName)
             {
-                if (string.IsNullOrEmpty(itemAssetName))
+                if (string.IsNullOrEmpty(ItemAssetName))
                 {
                     throw new GameFrameworkException("Item asset name is invalid.");
                 }
 
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    if (item.ItemAssetName == itemAssetName)
+                    if (Item.ItemAssetName == ItemAssetName)
                     {
-                        return item;
+                        return Item;
                     }
                 }
 
@@ -236,23 +236,23 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 从物品组中获取物品。
+            /// 从实体组中获取实体。
             /// </summary>
-            /// <param name="itemAssetName">物品资源名称。</param>
-            /// <returns>要获取的物品。</returns>
-            public IItem[] GetEntities(string itemAssetName)
+            /// <param name="ItemAssetName">实体资源名称。</param>
+            /// <returns>要获取的实体。</returns>
+            public IItem[] GetItems(string ItemAssetName)
             {
-                if (string.IsNullOrEmpty(itemAssetName))
+                if (string.IsNullOrEmpty(ItemAssetName))
                 {
                     throw new GameFrameworkException("Item asset name is invalid.");
                 }
 
                 List<IItem> results = new List<IItem>();
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    if (item.ItemAssetName == itemAssetName)
+                    if (Item.ItemAssetName == ItemAssetName)
                     {
-                        results.Add(item);
+                        results.Add(Item);
                     }
                 }
 
@@ -260,13 +260,13 @@ namespace GameFramework.Item
             }
 
             /// <summary>
-            /// 从物品组中获取物品。
+            /// 从实体组中获取实体。
             /// </summary>
-            /// <param name="itemAssetName">物品资源名称。</param>
-            /// <param name="results">要获取的物品。</param>
-            public void GetEntities(string itemAssetName, List<IItem> results)
+            /// <param name="ItemAssetName">实体资源名称。</param>
+            /// <param name="results">要获取的实体。</param>
+            public void GetItems(string ItemAssetName, List<IItem> results)
             {
-                if (string.IsNullOrEmpty(itemAssetName))
+                if (string.IsNullOrEmpty(ItemAssetName))
                 {
                     throw new GameFrameworkException("Item asset name is invalid.");
                 }
@@ -277,35 +277,35 @@ namespace GameFramework.Item
                 }
 
                 results.Clear();
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    if (item.ItemAssetName == itemAssetName)
+                    if (Item.ItemAssetName == ItemAssetName)
                     {
-                        results.Add(item);
+                        results.Add(Item);
                     }
                 }
             }
 
             /// <summary>
-            /// 从物品组中获取所有物品。
+            /// 从实体组中获取所有实体。
             /// </summary>
-            /// <returns>物品组中的所有物品。</returns>
-            public IItem[] GetAllEntities()
+            /// <returns>实体组中的所有实体。</returns>
+            public IItem[] GetAllItems()
             {
                 List<IItem> results = new List<IItem>();
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    results.Add(item);
+                    results.Add(Item);
                 }
 
                 return results.ToArray();
             }
 
             /// <summary>
-            /// 从物品组中获取所有物品。
+            /// 从实体组中获取所有实体。
             /// </summary>
-            /// <param name="results">物品组中的所有物品。</param>
-            public void GetAllEntities(List<IItem> results)
+            /// <param name="results">实体组中的所有实体。</param>
+            public void GetAllItems(List<IItem> results)
             {
                 if (results == null)
                 {
@@ -313,35 +313,35 @@ namespace GameFramework.Item
                 }
 
                 results.Clear();
-                foreach (IItem item in m_Entities)
+                foreach (IItem Item in m_Items)
                 {
-                    results.Add(item);
+                    results.Add(Item);
                 }
             }
 
             /// <summary>
-            /// 往物品组增加物品。
+            /// 往实体组增加实体。
             /// </summary>
-            /// <param name="item">要增加的物品。</param>
-            public void AddItem(IItem item)
+            /// <param name="Item">要增加的实体。</param>
+            public void AddItem(IItem Item)
             {
-                m_Entities.AddLast(item);
+                m_Items.AddLast(Item);
             }
 
             /// <summary>
-            /// 从物品组移除物品。
+            /// 从实体组移除实体。
             /// </summary>
-            /// <param name="item">要移除的物品。</param>
-            public void RemoveItem(IItem item)
+            /// <param name="Item">要移除的实体。</param>
+            public void RemoveItem(IItem Item)
             {
-                if (m_CachedNode != null && m_CachedNode.Value == item)
+                if (m_CachedNode != null && m_CachedNode.Value == Item)
                 {
                     m_CachedNode = m_CachedNode.Next;
                 }
 
-                if (!m_Entities.Remove(item))
+                if (!m_Items.Remove(Item))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Item group '{0}' not exists specified item '[{1}]{2}'.", m_Name, item.Id.ToString(), item.ItemAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format("Item group '{0}' not exists specified Item '[{1}]{2}'.", m_Name, Item.Id.ToString(), Item.ItemAssetName));
                 }
             }
 
@@ -355,29 +355,29 @@ namespace GameFramework.Item
                 return m_InstancePool.Spawn(name);
             }
 
-            public void UnspawnItem(IItem item)
+            public void UnspawnItem(IItem Item)
             {
-                m_InstancePool.Unspawn(item.Handle);
+                m_InstancePool.Unspawn(Item.Handle);
             }
 
-            public void SetItemInstanceLocked(object itemInstance, bool locked)
+            public void SetItemInstanceLocked(object ItemInstance, bool locked)
             {
-                if (itemInstance == null)
+                if (ItemInstance == null)
                 {
                     throw new GameFrameworkException("Item instance is invalid.");
                 }
 
-                m_InstancePool.SetLocked(itemInstance, locked);
+                m_InstancePool.SetLocked(ItemInstance, locked);
             }
 
-            public void SetItemInstancePriority(object itemInstance, int priority)
+            public void SetItemInstancePriority(object ItemInstance, int priority)
             {
-                if (itemInstance == null)
+                if (ItemInstance == null)
                 {
                     throw new GameFrameworkException("Item instance is invalid.");
                 }
 
-                m_InstancePool.SetPriority(itemInstance, priority);
+                m_InstancePool.SetPriority(ItemInstance, priority);
             }
         }
 
