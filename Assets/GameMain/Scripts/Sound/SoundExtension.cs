@@ -47,9 +47,9 @@ namespace Flower
                 return null;
             }
 
-            IDataTable<DRSoundAssets> dtSoundAssets = GameEntry.DataTable.GetDataTable<DRSoundAssets>();
-            DRSoundAssets dRSoundAssets = dtSoundAssets.GetDataRow(drSound.AssetId);
-            string assetPath = dRSoundAssets.AssetPath;
+            IDataTable<DRAssetsPath> dtAssetPath = GameEntry.DataTable.GetDataTable<DRAssetsPath>();
+            DRAssetsPath drAssetPath = dtAssetPath.GetDataRow(drSound.AssetId);
+            string assetPath = drAssetPath.AssetPath;
 
             IDataTable<DRSoundGroup> dtSoundGroup = GameEntry.DataTable.GetDataTable<DRSoundGroup>();
             DRSoundGroup dRSoundGroup = dtSoundGroup.GetDataRow(drSound.SoundGroupId);

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-05-04 21:10:59.763
+// 生成时间：2020-05-23 20:01:48.207
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,14 +19,14 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// 声音资源配置表。
+    /// 资源路径配置表。
     /// </summary>
-    public class DRSoundAssets : DataRowBase
+    public class DRAssetsPath : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取声音编号。
+        /// 获取资源编号。
         /// </summary>
         public override int Id
         {

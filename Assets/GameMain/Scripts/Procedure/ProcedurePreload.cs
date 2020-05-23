@@ -21,7 +21,7 @@ namespace Flower
             "UIForm",
             "Sound",
             "SoundGroup",
-            "SoundAssets",
+            "AssetsPath",
             "SoundPlayParam",
         };
 

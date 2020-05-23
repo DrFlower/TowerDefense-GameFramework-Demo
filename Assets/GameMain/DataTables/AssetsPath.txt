@@ -1,7 +1,9 @@
-﻿#	声音资源配置表		
+﻿#	资源路径配置表		
 #	Id		AssetPath
 #	int		string
-#	声音编号	策划备注	资源名称
+#	资源编号	策划备注	资源名称
+	1001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
+#			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3
 	20001	Enemy Fire	Assets/GameMain/Sounds/SFX/Enemy Fire.wav
@@ -51,3 +53,4 @@
 	30006	TD Victory	Assets/GameMain/Sounds/SFX/UI/TD Victory.wav
 	30007	ui_sound_back	Assets/GameMain/Sounds/UI/ui_sound_back.mp3
 	30008	ui_sound_forward	Assets/GameMain/Sounds/UI/ui_sound_forward.mp3
+#			
