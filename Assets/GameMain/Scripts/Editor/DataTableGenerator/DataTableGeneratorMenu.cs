@@ -26,7 +26,7 @@ namespace Flower.Editor.DataTableTools
                     break;
                 }
 
-                DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
+                DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
             }
 
             AssetDatabase.Refresh();
