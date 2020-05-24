@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-05-23 21:46:54.768
+// 生成时间：2020-05-23 21:46:54.784
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,14 +19,14 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// 资源路径配置表。
+    /// 声音组配置表。
     /// </summary>
-    public class DRAssetsPath : DataRowBase
+    public class DRPoolParam : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取资源编号。
+        /// 获取配置编号。
         /// </summary>
         public override int Id
         {
@@ -37,9 +37,45 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取组名字。
         /// </summary>
-        public string AssetPath
+        public string GroupName
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取自动释放可释放对象的间隔秒数。
+        /// </summary>
+        public float InstanceAutoReleaseInterval
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取实例对象池的容量。
+        /// </summary>
+        public int InstanceCapacity
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取对象池对象过期秒数。
+        /// </summary>
+        public float InstanceExpireTime
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取实体组实例对象池的优先级。
+        /// </summary>
+        public int InstancePriority
         {
             get;
             private set;
@@ -60,7 +96,11 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                AssetPath = columnTexts[index++];
+                GroupName = columnTexts[index++];
+                InstanceAutoReleaseInterval = float.Parse(columnTexts[index++]);
+                InstanceCapacity = int.Parse(columnTexts[index++]);
+                InstanceExpireTime = float.Parse(columnTexts[index++]);
+                InstancePriority = int.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -70,7 +110,11 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        AssetPath = strings[binaryReader.Read7BitEncodedInt32()];
+                        GroupName = strings[binaryReader.Read7BitEncodedInt32()];
+                        InstanceAutoReleaseInterval = binaryReader.ReadSingle();
+                        InstanceCapacity = binaryReader.Read7BitEncodedInt32();
+                        InstanceExpireTime = binaryReader.ReadSingle();
+                        InstancePriority = binaryReader.Read7BitEncodedInt32();
                     }
                 }
             }

@@ -1,0 +1,5 @@
+﻿#	物体组配置表			
+#	Id		Name	PoolParamId
+#	int		string	int
+#	配置编号	策划备注	物体组名字	对象池参数Id
+	1001	关卡选择按钮	LevelSelectionButton	1001

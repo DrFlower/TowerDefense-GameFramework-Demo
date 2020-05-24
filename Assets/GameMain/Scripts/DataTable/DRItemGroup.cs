@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-05-23 21:46:54.768
+// 生成时间：2020-05-23 21:46:54.781
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,14 +19,14 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// 资源路径配置表。
+    /// 物体组配置表。
     /// </summary>
-    public class DRAssetsPath : DataRowBase
+    public class DRItemGroup : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取资源编号。
+        /// 获取配置编号。
         /// </summary>
         public override int Id
         {
@@ -37,9 +37,18 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取物体组名字。
         /// </summary>
-        public string AssetPath
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取对象池参数Id。
+        /// </summary>
+        public int PoolParamId
         {
             get;
             private set;
@@ -60,7 +69,8 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                AssetPath = columnTexts[index++];
+                Name = columnTexts[index++];
+                PoolParamId = int.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -70,7 +80,8 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        AssetPath = strings[binaryReader.Read7BitEncodedInt32()];
+                        Name = strings[binaryReader.Read7BitEncodedInt32()];
+                        PoolParamId = binaryReader.Read7BitEncodedInt32();
                     }
                 }
             }

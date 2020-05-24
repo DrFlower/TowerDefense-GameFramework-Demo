@@ -23,6 +23,9 @@ namespace Flower
             "SoundGroup",
             "AssetsPath",
             "SoundPlayParam",
+            "Item",
+            "ItemGroup",
+            "PoolParam",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
