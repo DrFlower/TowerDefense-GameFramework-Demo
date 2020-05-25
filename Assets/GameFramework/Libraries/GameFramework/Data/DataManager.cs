@@ -5,21 +5,21 @@ namespace GameFramework.Data
 {
     internal sealed partial class DataManager : GameFrameworkModule, IDataManager
     {
-        private Dictionary<Type, DataBase> m_Datas;
-        private Dictionary<Type, DataStatus> m_DataStatus;
+        private Dictionary<Type, DataInfo> m_dicDataInfos;
+        private GameFrameworkLinkedList<DataInfo> m_linkedListDataInfos;
 
         public int DataCount
         {
             get
             {
-                return m_Datas == null ? 0 : m_Datas.Count;
+                return m_dicDataInfos == null ? 0 : m_dicDataInfos.Count;
             }
         }
 
         public DataManager()
         {
-            m_Datas = new Dictionary<Type, DataBase>();
-            m_DataStatus = new Dictionary<Type, DataStatus>();
+            m_dicDataInfos = new Dictionary<Type, DataInfo>();
+            m_linkedListDataInfos = new GameFrameworkLinkedList<DataInfo>();
         }
 
         internal override void Update(float elapseSeconds, float realElapseSeconds)
@@ -29,18 +29,66 @@ namespace GameFramework.Data
 
         public void AddData<T>() where T : DataBase
         {
+            AddData<T>(Constant.DefaultPriority);
+        }
+
+        public void AddData<T>(int priority) where T : DataBase
+        {
             Type type = typeof(T);
 
+            if (m_dicDataInfos.ContainsKey(type))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is already exist.", type.ToString()));
+            }
+
+            DataBase data = (DataBase)Activator.CreateInstance(type);
+            if (data == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Can not create data '{0}'.", type.FullName));
+            }
+
+            AddData(data, priority);
         }
 
-        public void AddData(DataBase dataBase)
+        public void AddData(DataBase data)
         {
-            throw new NotImplementedException();
+            AddData(data, Constant.DefaultPriority);
         }
 
-        public void RemoveData(DataBase dataBase)
+        public void AddData(DataBase data, int priority)
         {
-            throw new NotImplementedException();
+            if (data == null)
+            {
+                throw new GameFrameworkException("Can not add null data");
+            }
+
+            DataInfo dataInfo = DataInfo.Create(data);
+            dataInfo.Priority = priority;
+
+            LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+            while (current != null)
+            {
+                if (dataInfo.Priority > current.Value.Priority)
+                {
+                    break;
+                }
+
+                current = current.Next;
+            }
+
+            if (current != null)
+            {
+                m_linkedListDataInfos.AddBefore(current, dataInfo);
+            }
+            else
+            {
+                m_linkedListDataInfos.AddLast(dataInfo);
+            }
+        }
+
+        public void RemoveData(DataBase data)
+        {
+            
         }
 
         public DataBase[] GetAllData()
@@ -75,7 +123,7 @@ namespace GameFramework.Data
 
         public void InitAllData()
         {
-   
+
         }
 
         public void LoadAllData()
@@ -90,7 +138,7 @@ namespace GameFramework.Data
 
         public void UnLoadAllData()
         {
-     
+
         }
 
         internal override void Shutdown()
