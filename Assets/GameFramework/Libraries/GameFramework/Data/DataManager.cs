@@ -86,19 +86,83 @@ namespace GameFramework.Data
             }
         }
 
+        public void RemoveData<T>() where T : DataBase
+        {
+            Type type = typeof(T);
+
+            DataInfo dataInfo = null;
+
+            if (!m_dicDataInfos.TryGetValue(type, out dataInfo))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
+            }
+
+            if (dataInfo != null && dataInfo.Data != null)
+            {
+                RemoveData(dataInfo.Data);
+            }
+        }
+
         public void RemoveData(DataBase data)
         {
-            
+            if (data == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Data '{0}' is null.", data.Name.ToString()));
+            }
+
+            Type type = data.GetType();
+
+            if (!m_dicDataInfos.ContainsKey(type))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
+            }
+
+            data.OnUnload();
+            data.Shutdown();
+
+            m_dicDataInfos.Remove(type);
         }
 
         public DataBase[] GetAllData()
         {
-            throw new NotImplementedException();
+            if (m_dicDataInfos != null)
+            {
+                DataBase[] dataBases = new DataBase[m_linkedListDataInfos.Count];
+
+
+                LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+                int index = 0;
+                while (current != null)
+                {
+                    dataBases[index] = current.Value.Data;
+                    index++;
+                    current = current.Next;
+                }
+
+                return dataBases;
+            }
+
+            return null;
         }
 
         public void GetAllData(List<DataBase> result)
         {
-            throw new NotImplementedException();
+            if (result == null)
+            {
+                throw new GameFrameworkException("Results is invalid.");
+            }
+
+            result.Clear();
+
+            if (m_dicDataInfos != null)
+            {
+                LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+                while (current != null)
+                {
+                    result.Add(current.Value.Data);
+                    current = current.Next;
+                }
+            }
         }
 
         public T GetData<T>() where T : DataBase
