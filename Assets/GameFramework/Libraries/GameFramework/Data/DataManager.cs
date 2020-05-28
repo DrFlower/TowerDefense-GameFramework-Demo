@@ -154,7 +154,7 @@ namespace GameFramework.Data
 
             result.Clear();
 
-            if (m_dicDataInfos != null)
+            if (m_linkedListDataInfos != null)
             {
                 LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
                 while (current != null)
@@ -167,47 +167,124 @@ namespace GameFramework.Data
 
         public T GetData<T>() where T : DataBase
         {
-            throw new NotImplementedException();
+            Type type = typeof(T);
+
+            DataInfo dataInfo = null;
+
+            if (!m_dicDataInfos.TryGetValue(type, out dataInfo))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
+            }
+
+            return (T)dataInfo.Data;
         }
 
         public DataBase GetData(string name)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(null))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Param data name vaild."));
+            }
+
+            DataBase data = null;
+            foreach (var item in m_dicDataInfos)
+            {
+                if (item.Value.Data.Name == name)
+                    data = item.Value.Data;
+            }
+
+            return data;
         }
 
         public bool HasData<T>() where T : DataBase
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(null))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Param data name vaild."));
+            }
+
+            Type type = typeof(T);
+
+            if (m_dicDataInfos != null)
+                return m_dicDataInfos.ContainsKey(type);
+
+            return false;
         }
 
         public bool HasData(string name)
         {
-            throw new NotImplementedException();
+            if (m_dicDataInfos != null)
+            {
+                foreach (var item in m_dicDataInfos)
+                {
+                    if (item.Value.Data.Name == name)
+                        return true;
+                }
+            }
+
+            return false;
         }
 
         public void InitAllData()
         {
+            if (m_linkedListDataInfos == null)
+                return;
 
-        }
-
-        public void LoadAllData()
-        {
-
+            if (m_linkedListDataInfos != null)
+            {
+                LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+                while (current != null)
+                {
+                    current.Value.Data.Init();
+                }
+            }
         }
 
         public void PreLoadAllData()
         {
+            if (m_linkedListDataInfos != null)
+            {
+                LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+                while (current != null)
+                {
+                    current.Value.Data.OnPreload();
+                }
+            }
+        }
 
+        public void LoadAllData()
+        {
+            if (m_linkedListDataInfos != null)
+            {
+                LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+                while (current != null)
+                {
+                    current.Value.Data.OnLoad();
+                }
+            }
         }
 
         public void UnLoadAllData()
         {
-
+            if (m_linkedListDataInfos != null)
+            {
+                LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
+                while (current != null)
+                {
+                    current.Value.Data.OnUnload();
+                }
+            }
         }
 
         internal override void Shutdown()
         {
+            for (LinkedListNode<DataInfo> current = m_linkedListDataInfos.Last; current != null; current = current.Previous)
+            {
+                current.Value.Data.Shutdown();
+            }
 
+            m_dicDataInfos.Clear();
+            m_linkedListDataInfos.Clear();           
         }
     }
 }
