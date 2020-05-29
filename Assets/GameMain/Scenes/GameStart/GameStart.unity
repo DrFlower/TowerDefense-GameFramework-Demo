@@ -1589,3 +1589,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e25f9d28bacb84fb1ecc2e3d508656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AvailableDataTypeNames:
+  - Flower.DataSetting
