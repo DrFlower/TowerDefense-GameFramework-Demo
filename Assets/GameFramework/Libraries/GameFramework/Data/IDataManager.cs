@@ -22,6 +22,8 @@ namespace GameFramework.Data
 
         void AddData(DataBase dataBase);
 
+        void RemoveData<T>() where T : DataBase;
+
         void RemoveData(DataBase dataBase);
 
         void InitAllData();

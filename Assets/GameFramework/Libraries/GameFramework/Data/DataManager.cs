@@ -97,10 +97,10 @@ namespace GameFramework.Data
                 throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
             }
 
-            if (dataInfo != null && dataInfo.Data != null)
-            {
-                RemoveData(dataInfo.Data);
-            }
+            dataInfo.Data.OnUnload();
+            dataInfo.Data.Shutdown();
+
+            m_dicDataInfos.Remove(type);
         }
 
         public void RemoveData(DataBase data)
@@ -111,14 +111,20 @@ namespace GameFramework.Data
             }
 
             Type type = data.GetType();
+            DataInfo dataInfo = null;
 
-            if (!m_dicDataInfos.ContainsKey(type))
+            if (!m_dicDataInfos.TryGetValue(type,out dataInfo))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
             }
 
-            data.OnUnload();
-            data.Shutdown();
+            if(!ReferenceEquals(dataInfo.Data, data))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Data '{0}' is not the same instance.", type.ToString()));
+            }
+
+            dataInfo.Data.OnUnload();
+            dataInfo.Data.Shutdown();
 
             m_dicDataInfos.Remove(type);
         }
