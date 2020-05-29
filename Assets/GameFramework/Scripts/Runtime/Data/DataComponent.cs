@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Data;
 using UnityEngine;
@@ -10,9 +11,10 @@ namespace UnityGameFramework.Runtime
     [AddComponentMenu("Game Framework/Data")]
     public sealed partial class DataComponent : GameFrameworkComponent
     {
-        private const int DefaultPriority = 0;
-
         private IDataManager m_DataManager = null;
+
+        [SerializeField]
+        private string[] m_AvailableDataTypeNames = null;
 
         int DataCount
         {
@@ -36,76 +38,99 @@ namespace UnityGameFramework.Runtime
 
         private void Start()
         {
-          
+            DataBase[] datas = new DataBase[m_AvailableDataTypeNames.Length];
+            for (int i = 0; i < m_AvailableDataTypeNames.Length; i++)
+            {
+                Type procedureType = Utility.Assembly.GetType(m_AvailableDataTypeNames[i]);
+                if (procedureType == null)
+                {
+                    Log.Error("Can not find data type '{0}'.", m_AvailableDataTypeNames[i]);
+                    return;
+                }
+
+                datas[i] = (DataBase)Activator.CreateInstance(procedureType);
+                if (datas[i] == null)
+                {
+                    Log.Error("Can not create data instance '{0}'.", m_AvailableDataTypeNames[i]);
+                    return;
+                }
+            }
+
+            for (int i = 0; i < datas.Length; i++)
+            {
+                m_DataManager.AddData(datas[i]);
+            }
+
+            m_DataManager.InitAllData();
         }
 
-        T GetData<T>() where T : DataBase
+        public T GetData<T>() where T : DataBase
         {
             return m_DataManager.GetData<T>();
         }
 
-        DataBase GetData(string name)
+        public DataBase GetData(string name)
         {
             return m_DataManager.GetData(name);
         }
 
-        bool HasData<T>() where T : DataBase
+        public bool HasData<T>() where T : DataBase
         {
             return m_DataManager.HasData<T>();
         }
 
-        bool HasData(string name)
+        public bool HasData(string name)
         {
             return m_DataManager.HasData(name);
         }
 
-        DataBase[] GetAllData()
+        public DataBase[] GetAllData()
         {
             return m_DataManager.GetAllData();
         }
 
-        void GetAllData(List<DataBase> result)
+        public void GetAllData(List<DataBase> result)
         {
             m_DataManager.GetAllData(result);
         }
 
-        void AddData<T>() where T : DataBase
+        public void AddData<T>() where T : DataBase
         {
             m_DataManager.AddData<T>();
         }
 
-        void AddData(DataBase dataBase)
+        public void AddData(DataBase dataBase)
         {
             m_DataManager.AddData(dataBase);
         }
 
-        void RemoveData<T>() where T : DataBase
+        public void RemoveData<T>() where T : DataBase
         {
             m_DataManager.RemoveData<T>();
         }
 
-        void RemoveData(DataBase dataBase)
+        public void RemoveData(DataBase dataBase)
         {
             m_DataManager.RemoveData(dataBase);
         }
 
-        void InitAllData()
+        public void InitAllData()
         {
             m_DataManager.InitAllData();
         }
 
-        void PreLoadAllData()
+        public void PreLoadAllData()
 
         {
             m_DataManager.PreLoadAllData();
         }
 
-        void LoadAllData()
+        public void LoadAllData()
         {
             m_DataManager.LoadAllData();
         }
 
-        void UnLoadAllData()
+        public void UnLoadAllData()
         {
             m_DataManager.LoadAllData();
         }

@@ -242,6 +242,7 @@ namespace GameFramework.Data
                 while (current != null)
                 {
                     current.Value.Data.Init();
+                    current = current.Next;
                 }
             }
         }
@@ -254,6 +255,7 @@ namespace GameFramework.Data
                 while (current != null)
                 {
                     current.Value.Data.OnPreload();
+                    current = current.Next;
                 }
             }
         }
@@ -266,6 +268,7 @@ namespace GameFramework.Data
                 while (current != null)
                 {
                     current.Value.Data.OnLoad();
+                    current = current.Next;
                 }
             }
         }
@@ -278,6 +281,7 @@ namespace GameFramework.Data
                 while (current != null)
                 {
                     current.Value.Data.OnUnload();
+                    current = current.Next;
                 }
             }
         }

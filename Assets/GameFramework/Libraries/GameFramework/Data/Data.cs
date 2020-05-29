@@ -3,7 +3,13 @@ namespace GameFramework.Data
 {
     public abstract class DataBase : IData
     {
-        public abstract string Name { get; }
+        public virtual string Name
+        {
+            get
+            {
+                return this.GetType().ToString();
+            }
+        }
 
         public abstract void Init();
 
