@@ -96,12 +96,14 @@ namespace Flower
 
             // Preload dictionaries
             LoadDictionary("Default");
+
+            GameEntry.DataComponent.PreLoadAllData();
         }
 
         private void SetComponents()
         {
             SetSoundComponent();
-
+            GameEntry.DataComponent.LoadAllData();
         }
 
         private void SetSoundComponent()
