@@ -1,7 +1,7 @@
 ﻿
 namespace GameFramework.Data
 {
-    public abstract class DataBase : IData
+    public abstract class Data : IData
     {
         public virtual string Name
         {
