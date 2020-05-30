@@ -38,7 +38,7 @@ namespace UnityGameFramework.Runtime
 
         private void Start()
         {
-            DataBase[] datas = new DataBase[m_AvailableDataTypeNames.Length];
+            Data[] datas = new Data[m_AvailableDataTypeNames.Length];
             for (int i = 0; i < m_AvailableDataTypeNames.Length; i++)
             {
                 Type procedureType = Utility.Assembly.GetType(m_AvailableDataTypeNames[i]);
@@ -48,7 +48,7 @@ namespace UnityGameFramework.Runtime
                     return;
                 }
 
-                datas[i] = (DataBase)Activator.CreateInstance(procedureType);
+                datas[i] = (Data)Activator.CreateInstance(procedureType);
                 if (datas[i] == null)
                 {
                     Log.Error("Can not create data instance '{0}'.", m_AvailableDataTypeNames[i]);
@@ -64,17 +64,17 @@ namespace UnityGameFramework.Runtime
             m_DataManager.InitAllData();
         }
 
-        public T GetData<T>() where T : DataBase
+        public T GetData<T>() where T : Data
         {
             return m_DataManager.GetData<T>();
         }
 
-        public DataBase GetData(string name)
+        public Data GetData(string name)
         {
             return m_DataManager.GetData(name);
         }
 
-        public bool HasData<T>() where T : DataBase
+        public bool HasData<T>() where T : Data
         {
             return m_DataManager.HasData<T>();
         }
@@ -84,34 +84,34 @@ namespace UnityGameFramework.Runtime
             return m_DataManager.HasData(name);
         }
 
-        public DataBase[] GetAllData()
+        public Data[] GetAllData()
         {
             return m_DataManager.GetAllData();
         }
 
-        public void GetAllData(List<DataBase> result)
+        public void GetAllData(List<Data> result)
         {
             m_DataManager.GetAllData(result);
         }
 
-        public void AddData<T>() where T : DataBase
+        public void AddData<T>() where T : Data
         {
             m_DataManager.AddData<T>();
         }
 
-        public void AddData(DataBase dataBase)
+        public void AddData(Data Data)
         {
-            m_DataManager.AddData(dataBase);
+            m_DataManager.AddData(Data);
         }
 
-        public void RemoveData<T>() where T : DataBase
+        public void RemoveData<T>() where T : Data
         {
             m_DataManager.RemoveData<T>();
         }
 
-        public void RemoveData(DataBase dataBase)
+        public void RemoveData(Data Data)
         {
-            m_DataManager.RemoveData(dataBase);
+            m_DataManager.RemoveData(Data);
         }
 
         public void InitAllData()

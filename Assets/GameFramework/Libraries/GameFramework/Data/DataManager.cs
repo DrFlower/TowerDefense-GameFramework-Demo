@@ -27,12 +27,12 @@ namespace GameFramework.Data
 
         }
 
-        public void AddData<T>() where T : DataBase
+        public void AddData<T>() where T : Data
         {
             AddData<T>(Constant.DefaultPriority);
         }
 
-        public void AddData<T>(int priority) where T : DataBase
+        public void AddData<T>(int priority) where T : Data
         {
             Type type = typeof(T);
 
@@ -41,7 +41,7 @@ namespace GameFramework.Data
                 throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is already exist.", type.ToString()));
             }
 
-            DataBase data = (DataBase)Activator.CreateInstance(type);
+            Data data = (Data)Activator.CreateInstance(type);
             if (data == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not create data '{0}'.", type.FullName));
@@ -50,12 +50,12 @@ namespace GameFramework.Data
             AddData(data, priority);
         }
 
-        public void AddData(DataBase data)
+        public void AddData(Data data)
         {
             AddData(data, Constant.DefaultPriority);
         }
 
-        public void AddData(DataBase data, int priority)
+        public void AddData(Data data, int priority)
         {
             if (data == null)
             {
@@ -86,7 +86,7 @@ namespace GameFramework.Data
             }
         }
 
-        public void RemoveData<T>() where T : DataBase
+        public void RemoveData<T>() where T : Data
         {
             Type type = typeof(T);
 
@@ -103,7 +103,7 @@ namespace GameFramework.Data
             m_dicDataInfos.Remove(type);
         }
 
-        public void RemoveData(DataBase data)
+        public void RemoveData(Data data)
         {
             if (data == null)
             {
@@ -129,29 +129,29 @@ namespace GameFramework.Data
             m_dicDataInfos.Remove(type);
         }
 
-        public DataBase[] GetAllData()
+        public Data[] GetAllData()
         {
             if (m_dicDataInfos != null)
             {
-                DataBase[] dataBases = new DataBase[m_linkedListDataInfos.Count];
+                Data[] Datas = new Data[m_linkedListDataInfos.Count];
 
 
                 LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
                 int index = 0;
                 while (current != null)
                 {
-                    dataBases[index] = current.Value.Data;
+                    Datas[index] = current.Value.Data;
                     index++;
                     current = current.Next;
                 }
 
-                return dataBases;
+                return Datas;
             }
 
             return null;
         }
 
-        public void GetAllData(List<DataBase> result)
+        public void GetAllData(List<Data> result)
         {
             if (result == null)
             {
@@ -171,7 +171,7 @@ namespace GameFramework.Data
             }
         }
 
-        public T GetData<T>() where T : DataBase
+        public T GetData<T>() where T : Data
         {
             Type type = typeof(T);
 
@@ -185,14 +185,14 @@ namespace GameFramework.Data
             return (T)dataInfo.Data;
         }
 
-        public DataBase GetData(string name)
+        public Data GetData(string name)
         {
             if (string.IsNullOrEmpty(null))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Param data name vaild."));
             }
 
-            DataBase data = null;
+            Data data = null;
             foreach (var item in m_dicDataInfos)
             {
                 if (item.Value.Data.Name == name)
@@ -202,7 +202,7 @@ namespace GameFramework.Data
             return data;
         }
 
-        public bool HasData<T>() where T : DataBase
+        public bool HasData<T>() where T : Data
         {
             if (string.IsNullOrEmpty(null))
             {

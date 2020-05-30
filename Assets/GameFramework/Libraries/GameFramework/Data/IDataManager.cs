@@ -6,25 +6,25 @@ namespace GameFramework.Data
     {
         int DataCount { get; }
 
-        T GetData<T>() where T : DataBase;
+        T GetData<T>() where T : Data;
 
-        DataBase GetData(string name);
+        Data GetData(string name);
 
-        bool HasData<T>() where T : DataBase;
+        bool HasData<T>() where T : Data;
 
         bool HasData(string name);
 
-        DataBase[] GetAllData();
+        Data[] GetAllData();
 
-        void GetAllData(List<DataBase> result);
+        void GetAllData(List<Data> result);
 
-        void AddData<T>() where T : DataBase;
+        void AddData<T>() where T : Data;
 
-        void AddData(DataBase dataBase);
+        void AddData(Data Data);
 
-        void RemoveData<T>() where T : DataBase;
+        void RemoveData<T>() where T : Data;
 
-        void RemoveData(DataBase dataBase);
+        void RemoveData(Data Data);
 
         void InitAllData();
 

@@ -7,7 +7,7 @@ namespace GameFramework.Data
     {
         internal sealed class DataInfo : IReference
         {
-            private DataBase m_Data;
+            private Data m_Data;
             private DataStatus m_Status;
             private int m_Priority;
             public DataInfo()
@@ -16,7 +16,7 @@ namespace GameFramework.Data
                 m_Status = DataStatus.None;
             }
 
-            public DataBase Data
+            public Data Data
             {
                 get
                 {
@@ -48,7 +48,7 @@ namespace GameFramework.Data
                 }
             }
 
-            public static DataInfo Create(DataBase data)
+            public static DataInfo Create(Data data)
             {
                 if (data == null)
                 {

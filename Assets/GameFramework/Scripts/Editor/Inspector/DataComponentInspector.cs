@@ -82,7 +82,7 @@ namespace UnityGameFramework.Editor
 
         private void RefreshTypeNames()
         {
-            m_DataTypeNames = Type.GetTypeNames(typeof(DataBase));
+            m_DataTypeNames = Type.GetTypeNames(typeof(Data));
             ReadAvailableDataTypeNames();
             int oldCount = m_CurrentAvailableDataTypeNames.Count;
             m_CurrentAvailableDataTypeNames = m_CurrentAvailableDataTypeNames.Where(x => m_DataTypeNames.Contains(x)).ToList();
