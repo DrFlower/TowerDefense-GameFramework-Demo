@@ -2,7 +2,11 @@
 #	Id		AssetPath
 #	int		string
 #	资源编号	策划备注	资源名称
-	1001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
+	1001	关卡选择按钮	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab
+	1002	关卡选择按钮	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab
+	1003	关卡选择按钮	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab
+#			
+	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 #			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

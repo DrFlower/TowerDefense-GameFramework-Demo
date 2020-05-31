@@ -1,6 +1,7 @@
-﻿#	界面配置表					
-#	Id		AssetName	UIGroupName	AllowMultiInstance	PauseCoveredUIForm
-#	int		string	string	bool	bool
-#	界面编号	策划备注	资源名称	界面组名称	是否允许多个界面实例	是否暂停被其覆盖的界面
-	100	主菜单	UIMainMenuForm	MainMenu	FALSE	TRUE
-	101	设置	UIOptionsForm	MainMenu	FALSE	TRUE
+﻿#	界面配置表						
+#	Id		AssetName	UIGroupName	AssetId	AllowMultiInstance	PauseCoveredUIForm
+#	int		string	string	int	bool	bool
+#	界面编号	策划备注	资源名称	界面组名称	资源Id	是否允许多个界面实例	是否暂停被其覆盖的界面
+	1001	主菜单	UIMainMenuForm	MainMenu	1001	FALSE	TRUE
+	1002	设置	UIOptionsForm	MainMenu	1002	FALSE	TRUE
+	1003	关卡选择	UILevelSelectForm	MainMenu	1003	FALSE	TRUE
