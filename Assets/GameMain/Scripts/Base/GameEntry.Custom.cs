@@ -14,13 +14,13 @@ namespace Flower
         //    private set;
         //}
 
-        public static ItemComponent ItemComponent
+        public static ItemComponent Item
         {
             get;
             private set;
         }
 
-        public static DataComponent DataComponent
+        public static DataComponent Data
         {
             get;
             private set;
@@ -29,8 +29,8 @@ namespace Flower
 
         private static void InitCustomComponents()
         {
-            ItemComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<ItemComponent>();
-            DataComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<DataComponent>();
+            Item = UnityGameFramework.Runtime.GameEntry.GetComponent<ItemComponent>();
+            Data = UnityGameFramework.Runtime.GameEntry.GetComponent<DataComponent>();
         }
     }
 }
