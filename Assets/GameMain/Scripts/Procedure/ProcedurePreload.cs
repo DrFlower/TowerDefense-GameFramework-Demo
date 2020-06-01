@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Event;
+using GameFramework.Data;
 using UnityGameFramework.Runtime;
 using GameFramework.Procedure;
 using GameFramework.DataTable;
@@ -15,6 +16,8 @@ namespace Flower
 {
     public class ProcedurePreload : ProcedureBase
     {
+        private DataBase[] datas;
+
         public static readonly string[] dataTableNames = new string[]
         {
             "Scene",
@@ -46,6 +49,8 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
+            datas = (DataBase[])GameEntry.Data.GetAllData();
+
             PreloadResources();
         }
 
@@ -56,6 +61,15 @@ namespace Flower
             foreach (var item in m_LoadedFlag)
             {
                 if (!item.Value)
+                    return;
+            }
+
+            if (datas == null)
+                return;
+
+            foreach (var item in datas)
+            {
+                if (!item.IsPreloadReady)
                     return;
             }
 
@@ -97,13 +111,13 @@ namespace Flower
             // Preload dictionaries
             LoadDictionary("Default");
 
-            GameEntry.DataComponent.PreLoadAllData();
+            GameEntry.Data.PreLoadAllData();
         }
 
         private void SetComponents()
         {
             SetSoundComponent();
-            GameEntry.DataComponent.LoadAllData();
+            GameEntry.Data.LoadAllData();
         }
 
         private void SetSoundComponent()
