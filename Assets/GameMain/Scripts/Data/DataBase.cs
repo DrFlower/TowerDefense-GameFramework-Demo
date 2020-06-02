@@ -26,7 +26,12 @@ namespace Flower
             }
         }
 
-        public override void Init()
+        public sealed override void Init()
+        {
+            OnInit();
+        }
+
+        public sealed override void Preload()
         {
             GameEntry.Event.Subscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
             GameEntry.Event.Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
@@ -34,9 +39,11 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
+
+            OnPreload();
         }
 
-        public override void OnLoad()
+        public sealed override void Load()
         {
             GameEntry.Event.Unsubscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
             GameEntry.Event.Unsubscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
@@ -44,11 +51,40 @@ namespace Flower
             GameEntry.Event.Unsubscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
             GameEntry.Event.Unsubscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
+
+            OnLoad();
         }
 
-        public override void OnUnload()
+        public sealed override void Unload()
         {
             eventSubscriber.UnSubscribeAll();
+
+            OnUnload();
+        }
+
+        public sealed override void Shutdown()
+        {
+            OnShutdown();
+        }
+
+        protected virtual void OnInit()
+        {
+        }
+
+        protected virtual void OnPreload()
+        {
+        }
+
+        protected virtual void OnLoad()
+        {
+        }
+
+        protected virtual void OnUnload()
+        {
+        }
+
+        protected virtual void OnShutdown()
+        {
         }
 
         protected void Subscribe(int id, EventHandler<GameEventArgs> handler)

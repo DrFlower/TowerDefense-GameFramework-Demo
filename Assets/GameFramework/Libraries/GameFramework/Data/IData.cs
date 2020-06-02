@@ -6,11 +6,11 @@
 
         void Init();
 
-        void OnPreload();
+        void Preload();
 
-        void OnLoad();
+        void Load();
 
-        void OnUnload();
+        void Unload();
 
         void Shutdown();
     }

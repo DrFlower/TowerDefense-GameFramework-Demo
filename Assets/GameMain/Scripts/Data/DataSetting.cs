@@ -5,31 +5,28 @@ using GameFramework.Data;
 
 namespace Flower
 {
-    public class DataSetting : Data
+    public class DataSetting : DataBase
     {
-        public override void Init()
+        protected override void OnInit()
         {
-            Debug.LogError("DataSetting Init");
+
         }
 
-        public override void OnPreload()
+        protected override void OnPreload()
         {
-            Debug.LogError("DataSetting OnPreload");
+
         }
 
-        public override void OnLoad()
+        protected override void OnLoad()
         {
-            Debug.LogError("DataSetting OnLoad");
         }
 
-        public override void OnUnload()
+        protected override void OnUnload()
         {
-            Debug.LogError("DataSetting OnUnload");
         }
 
-        public override void Shutdown()
+        protected override void OnShutdown()
         {
-            Debug.LogError("DataSetting Shutdown");
         }
     }
 

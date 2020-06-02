@@ -24,7 +24,7 @@ namespace Flower
             "UIForm",
             "Sound",
             "SoundGroup",
-            "AssetsPath",
+            //"AssetsPath",
             "SoundPlayParam",
             "Item",
             "ItemGroup",
@@ -49,7 +49,20 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
-            datas = (DataBase[])GameEntry.Data.GetAllData();
+            Data[] _datas = GameEntry.Data.GetAllData();
+
+            datas = new DataBase[_datas.Length];
+            for (int i = 0; i < _datas.Length; i++)
+            {
+                if (_datas[i] is DataBase)
+                {
+                    datas[i] = _datas[i] as DataBase;
+                }
+                else
+                {
+                    throw new System.Exception(string.Format("Data {0} is not derive form DataBase", _datas[i].GetType()));
+                }
+            }
 
             PreloadResources();
         }

@@ -97,7 +97,7 @@ namespace GameFramework.Data
                 throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
             }
 
-            dataInfo.Data.OnUnload();
+            dataInfo.Data.Unload();
             dataInfo.Data.Shutdown();
 
             m_dicDataInfos.Remove(type);
@@ -123,7 +123,7 @@ namespace GameFramework.Data
                 throw new GameFrameworkException(Utility.Text.Format("Data '{0}' is not the same instance.", type.ToString()));
             }
 
-            dataInfo.Data.OnUnload();
+            dataInfo.Data.Unload();
             dataInfo.Data.Shutdown();
 
             m_dicDataInfos.Remove(type);
@@ -254,7 +254,7 @@ namespace GameFramework.Data
                 LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
                 while (current != null)
                 {
-                    current.Value.Data.OnPreload();
+                    current.Value.Data.Preload();
                     current = current.Next;
                 }
             }
@@ -267,7 +267,7 @@ namespace GameFramework.Data
                 LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
                 while (current != null)
                 {
-                    current.Value.Data.OnLoad();
+                    current.Value.Data.Load();
                     current = current.Next;
                 }
             }
@@ -280,7 +280,7 @@ namespace GameFramework.Data
                 LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
                 while (current != null)
                 {
-                    current.Value.Data.OnUnload();
+                    current.Value.Data.Unload();
                     current = current.Next;
                 }
             }

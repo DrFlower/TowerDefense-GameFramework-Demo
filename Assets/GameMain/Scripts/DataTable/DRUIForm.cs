@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-05-23 21:46:54.757
+// 生成时间：2020-06-02 23:41:59.360
 //------------------------------------------------------------
 
 using GameFramework;
@@ -55,6 +55,15 @@ namespace Flower
         }
 
         /// <summary>
+        /// 获取资源Id。
+        /// </summary>
+        public int AssetId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// 获取是否允许多个界面实例。
         /// </summary>
         public bool AllowMultiInstance
@@ -89,6 +98,7 @@ namespace Flower
                 index++;
                 AssetName = columnTexts[index++];
                 UIGroupName = columnTexts[index++];
+                AssetId = int.Parse(columnTexts[index++]);
                 AllowMultiInstance = bool.Parse(columnTexts[index++]);
                 PauseCoveredUIForm = bool.Parse(columnTexts[index++]);
             }
@@ -102,6 +112,7 @@ namespace Flower
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         AssetName = strings[binaryReader.Read7BitEncodedInt32()];
                         UIGroupName = strings[binaryReader.Read7BitEncodedInt32()];
+                        AssetId = binaryReader.Read7BitEncodedInt32();
                         AllowMultiInstance = binaryReader.ReadBoolean();
                         PauseCoveredUIForm = binaryReader.ReadBoolean();
                     }

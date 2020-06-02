@@ -1590,4 +1590,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AvailableDataTypeNames:
+  - Flower.DataAssetsPath
   - Flower.DataSetting
+  - Flower.DataUIForm

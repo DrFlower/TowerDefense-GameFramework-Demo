@@ -13,11 +13,11 @@ namespace GameFramework.Data
 
         public abstract void Init();
 
-        public abstract void OnPreload();
+        public abstract void Preload();
 
-        public abstract void OnLoad();
+        public abstract void Load();
 
-        public abstract void OnUnload();
+        public abstract void Unload();
 
         public abstract void Shutdown();
 

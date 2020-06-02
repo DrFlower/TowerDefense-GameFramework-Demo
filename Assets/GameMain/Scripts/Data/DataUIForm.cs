@@ -7,31 +7,27 @@ namespace Flower
 {
     public class DataUIForm : DataBase
     {
-        public override void Init()
+        protected override void OnInit()
         {
 
         }
 
-        public override void OnPreload()
-        {
-            LoadDataTable("UIForm");
-        }
-
-        public override void OnLoad()
+        protected override void OnPreload()
         {
 
         }
 
-        public override void OnUnload()
+        protected override void OnLoad()
         {
-
         }
 
-        public override void Shutdown()
+        protected override void OnUnload()
         {
-
         }
 
+        protected override void OnShutdown()
+        {
+        }
     }
 
 }
