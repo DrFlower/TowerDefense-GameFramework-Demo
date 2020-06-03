@@ -65,6 +65,8 @@ namespace GameFramework.Data
             DataInfo dataInfo = DataInfo.Create(data);
             dataInfo.Priority = priority;
 
+            m_dicDataInfos.Add(data.GetType(), dataInfo);
+
             LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
             while (current != null)
             {
