@@ -8,6 +8,8 @@ namespace Flower
 {
     public class DataAssetsPath : DataBase
     {
+        private IDataTable<DRAssetsPath> dtAssetPath;
+
         protected override void OnInit()
         {
 
@@ -20,6 +22,10 @@ namespace Flower
 
         protected override void OnLoad()
         {
+            dtAssetPath = GameEntry.DataTable.GetDataTable<DRAssetsPath>();
+
+            if (dtAssetPath == null)
+                throw new System.Exception("Can not get data table AssetsPath");
         }
 
         public IDataTable<DRAssetsPath> GetAssetsPathDataTable()
@@ -29,12 +35,11 @@ namespace Flower
 
         public string GetAssetsPathByAssetsId(int assetId)
         {
-            IDataTable<DRAssetsPath> dtAssetPath = GameEntry.DataTable.GetDataTable<DRAssetsPath>();
             DRAssetsPath drAssetPath = dtAssetPath.GetDataRow(assetId);
 
             if (drAssetPath == null)
             {
-                throw new System.Exception(string.Format("Can nor find assetId {0} from data table AssetsPath", assetId));
+                throw new System.Exception(string.Format("Can not find assetId {0} from data table AssetsPath", assetId));
             }
 
             return drAssetPath.AssetPath;
@@ -42,8 +47,6 @@ namespace Flower
 
         public DRAssetsPath[] GetAllAssetsPathDataRaw()
         {
-            IDataTable<DRAssetsPath> dtAssetPath = GameEntry.DataTable.GetDataTable<DRAssetsPath>();
-
             return dtAssetPath.GetAllDataRows();
         }
 

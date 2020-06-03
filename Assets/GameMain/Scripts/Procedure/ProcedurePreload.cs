@@ -21,11 +21,11 @@ namespace Flower
         public static readonly string[] dataTableNames = new string[]
         {
             "Scene",
-            "UIForm",
-            "Sound",
-            "SoundGroup",
+            //"UIForm",
+            //"Sound",
+            //"SoundGroup",
             //"AssetsPath",
-            "SoundPlayParam",
+            //"SoundPlayParam",
             "Item",
             "ItemGroup",
             "PoolParam",
