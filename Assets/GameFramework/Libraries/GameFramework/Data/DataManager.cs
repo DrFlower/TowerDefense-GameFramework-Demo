@@ -47,7 +47,7 @@ namespace GameFramework.Data
                 throw new GameFrameworkException(Utility.Text.Format("Can not create data '{0}'.", type.FullName));
             }
 
-            AddData(data, priority);
+            AddData(data, type, priority);
         }
 
         public void AddData(Data data)
@@ -62,10 +62,20 @@ namespace GameFramework.Data
                 throw new GameFrameworkException("Can not add null data");
             }
 
+            AddData(data, data.GetType(), priority);
+        }
+
+        private void AddData(Data data, Type dataType, int priority)
+        {
+            if (data == null)
+            {
+                throw new GameFrameworkException("Can not add null data");
+            }
+
             DataInfo dataInfo = DataInfo.Create(data);
             dataInfo.Priority = priority;
 
-            m_dicDataInfos.Add(data.GetType(), dataInfo);
+            m_dicDataInfos.Add(dataType, dataInfo);
 
             LinkedListNode<DataInfo> current = m_linkedListDataInfos.First;
             while (current != null)
@@ -115,12 +125,12 @@ namespace GameFramework.Data
             Type type = data.GetType();
             DataInfo dataInfo = null;
 
-            if (!m_dicDataInfos.TryGetValue(type,out dataInfo))
+            if (!m_dicDataInfos.TryGetValue(type, out dataInfo))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Data Type '{0}' is not exist.", type.ToString()));
             }
 
-            if(!ReferenceEquals(dataInfo.Data, data))
+            if (!ReferenceEquals(dataInfo.Data, data))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Data '{0}' is not the same instance.", type.ToString()));
             }
@@ -296,7 +306,7 @@ namespace GameFramework.Data
             }
 
             m_dicDataInfos.Clear();
-            m_linkedListDataInfos.Clear();           
+            m_linkedListDataInfos.Clear();
         }
     }
 }
