@@ -129,8 +129,8 @@ namespace Flower
 
         private void SetComponents()
         {
-            SetSoundComponent();
             GameEntry.Data.LoadAllData();
+            SetSoundComponent();           
         }
 
         private void SetSoundComponent()

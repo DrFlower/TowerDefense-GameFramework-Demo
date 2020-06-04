@@ -6,29 +6,224 @@ using GameFramework.DataTable;
 
 namespace Flower
 {
+    #region Data
+
     public sealed class SoundData
     {
-        public int id;
-        public string assetPath;
-        public SoundGroupData soundGroupData;
-        public SoundPlayParam soundPlayParam;
+        private DRSound dRSound;
+        private DRAssetsPath dRAssetsPath;
+
+        public int id
+        {
+            get
+            {
+                return dRSound.Id;
+            }
+        }
+        public string AssetPath
+        {
+            get
+            {
+                return dRAssetsPath.AssetPath;
+            }
+        }
+        public SoundGroupData SoundGroupData
+        {
+            get;
+            private set;
+        }
+
+        public SoundPlayParamData SoundPlayParam
+        {
+            get;
+            private set;
+        }
+
+        public SoundData(DRSound dRSound, DRAssetsPath dRAssetsPath, SoundGroupData soundGroup, SoundPlayParamData soundPlayParam)
+        {
+            this.dRSound = dRSound;
+            this.dRAssetsPath = dRAssetsPath;
+            this.SoundGroupData = soundGroup;
+            this.SoundPlayParam = soundPlayParam;
+        }
     }
 
     public sealed class SoundGroupData
     {
+        private DRSoundGroup dRSoundGroup;
 
+        public int Id
+        {
+            get
+            {
+                return dRSoundGroup.Id;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return dRSoundGroup.Name;
+            }
+        }
+
+        public int SoundAgentCount
+        {
+            get
+            {
+                return dRSoundGroup.SoundAgentCount;
+            }
+        }
+
+
+        public bool AvoidBeingReplacedBySamePriority
+        {
+            get
+            {
+                return dRSoundGroup.AvoidBeingReplacedBySamePriority;
+            }
+        }
+
+        public bool Mute
+        {
+            get
+            {
+                return dRSoundGroup.Mute;
+            }
+        }
+
+        public float Volume
+        {
+            get
+            {
+                return dRSoundGroup.Volume;
+            }
+        }
+
+        public SoundGroupData(DRSoundGroup dRSoundGroup)
+        {
+            this.dRSoundGroup = dRSoundGroup;
+        }
     }
 
-    public sealed class SoundPlayParam
+    public sealed class SoundPlayParamData
     {
+        private DRSoundPlayParam dRSoundPlayParam;
 
+        public int Id
+        {
+            get
+            {
+                return dRSoundPlayParam.Id;
+            }
+        }
+
+        public float Time
+        {
+            get
+            {
+                return dRSoundPlayParam.Time;
+            }
+        }
+
+        public bool Mute
+        {
+            get
+            {
+                return dRSoundPlayParam.Mute;
+            }
+        }
+
+        public bool Loop
+        {
+            get
+            {
+                return dRSoundPlayParam.Loop;
+            }
+        }
+
+        public int Priority
+        {
+            get
+            {
+                return dRSoundPlayParam.Priority;
+            }
+        }
+
+        public float Volume
+        {
+            get
+            {
+                return dRSoundPlayParam.Volume;
+            }
+        }
+
+        public float FadeInSeconds
+        {
+            get
+            {
+                return dRSoundPlayParam.FadeInSeconds;
+            }
+        }
+
+        public float Pitch
+        {
+            get
+            {
+                return dRSoundPlayParam.Pitch;
+            }
+        }
+
+        public float PanStereo
+        {
+            get
+            {
+                return dRSoundPlayParam.PanStereo;
+            }
+        }
+
+        public float SpatialBlend
+        {
+            get
+            {
+                return dRSoundPlayParam.SpatialBlend;
+            }
+        }
+
+        public float MaxDistance
+        {
+            get
+            {
+                return dRSoundPlayParam.MaxDistance;
+            }
+        }
+
+        public float DopplerLevel
+        {
+            get
+            {
+                return dRSoundPlayParam.DopplerLevel;
+            }
+        }
+
+        public SoundPlayParamData(DRSoundPlayParam dRSoundPlayParam)
+        {
+            this.dRSoundPlayParam = dRSoundPlayParam;
+        }
     }
+
+    #endregion
 
     public class DataSound : DataBase
     {
         private IDataTable<DRSound> dtSound;
         private IDataTable<DRSoundGroup> dtSoundGroup;
         private IDataTable<DRSoundPlayParam> dtSoundPlayParam;
+
+        private Dictionary<int, SoundData> dicSoundData;
+        private Dictionary<int, SoundGroupData> dicSoundGroupData;
+        private Dictionary<int, SoundPlayParamData> dicSoundPlayParamData;
 
         protected override void OnInit()
         {
@@ -55,6 +250,93 @@ namespace Flower
             dtSoundPlayParam = GameEntry.DataTable.GetDataTable<DRSoundPlayParam>();
             if (dtSoundPlayParam == null)
                 throw new System.Exception("Can not get data table SoundPlayParam");
+
+            dicSoundData = new Dictionary<int, SoundData>();
+            dicSoundGroupData = new Dictionary<int, SoundGroupData>();
+            dicSoundPlayParamData = new Dictionary<int, SoundPlayParamData>();
+
+            DRSound[] dRSounds = dtSound.GetAllDataRows();
+            foreach (var dRSound in dRSounds)
+            {
+                SoundGroupData soundGroupData = null;
+                if (!dicSoundGroupData.TryGetValue(dRSound.SoundGroupId, out soundGroupData))
+                {
+                    DRSoundGroup dRSoundGroup = dtSoundGroup.GetDataRow(dRSound.SoundGroupId);
+                    if (dRSoundGroup == null)
+                    {
+                        throw new System.Exception("Can not find SoundGroup id :" + dRSound.SoundGroupId);
+                    }
+                    soundGroupData = new SoundGroupData(dRSoundGroup);
+                    dicSoundGroupData.Add(dRSound.SoundGroupId, soundGroupData);
+                }
+
+                SoundPlayParamData soundPlayParamData = null;
+                if (!dicSoundPlayParamData.TryGetValue(dRSound.SoundPlayParamId, out soundPlayParamData))
+                {
+                    DRSoundPlayParam dRSoundPlayParam = dtSoundPlayParam.GetDataRow(dRSound.SoundPlayParamId);
+                    if (dRSoundPlayParam == null)
+                    {
+                        throw new System.Exception("Can not find SoundPlayParam id :" + dRSound.SoundPlayParamId);
+                    }
+                    soundPlayParamData = new SoundPlayParamData(dRSoundPlayParam);
+                    dicSoundPlayParamData.Add(dRSound.SoundPlayParamId, soundPlayParamData);
+                }
+
+                DRAssetsPath dRAssetsPath = GameEntry.Data.GetData<DataAssetsPath>().GetDRAssetsPathByAssetsId(dRSound.AssetId);
+
+                SoundData soundData = new SoundData(dRSound, dRAssetsPath, soundGroupData, soundPlayParamData);
+                dicSoundData.Add(dRSound.Id, soundData);
+            }
+        }
+
+        public SoundData GetSoundDataBySoundId(int soundId)
+        {
+            if (dicSoundData.ContainsKey(soundId))
+            {
+                return dicSoundData[soundId];
+            }
+
+            return null;
+        }
+
+        public SoundGroupData GetSoundGroupDataBySoundId(int soundId)
+        {
+            if (dicSoundData.ContainsKey(soundId))
+            {
+                return dicSoundData[soundId].SoundGroupData;
+            }
+
+            return null;
+        }
+
+        public SoundPlayParamData GetSoundPlayParamDataBySoundId(int soundId)
+        {
+            if (dicSoundData.ContainsKey(soundId))
+            {
+                return dicSoundData[soundId].SoundPlayParam;
+            }
+
+            return null;
+        }
+
+        public SoundGroupData GetSoundGroupDataById(int id)
+        {
+            if (dicSoundGroupData.ContainsKey(id))
+            {
+                return dicSoundGroupData[id];
+            }
+
+            return null;
+        }
+
+        public SoundPlayParamData GetSoundPlayParamDataById(int id)
+        {
+            if (dicSoundPlayParamData.ContainsKey(id))
+            {
+                return dicSoundPlayParamData[id];
+            }
+
+            return null;
         }
 
         protected override void OnUnload()

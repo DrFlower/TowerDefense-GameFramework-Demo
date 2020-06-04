@@ -33,6 +33,18 @@ namespace Flower
             return GameEntry.DataTable.GetDataTable<DRAssetsPath>();
         }
 
+        public DRAssetsPath GetDRAssetsPathByAssetsId(int assetId)
+        {
+            DRAssetsPath drAssetPath = dtAssetPath.GetDataRow(assetId);
+
+            if (drAssetPath == null)
+            {
+                throw new System.Exception(string.Format("Can not find assetId {0} from data table AssetsPath", assetId));
+            }
+
+            return drAssetPath;
+        }
+
         public string GetAssetsPathByAssetsId(int assetId)
         {
             DRAssetsPath drAssetPath = dtAssetPath.GetDataRow(assetId);

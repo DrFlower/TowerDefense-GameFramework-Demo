@@ -1592,4 +1592,5 @@ MonoBehaviour:
   m_AvailableDataTypeNames:
   - Flower.DataAssetsPath
   - Flower.DataSetting
+  - Flower.DataSound
   - Flower.DataUIForm

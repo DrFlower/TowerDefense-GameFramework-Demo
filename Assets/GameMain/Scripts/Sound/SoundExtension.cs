@@ -38,39 +38,22 @@ namespace Flower
 
         public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)
         {
-
-            IDataTable<DRSound> dtSound = GameEntry.DataTable.GetDataTable<DRSound>();
-            DRSound drSound = dtSound.GetDataRow(soundId);
-            if (drSound == null)
-            {
-                Log.Warning("Can not load music '{0}' from data table.", soundId.ToString());
-                return null;
-            }
-
-            IDataTable<DRAssetsPath> dtAssetPath = GameEntry.DataTable.GetDataTable<DRAssetsPath>();
-            DRAssetsPath drAssetPath = dtAssetPath.GetDataRow(drSound.AssetId);
-            string assetPath = drAssetPath.AssetPath;
-
-            IDataTable<DRSoundGroup> dtSoundGroup = GameEntry.DataTable.GetDataTable<DRSoundGroup>();
-            DRSoundGroup dRSoundGroup = dtSoundGroup.GetDataRow(drSound.SoundGroupId);
-
-            IDataTable<DRSoundPlayParam> dtSoundPlayParam = GameEntry.DataTable.GetDataTable<DRSoundPlayParam>();
-            DRSoundPlayParam dRSoundPlayParam = dtSoundPlayParam.GetDataRow(drSound.SoundPlayParamId);
+            SoundData soundData = GameEntry.Data.GetData<DataSound>().GetSoundDataBySoundId(soundId);
 
             PlaySoundParams playSoundParams = PlaySoundParams.Create();
-            playSoundParams.Time = dRSoundPlayParam.Time;
-            playSoundParams.MuteInSoundGroup = dRSoundPlayParam.Mute;
-            playSoundParams.Loop = dRSoundPlayParam.Loop;
-            playSoundParams.Priority = dRSoundPlayParam.Priority;
-            playSoundParams.VolumeInSoundGroup = dRSoundPlayParam.Volume;
-            playSoundParams.FadeInSeconds = dRSoundPlayParam.FadeInSeconds;
-            playSoundParams.Pitch = dRSoundPlayParam.Pitch;
-            playSoundParams.PanStereo = dRSoundPlayParam.PanStereo;
-            playSoundParams.SpatialBlend = dRSoundPlayParam.SpatialBlend;
-            playSoundParams.MaxDistance = dRSoundPlayParam.MaxDistance;
-            playSoundParams.DopplerLevel = dRSoundPlayParam.DopplerLevel;
+            playSoundParams.Time = soundData.SoundPlayParam.Time;
+            playSoundParams.MuteInSoundGroup = soundData.SoundPlayParam.Mute;
+            playSoundParams.Loop = soundData.SoundPlayParam.Loop;
+            playSoundParams.Priority = soundData.SoundPlayParam.Priority;
+            playSoundParams.VolumeInSoundGroup = soundData.SoundPlayParam.Volume;
+            playSoundParams.FadeInSeconds = soundData.SoundPlayParam.FadeInSeconds;
+            playSoundParams.Pitch = soundData.SoundPlayParam.Pitch;
+            playSoundParams.PanStereo = soundData.SoundPlayParam.PanStereo;
+            playSoundParams.SpatialBlend = soundData.SoundPlayParam.SpatialBlend;
+            playSoundParams.MaxDistance = soundData.SoundPlayParam.MaxDistance;
+            playSoundParams.DopplerLevel = soundData.SoundPlayParam.DopplerLevel;
 
-            return soundComponent.PlaySound(assetPath, dRSoundGroup.Name, Constant.AssetPriority.MusicAsset, playSoundParams, bindingEntity, userData);
+            return soundComponent.PlaySound(soundData.AssetPath, soundData.SoundGroupData.Name, Constant.AssetPriority.MusicAsset, playSoundParams, bindingEntity, userData);
         }
 
         public static bool IsMuted(this SoundComponent soundComponent, string soundGroupName)
