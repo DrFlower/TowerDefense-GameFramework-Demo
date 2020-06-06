@@ -106,15 +106,29 @@ namespace Flower
 
         private void SetComponents()
         {
+            SetDataComponent();
+            SetUIComponent();
+            SetSoundComponent();
+        }
+
+        private void SetDataComponent()
+        {
             GameEntry.Data.LoadAllData();
-            SetSoundComponent();           
+        }
+
+        private void SetUIComponent()
+        {
+            UIGroupData[] uiGroupDatas = GameEntry.Data.GetData<DataUI>().GetAllUIGroupData();
+            foreach (var item in uiGroupDatas)
+            {
+                GameEntry.UI.AddUIGroup(item.Name, item.Depth);
+            }
         }
 
         private void SetSoundComponent()
         {
-            IDataTable<DRSoundGroup> dtSoundGroup = GameEntry.DataTable.GetDataTable<DRSoundGroup>();
-            DRSoundGroup[] dRSoundGroups = dtSoundGroup.GetAllDataRows();
-            foreach (var item in dRSoundGroups)
+            SoundGroupData[] soundGroupDatas = GameEntry.Data.GetData<DataSound>().GetAllSoundGroupData();
+            foreach (var item in soundGroupDatas)
             {
                 GameEntry.Sound.AddSoundGroup(item.Name, item.AvoidBeingReplacedBySamePriority, item.Mute, item.Volume, item.SoundAgentCount);
                 GameEntry.Sound.SetVolume(item.Name, GameEntry.Setting.GetFloat(Utility.Text.Format(Constant.Setting.SoundGroupVolume, item.Name), 1));

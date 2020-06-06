@@ -1350,9 +1350,7 @@ MonoBehaviour:
   m_CustomUIFormHelper: {fileID: 0}
   m_UIGroupHelperTypeName: Flower.UGuiGroupHelper
   m_CustomUIGroupHelper: {fileID: 0}
-  m_UIGroups:
-  - m_Name: MainMenu
-    m_Depth: 0
+  m_UIGroups: []
 --- !u!114 &1753269896
 MonoBehaviour:
   m_ObjectHideFlags: 0
