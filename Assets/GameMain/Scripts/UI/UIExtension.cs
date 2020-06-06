@@ -51,17 +51,16 @@ namespace Flower
 
         public static bool HasUIForm(this UIComponent uiComponent, int uiFormId, string uiGroupName = null)
         {
-            IDataTable<DRUIForm> dtUIForm = GameEntry.DataTable.GetDataTable<DRUIForm>();
-            DRUIForm drUIForm = dtUIForm.GetDataRow(uiFormId);
-            if (drUIForm == null)
+            UIData uiData = GameEntry.Data.GetData<DataUI>().GetUIData(uiFormId);
+
+            if (uiData == null)
             {
                 return false;
             }
 
-            string assetName = AssetUtility.GetUIFormAsset(drUIForm.AssetName);
             if (string.IsNullOrEmpty(uiGroupName))
             {
-                return uiComponent.HasUIForm(assetName);
+                return uiComponent.HasUIForm(uiData.AssetPath);
             }
 
             IUIGroup uiGroup = uiComponent.GetUIGroup(uiGroupName);
@@ -70,7 +69,7 @@ namespace Flower
                 return false;
             }
 
-            return uiGroup.HasUIForm(assetName);
+            return uiGroup.HasUIForm(uiData.AssetPath);
         }
 
         public static UGuiForm GetUIForm(this UIComponent uiComponent, UIFormId uiFormId, string uiGroupName = null)
@@ -80,17 +79,16 @@ namespace Flower
 
         public static UGuiForm GetUIForm(this UIComponent uiComponent, int uiFormId, string uiGroupName = null)
         {
-            DRUIForm drUIForm = GameEntry.Data.GetData<DataUIForm>().GetDRUIFormByFormId(uiFormId);
-            if (drUIForm == null)
+            UIData uiData = GameEntry.Data.GetData<DataUI>().GetUIData(uiFormId);
+            if (uiData == null)
             {
                 return null;
             }
 
-            string assetName = GameEntry.Data.GetData<DataUIForm>().GetAssetsPathByFormId(uiFormId);
             UIForm uiForm = null;
             if (string.IsNullOrEmpty(uiGroupName))
             {
-                uiForm = uiComponent.GetUIForm(assetName);
+                uiForm = uiComponent.GetUIForm(uiData.AssetPath);
                 if (uiForm == null)
                 {
                     return null;
@@ -105,7 +103,7 @@ namespace Flower
                 return null;
             }
 
-            uiForm = (UIForm)uiGroup.GetUIForm(assetName);
+            uiForm = (UIForm)uiGroup.GetUIForm(uiData.AssetPath);
             if (uiForm == null)
             {
                 return null;
@@ -126,15 +124,15 @@ namespace Flower
 
         public static int? OpenUIForm(this UIComponent uiComponent, int uiFormId, object userData = null)
         {
-            DRUIForm drUIForm = GameEntry.Data.GetData<DataUIForm>().GetDRUIFormByFormId(uiFormId);
-            if (drUIForm == null)
+            UIData uiData = GameEntry.Data.GetData<DataUI>().GetUIData(uiFormId);
+            if (uiData == null)
             {
                 Log.Warning("Can not load UI form '{0}' from data table.", uiFormId.ToString());
                 return null;
             }
 
-            string assetName = GameEntry.Data.GetData<DataUIForm>().GetAssetsPathByFormId(uiFormId);
-            if (!drUIForm.AllowMultiInstance)
+            string assetName = uiData.AssetPath;
+            if (!uiData.AllowMultiInstance)
             {
                 if (uiComponent.IsLoadingUIForm(assetName))
                 {
@@ -147,7 +145,7 @@ namespace Flower
                 }
             }
 
-            return uiComponent.OpenUIForm(assetName, drUIForm.UIGroupName, Constant.AssetPriority.UIFormAsset, drUIForm.PauseCoveredUIForm, userData);
+            return uiComponent.OpenUIForm(assetName, uiData.UIGroupData.Name, Constant.AssetPriority.UIFormAsset, uiData.PauseCoveredUIForm, userData);
         }
     }
 }

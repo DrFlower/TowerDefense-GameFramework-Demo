@@ -1,0 +1,5 @@
+﻿#	UI组配置表			
+#	Id		Name	Depth
+#	int		string	int
+#	配置编号	策划备注	UI组名字	深度
+	1001	主菜单	MainMenu	1

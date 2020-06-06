@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-06 16:18:07.374
+// 生成时间：2020-06-07 00:16:50.074
 //------------------------------------------------------------
 
 using GameFramework;
@@ -37,18 +37,9 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取资源名称。
-        /// </summary>
-        public string AssetName
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// 获取界面组名称。
         /// </summary>
-        public string UIGroupName
+        public int UIGroupId
         {
             get;
             private set;
@@ -96,8 +87,7 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                AssetName = columnTexts[index++];
-                UIGroupName = columnTexts[index++];
+                UIGroupId = int.Parse(columnTexts[index++]);
                 AssetId = int.Parse(columnTexts[index++]);
                 AllowMultiInstance = bool.Parse(columnTexts[index++]);
                 PauseCoveredUIForm = bool.Parse(columnTexts[index++]);
@@ -110,8 +100,7 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        AssetName = strings[binaryReader.Read7BitEncodedInt32()];
-                        UIGroupName = strings[binaryReader.Read7BitEncodedInt32()];
+                        UIGroupId = binaryReader.Read7BitEncodedInt32();
                         AssetId = binaryReader.Read7BitEncodedInt32();
                         AllowMultiInstance = binaryReader.ReadBoolean();
                         PauseCoveredUIForm = binaryReader.ReadBoolean();
