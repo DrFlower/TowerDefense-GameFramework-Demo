@@ -170,6 +170,31 @@ namespace Flower
             return null;
         }
 
+        public UIData[] GetAllUIData()
+        {
+            int index = 0;
+            UIData[] results = new UIData[dicUIData.Count];
+            foreach (var uiData
+                in dicUIData.Values)
+            {
+                results[index++] = uiData;
+            }
+
+            return results;
+        }
+
+        public UIGroupData[] GetAllUIGroupData()
+        {
+            int index = 0;
+            UIGroupData[] results = new UIGroupData[dicUIGroupData.Count];
+            foreach (var uiGroupData in dicUIGroupData.Values)
+            {
+                results[index++] = uiGroupData;
+            }
+
+            return results;
+        }
+
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRUIForm>();

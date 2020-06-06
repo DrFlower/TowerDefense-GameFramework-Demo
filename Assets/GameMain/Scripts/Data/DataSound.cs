@@ -339,6 +339,42 @@ namespace Flower
             return null;
         }
 
+        public SoundData[] GetAllSoundData()
+        {
+            int index = 0;
+            SoundData[] results = new SoundData[dicSoundData.Count];
+            foreach (var soundData in dicSoundData.Values)
+            {
+                results[index++] = soundData;
+            }
+
+            return results;
+        }
+
+        public SoundGroupData[] GetAllSoundGroupData()
+        {
+            int index = 0;
+            SoundGroupData[] results = new SoundGroupData[dicSoundGroupData.Count];
+            foreach (var soundGroupData in dicSoundGroupData.Values)
+            {
+                results[index++] = soundGroupData;
+            }
+
+            return results;
+        }
+
+        public SoundPlayParamData[] GetAllSoundPlayParamData()
+        {
+            int index = 0;
+            SoundPlayParamData[] results = new SoundPlayParamData[dicSoundPlayParamData.Count];
+            foreach (var soundPlayParamData in dicSoundPlayParamData.Values)
+            {
+                results[index++] = soundPlayParamData;
+            }
+
+            return results;
+        }
+
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRSound>();
