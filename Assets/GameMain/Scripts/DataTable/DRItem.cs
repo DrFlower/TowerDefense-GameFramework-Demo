@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-02 23:41:59.378
+// 生成时间：2020-06-06 16:18:07.404
 //------------------------------------------------------------
 
 using GameFramework;
@@ -57,7 +57,7 @@ namespace Flower
         /// <summary>
         /// 获取物体组名。
         /// </summary>
-        public string ItemGroupName
+        public int ItemGroupId
         {
             get;
             private set;
@@ -80,7 +80,7 @@ namespace Flower
                 index++;
                 Name = columnTexts[index++];
                 AssetId = int.Parse(columnTexts[index++]);
-                ItemGroupName = columnTexts[index++];
+                ItemGroupId = int.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -92,7 +92,7 @@ namespace Flower
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         Name = strings[binaryReader.Read7BitEncodedInt32()];
                         AssetId = binaryReader.Read7BitEncodedInt32();
-                        ItemGroupName = strings[binaryReader.Read7BitEncodedInt32()];
+                        ItemGroupId = binaryReader.Read7BitEncodedInt32();
                     }
                 }
             }

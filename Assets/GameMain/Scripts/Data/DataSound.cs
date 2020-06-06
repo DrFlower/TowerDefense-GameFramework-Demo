@@ -215,7 +215,7 @@ namespace Flower
 
     #endregion
 
-    public class DataSound : DataBase
+    public sealed class DataSound : DataBase
     {
         private IDataTable<DRSound> dtSound;
         private IDataTable<DRSoundGroup> dtSoundGroup;

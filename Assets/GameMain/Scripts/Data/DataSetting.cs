@@ -5,7 +5,7 @@ using GameFramework.Data;
 
 namespace Flower
 {
-    public class DataSetting : DataBase
+    public sealed class DataSetting : DataBase
     {
         protected override void OnInit()
         {

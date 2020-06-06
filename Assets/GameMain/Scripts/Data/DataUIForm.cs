@@ -6,7 +6,7 @@ using GameFramework.DataTable;
 
 namespace Flower
 {
-    public class DataUIForm : DataBase
+    public sealed class DataUIForm : DataBase
     {
         private IDataTable<DRUIForm> dtUIForm;
 

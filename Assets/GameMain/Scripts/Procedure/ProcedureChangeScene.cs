@@ -12,7 +12,7 @@ namespace Flower
     public class ProcedureLoadingScene : ProcedureBase
     {
         private bool loadSceneCompleted = false;
-        private DRScene drScene = null;
+        private SceneData sceneData = null;
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
@@ -38,15 +38,15 @@ namespace Flower
             }
 
             int sceneId = procedureOwner.GetData<VarInt>(Constant.ProcedureData.NextSceneId).Value;
-            IDataTable<DRScene> dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
-            drScene = dtScene.GetDataRow(sceneId);
-            if (drScene == null)
+            sceneData = GameEntry.Data.GetData<DataScene>().GetSceneData(sceneId);
+
+            if (sceneData == null)
             {
-                Log.Warning("Can not load scene '{0}' from data table.", sceneId.ToString());
+                Log.Warning("Can not can scene data id :'{0}'.", sceneId.ToString());
                 return;
             }
 
-            GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constant.AssetPriority.SceneAsset, this);
+            GameEntry.Scene.LoadScene(sceneData.AssetPath, Constant.AssetPriority.SceneAsset, this);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -55,14 +55,14 @@ namespace Flower
 
             if (loadSceneCompleted)
             {
-                Type procedureType = Type.GetType(string.Format("Flower.{0}", drScene.Procedure));
+                Type procedureType = Type.GetType(string.Format("Flower.{0}", sceneData.Procedure));
                 if (null != procedureType)
                 {
 
                     ChangeState(procedureOwner, procedureType);
                 }
                 else
-                    Log.Warning("Can not change state,scene procedure '{0}' error, from scene '{1}.{2}'.", drScene.Procedure.ToString(), drScene.Id, drScene.AssetName);
+                    Log.Warning("Can not change state,scene procedure '{0}' error, from scene '{1}.{2}'.", sceneData.Procedure.ToString(), sceneData.Id);
             }
 
         }

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-02 23:41:59.347
+// 生成时间：2020-06-06 16:18:07.364
 //------------------------------------------------------------
 
 using GameFramework;
@@ -37,9 +37,9 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取资源Id。
         /// </summary>
-        public string AssetName
+        public int AssetId
         {
             get;
             private set;
@@ -69,7 +69,7 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                AssetName = columnTexts[index++];
+                AssetId = int.Parse(columnTexts[index++]);
                 Procedure = columnTexts[index++];
             }
             else if (dataType == typeof(byte[]))
@@ -80,7 +80,7 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        AssetName = strings[binaryReader.Read7BitEncodedInt32()];
+                        AssetId = binaryReader.Read7BitEncodedInt32();
                         Procedure = strings[binaryReader.Read7BitEncodedInt32()];
                     }
                 }

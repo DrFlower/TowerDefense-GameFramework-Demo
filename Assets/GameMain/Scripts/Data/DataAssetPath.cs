@@ -6,7 +6,7 @@ using GameFramework.DataTable;
 
 namespace Flower
 {
-    public class DataAssetsPath : DataBase
+    public sealed class DataAssetsPath : DataBase
     {
         private IDataTable<DRAssetsPath> dtAssetPath;
 

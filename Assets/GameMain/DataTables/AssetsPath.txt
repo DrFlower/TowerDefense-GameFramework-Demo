@@ -2,9 +2,12 @@
 #	Id		AssetPath
 #	int		string
 #	资源编号	策划备注	资源名称
-	1001	关卡选择按钮	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab
-	1002	关卡选择按钮	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab
-	1003	关卡选择按钮	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab
+	101	启动场景	Assets/GameMain/Scenes/GameStart/GameStart.unity
+	102	菜单场景	Assets/GameMain/Scenes/Menu/Menu.unity
+#			
+	1001	主菜单	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab
+	1002	设置界面	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab
+	1003	关卡选择界面	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab
 #			
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 #			

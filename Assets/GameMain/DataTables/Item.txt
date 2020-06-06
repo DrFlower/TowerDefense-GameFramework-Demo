@@ -1,5 +1,5 @@
 ﻿#	动态加载资源配置表				
-#	Id		Name	AssetId	ItemGroupName
-#	int		string	int	string
+#	Id		Name	AssetId	ItemGroupId
+#	int		string	int	int
 #	配置编号	策划备注	物体编号	资源ID	物体组名
-	1001	关卡选择按钮	LevelSelectionButton	10001	LevelSelectionButton
+	1001	关卡选择按钮	LevelSelectionButton	10001	1001

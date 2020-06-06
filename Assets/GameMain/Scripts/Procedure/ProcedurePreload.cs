@@ -20,15 +20,15 @@ namespace Flower
 
         public static readonly string[] dataTableNames = new string[]
         {
-            "Scene",
+            //"Scene",
             //"UIForm",
             //"Sound",
             //"SoundGroup",
             //"AssetsPath",
             //"SoundPlayParam",
-            "Item",
-            "ItemGroup",
-            "PoolParam",
+            //"Item",
+            //"ItemGroup",
+            //"PoolParam",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();

@@ -13,8 +13,8 @@ namespace UnityGameFramework.Runtime
     {
         private IDataManager m_DataManager = null;
 
-        [SerializeField]
-        private string[] m_AvailableDataTypeNames = null;
+        [HideInInspector]
+        public DataItem[] dataItems = null;
 
         int DataCount
         {
@@ -38,20 +38,20 @@ namespace UnityGameFramework.Runtime
 
         private void Start()
         {
-            Data[] datas = new Data[m_AvailableDataTypeNames.Length];
-            for (int i = 0; i < m_AvailableDataTypeNames.Length; i++)
+            Data[] datas = new Data[dataItems.Length];
+            for (int i = 0; i < dataItems.Length; i++)
             {
-                Type procedureType = Utility.Assembly.GetType(m_AvailableDataTypeNames[i]);
+                Type procedureType = Utility.Assembly.GetType(dataItems[i].dataTypeName);
                 if (procedureType == null)
                 {
-                    Log.Error("Can not find data type '{0}'.", m_AvailableDataTypeNames[i]);
+                    Log.Error("Can not find data type '{0}'.", dataItems[i].dataTypeName);
                     return;
                 }
 
                 datas[i] = (Data)Activator.CreateInstance(procedureType);
                 if (datas[i] == null)
                 {
-                    Log.Error("Can not create data instance '{0}'.", m_AvailableDataTypeNames[i]);
+                    Log.Error("Can not create data instance '{0}'.", dataItems[i].dataTypeName);
                     return;
                 }
             }
