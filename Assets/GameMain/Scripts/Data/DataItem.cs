@@ -94,7 +94,7 @@ namespace Flower
         private IDataTable<DRItemGroup> dtItemGroup;
 
         private Dictionary<int, ItemData> dicItemData;
-        private Dictionary<int, ItemGroupData> dicGroupData;
+        private Dictionary<int, ItemGroupData> dicItemGroupData;
 
         protected override void OnInit()
         {
@@ -118,13 +118,13 @@ namespace Flower
                 throw new System.Exception("Can not get data table ItemGroup");
 
             dicItemData = new Dictionary<int, ItemData>();
-            dicGroupData = new Dictionary<int, ItemGroupData>();
+            dicItemGroupData = new Dictionary<int, ItemGroupData>();
 
             DRItem[] drItems = dtItem.GetAllDataRows();
             foreach (var drItem in drItems)
             {
                 ItemGroupData itemGroupData = null;
-                if (!dicGroupData.TryGetValue(drItem.ItemGroupId, out itemGroupData))
+                if (!dicItemGroupData.TryGetValue(drItem.ItemGroupId, out itemGroupData))
                 {
                     DRItemGroup dRItemGroup = dtItemGroup.GetDataRow(drItem.ItemGroupId);
                     if (dRItemGroup == null)
@@ -134,7 +134,7 @@ namespace Flower
                     PoolParamData poolParamData = GameEntry.Data.GetData<DataPoolParam>().GetPoolParamData(dRItemGroup.PoolParamId);
 
                     itemGroupData = new ItemGroupData(dRItemGroup, poolParamData);
-                    dicGroupData.Add(drItem.ItemGroupId, itemGroupData);
+                    dicItemGroupData.Add(drItem.ItemGroupId, itemGroupData);
                 }
 
                 DRAssetsPath dRAssetsPath = GameEntry.Data.GetData<DataAssetsPath>().GetDRAssetsPathByAssetsId(drItem.AssetId);
@@ -142,6 +142,30 @@ namespace Flower
                 ItemData itemData = new ItemData(drItem, dRAssetsPath, itemGroupData);
                 dicItemData.Add(drItem.Id, itemData);
             }
+        }
+
+        public ItemData[] GetAllItemData()
+        {
+            int index = 0;
+            ItemData[] results = new ItemData[dicItemData.Count];
+            foreach (var itemData in dicItemData.Values)
+            {
+                results[index++] = itemData;
+            }
+
+            return results;
+        }
+
+        public ItemGroupData[] GetAllItemGroupData()
+        {
+            int index = 0;
+            ItemGroupData[] results = new ItemGroupData[dicItemGroupData.Count];
+            foreach (var itemGroupData in dicItemGroupData.Values)
+            {
+                results[index++] = itemGroupData;
+            }
+
+            return results;
         }
 
         protected override void OnUnload()

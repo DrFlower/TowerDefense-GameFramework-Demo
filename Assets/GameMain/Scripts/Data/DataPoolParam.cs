@@ -105,6 +105,18 @@ namespace Flower
             return null;
         }
 
+        public PoolParamData[] GetAllPoolParamData()
+        {
+            int index = 0;
+            PoolParamData[] results = new PoolParamData[dicPoolParam.Count];
+            foreach (var poolParamData in dicPoolParam.Values)
+            {
+                results[index++] = poolParamData;
+            }
+
+            return results;
+        }
+
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRPoolParam>();

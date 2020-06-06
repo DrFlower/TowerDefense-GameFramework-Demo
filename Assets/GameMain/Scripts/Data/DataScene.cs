@@ -84,6 +84,18 @@ namespace Flower
             return null;
         }
 
+        public SceneData[] GetAllSceneData()
+        {
+            int index = 0;
+            SceneData[] results = new SceneData[dicSceneData.Count];
+            foreach (var sceneData in dicSceneData.Values)
+            {
+                results[index++] = sceneData;
+            }
+
+            return results;
+        }
+
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRScene>();
