@@ -9,6 +9,7 @@ using GameFramework;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Editor.DataTableTools;
+using System.IO;
 
 namespace Flower.Editor.DataTableTools
 {
@@ -17,7 +18,7 @@ namespace Flower.Editor.DataTableTools
         [MenuItem("Tools/Generate DataTables", false, 1)]
         private static void GenerateDataTables()
         {
-            foreach (string dataTableName in ProcedurePreload.dataTableNames)
+            foreach (string dataTableName in GetDataTableNames())
             {
                 DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(dataTableName);
                 if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
@@ -36,7 +37,7 @@ namespace Flower.Editor.DataTableTools
         [MenuItem("Tools/Generate DataTable Code", false, 2)]
         private static void GenerateDataTableCode()
         {
-            foreach (string dataTableName in ProcedurePreload.dataTableNames)
+            foreach (string dataTableName in GetDataTableNames())
             {
                 DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(dataTableName);
                 if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
@@ -49,6 +50,20 @@ namespace Flower.Editor.DataTableTools
             }
 
             AssetDatabase.Refresh();
+        }
+
+        private static string[] GetDataTableNames()
+        {
+            string dataTablesPath = Application.dataPath + @"/GameMain/DataTables";
+            DirectoryInfo directoryInfo = new DirectoryInfo(dataTablesPath);
+            FileInfo[] fis = directoryInfo.GetFiles("*.txt", SearchOption.AllDirectories);
+            string[] dataTableNames = new string[fis.Length];
+            for (int i = 0; i < fis.Length; i++)
+            {
+                dataTableNames[i] = Path.GetFileNameWithoutExtension(fis[i].Name);
+            }
+
+            return dataTableNames;
         }
 
     }

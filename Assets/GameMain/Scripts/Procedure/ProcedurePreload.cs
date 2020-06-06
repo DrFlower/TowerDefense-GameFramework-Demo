@@ -18,19 +18,6 @@ namespace Flower
     {
         private DataBase[] datas;
 
-        public static readonly string[] dataTableNames = new string[]
-        {
-            //"Scene",
-            //"UIForm",
-            //"Sound",
-            //"SoundGroup",
-            //"AssetsPath",
-            //"SoundPlayParam",
-            //"Item",
-            //"ItemGroup",
-            //"PoolParam",
-        };
-
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
 
         protected override void OnInit(ProcedureOwner procedureOwner)
@@ -44,8 +31,6 @@ namespace Flower
 
             GameEntry.Event.Subscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
             GameEntry.Event.Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
-            GameEntry.Event.Subscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
-            GameEntry.Event.Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
@@ -99,8 +84,6 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
             GameEntry.Event.Unsubscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
-            GameEntry.Event.Unsubscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
-            GameEntry.Event.Unsubscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
             GameEntry.Event.Unsubscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Unsubscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
         }
@@ -114,12 +97,6 @@ namespace Flower
         {
             // Preload configs
             LoadConfig("DefaultConfig");
-
-            // Preload data tables
-            foreach (string dataTableName in dataTableNames)
-            {
-                LoadDataTable(dataTableName);
-            }
 
             // Preload dictionaries
             LoadDictionary("Default");
@@ -184,29 +161,6 @@ namespace Flower
             }
 
             Log.Error("Can not load config '{0}' from '{1}' with error message '{2}'.", ne.ConfigName, ne.ConfigAssetName, ne.ErrorMessage);
-        }
-
-        private void OnLoadDataTableSuccess(object sender, GameEventArgs e)
-        {
-            LoadDataTableSuccessEventArgs ne = (LoadDataTableSuccessEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
-
-            m_LoadedFlag[Utility.Text.Format("DataTable.{0}", ne.DataTableName)] = true;
-            Log.Info("Load data table '{0}' OK.", ne.DataTableName);
-        }
-
-        private void OnLoadDataTableFailure(object sender, GameEventArgs e)
-        {
-            LoadDataTableFailureEventArgs ne = (LoadDataTableFailureEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
-
-            Log.Error("Can not load data table '{0}' from '{1}' with error message '{2}'.", ne.DataTableName, ne.DataTableAssetName, ne.ErrorMessage);
         }
 
         private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
