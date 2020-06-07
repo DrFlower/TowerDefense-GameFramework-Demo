@@ -15,7 +15,17 @@
       "ENGLISH": "英语",
       "CHANGE LANGUAGE NEED RESTART": "更改语言需要重启游戏",
       "Confirm": "确认",
-      "Cancel": "取消"
+      "Cancel": "取消",
+      "Level1": "第一关",
+      "Level2": "第二关",
+      "Level3": "第三关",
+      "Level4": "第四关",
+      "Level5": "第五关",
+      "Level 1 Des": "描述1",
+      "Level 2 Des": "描述2",
+      "Level 3 Des": "描述3",
+      "Level 4 Des": "描述4",
+      "Level 5 Des": "描述5"
     }
   }
 ]

@@ -57,7 +57,8 @@ namespace Flower
 
         public sealed override void Unload()
         {
-            eventSubscriber.UnSubscribeAll();
+            if (eventSubscriber != null)
+                eventSubscriber.UnSubscribeAll();
 
             OnUnload();
         }

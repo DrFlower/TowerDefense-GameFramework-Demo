@@ -2,8 +2,8 @@
 #	Id		NameId	DescriptionId	SceneId
 #	int		string	string	int
 #	配置编号	策划备注	关卡名字Id	关卡描述Id	物体组名场景Id
-	1001	第一关	Level1	Level 1 Des	3
-	1002	第二关	Level2	Level 2 Des	4
-	1003	第三关	Level3	Level 3 Des	5
-	1004	第四关	Level4	Level 4 Des	6
-	1005	第五关	Level5	Level 5 Des	7
+	1	第一关	Level1	Level 1 Des	3
+	2	第二关	Level2	Level 2 Des	4
+	3	第三关	Level3	Level 3 Des	5
+	4	第四关	Level4	Level 4 Des	6
+	5	第五关	Level5	Level 5 Des	7

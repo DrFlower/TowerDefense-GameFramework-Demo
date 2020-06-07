@@ -143,12 +143,37 @@ namespace GameFramework.Item
 
         internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
+            while (m_RecycleQueue.Count > 0)
+            {
+                ItemInfo itemInfo = m_RecycleQueue.Dequeue();
+                IItem item = itemInfo.Item;
+                ItemGroup itemGroup = (ItemGroup)item.ItemGroup;
+                if (itemGroup == null)
+                {
+                    throw new GameFrameworkException("Item group is invalid.");
+                }
 
+                itemInfo.Status = ItemStatus.WillRecycle;
+                item.OnRecycle();
+                itemInfo.Status = ItemStatus.Recycled;
+                itemGroup.UnspawnItem(item);
+                ReferencePool.Release(itemInfo);
+            }
+
+            foreach (KeyValuePair<string, ItemGroup> itemGroup in m_ItemGroups)
+            {
+                itemGroup.Value.Update(elapseSeconds, realElapseSeconds);
+            }
         }
 
         internal override void Shutdown()
         {
-
+            m_IsShutdown = true;
+            HideAllLoadedItems();
+            m_ItemGroups.Clear();
+            m_ItemsBeingLoaded.Clear();
+            m_ItemsToReleaseOnLoad.Clear();
+            m_RecycleQueue.Clear();
         }
 
         /// <summary>

@@ -47,7 +47,7 @@ namespace UnityGameFramework.Runtime
         private ItemGroup[] m_ItemGroups = null;
 
         /// <summary>
-        /// 获取实体数量。
+        /// 获取物体数量。
         /// </summary>
         public int ItemCount
         {
@@ -58,7 +58,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取实体组数量。
+        /// 获取物体组数量。
         /// </summary>
         public int ItemGroupCount
         {
@@ -157,52 +157,52 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 是否存在实体组。
+        /// 是否存在物体组。
         /// </summary>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <returns>是否存在实体组。</returns>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <returns>是否存在物体组。</returns>
         public bool HasItemGroup(string itemGroupName)
         {
             return m_ItemManager.HasItemGroup(itemGroupName);
         }
 
         /// <summary>
-        /// 获取实体组。
+        /// 获取物体组。
         /// </summary>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <returns>要获取的实体组。</returns>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <returns>要获取的物体组。</returns>
         public IItemGroup GetItemGroup(string itemGroupName)
         {
             return m_ItemManager.GetItemGroup(itemGroupName);
         }
 
         /// <summary>
-        /// 获取所有实体组。
+        /// 获取所有物体组。
         /// </summary>
-        /// <returns>所有实体组。</returns>
+        /// <returns>所有物体组。</returns>
         public IItemGroup[] GetAllItemGroups()
         {
             return m_ItemManager.GetAllItemGroups();
         }
 
         /// <summary>
-        /// 获取所有实体组。
+        /// 获取所有物体组。
         /// </summary>
-        /// <param name="results">所有实体组。</param>
+        /// <param name="results">所有物体组。</param>
         public void GetAllItemGroups(List<IItemGroup> results)
         {
             m_ItemManager.GetAllItemGroups(results);
         }
 
         /// <summary>
-        /// 增加实体组。
+        /// 增加物体组。
         /// </summary>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <param name="instanceAutoReleaseInterval">实体实例对象池自动释放可释放对象的间隔秒数。</param>
-        /// <param name="instanceCapacity">实体实例对象池容量。</param>
-        /// <param name="instanceExpireTime">实体实例对象池对象过期秒数。</param>
-        /// <param name="instancePriority">实体实例对象池的优先级。</param>
-        /// <returns>是否增加实体组成功。</returns>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <param name="instanceAutoReleaseInterval">物体实例对象池自动释放可释放对象的间隔秒数。</param>
+        /// <param name="instanceCapacity">物体实例对象池容量。</param>
+        /// <param name="instanceExpireTime">物体实例对象池对象过期秒数。</param>
+        /// <param name="instancePriority">物体实例对象池的优先级。</param>
+        /// <returns>是否增加物体组成功。</returns>
         public bool AddItemGroup(string itemGroupName, float instanceAutoReleaseInterval, int instanceCapacity, float instanceExpireTime, int instancePriority)
         {
             if (m_ItemManager.HasItemGroup(itemGroupName))
@@ -226,50 +226,50 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 是否存在实体。
+        /// 是否存在物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <returns>是否存在实体。</returns>
+        /// <param name="itemId">物体编号。</param>
+        /// <returns>是否存在物体。</returns>
         public bool HasItem(int itemId)
         {
             return m_ItemManager.HasItem(itemId);
         }
 
         /// <summary>
-        /// 是否存在实体。
+        /// 是否存在物体。
         /// </summary>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <returns>是否存在实体。</returns>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <returns>是否存在物体。</returns>
         public bool HasItem(string itemAssetName)
         {
             return m_ItemManager.HasItem(itemAssetName);
         }
 
         /// <summary>
-        /// 获取实体。
+        /// 获取物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <returns>实体。</returns>
+        /// <param name="itemId">物体编号。</param>
+        /// <returns>物体。</returns>
         public Item GetItem(int itemId)
         {
             return (Item)m_ItemManager.GetItem(itemId);
         }
 
         /// <summary>
-        /// 获取实体。
+        /// 获取物体。
         /// </summary>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <returns>要获取的实体。</returns>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <returns>要获取的物体。</returns>
         public Item GetItem(string itemAssetName)
         {
             return (Item)m_ItemManager.GetItem(itemAssetName);
         }
 
         /// <summary>
-        /// 获取实体。
+        /// 获取物体。
         /// </summary>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <returns>要获取的实体。</returns>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <returns>要获取的物体。</returns>
         public Item[] GetItems(string itemAssetName)
         {
             IItem[] items = m_ItemManager.GetItems(itemAssetName);
@@ -283,10 +283,10 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取实体。
+        /// 获取物体。
         /// </summary>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="results">要获取的实体。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="results">要获取的物体。</param>
         public void GetItems(string itemAssetName, List<Item> results)
         {
             if (results == null)
@@ -304,9 +304,9 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取所有已加载的实体。
+        /// 获取所有已加载的物体。
         /// </summary>
-        /// <returns>所有已加载的实体。</returns>
+        /// <returns>所有已加载的物体。</returns>
         public Item[] GetAllLoadedItems()
         {
             IItem[] items = m_ItemManager.GetAllLoadedItems();
@@ -320,9 +320,9 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取所有已加载的实体。
+        /// 获取所有已加载的物体。
         /// </summary>
-        /// <param name="results">所有已加载的实体。</param>
+        /// <param name="results">所有已加载的物体。</param>
         public void GetAllLoadedItems(List<Item> results)
         {
             if (results == null)
@@ -340,100 +340,100 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取所有正在加载实体的编号。
+        /// 获取所有正在加载物体的编号。
         /// </summary>
-        /// <returns>所有正在加载实体的编号。</returns>
+        /// <returns>所有正在加载物体的编号。</returns>
         public int[] GetAllLoadingItemIds()
         {
             return m_ItemManager.GetAllLoadingItemIds();
         }
 
         /// <summary>
-        /// 获取所有正在加载实体的编号。
+        /// 获取所有正在加载物体的编号。
         /// </summary>
-        /// <param name="results">所有正在加载实体的编号。</param>
+        /// <param name="results">所有正在加载物体的编号。</param>
         public void GetAllLoadingItemIds(List<int> results)
         {
             m_ItemManager.GetAllLoadingItemIds(results);
         }
 
         /// <summary>
-        /// 是否正在加载实体。
+        /// 是否正在加载物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <returns>是否正在加载实体。</returns>
+        /// <param name="itemId">物体编号。</param>
+        /// <returns>是否正在加载物体。</returns>
         public bool IsLoadingItem(int itemId)
         {
             return m_ItemManager.IsLoadingItem(itemId);
         }
 
         /// <summary>
-        /// 是否是合法的实体。
+        /// 是否是合法的物体。
         /// </summary>
-        /// <param name="item">实体。</param>
-        /// <returns>实体是否合法。</returns>
+        /// <param name="item">物体。</param>
+        /// <returns>物体是否合法。</returns>
         public bool IsValidItem(Item item)
         {
             return m_ItemManager.IsValidItem(item);
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <typeparam name="T">实体逻辑类型。</typeparam>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
+        /// <typeparam name="T">物体逻辑类型。</typeparam>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
         public void ShowItem<T>(int itemId, string itemAssetName, string itemGroupName) where T : ItemLogic
         {
             ShowItem(itemId, typeof(T), itemAssetName, itemGroupName, DefaultPriority, null);
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemLogicType">实体逻辑类型。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemLogicType">物体逻辑类型。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
         public void ShowItem(int itemId, Type itemLogicType, string itemAssetName, string itemGroupName)
         {
             ShowItem(itemId, itemLogicType, itemAssetName, itemGroupName, DefaultPriority, null);
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <typeparam name="T">实体逻辑类型。</typeparam>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <param name="priority">加载实体资源的优先级。</param>
+        /// <typeparam name="T">物体逻辑类型。</typeparam>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <param name="priority">加载物体资源的优先级。</param>
         public void ShowItem<T>(int itemId, string itemAssetName, string itemGroupName, int priority) where T : ItemLogic
         {
             ShowItem(itemId, typeof(T), itemAssetName, itemGroupName, priority, null);
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemLogicType">实体逻辑类型。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <param name="priority">加载实体资源的优先级。</param>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemLogicType">物体逻辑类型。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <param name="priority">加载物体资源的优先级。</param>
         public void ShowItem(int itemId, Type itemLogicType, string itemAssetName, string itemGroupName, int priority)
         {
             ShowItem(itemId, itemLogicType, itemAssetName, itemGroupName, priority, null);
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <typeparam name="T">实体逻辑类型。</typeparam>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
+        /// <typeparam name="T">物体逻辑类型。</typeparam>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
         public void ShowItem<T>(int itemId, string itemAssetName, string itemGroupName, object userData) where T : ItemLogic
         {
@@ -441,12 +441,12 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemLogicType">实体逻辑类型。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemLogicType">物体逻辑类型。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
         public void ShowItem(int itemId, Type itemLogicType, string itemAssetName, string itemGroupName, object userData)
         {
@@ -454,13 +454,13 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <typeparam name="T">实体逻辑类型。</typeparam>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <param name="priority">加载实体资源的优先级。</param>
+        /// <typeparam name="T">物体逻辑类型。</typeparam>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <param name="priority">加载物体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
         public void ShowItem<T>(int itemId, string itemAssetName, string itemGroupName, int priority, object userData) where T : ItemLogic
         {
@@ -468,38 +468,32 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 显示实体。
+        /// 显示物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
-        /// <param name="itemLogicType">实体逻辑类型。</param>
-        /// <param name="itemAssetName">实体资源名称。</param>
-        /// <param name="itemGroupName">实体组名称。</param>
-        /// <param name="priority">加载实体资源的优先级。</param>
+        /// <param name="itemId">物体编号。</param>
+        /// <param name="itemLogicType">物体逻辑类型。</param>
+        /// <param name="itemAssetName">物体资源名称。</param>
+        /// <param name="itemGroupName">物体组名称。</param>
+        /// <param name="priority">加载物体资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
         public void ShowItem(int itemId, Type itemLogicType, string itemAssetName, string itemGroupName, int priority, object userData)
         {
-            if (itemLogicType == null)
-            {
-                Log.Error("Item type is invalid.");
-                return;
-            }
-
             m_ItemManager.ShowItem(itemId, itemAssetName, itemGroupName, priority, ShowItemInfo.Create(itemLogicType, userData));
         }
 
         /// <summary>
-        /// 隐藏实体。
+        /// 隐藏物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
+        /// <param name="itemId">物体编号。</param>
         public void HideItem(int itemId)
         {
             m_ItemManager.HideItem(itemId);
         }
 
         /// <summary>
-        /// 隐藏实体。
+        /// 隐藏物体。
         /// </summary>
-        /// <param name="itemId">实体编号。</param>
+        /// <param name="itemId">物体编号。</param>
         /// <param name="userData">用户自定义数据。</param>
         public void HideItem(int itemId, object userData)
         {
@@ -507,18 +501,18 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 隐藏实体。
+        /// 隐藏物体。
         /// </summary>
-        /// <param name="item">实体。</param>
+        /// <param name="item">物体。</param>
         public void HideItem(Item item)
         {
             m_ItemManager.HideItem(item);
         }
 
         /// <summary>
-        /// 隐藏实体。
+        /// 隐藏物体。
         /// </summary>
-        /// <param name="item">实体。</param>
+        /// <param name="item">物体。</param>
         /// <param name="userData">用户自定义数据。</param>
         public void HideItem(Item item, object userData)
         {
@@ -526,7 +520,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 隐藏所有已加载的实体。
+        /// 隐藏所有已加载的物体。
         /// </summary>
         public void HideAllLoadedItems()
         {
@@ -534,7 +528,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 隐藏所有已加载的实体。
+        /// 隐藏所有已加载的物体。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
         public void HideAllLoadedItems(object userData)
@@ -543,7 +537,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 隐藏所有正在加载的实体。
+        /// 隐藏所有正在加载的物体。
         /// </summary>
         public void HideAllLoadingItems()
         {
@@ -551,10 +545,10 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 设置实体是否被加锁。
+        /// 设置物体是否被加锁。
         /// </summary>
-        /// <param name="item">实体。</param>
-        /// <param name="locked">实体是否被加锁。</param>
+        /// <param name="item">物体。</param>
+        /// <param name="locked">物体是否被加锁。</param>
         public void SetItemInstanceLocked(Item item, bool locked)
         {
             if (item == null)
@@ -574,10 +568,10 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 设置实体的优先级。
+        /// 设置物体的优先级。
         /// </summary>
-        /// <param name="item">实体。</param>
-        /// <param name="priority">实体优先级。</param>
+        /// <param name="item">物体。</param>
+        /// <param name="priority">物体优先级。</param>
         public void SetInstancePriority(Item item, int priority)
         {
             if (item == null)

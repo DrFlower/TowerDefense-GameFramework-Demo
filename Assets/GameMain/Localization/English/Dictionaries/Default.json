@@ -1,1 +1,31 @@
-[{"language":"English","dic":{"TOWER DEFENSE":"TOWER DEFENSE","LEVEL SELECT":"LEVEL SELECT","OPTIONS":"OPTIONS","QUIT":"QUIT","MUSIC VOLUME":"MUSIC VOLUME","SFX VOLUME":"SFX VOLUME","UI VOLUME":"UI VOLUME","LANGUAGES":"LANGUAGES","CHINESE SIMPLIFIED":"CHINESE SIMPLIFIED","CHINESE TRADITIONAL":"CHINESE TRADITIONAL","ENGLISH":"ENGLISH","CHANGE LANGUAGE NEED RESTART":"CHANGE LANGUAGE NEED RESTART","Confirm":"Confirm","Cancel":"Cancel"}}]
+[
+  {
+    "language": "English",
+    "dic": {
+      "TOWER DEFENSE": "TOWER DEFENSE",
+      "LEVEL SELECT": "LEVEL SELECT",
+      "OPTIONS": "OPTIONS",
+      "QUIT": "QUIT",
+      "MUSIC VOLUME": "MUSIC VOLUME",
+      "SFX VOLUME": "SFX VOLUME",
+      "UI VOLUME": "UI VOLUME",
+      "LANGUAGES": "LANGUAGES",
+      "CHINESE SIMPLIFIED": "CHINESE SIMPLIFIED",
+      "CHINESE TRADITIONAL": "CHINESE TRADITIONAL",
+      "ENGLISH": "ENGLISH",
+      "CHANGE LANGUAGE NEED RESTART": "CHANGE LANGUAGE NEED RESTART",
+      "Confirm": "Confirm",
+      "Cancel": "Cancel",
+      "Level1": "Level 1",
+      "Level2": "Level 2",
+      "Level3": "Level 3",
+      "Level4": "Level 4",
+      "Level5": "Level 5",
+      "Level 1 Des": "Des 1",
+      "Level 2 Des": "Des 2",
+      "Level 3 Des": "Des 3",
+      "Level 4 Des": "Des 4",
+      "Level 5 Des": "Des 5"
+    }
+  }
+]

@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameFramework.Event;
+using System;
 
 namespace Flower
 {
@@ -22,6 +24,8 @@ namespace Flower
         private Canvas m_CachedCanvas = null;
         private CanvasGroup m_CanvasGroup = null;
         private List<Canvas> m_CachedCanvasContainer = new List<Canvas>();
+
+        private EventSubscriber eventSubscriber;
 
         public int OriginalDepth
         {
@@ -98,15 +102,15 @@ namespace Flower
 
             gameObject.GetOrAddComponent<GraphicRaycaster>();
 
-            Text[] texts = GetComponentsInChildren<Text>(true);
-            for (int i = 0; i < texts.Length; i++)
-            {
-                //texts[i].font = s_MainFont;
-                if (!string.IsNullOrEmpty(texts[i].text))
-                {
-                    texts[i].text = GameEntry.Localization.GetString(texts[i].text);
-                }
-            }
+            //Text[] texts = GetComponentsInChildren<Text>(true);
+            //for (int i = 0; i < texts.Length; i++)
+            //{
+            //    //texts[i].font = s_MainFont;
+            //    if (!string.IsNullOrEmpty(texts[i].text))
+            //    {
+            //        texts[i].text = GameEntry.Localization.GetString(texts[i].text);
+            //    }
+            //}
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -138,6 +142,7 @@ namespace Flower
 #endif
         {
             base.OnClose(isShutdown, userData);
+            UnSubscribeAll();
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -220,6 +225,28 @@ namespace Flower
         {
             yield return m_CanvasGroup.FadeToAlpha(0f, duration);
             GameEntry.UI.CloseUIForm(this);
+        }
+
+        protected void Subscribe(int id, EventHandler<GameEventArgs> handler)
+        {
+            if (eventSubscriber == null)
+                eventSubscriber = new EventSubscriber(this);
+
+            eventSubscriber.Subscribe(id, handler);
+        }
+
+        protected void UnSubscribe(int id, EventHandler<GameEventArgs> handler)
+        {
+            if (eventSubscriber == null)
+                eventSubscriber = new EventSubscriber(this);
+
+            eventSubscriber.UnSubscribe(id, handler);
+        }
+
+        protected void UnSubscribeAll()
+        {
+            if (eventSubscriber != null)
+                eventSubscriber.UnSubscribeAll();
         }
     }
 }

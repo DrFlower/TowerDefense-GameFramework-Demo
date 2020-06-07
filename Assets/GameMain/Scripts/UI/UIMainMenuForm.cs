@@ -34,7 +34,8 @@ namespace Flower
 
         private void OnLevelSelectButtonClick()
         {
-
+            GameEntry.Sound.PlaySound(30008);
+            GameEntry.UI.OpenUIForm(EnumUIForm.UILevelSelectForm);
         }
 
         private void OnOptionButtonClick()

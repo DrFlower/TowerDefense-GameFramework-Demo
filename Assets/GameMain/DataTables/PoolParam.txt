@@ -2,5 +2,5 @@
 #	Id		GroupName	InstanceAutoReleaseInterval	InstanceCapacity	InstanceExpireTime	InstancePriority
 #	int		string	float	int	float	int
 #	配置编号	策划备注	组名字	自动释放可释放对象的间隔秒数	实例对象池的容量	对象池对象过期秒数	实体组实例对象池的优先级
-	1001		ItemDefault	60	10	60	0
+	1001		ItemDefault	5	10	5	0
 	1002		EntityDefault	60	10	60	0

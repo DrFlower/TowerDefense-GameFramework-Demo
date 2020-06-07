@@ -15,6 +15,11 @@ namespace UnityGameFramework.Runtime
         private IItemGroup m_ItemGroup;
         private ItemLogic m_ItemLogic;
 
+        private Transform initRoot;
+        private Vector3 initPosition;
+        private Vector3 initRotation;
+        private Vector3 initScale;
+
         /// <summary>
         /// 获取物品编号。
         /// </summary>
@@ -92,13 +97,13 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
+            initRoot = transform.parent;
+            initPosition = transform.localPosition;
+            initRotation = transform.eulerAngles;
+            initScale = transform.localScale;
+
             ShowItemInfo showItemInfo = (ShowItemInfo)userData;
             Type itemLogicType = showItemInfo.ItemLogicType;
-            if (itemLogicType == null)
-            {
-                Log.Error("Item logic type is invalid.");
-                return;
-            }
 
             if (m_ItemLogic != null)
             {
@@ -111,6 +116,9 @@ namespace UnityGameFramework.Runtime
                 Destroy(m_ItemLogic);
                 m_ItemLogic = null;
             }
+
+            if (itemLogicType == null)
+                return;
 
             m_ItemLogic = gameObject.AddComponent(itemLogicType) as ItemLogic;
             if (m_ItemLogic == null)
@@ -134,6 +142,14 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public void OnRecycle()
         {
+            transform.SetParent(initRoot, false);
+            transform.localPosition = transform.localPosition;
+            transform.eulerAngles = initRotation;
+            transform.localScale = initScale;
+
+            if (m_ItemLogic == null)
+                return;
+
             try
             {
                 m_ItemLogic.OnRecycle();
@@ -154,6 +170,10 @@ namespace UnityGameFramework.Runtime
         public void OnShow(object userData)
         {
             ShowItemInfo showItemInfo = (ShowItemInfo)userData;
+
+            if (m_ItemLogic == null)
+                return;
+
             try
             {
                 m_ItemLogic.OnShow(showItemInfo.UserData);
@@ -171,6 +191,9 @@ namespace UnityGameFramework.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public void OnHide(bool isShutdown, object userData)
         {
+            if (m_ItemLogic == null)
+                return;
+
             try
             {
                 m_ItemLogic.OnHide(isShutdown, userData);
@@ -188,6 +211,9 @@ namespace UnityGameFramework.Runtime
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
+            if (m_ItemLogic == null)
+                return;
+
             try
             {
                 m_ItemLogic.OnUpdate(elapseSeconds, realElapseSeconds);

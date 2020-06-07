@@ -144,6 +144,26 @@ namespace Flower
             }
         }
 
+        public ItemData GetItemData(int id)
+        {
+            if(dicItemData.ContainsKey(id))
+            {
+                return dicItemData[id];
+            }
+
+            return null;
+        }
+
+        public ItemGroupData GetItemGroupData(int id)
+        {
+            if (dicItemGroupData.ContainsKey(id))
+            {
+                return dicItemGroupData[id];
+            }
+
+            return null;
+        }
+
         public ItemData[] GetAllItemData()
         {
             int index = 0;

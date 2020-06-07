@@ -1341,9 +1341,9 @@ MonoBehaviour:
   m_EnableOpenUIFormUpdateEvent: 0
   m_EnableOpenUIFormDependencyAssetEvent: 0
   m_EnableCloseUIFormCompleteEvent: 1
-  m_InstanceAutoReleaseInterval: 60
+  m_InstanceAutoReleaseInterval: 5
   m_InstanceCapacity: 16
-  m_InstanceExpireTime: 60
+  m_InstanceExpireTime: 5
   m_InstancePriority: 0
   m_InstanceRoot: {fileID: 1274863032}
   m_UIFormHelperTypeName: UnityGameFramework.Runtime.DefaultUIFormHelper
