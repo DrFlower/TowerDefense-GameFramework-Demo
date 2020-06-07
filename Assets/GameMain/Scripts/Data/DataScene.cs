@@ -99,6 +99,9 @@ namespace Flower
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRScene>();
+
+            dtScene = null;
+            dicSceneData = null;
         }
 
         protected override void OnShutdown()

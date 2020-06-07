@@ -65,6 +65,8 @@ namespace Flower
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRAssetsPath>();
+
+            dtAssetPath = null;
         }
 
         protected override void OnShutdown()

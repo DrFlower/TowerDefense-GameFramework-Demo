@@ -120,6 +120,9 @@ namespace Flower
         protected override void OnUnload()
         {
             GameEntry.DataTable.DestroyDataTable<DRPoolParam>();
+
+            dtPoolParam = null;
+            dicPoolParam = null;
         }
 
         protected override void OnShutdown()

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-07 13:20:20.494
+// 生成时间：2020-06-07 13:20:20.476
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,9 +19,9 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// UI组配置表。
+    /// 关卡配置。
     /// </summary>
-    public class DRUIGroup : DataRowBase
+    public class DRLevel : DataRowBase
     {
         private int m_Id = 0;
 
@@ -37,18 +37,27 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取UI组名字。
+        /// 获取关卡名字Id。
         /// </summary>
-        public string Name
+        public string NameId
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取深度。
+        /// 获取关卡描述Id。
         /// </summary>
-        public int Depth
+        public string DescriptionId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取物体组名场景Id。
+        /// </summary>
+        public int SceneId
         {
             get;
             private set;
@@ -69,8 +78,9 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                Name = columnTexts[index++];
-                Depth = int.Parse(columnTexts[index++]);
+                NameId = columnTexts[index++];
+                DescriptionId = columnTexts[index++];
+                SceneId = int.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -80,8 +90,9 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        Name = strings[binaryReader.Read7BitEncodedInt32()];
-                        Depth = binaryReader.Read7BitEncodedInt32();
+                        NameId = strings[binaryReader.Read7BitEncodedInt32()];
+                        DescriptionId = strings[binaryReader.Read7BitEncodedInt32()];
+                        SceneId = binaryReader.Read7BitEncodedInt32();
                     }
                 }
             }

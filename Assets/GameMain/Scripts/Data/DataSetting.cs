@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameFramework.Data;
+using GameFramework.DataTable;
 
 namespace Flower
 {

@@ -1602,3 +1602,5 @@ MonoBehaviour:
     dataTypeName: Flower.DataSound
   - enable: 1
     dataTypeName: Flower.DataUI
+  - enable: 1
+    dataTypeName: Flower.DataLevel

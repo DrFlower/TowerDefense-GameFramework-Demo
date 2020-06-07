@@ -380,6 +380,13 @@ namespace Flower
             GameEntry.DataTable.DestroyDataTable<DRSound>();
             GameEntry.DataTable.DestroyDataTable<DRSoundGroup>();
             GameEntry.DataTable.DestroyDataTable<DRSoundPlayParam>();
+
+            dtSound = null;
+            dtSoundGroup = null;
+            dtSoundPlayParam = null;
+            dicSoundData = null;
+            dicSoundGroupData = null;
+            dicSoundPlayParamData = null;
         }
 
         protected override void OnShutdown()

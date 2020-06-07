@@ -199,6 +199,11 @@ namespace Flower
         {
             GameEntry.DataTable.DestroyDataTable<DRUIForm>();
             GameEntry.DataTable.DestroyDataTable<DRUIGroup>();
+
+            dtUIForm = null;
+            dtUIGroup = null;
+            dicUIData = null;
+            dicUIGroupData = null;
         }
 
         protected override void OnShutdown()

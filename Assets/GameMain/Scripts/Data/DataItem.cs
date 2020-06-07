@@ -172,6 +172,11 @@ namespace Flower
         {
             GameEntry.DataTable.DestroyDataTable<DRItem>();
             GameEntry.DataTable.DestroyDataTable<DRItemGroup>();
+
+            dtItem = null;
+            dtItemGroup = null;
+            dicItemData = null;
+            dicItemGroupData = null;
         }
 
         protected override void OnShutdown()
