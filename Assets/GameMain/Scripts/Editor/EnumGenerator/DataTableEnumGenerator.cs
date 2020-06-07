@@ -18,6 +18,7 @@ namespace Flower
 
         private readonly static string[] GenerateDataTables = {
             "UIForm",
+            "Item",
         };
 
         [MenuItem("Tools/GenerateDataTableEnum", false, 3)]
