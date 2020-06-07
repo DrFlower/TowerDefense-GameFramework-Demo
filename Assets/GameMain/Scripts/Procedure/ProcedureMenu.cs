@@ -21,7 +21,7 @@ namespace Flower
 
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
-            GameEntry.UI.OpenUIForm(UIFormId.MainMenu);
+            GameEntry.UI.OpenUIForm(EnumUIForm.UIMainMenuForm);
             GameEntry.Sound.PlayMusic(10002);
         }
 

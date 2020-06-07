@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-07 00:16:50.074
+// 生成时间：2020-06-07 12:17:17.536
 //------------------------------------------------------------
 
 using GameFramework;
@@ -37,7 +37,16 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取界面组名称。
+        /// 获取界面名字。
+        /// </summary>
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取界面组Id。
         /// </summary>
         public int UIGroupId
         {
@@ -87,6 +96,7 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
+                Name = columnTexts[index++];
                 UIGroupId = int.Parse(columnTexts[index++]);
                 AssetId = int.Parse(columnTexts[index++]);
                 AllowMultiInstance = bool.Parse(columnTexts[index++]);
@@ -100,6 +110,7 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
+                        Name = strings[binaryReader.Read7BitEncodedInt32()];
                         UIGroupId = binaryReader.Read7BitEncodedInt32();
                         AssetId = binaryReader.Read7BitEncodedInt32();
                         AllowMultiInstance = binaryReader.ReadBoolean();

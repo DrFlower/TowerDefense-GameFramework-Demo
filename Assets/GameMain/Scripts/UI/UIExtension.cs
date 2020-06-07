@@ -44,7 +44,7 @@ namespace Flower
             slider.value = value;
         }
 
-        public static bool HasUIForm(this UIComponent uiComponent, UIFormId uiFormId, string uiGroupName = null)
+        public static bool HasUIForm(this UIComponent uiComponent, EnumUIForm uiFormId, string uiGroupName = null)
         {
             return uiComponent.HasUIForm((int)uiFormId, uiGroupName);
         }
@@ -72,7 +72,7 @@ namespace Flower
             return uiGroup.HasUIForm(uiData.AssetPath);
         }
 
-        public static UGuiForm GetUIForm(this UIComponent uiComponent, UIFormId uiFormId, string uiGroupName = null)
+        public static UGuiForm GetUIForm(this UIComponent uiComponent, EnumUIForm uiFormId, string uiGroupName = null)
         {
             return uiComponent.GetUIForm((int)uiFormId, uiGroupName);
         }
@@ -117,7 +117,7 @@ namespace Flower
             uiComponent.CloseUIForm(uiForm.UIForm);
         }
 
-        public static int? OpenUIForm(this UIComponent uiComponent, UIFormId uiFormId, object userData = null)
+        public static int? OpenUIForm(this UIComponent uiComponent, EnumUIForm uiFormId, object userData = null)
         {
             return uiComponent.OpenUIForm((int)uiFormId, userData);
         }
