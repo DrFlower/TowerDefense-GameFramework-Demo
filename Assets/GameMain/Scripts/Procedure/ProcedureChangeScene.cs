@@ -37,6 +37,8 @@ namespace Flower
                 GameEntry.Scene.UnloadScene(loadedSceneAssetNames[i]);
             }
 
+            GameEntry.UI.CloseAllLoadedUIForms();
+
             int sceneId = procedureOwner.GetData<VarInt>(Constant.ProcedureData.NextSceneId).Value;
             sceneData = GameEntry.Data.GetData<DataScene>().GetSceneData(sceneId);
 
@@ -62,7 +64,7 @@ namespace Flower
                     ChangeState(procedureOwner, procedureType);
                 }
                 else
-                    Log.Warning("Can not change state,scene procedure '{0}' error, from scene '{1}.{2}'.", sceneData.Procedure.ToString(), sceneData.Id);
+                    Log.Warning("Can not change state,scene procedure '{0}' error, from scene '{1}.{2}'.", sceneData.Procedure.ToString(), sceneData.Id, sceneData.AssetPath);
             }
 
         }
@@ -70,6 +72,11 @@ namespace Flower
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
+
+            GameEntry.Event.Unsubscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
+            GameEntry.Event.Unsubscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
+            GameEntry.Event.Unsubscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
+            GameEntry.Event.Unsubscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)

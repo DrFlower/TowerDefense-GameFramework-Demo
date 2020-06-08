@@ -469,7 +469,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1136, y: 640}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
@@ -1249,6 +1249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AvailableProcedureTypeNames:
   - Flower.ProcedureLaunch
+  - Flower.ProcedureLevel
   - Flower.ProcedureLoadingScene
   - Flower.ProcedureMenu
   - Flower.ProcedurePreload
@@ -1341,9 +1342,9 @@ MonoBehaviour:
   m_EnableOpenUIFormUpdateEvent: 0
   m_EnableOpenUIFormDependencyAssetEvent: 0
   m_EnableCloseUIFormCompleteEvent: 1
-  m_InstanceAutoReleaseInterval: 5
+  m_InstanceAutoReleaseInterval: 60
   m_InstanceCapacity: 16
-  m_InstanceExpireTime: 5
+  m_InstanceExpireTime: 60
   m_InstancePriority: 0
   m_InstanceRoot: {fileID: 1274863032}
   m_UIFormHelperTypeName: UnityGameFramework.Runtime.DefaultUIFormHelper

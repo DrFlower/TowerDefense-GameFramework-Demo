@@ -4,10 +4,19 @@
 #	资源编号	策划备注	资源名称
 	101	启动场景	Assets/GameMain/Scenes/GameStart/GameStart.unity
 	102	菜单场景	Assets/GameMain/Scenes/Menu/Menu.unity
+	103	第一关	Assets/GameMain/Scenes/Level1/Level1.unity
+	104	第二关	Assets/GameMain/Scenes/Level2/Level2.unity
+	105	第三关	Assets/GameMain/Scenes/Level3/Level3.unity
+	106	第四关	Assets/GameMain/Scenes/Level4/Level4.unity
+	107	第五关	Assets/GameMain/Scenes/Level5/Level5.unity
 #			
 	1001	主菜单	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab
 	1002	设置界面	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab
 	1003	关卡选择界面	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab
+	1004	关卡主界面	Assets/GameMain/UI/UIForms/UILevelMainInfoForm.prefab
+	1005	炮塔列表	Assets/GameMain/UI/UIForms/UITowerListForm.prefab
+	1006	暂停界面	Assets/GameMain/UI/UIForms/UIPausePanelForm.prefab
+	1007	游戏结束	Assets/GameMain/UI/UIForms/UIGameOverForm.prefab
 #			
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 #			
