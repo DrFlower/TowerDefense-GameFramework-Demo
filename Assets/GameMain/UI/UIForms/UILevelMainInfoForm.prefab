@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 1861748935590339210}
   - component: {fileID: 1861847118045184292}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 1969225897330269332}
   - component: {fileID: 1862700785586643466}
   m_Layer: 5
-  m_Name: CurrencyAmount
+  m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 1969970219187081074}
   - component: {fileID: 1862081582563884260}
   m_Layer: 5
-  m_Name: WaveNumber
+  m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1153,7 +1153,7 @@ GameObject:
   - component: {fileID: 1969954434500485862}
   - component: {fileID: 1861881307322455332}
   m_Layer: 5
-  m_Name: HealthIcon
+  m_Name: HPIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 1970023266328790316}
   - component: {fileID: 1862776904721961672}
   m_Layer: 5
-  m_Name: LifeCounter
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1806,4 +1806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d412d85734e055c43b26b12013f5f622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpText: {fileID: 1862776904721961672}
+  energyText: {fileID: 1862700785586643466}
+  waveText: {fileID: 1862081582563884260}
+  waveProgressImg: {fileID: 1861833425185411672}
+  btnStartWave: {fileID: 1862161550237828159}
   btnPause: {fileID: 1861847118045184292}
+  debugAddEnergy: {fileID: 1861800050397735403}
