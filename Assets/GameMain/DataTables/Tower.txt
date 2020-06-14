@@ -1,10 +1,10 @@
 ﻿#	炮塔配置表				
-#	Id		NameId	AssetId	Icon
-#	int		string	int	string
-#	配置编号	策划备注	炮塔名字Id	资源ID	图标名称
-	101	突击加农炮	Assault Cannon	2001	build_machinegun
-	102	火箭	Rocket Platform	2001	build_missile
-	103	等离子喷枪	Plasma Lance	2001	build_sniper
-	104	能量塔	Energy Pylon	2001	build_power
-	105	电磁脉冲发生器	EMP Generator	2001	build_slow
-	106	导弹阵列	Missile Array	2001	build_deadly
+#	Id		NameId	Icon	Levels
+#	int		string	string	int[]
+#	配置编号	策划备注	炮塔名字Id	图标名称	等级列表
+	101	突击加农炮	Assault Cannon	build_machinegun	"""10101,10102,10103"""
+	102	火箭	Rocket Platform	build_missile	"""10201,10202,10203"""
+	103	等离子喷枪	Plasma Lance	build_sniper	"""10301,10302,10303"""
+	104	能量塔	Energy Pylon	build_power	"""10401,10402,10403"""
+	105	电磁脉冲发生器	EMP Generator	build_slow	"""10501"""
+	106	导弹阵列	Missile Array	build_deadly	"""10601"""

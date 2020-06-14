@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-11 23:54:53.921
+// 生成时间：2020-06-14 18:39:50.392
 //------------------------------------------------------------
 
 using GameFramework;
@@ -46,18 +46,18 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取资源ID。
+        /// 获取图标名称。
         /// </summary>
-        public int AssetId
+        public string Icon
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取图标名称。
+        /// 获取等级列表。
         /// </summary>
-        public string Icon
+        public int[] Levels
         {
             get;
             private set;
@@ -79,8 +79,8 @@ namespace Flower
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
                 NameId = columnTexts[index++];
-                AssetId = int.Parse(columnTexts[index++]);
                 Icon = columnTexts[index++];
+                Levels = DataTableExtension.ParseInt32Array(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -91,8 +91,8 @@ namespace Flower
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         NameId = strings[binaryReader.Read7BitEncodedInt32()];
-                        AssetId = binaryReader.Read7BitEncodedInt32();
                         Icon = strings[binaryReader.Read7BitEncodedInt32()];
+                        Levels = binaryReader.ReadInt32Array();
                     }
                 }
             }

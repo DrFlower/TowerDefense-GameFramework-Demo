@@ -6,10 +6,10 @@ using GameFramework.DataTable;
 
 namespace Flower
 {
-    public class TowerData 
+    public class TowerData
     {
         private DRTower dRTower;
-        private DRAssetsPath dRAssetsPath;
+        private TowerLevelData[] towerLevels;
 
         public int Id
         {
@@ -19,19 +19,11 @@ namespace Flower
             }
         }
 
-        public string NameId
+        public string Name
         {
             get
             {
                 return GameEntry.Localization.GetString(dRTower.NameId);
-            }
-        }
-
-        public string AssetPath
-        {
-            get
-            {
-                return dRAssetsPath.AssetPath;
             }
         }
 
@@ -41,6 +33,25 @@ namespace Flower
             {
                 return dRTower.Icon;
             }
+        }
+
+        public TowerData(DRTower dRTower, TowerLevelData[] towerLevels)
+        {
+            this.dRTower = dRTower;
+            this.towerLevels = towerLevels;
+        }
+
+        public TowerLevelData GetTowerLevelData(int level)
+        {
+            if (towerLevels == null || level > GetMaxLevel())
+                return null;
+
+            return towerLevels[level];
+        }
+
+        public int GetMaxLevel()
+        {
+            return towerLevels == null ? 0 : towerLevels.Length;
         }
     }
 }

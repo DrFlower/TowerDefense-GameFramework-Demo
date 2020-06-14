@@ -6,7 +6,7 @@ using GameFramework.DataTable;
 
 namespace Flower
 {
-    public class TowerLevel : MonoBehaviour
+    public class TowerLevelData
     {
         private DRTowerLevel dRTowerLevel;
         private DRAssetsPath dRAssetsPath;
@@ -19,7 +19,7 @@ namespace Flower
             }
         }
 
-        public string DesId
+        public string Des
         {
             get
             {
@@ -66,6 +66,13 @@ namespace Flower
                 return dRTowerLevel.SellEnergy;
             }
         }
+
+        public TowerLevelData(DRTowerLevel dRTowerLevel, DRAssetsPath dRAssetsPath)
+        {
+            this.dRTowerLevel = dRTowerLevel;
+            this.dRAssetsPath = dRAssetsPath;
+        }
+
     }
 
 }

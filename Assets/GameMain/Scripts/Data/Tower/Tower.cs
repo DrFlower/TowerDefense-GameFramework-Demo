@@ -1,32 +1,211 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityGameFramework.Runtime;
+using GameFramework;
 
 namespace Flower
 {
-    public class Tower
+    public class Tower : IReference
     {
-        public TowerData towerData;
+        private TowerData towerData;
 
-        //public LevelData GetLevelData(int level)
-        //{
+        public int Level
+        {
+            get;
+            private set;
+        }
 
-        //}
+        public int SerialId
+        {
+            get;
+            private set;
+        }
 
-        //public LevelData[] GetAllLevelData()
-        //{
+        public string Name
+        {
+            get
+            {
+                return towerData.Name;
+            }
+        }
 
-        //}
+        public string Icon
+        {
+            get
+            {
+                return towerData.Icon;
+            }
+        }
 
-        //public int GetMaxLevel()
-        //{
+        public int MaxLevel
+        {
+            get
+            {
+                return towerData.GetMaxLevel();
+            }
+        }
 
-        //}
+        public string Des
+        {
+            get
+            {
+                return GetDes(Level);
+            }
+        }
 
-        //public bool IsMaxLevel()
-        //{
+        public string AssetPath
+        {
+            get
+            {
+                return GetAssetPath(Level);
+            }
+        }
 
-        //}
+        public float DPS
+        {
+            get
+            {
+                return GetDPS(Level);
+            }
+        }
+
+        public float Range
+        {
+            get
+            {
+                return GetRange(Level);
+            }
+        }
+
+        public float BuildEnergy
+        {
+            get
+            {
+                return GetBuildEnergy(Level);
+            }
+        }
+
+        public float SellEnergy
+        {
+            get
+            {
+                return GetSellEnergy(Level);
+            }
+        }
+
+        public Tower()
+        {
+            towerData = null;
+            Level = 0;
+            SerialId = 0;
+        }
+
+        public string GetDes(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return string.Empty;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).Des;
+            }
+        }
+
+        public string GetAssetPath(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return string.Empty;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).AssetPath;
+            }
+        }
+
+        public float GetDPS(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).DPS;
+            }
+        }
+
+        public float GetRange(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).Range;
+            }
+        }
+
+        public int GetBuildEnergy(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).BuildEnergy;
+            }
+        }
+
+        public int GetSellEnergy(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).SellEnergy;
+            }
+        }
+
+        public void Upgrade()
+        {
+            if (Level < MaxLevel)
+            {
+                Level++;
+            }
+            else
+            {
+                Log.Error("Tower (serialId:'{0}') has reached the highest level", SerialId);
+            }
+        }
+
+        public static Tower Create(TowerData towerData, int serialId, int level = 0)
+        {
+            Tower tower = ReferencePool.Acquire<Tower>();
+            tower.towerData = towerData;
+            tower.Level = level;
+            tower.SerialId = serialId;
+            return tower;
+        }
+
+        public void Clear()
+        {
+            towerData = null;
+            Level = 0;
+            SerialId = 0;
+        }
     }
 }
 
