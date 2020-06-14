@@ -87,5 +87,17 @@ namespace Flower
             string[] splitValue = value.Split(',');
             return new Vector4(float.Parse(splitValue[0]), float.Parse(splitValue[1]), float.Parse(splitValue[2]), float.Parse(splitValue[3]));
         }
+
+        public static int[] ParseInt32Array(string value)
+        {
+            string[] splitValue = value.Split(',');
+            int[] result = new int[splitValue.Length];
+            for (int i = 0; i < splitValue.Length; i++)
+            {
+                result[i] = int.Parse(splitValue[i]);
+            }
+
+            return result;
+        }
     }
 }

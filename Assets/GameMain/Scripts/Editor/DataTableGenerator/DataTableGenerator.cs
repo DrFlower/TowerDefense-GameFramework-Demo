@@ -158,9 +158,11 @@ namespace Flower.Editor.DataTableTools
                     continue;
                 }
 
+                string languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+
                 if (dataTableProcessor.IsSystem(i))
                 {
-                    string languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+
                     if (languageKeyword == "string")
                     {
                         stringBuilder.AppendFormat("                {0} = columnTexts[index++];", dataTableProcessor.GetName(i)).AppendLine();
@@ -169,6 +171,11 @@ namespace Flower.Editor.DataTableTools
                     {
                         stringBuilder.AppendFormat("                {0} = {1}.Parse(columnTexts[index++]);", dataTableProcessor.GetName(i), languageKeyword).AppendLine();
                     }
+                }
+                else if (languageKeyword.Contains("[]"))
+                {
+                    string readFunctionName = dataTableProcessor.GetType(i).Name.Replace("[]", "Array");
+                    stringBuilder.AppendFormat("                {0} = DataTableExtension.Parse{1}(columnTexts[index++]);", dataTableProcessor.GetName(i), readFunctionName).AppendLine();
                 }
                 else
                 {
@@ -209,6 +216,11 @@ namespace Flower.Editor.DataTableTools
                 else if (languageKeyword == "string")
                 {
                     stringBuilder.AppendFormat("                        {0} = strings[binaryReader.Read7BitEncodedInt32()];", dataTableProcessor.GetName(i)).AppendLine();
+                }
+                else if (languageKeyword.Contains("[]"))
+                {
+                    string readFunctionName = dataTableProcessor.GetType(i).Name.Replace("[]", "Array");
+                    stringBuilder.AppendFormat("                        {0} = binaryReader.Read{1}();", dataTableProcessor.GetName(i), readFunctionName).AppendLine();
                 }
                 else
                 {
