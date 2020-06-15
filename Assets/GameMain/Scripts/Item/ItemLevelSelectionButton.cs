@@ -49,7 +49,7 @@ namespace Flower
             if (levelData == null)
                 return;
 
-            GameEntry.Event.Fire(this, ChangeSceneEventArgs.Create(levelData.SceneData.Id));
+            GameEntry.Data.GetData<DataLevel>().LoadLevel(levelData.Id);
         }
 
     }

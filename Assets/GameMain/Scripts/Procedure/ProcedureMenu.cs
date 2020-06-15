@@ -27,6 +27,7 @@ namespace Flower
 
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
+            GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UIMainMenuForm);
             GameEntry.Sound.PlayMusic(10002);
@@ -49,6 +50,7 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
             GameEntry.Event.Unsubscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
+            GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
@@ -73,6 +75,28 @@ namespace Flower
 
             changeScene = true;
             procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.SceneId);
+        }
+
+        private void OnLoadLevel(object sender, GameEventArgs e)
+        {
+            LoadLevelEventArgs ne = (LoadLevelEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (ne.LevelData == null)
+            {
+                Log.Error("Load level event param LevelData is null");
+                return;
+            }
+
+            if (ne.LevelData.SceneData == null)
+            {
+                Log.Error("Load level event param SceneData is null");
+                return;
+            }
+
+            changeScene = true;
+            procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.LevelData.SceneData.Id);
         }
 
     }
