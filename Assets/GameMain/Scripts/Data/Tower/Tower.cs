@@ -54,14 +54,6 @@ namespace Flower
             }
         }
 
-        public string AssetPath
-        {
-            get
-            {
-                return GetAssetPath(Level);
-            }
-        }
-
         public float DPS
         {
             get
@@ -94,6 +86,22 @@ namespace Flower
             }
         }
 
+        public int EntityId
+        {
+            get
+            {
+                return towerData.EntityId;
+            }
+        }
+
+        public int LevelEntityId
+        {
+            get
+            {
+                return GetLevelEntityId(Level);
+            }
+        }
+
         public Tower()
         {
             towerData = null;
@@ -114,16 +122,16 @@ namespace Flower
             }
         }
 
-        public string GetAssetPath(int level)
+        public int GetLevelEntityId(int level)
         {
             if (level < 0 || level > MaxLevel)
             {
                 Log.Error("Param level '{0} invaild'", level);
-                return string.Empty;
+                return 0;
             }
             else
             {
-                return towerData.GetTowerLevelData(level).AssetPath;
+                return towerData.GetTowerLevelData(level).EntityId;
             }
         }
 

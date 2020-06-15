@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-14 22:26:14.950
+// 生成时间：2020-06-14 22:26:14.960
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,14 +19,14 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// 资源路径配置表。
+    /// 实体配置表。
     /// </summary>
-    public class DRAssetsPath : DataRowBase
+    public class DREntity : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取资源编号。
+        /// 获取配置编号。
         /// </summary>
         public override int Id
         {
@@ -37,9 +37,27 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取资源名称。
+        /// 获取物体名字。
         /// </summary>
-        public string AssetPath
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取资源ID。
+        /// </summary>
+        public int AssetId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取物体组名。
+        /// </summary>
+        public int EntityGroupId
         {
             get;
             private set;
@@ -60,7 +78,9 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                AssetPath = columnTexts[index++];
+                Name = columnTexts[index++];
+                AssetId = int.Parse(columnTexts[index++]);
+                EntityGroupId = int.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -70,7 +90,9 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        AssetPath = strings[binaryReader.Read7BitEncodedInt32()];
+                        Name = strings[binaryReader.Read7BitEncodedInt32()];
+                        AssetId = binaryReader.Read7BitEncodedInt32();
+                        EntityGroupId = binaryReader.Read7BitEncodedInt32();
                     }
                 }
             }

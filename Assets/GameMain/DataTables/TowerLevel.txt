@@ -1,20 +1,20 @@
 ﻿#	炮塔等级配置表							
-#	Id		DesId	ModelAssetId	DPS	Range	BuildEnergy	SellEnergy
+#	Id		DesId	EntityId	DPS	Range	BuildEnergy	SellEnergy
 #	int		string	int	float	float	int	int
-#	配置编号	策划备注	炮塔描述Id	模型资源ID	DPS	范围	建造能量	出售能量
-	10101	突击加农炮	Assault Cannon Des 1	2001	10	10	10	10
-	10102	突击加农炮	Assault Cannon Des 2	2001	10	10	10	10
-	10103	突击加农炮	Assault Cannon Des 3	2001	10	10	10	10
-	10201	火箭	Rocket Platform Des 1	2001	10	10	10	10
-	10202	火箭	Rocket Platform Des 2	2001	10	10	10	10
-	10203	火箭	Rocket Platform Des 3	2001	10	10	10	10
-	10301	等离子喷枪	Plasma Lance Des 1	2001	10	10	10	10
-	10302	等离子喷枪	Plasma Lance Des 2	2001	10	10	10	10
-	10303	等离子喷枪	Plasma Lance Des 3	2001	10	10	10	10
-	10401	能量塔	Energy Pylon Des 1	2001	10	10	10	10
-	10402	能量塔	Energy Pylon Des 2	2001	10	10	10	10
-	10403	能量塔	Energy Pylon Des 3	2001	10	10	10	10
-	10501	电磁脉冲发生器	EMP Generator Des 1	2001	10	10	10	10
-	10502	电磁脉冲发生器	EMP Generator Des 2	2001	10	10	10	10
-	10503	电磁脉冲发生器	EMP Generator Des 3	2001	10	10	10	10
-	10601	导弹阵列	Missile Array Des 1	2001	10	10	10	10
+#	配置编号	策划备注	炮塔描述Id	实体编号	DPS	范围	建造能量	出售能量
+	10101	突击加农炮	Assault Cannon Des 1	1007	10	10	10	10
+	10102	突击加农炮	Assault Cannon Des 2	1008	10	10	10	10
+	10103	突击加农炮	Assault Cannon Des 3	1009	10	10	10	10
+	10201	火箭	Rocket Platform Des 1	1010	10	10	10	10
+	10202	火箭	Rocket Platform Des 2	1011	10	10	10	10
+	10203	火箭	Rocket Platform Des 3	1012	10	10	10	10
+	10301	等离子喷枪	Plasma Lance Des 1	1013	10	10	10	10
+	10302	等离子喷枪	Plasma Lance Des 2	1014	10	10	10	10
+	10303	等离子喷枪	Plasma Lance Des 3	1015	10	10	10	10
+	10401	能量塔	Energy Pylon Des 1	1016	10	10	10	10
+	10402	能量塔	Energy Pylon Des 2	1017	10	10	10	10
+	10403	能量塔	Energy Pylon Des 3	1018	10	10	10	10
+	10501	电磁脉冲发生器	EMP Generator Des 1	1019	10	10	10	10
+	10502	电磁脉冲发生器	EMP Generator Des 2	1020	10	10	10	10
+	10503	电磁脉冲发生器	EMP Generator Des 3	1021	10	10	10	10
+	10601	导弹阵列	Missile Array Des 1	1022	10	10	10	10

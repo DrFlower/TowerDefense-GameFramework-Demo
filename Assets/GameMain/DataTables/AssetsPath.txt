@@ -20,6 +20,29 @@
 #			
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 #			
+	3001	突击加农炮	Assets/GameMain/Entity/
+	3002	火箭	Assets/GameMain/Entity/
+	3003	等离子喷枪	Assets/GameMain/Entity/
+	3004	能量塔	Assets/GameMain/Entity/
+	3005	电磁脉冲发生器	Assets/GameMain/Entity/
+	3006	导弹阵列	Assets/GameMain/Entity/
+	3007	突击加农炮等级1	Assets/GameMain/Entity/
+	3008	突击加农炮等级2	Assets/GameMain/Entity/
+	3009	突击加农炮等级3	Assets/GameMain/Entity/
+	3010	火箭等级1	Assets/GameMain/Entity/
+	3011	火箭等级2	Assets/GameMain/Entity/
+	3012	火箭等级3	Assets/GameMain/Entity/
+	3013	等离子喷枪等级1	Assets/GameMain/Entity/
+	3014	等离子喷枪等级2	Assets/GameMain/Entity/
+	3015	等离子喷枪等级3	Assets/GameMain/Entity/
+	3016	能量塔等级1	Assets/GameMain/Entity/
+	3017	能量塔等级2	Assets/GameMain/Entity/
+	3018	能量塔等级3	Assets/GameMain/Entity/
+	3019	电磁脉冲发生器等级1	Assets/GameMain/Entity/
+	3020	电磁脉冲发生器等级2	Assets/GameMain/Entity/
+	3021	电磁脉冲发生器等级3	Assets/GameMain/Entity/
+	3022	导弹阵列等级1	Assets/GameMain/Entity/
+#			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3
 	20001	Enemy Fire	Assets/GameMain/Sounds/SFX/Enemy Fire.wav

@@ -1605,3 +1605,5 @@ MonoBehaviour:
     dataTypeName: Flower.DataUI
   - enable: 1
     dataTypeName: Flower.DataLevel
+  - enable: 1
+    dataTypeName: Flower.DataTower

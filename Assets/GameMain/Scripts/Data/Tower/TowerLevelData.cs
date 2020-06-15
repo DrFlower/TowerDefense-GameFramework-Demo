@@ -9,7 +9,6 @@ namespace Flower
     public class TowerLevelData
     {
         private DRTowerLevel dRTowerLevel;
-        private DRAssetsPath dRAssetsPath;
 
         public int Id
         {
@@ -27,11 +26,11 @@ namespace Flower
             }
         }
 
-        public string AssetPath
+        public int EntityId
         {
             get
             {
-                return dRAssetsPath.AssetPath;
+                return dRTowerLevel.EntityId;
             }
         }
 
@@ -67,10 +66,9 @@ namespace Flower
             }
         }
 
-        public TowerLevelData(DRTowerLevel dRTowerLevel, DRAssetsPath dRAssetsPath)
+        public TowerLevelData(DRTowerLevel dRTowerLevel)
         {
             this.dRTowerLevel = dRTowerLevel;
-            this.dRAssetsPath = dRAssetsPath;
         }
 
     }
