@@ -35,6 +35,14 @@ namespace Flower
             }
         }
 
+        public int EntityId
+        {
+            get
+            {
+                return dRTower.EntityId;
+            }
+        }
+
         public TowerData(DRTower dRTower, TowerLevelData[] towerLevels)
         {
             this.dRTower = dRTower;

@@ -52,8 +52,7 @@ namespace Flower
                     throw new System.Exception(string.Format("Data tower level id '{0}' duplicate.", drTowerLevel.Id));
                 }
 
-                DRAssetsPath dRAssetsPath = GameEntry.Data.GetData<DataAssetsPath>().GetDRAssetsPathByAssetsId(drTowerLevel.ModelAssetId);
-                TowerLevelData towerLevelData = new TowerLevelData(drTowerLevel, dRAssetsPath);
+                TowerLevelData towerLevelData = new TowerLevelData(drTowerLevel);
                 dicTowerLevelData.Add(drTowerLevel.Id, towerLevelData);
             }
 
