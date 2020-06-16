@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-06-14 22:26:14.967
+// 生成时间：2020-06-16 23:27:41.183
 //------------------------------------------------------------
 
 using GameFramework;
@@ -63,6 +63,24 @@ namespace Flower
             private set;
         }
 
+        /// <summary>
+        /// 获取波次时间间隔。
+        /// </summary>
+        public float Interval
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取波次ID。
+        /// </summary>
+        public int[] WaveIds
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
         {
             Type dataType = dataRowSegment.DataType;
@@ -81,6 +99,8 @@ namespace Flower
                 NameId = columnTexts[index++];
                 DescriptionId = columnTexts[index++];
                 SceneId = int.Parse(columnTexts[index++]);
+                Interval = float.Parse(columnTexts[index++]);
+                WaveIds = DataTableExtension.ParseInt32Array(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -93,6 +113,8 @@ namespace Flower
                         NameId = strings[binaryReader.Read7BitEncodedInt32()];
                         DescriptionId = strings[binaryReader.Read7BitEncodedInt32()];
                         SceneId = binaryReader.Read7BitEncodedInt32();
+                        Interval = binaryReader.ReadSingle();
+                        WaveIds = binaryReader.ReadInt32Array();
                     }
                 }
             }

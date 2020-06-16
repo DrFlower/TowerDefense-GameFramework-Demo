@@ -1,26 +1,26 @@
-#	ÊµÌåÅäÖÃ±í				
+ï»¿#	å®ä½“é…ç½®è¡¨				
 #	Id		Name	AssetId	EntityGroupId
 #	int		string	int	int
-#	ÅäÖÃ±àºÅ	²ß»®±¸×¢	ÎïÌåÃû×Ö	×ÊÔ´ID	ÎïÌå×éÃû
-	1001	Í»»÷¼ÓÅ©ÅÚ	AssaultCannonLevel1	3001	1001
-	1002	»ğ¼ı	RocketPlatform	3002	1001
-	1003	µÈÀë×ÓÅçÇ¹	PlasmaLance	3003	1001
-	1004	ÄÜÁ¿Ëş	EnergyPylon	3004	1001
-	1005	µç´ÅÂö³å·¢ÉúÆ÷	EMPGenerator	3005	1001
-	1006	µ¼µ¯ÕóÁĞ	MissileArray	3006	1001
-	1007	Í»»÷¼ÓÅ©ÅÚµÈ¼¶1	AssaultCannonLevel1	3007	1001
-	1008	Í»»÷¼ÓÅ©ÅÚµÈ¼¶2	AssaultCannonLevel2	3008	1001
-	1009	Í»»÷¼ÓÅ©ÅÚµÈ¼¶3	AssaultCannonLevel3	3009	1001
-	1010	»ğ¼ıµÈ¼¶1	RocketPlatformLevel1	3010	1001
-	1011	»ğ¼ıµÈ¼¶2	RocketPlatformLevel2	3011	1001
-	1012	»ğ¼ıµÈ¼¶3	RocketPlatformLeve3	3012	1001
-	1013	µÈÀë×ÓÅçÇ¹µÈ¼¶1	PlasmaLanceLevel1	3013	1001
-	1014	µÈÀë×ÓÅçÇ¹µÈ¼¶2	PlasmaLanceLevel2	3014	1001
-	1015	µÈÀë×ÓÅçÇ¹µÈ¼¶3	PlasmaLanceLevel3	3015	1001
-	1016	ÄÜÁ¿ËşµÈ¼¶1	EnergyPylonLevel1	3016	1001
-	1017	ÄÜÁ¿ËşµÈ¼¶2	EnergyPylonLevel2	3017	1001
-	1018	ÄÜÁ¿ËşµÈ¼¶3	EnergyPylonLevel3	3018	1001
-	1019	µç´ÅÂö³å·¢ÉúÆ÷µÈ¼¶1	EMPGeneratorLevel1	3019	1001
-	1020	µç´ÅÂö³å·¢ÉúÆ÷µÈ¼¶2	EMPGeneratorLevel2	3020	1001
-	1021	µç´ÅÂö³å·¢ÉúÆ÷µÈ¼¶3	EMPGeneratorLevel3	3021	1001
-	1022	µ¼µ¯ÕóÁĞµÈ¼¶1	EnergyPylonLevel1	3022	1001
+#	é…ç½®ç¼–å·	ç­–åˆ’å¤‡æ³¨	ç‰©ä½“åå­—	èµ„æºID	å®ä½“ç»„Id
+	1001	çªå‡»åŠ å†œç‚®	AssaultCannonLevel1	3001	1001
+	1002	ç«ç®­	RocketPlatform	3002	1002
+	1003	ç­‰ç¦»å­å–·æª	PlasmaLance	3003	1003
+	1004	èƒ½é‡å¡”	EnergyPylon	3004	1004
+	1005	ç”µç£è„‰å†²å‘ç”Ÿå™¨	EMPGenerator	3005	1005
+	1006	å¯¼å¼¹é˜µåˆ—	MissileArray	3006	1006
+	1007	çªå‡»åŠ å†œç‚®ç­‰çº§1	AssaultCannonLevel1	3007	1007
+	1008	çªå‡»åŠ å†œç‚®ç­‰çº§2	AssaultCannonLevel2	3008	1008
+	1009	çªå‡»åŠ å†œç‚®ç­‰çº§3	AssaultCannonLevel3	3009	1009
+	1010	ç«ç®­ç­‰çº§1	RocketPlatformLevel1	3010	1010
+	1011	ç«ç®­ç­‰çº§2	RocketPlatformLevel2	3011	1011
+	1012	ç«ç®­ç­‰çº§3	RocketPlatformLeve3	3012	1012
+	1013	ç­‰ç¦»å­å–·æªç­‰çº§1	PlasmaLanceLevel1	3013	1013
+	1014	ç­‰ç¦»å­å–·æªç­‰çº§2	PlasmaLanceLevel2	3014	1014
+	1015	ç­‰ç¦»å­å–·æªç­‰çº§3	PlasmaLanceLevel3	3015	1015
+	1016	èƒ½é‡å¡”ç­‰çº§1	EnergyPylonLevel1	3016	1016
+	1017	èƒ½é‡å¡”ç­‰çº§2	EnergyPylonLevel2	3017	1017
+	1018	èƒ½é‡å¡”ç­‰çº§3	EnergyPylonLevel3	3018	1018
+	1019	ç”µç£è„‰å†²å‘ç”Ÿå™¨ç­‰çº§1	EMPGeneratorLevel1	3019	1019
+	1020	ç”µç£è„‰å†²å‘ç”Ÿå™¨ç­‰çº§2	EMPGeneratorLevel2	3020	1020
+	1021	ç”µç£è„‰å†²å‘ç”Ÿå™¨ç­‰çº§3	EMPGeneratorLevel3	3021	1021
+	1022	å¯¼å¼¹é˜µåˆ—ç­‰çº§1	EnergyPylonLevel1	3022	1022
