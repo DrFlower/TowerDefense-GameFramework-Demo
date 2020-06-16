@@ -14,6 +14,8 @@ namespace Flower
 
         private readonly static int NONE_LEVEL_INDEX = -1;
 
+        private EnumLevelState stateBeforePause;
+
         public EnumLevelState LevelState
         {
             get;
@@ -76,6 +78,22 @@ namespace Flower
             return results;
         }
 
+        private void ChangeLevelState(EnumLevelState targetLevelState)
+        {
+            if (LevelState == targetLevelState)
+                return;
+
+            LevelData levelData = GetLevelData(CurrentLevel);
+            if (levelData == null)
+            {
+                Log.Error("Can not found level '{0}.'", CurrentLevel);
+            }
+
+            EnumLevelState lastLevelState = LevelState;
+            LevelState = targetLevelState;
+            GameEntry.Event.Fire(this, LevelStateChangeEventArgs.Create(levelData, lastLevelState, LevelState));
+        }
+
         public void LoadLevel(int level)
         {
             if (LevelState == EnumLevelState.Loading)
@@ -105,6 +123,25 @@ namespace Flower
             }
 
             GameEntry.Event.Fire(this, LoadLevelEventArgs.Create(levelData));
+            ChangeLevelState(EnumLevelState.Loading);
+        }
+
+        public void StartWave()
+        {
+            if (CurrentLevel == NONE_LEVEL_INDEX)
+            {
+                Log.Error("Only can resume in level");
+                return;
+            }
+
+            if (LevelState != EnumLevelState.Prepare)
+            {
+                Log.Error("Only can resume when level is in Prepare State,now is {0}", LevelState.ToString());
+                return;
+            }
+
+            GameEntry.Event.Fire(this, StartWaveEventArgs.Create());
+            ChangeLevelState(EnumLevelState.Normal);
         }
 
         public void LevelPause()
@@ -115,21 +152,50 @@ namespace Flower
                 return;
             }
 
-            if (LevelState != EnumLevelState.Normal)
+            if (LevelState != EnumLevelState.Normal || LevelState != EnumLevelState.Prepare)
             {
-                Log.Error("Only can pause when level is in Normal State,now is {0}", LevelState.ToString());
+                Log.Error("Only can pause when level is in Normal or Prepare State,now is {0}", LevelState.ToString());
                 return;
             }
 
-            LevelState = EnumLevelState.Pause;
+            stateBeforePause = LevelState;
+            ChangeLevelState(EnumLevelState.Pause);
         }
 
         public void LevelResume()
         {
+            if (CurrentLevel == NONE_LEVEL_INDEX)
+            {
+                Log.Error("Only can resume in level");
+                return;
+            }
 
+            if (LevelState != EnumLevelState.Pause)
+            {
+                Log.Error("Only can resume when level is in Pause State,now is {0}", LevelState.ToString());
+                return;
+            }
+
+            ChangeLevelState(stateBeforePause);
         }
 
+        public void Gameover()
+        {
+            if (CurrentLevel == NONE_LEVEL_INDEX)
+            {
+                Log.Error("Gameover Only heppen in level");
+                return;
+            }
 
+            if (LevelState != EnumLevelState.Normal)
+            {
+                Log.Error("Gameover Only heppen when level is in Normal State,now is {0}", LevelState.ToString());
+                return;
+            }
+
+            GameEntry.Event.Fire(this, GameoverEventArgs.Create());
+            ChangeLevelState(EnumLevelState.Gameover);
+        }
 
         protected override void OnUnload()
         {

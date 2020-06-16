@@ -14,9 +14,13 @@ namespace Flower
         private ProcedureOwner procedureOwner;
         private bool changeScene = false;
 
+        private LevelControl levelControl;
+
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
+
+            levelControl = new LevelControl();
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
@@ -55,6 +59,24 @@ namespace Flower
         protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
             base.OnDestroy(procedureOwner);
+        }
+
+        private void OnStartWave(object sender, GameEventArgs e)
+        {
+            StartWaveEventArgs ne = (StartWaveEventArgs)e;
+            if (ne == null)
+                return;
+
+
+        }
+
+        private void OnGameover(object sender, GameEventArgs e)
+        {
+            GameoverEventArgs ne = (GameoverEventArgs)e;
+            if (ne == null)
+                return;
+
+
         }
 
         private void OnChangeScene(object sender, GameEventArgs e)

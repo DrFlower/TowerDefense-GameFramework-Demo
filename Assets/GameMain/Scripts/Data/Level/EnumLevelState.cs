@@ -11,6 +11,7 @@ namespace Flower
     {
         None,
         Loading,
+        Prepare,
         Normal,
         Pause,
         Gameover
