@@ -1607,3 +1607,5 @@ MonoBehaviour:
     dataTypeName: Flower.DataLevel
   - enable: 1
     dataTypeName: Flower.DataTower
+  - enable: 1
+    dataTypeName: Flower.DataPlayer

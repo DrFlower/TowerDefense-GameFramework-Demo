@@ -39,12 +39,13 @@ namespace Flower
 
         private void OnBtnMainMenu()
         {
-            GameEntry.Event.Fire(this, ChangeSceneEventArgs.Create(GameEntry.Config.GetInt("Scene.Menu")));
+            GameEntry.Data.GetData<DataLevel>().ExitLevel();
         }
 
         private void OnBtnRestart()
         {
-
+            int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevel;
+            GameEntry.Data.GetData<DataLevel>().LoadLevel(currentLevel);
         }
 
     }

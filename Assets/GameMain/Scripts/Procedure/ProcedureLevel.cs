@@ -29,7 +29,7 @@ namespace Flower
 
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
-            GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            //GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
@@ -53,7 +53,7 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
-            GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)

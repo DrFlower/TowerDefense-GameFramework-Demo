@@ -12,16 +12,15 @@ namespace Flower
         public Text hpText;
         public Text energyText;
 
+        public Button debugAddEnergyBtton;
+        public Text debugAddEnergyText;
+
+        public GameObject waveInfoPanel;
+        public Button btnStartWave;
         public Text waveText;
         public Image waveProgressImg;
 
-        public Button btnStartWave;
-
         public Button btnPause;
-
-        public GameObject debugAddEnergyPanel;
-        public Button debugAddEnergyBtton;
-        public Text debugAddEnergyText;
 
         private DataPlayer dataPlayer;
         private DataLevel dataLevel;
@@ -30,34 +29,40 @@ namespace Flower
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-
-            btnStartWave.onClick.AddListener(OnBtnStartWaveClick);
-            btnPause.onClick.AddListener(OnPauseBtnClick);
-            debugAddEnergyBtton.onClick.AddListener(OnBtnAdEnrgyClick);
-
-            debugAddEnergyPanel.gameObject.SetActive(dataPlayer.IsEnableDebugEnergy);
-            debugAddEnergyText.text = dataPlayer.DebugAddEnergyCount.ToString();
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
+            btnStartWave.onClick.AddListener(OnBtnStartWaveClick);
+            btnPause.onClick.AddListener(OnPauseBtnClick);
+            debugAddEnergyBtton.onClick.AddListener(OnBtnAdEnrgyClick);
+
             Subscribe(PlayerHPChangeEventArgs.EventId, OnPlayerHPChange);
             Subscribe(PlayerEnergyChangeEventArgs.EventId, OnPlayerEnergyChange);
+            Subscribe(LevelStateChangeEventArgs.EventId, OnLevelStateChange);
 
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataLevel = GameEntry.Data.GetData<DataLevel>();
 
+            debugAddEnergyBtton.gameObject.SetActive(dataPlayer.IsEnableDebugEnergy);
+            debugAddEnergyText.text = dataPlayer.DebugAddEnergyCount.ToString();
+
             hpText.text = dataPlayer.HP.ToString();
             energyText.text = dataPlayer.Energy.ToString();
 
-
+            btnStartWave.gameObject.SetActive(true);
+            waveInfoPanel.SetActive(false);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
+
+            btnStartWave.onClick.RemoveAllListeners();
+            btnPause.onClick.RemoveAllListeners();
+            debugAddEnergyBtton.onClick.RemoveAllListeners();
 
             dataPlayer = null;
             dataLevel = null;
@@ -79,6 +84,19 @@ namespace Flower
                 return;
 
             energyText.text = ne.CurrentEnergy.ToString();
+        }
+
+        private void OnLevelStateChange(object sender, GameEventArgs e)
+        {
+            LevelStateChangeEventArgs ne = (LevelStateChangeEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (ne.LastState == EnumLevelState.Prepare && ne.CurrentState == EnumLevelState.Normal)
+            {
+                btnStartWave.gameObject.SetActive(false);
+                waveInfoPanel.SetActive(true);
+            }
         }
 
         private void OnWaveUpdate(object sender, GameEventArgs e)

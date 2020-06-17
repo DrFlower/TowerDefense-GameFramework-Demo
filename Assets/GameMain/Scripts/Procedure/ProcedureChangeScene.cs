@@ -14,6 +14,8 @@ namespace Flower
         private bool loadSceneCompleted = false;
         private SceneData sceneData = null;
 
+        private int loadingSceneId = -1;
+
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
@@ -24,6 +26,7 @@ namespace Flower
             base.OnEnter(procedureOwner);
 
             loadSceneCompleted = false;
+            loadingSceneId = -1;
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
@@ -39,12 +42,12 @@ namespace Flower
 
             GameEntry.UI.CloseAllLoadedUIForms();
 
-            int sceneId = procedureOwner.GetData<VarInt>(Constant.ProcedureData.NextSceneId).Value;
-            sceneData = GameEntry.Data.GetData<DataScene>().GetSceneData(sceneId);
+            loadingSceneId = procedureOwner.GetData<VarInt>(Constant.ProcedureData.NextSceneId).Value;
+            sceneData = GameEntry.Data.GetData<DataScene>().GetSceneData(loadingSceneId);
 
             if (sceneData == null)
             {
-                Log.Warning("Can not can scene data id :'{0}'.", sceneId.ToString());
+                Log.Warning("Can not can scene data id :'{0}'.", loadingSceneId.ToString());
                 return;
             }
 
@@ -73,6 +76,8 @@ namespace Flower
         {
             base.OnLeave(procedureOwner, isShutdown);
 
+            loadingSceneId = -1;
+
             GameEntry.Event.Unsubscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Unsubscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
@@ -95,6 +100,7 @@ namespace Flower
 
             loadSceneCompleted = true;
 
+            GameEntry.Event.Fire(this, LoadLevelFinishEventArgs.Create(loadingSceneId));
             Log.Info("Load scene '{0}' OK.", ne.SceneAssetName);
         }
 

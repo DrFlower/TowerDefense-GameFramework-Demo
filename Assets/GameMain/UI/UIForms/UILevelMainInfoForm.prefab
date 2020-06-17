@@ -1377,7 +1377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1971719879710118120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1808,8 +1808,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpText: {fileID: 1862776904721961672}
   energyText: {fileID: 1862700785586643466}
+  debugAddEnergyBtton: {fileID: 1861800050397735403}
+  debugAddEnergyText: {fileID: 1862035866527893655}
+  waveInfoPanel: {fileID: 1749459555243253854}
+  btnStartWave: {fileID: 1862161550237828159}
   waveText: {fileID: 1862081582563884260}
   waveProgressImg: {fileID: 1861833425185411672}
-  btnStartWave: {fileID: 1862161550237828159}
   btnPause: {fileID: 1861847118045184292}
-  debugAddEnergy: {fileID: 1861800050397735403}
