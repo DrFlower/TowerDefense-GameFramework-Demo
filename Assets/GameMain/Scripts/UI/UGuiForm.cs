@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameFramework.Event;
 using System;
+using GameFramework;
 
 namespace Flower
 {
@@ -26,6 +27,7 @@ namespace Flower
         private List<Canvas> m_CachedCanvasContainer = new List<Canvas>();
 
         private EventSubscriber eventSubscriber;
+        private ItemLoader itemLoader;
 
         public int OriginalDepth
         {
@@ -143,6 +145,18 @@ namespace Flower
         {
             base.OnClose(isShutdown, userData);
             UnSubscribeAll();
+            if (eventSubscriber != null)
+            {
+                ReferencePool.Release(eventSubscriber);
+                eventSubscriber = null;
+            }
+
+            HideAllItem();
+            if (itemLoader != null)
+            {
+                ReferencePool.Release(itemLoader);
+                itemLoader = null;
+            }
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -230,17 +244,15 @@ namespace Flower
         protected void Subscribe(int id, EventHandler<GameEventArgs> handler)
         {
             if (eventSubscriber == null)
-                eventSubscriber = new EventSubscriber(this);
+                eventSubscriber = EventSubscriber.Create(this);
 
             eventSubscriber.Subscribe(id, handler);
         }
 
         protected void UnSubscribe(int id, EventHandler<GameEventArgs> handler)
         {
-            if (eventSubscriber == null)
-                eventSubscriber = new EventSubscriber(this);
-
-            eventSubscriber.UnSubscribe(id, handler);
+            if (eventSubscriber != null)
+                eventSubscriber.UnSubscribe(id, handler);
         }
 
         protected void UnSubscribeAll()
@@ -248,5 +260,46 @@ namespace Flower
             if (eventSubscriber != null)
                 eventSubscriber.UnSubscribeAll();
         }
+
+        public int ShowItem(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null)
+        {
+            if (itemLoader == null)
+            {
+                itemLoader = ItemLoader.Create(this);
+            }
+
+            return itemLoader.ShowItem(enumItem, onShowSuccess, userData);
+        }
+
+        public void HideItem(int serialId)
+        {
+            if (itemLoader == null)
+            {
+                return;
+            }
+
+            itemLoader.HideItem(serialId);
+        }
+
+        public void HideItem(Item item)
+        {
+            if (itemLoader == null)
+            {
+                return;
+            }
+
+            itemLoader.HideItem(item);
+        }
+
+        public void HideAllItem()
+        {
+            if (itemLoader == null)
+            {
+                return;
+            }
+
+            itemLoader.HideAllItem();
+        }
+
     }
 }

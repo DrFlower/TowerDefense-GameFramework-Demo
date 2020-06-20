@@ -38,6 +38,23 @@ namespace Flower
             }
         }
 
+        public int[] WaveIds
+        {
+            get
+            {
+                return dRLevel.WaveIds;
+            }
+        }
+
+        public int[] AllowTowers
+        {
+            get
+            {
+                return dRLevel.AllowTowers;
+            }
+        }
+
+
         public SceneData SceneData
         {
             get

@@ -58,7 +58,11 @@ namespace Flower
         public sealed override void Unload()
         {
             if (eventSubscriber != null)
+            {
                 eventSubscriber.UnSubscribeAll();
+                ReferencePool.Release(eventSubscriber);
+                eventSubscriber = null;
+            }
 
             OnUnload();
         }
@@ -91,17 +95,15 @@ namespace Flower
         protected void Subscribe(int id, EventHandler<GameEventArgs> handler)
         {
             if (eventSubscriber == null)
-                eventSubscriber = new EventSubscriber(this);
+                eventSubscriber = EventSubscriber.Create(this);
 
             eventSubscriber.Subscribe(id, handler);
         }
 
         protected void UnSubscribe(int id, EventHandler<GameEventArgs> handler)
         {
-            if (eventSubscriber == null)
-                eventSubscriber = new EventSubscriber(this);
-
-            eventSubscriber.UnSubscribe(id, handler);
+            if (eventSubscriber != null)
+                eventSubscriber.UnSubscribe(id, handler);
         }
 
         protected void LoadConfig(string configName)

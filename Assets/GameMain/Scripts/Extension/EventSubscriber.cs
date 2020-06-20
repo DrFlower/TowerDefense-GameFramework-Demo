@@ -6,23 +6,20 @@ using System.Collections.Generic;
 
 namespace Flower
 {
-    public class EventSubscriber
+    public class EventSubscriber : IReference
     {
         private GameFrameworkMultiDictionary<int, EventHandler<GameEventArgs>> dicEventHandler = new GameFrameworkMultiDictionary<int, EventHandler<GameEventArgs>>();
-        private object owner;
 
         public object Owner
         {
-            get
-            {
-                return owner;
-            }
+            get;
+            private set;
         }
 
-        public EventSubscriber(object owner)
+        public EventSubscriber()
         {
-            this.owner = owner;
             dicEventHandler = new GameFrameworkMultiDictionary<int, EventHandler<GameEventArgs>>();
+            Owner = null;
         }
 
         public void Subscribe(int id, EventHandler<GameEventArgs> handler)
@@ -60,6 +57,20 @@ namespace Flower
             }
 
             dicEventHandler.Clear();
+        }
+
+        public static EventSubscriber Create(object owner)
+        {
+            EventSubscriber eventSubscriber = ReferencePool.Acquire<EventSubscriber>();
+            eventSubscriber.Owner = owner;
+
+            return eventSubscriber;
+        }
+
+        public void Clear()
+        {
+            dicEventHandler.Clear();
+            Owner = null;
         }
     }
 }

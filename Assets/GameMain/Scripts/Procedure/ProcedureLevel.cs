@@ -34,7 +34,7 @@ namespace Flower
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
 
-            GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
+            levelControl.Enter();       
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -53,6 +53,7 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
+        
             //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
         }
 
@@ -67,7 +68,7 @@ namespace Flower
             if (ne == null)
                 return;
 
-
+            levelControl.StartWave();
         }
 
         private void OnGameover(object sender, GameEventArgs e)
@@ -76,7 +77,7 @@ namespace Flower
             if (ne == null)
                 return;
 
-
+            levelControl.Gameover();
         }
 
         private void OnChangeScene(object sender, GameEventArgs e)
