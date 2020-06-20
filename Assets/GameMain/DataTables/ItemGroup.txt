@@ -3,3 +3,4 @@
 #	int		string	int
 #	配置编号	策划备注	物体组名字	对象池参数Id
 	1001	关卡选择按钮	LevelSelectionButton	1001
+	1002	建造炮塔按钮	TowerBuildButton	1001

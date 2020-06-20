@@ -270,6 +270,15 @@ namespace Flower
 
             return itemLoader.ShowItem(enumItem, onShowSuccess, userData);
         }
+        public int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
+        {
+            if (itemLoader == null)
+            {
+                itemLoader = ItemLoader.Create(this);
+            }
+
+            return itemLoader.ShowItem<T>(enumItem, onShowSuccess, userData);
+        }
 
         public void HideItem(int serialId)
         {

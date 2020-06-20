@@ -41,8 +41,8 @@ namespace Flower
             LevelData[] levelDatas = GameEntry.Data.GetData<DataLevel>().GetAllLevelData();
             foreach (var levelData in levelDatas)
             {
- 
-                ShowItem(EnumItem.LevelSelectionButton, (item) =>
+
+                ShowItem<ItemLevelSelectionButton>(EnumItem.LevelSelectionButton, (item) =>
                  {
                      item.transform.SetParent(levelSelectButtonRoot, false);
                      item.transform.localScale = Vector3.one;

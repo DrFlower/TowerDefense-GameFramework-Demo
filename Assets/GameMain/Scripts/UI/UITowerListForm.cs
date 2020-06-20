@@ -50,7 +50,18 @@ namespace Flower
             dicSerialId2TowerId.Clear();
 
             int[] allowTowers = currentLevelData.AllowTowers;
+            foreach (var towers in allowTowers)
+            {
+                ShowItem<ItemTowerBuildButton>(EnumItem.TowerBuildButton, (item) =>
+                {        
+                    item.transform.SetParent(towerBuildButtonRoot, false);
 
+                    item.transform.localScale = Vector3.one;
+                    item.transform.eulerAngles = Vector3.zero;
+                    item.transform.localPosition = Vector3.zero;
+                    ItemTowerBuildButton itemTowerBuildButton = item.GetComponent<ItemTowerBuildButton>();
+                });
+            }
         }
 
 

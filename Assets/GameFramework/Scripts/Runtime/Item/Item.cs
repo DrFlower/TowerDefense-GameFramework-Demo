@@ -120,7 +120,11 @@ namespace UnityGameFramework.Runtime
             if (itemLogicType == null)
                 return;
 
-            m_ItemLogic = gameObject.AddComponent(itemLogicType) as ItemLogic;
+            m_ItemLogic = gameObject.GetComponent(itemLogicType) as ItemLogic;
+
+            if (m_ItemLogic == null)
+                m_ItemLogic = gameObject.AddComponent(itemLogicType) as ItemLogic;
+
             if (m_ItemLogic == null)
             {
                 Log.Error("Item '{0}' can not add item logic.", itemAssetName);

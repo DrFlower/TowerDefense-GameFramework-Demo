@@ -1,5 +1,6 @@
 ﻿#	动态加载资源配置表				
 #	Id		Name	AssetId	ItemGroupId
 #	int		string	int	int
-#	配置编号	策划备注	物体名字	资源ID	物体组名
+#	配置编号	策划备注	物体名字	资源ID	物体组Id
 	1001	关卡选择按钮	LevelSelectionButton	2001	1001
+	1002	建造炮塔按钮	TowerBuildButton	2002	1002

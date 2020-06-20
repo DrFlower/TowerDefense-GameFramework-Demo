@@ -29,7 +29,15 @@ namespace Flower
         {
             int serialId = GameEntry.Item.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Item.ShowItem<ItemLevelSelectionButton>(serialId, EnumItem.LevelSelectionButton, Owner);
+            GameEntry.Item.ShowItem(serialId, enumItem, Owner);
+            return serialId;
+        }
+
+        public int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
+        {
+            int serialId = GameEntry.Item.GenerateSerialId();
+            dicCallback.Add(serialId, onShowSuccess);
+            GameEntry.Item.ShowItem<T>(serialId, enumItem, Owner);
             return serialId;
         }
 
