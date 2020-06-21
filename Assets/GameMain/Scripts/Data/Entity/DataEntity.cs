@@ -1,125 +1,125 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using GameFramework.Data;
-//using GameFramework.DataTable;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using GameFramework.Data;
+using GameFramework.DataTable;
 
 
-//namespace Flower
-//{
-//    public sealed class DataEntity : DataBase
-//    {
-//        private IDataTable<DRItem> dtItem;
-//        private IDataTable<DRItemGroup> dtItemGroup;
+namespace Flower
+{
+    public sealed class DataEntity : DataBase
+    {
+        private IDataTable<DREntity> dtEntity;
+        private IDataTable<DREntityGroup> dtEntityGroup;
 
-//        private Dictionary<int, ItemData> dicItemData;
-//        private Dictionary<int, ItemGroupData> dicItemGroupData;
+        private Dictionary<int, EntityData> dicEntityData;
+        private Dictionary<int, EntityGroupData> dicEntityGroupData;
 
-//        protected override void OnInit()
-//        {
+        protected override void OnInit()
+        {
 
-//        }
+        }
 
-//        protected override void OnPreload()
-//        {
-//            LoadDataTable("Entity");
-//            LoadDataTable("EntityGroup");
-//        }
+        protected override void OnPreload()
+        {
+            LoadDataTable("Entity");
+            LoadDataTable("EntityGroup");
+        }
 
-//        protected override void OnLoad()
-//        {
-//            dtItem = GameEntry.DataTable.GetDataTable<DRItem>();
-//            if (dtItem == null)
-//                throw new System.Exception("Can not get data table Item");
+        protected override void OnLoad()
+        {
+            dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
+            if (dtEntity == null)
+                throw new System.Exception("Can not get data table Entity");
 
-//            dtItemGroup = GameEntry.DataTable.GetDataTable<DRItemGroup>();
-//            if (dtItemGroup == null)
-//                throw new System.Exception("Can not get data table ItemGroup");
+            dtEntityGroup = GameEntry.DataTable.GetDataTable<DREntityGroup>();
+            if (dtEntityGroup == null)
+                throw new System.Exception("Can not get data table EntityGroup");
 
-//            dicItemData = new Dictionary<int, ItemData>();
-//            dicItemGroupData = new Dictionary<int, ItemGroupData>();
+            dicEntityData = new Dictionary<int, EntityData>();
+            dicEntityGroupData = new Dictionary<int, EntityGroupData>();
 
-//            DRItem[] drItems = dtItem.GetAllDataRows();
-//            foreach (var drItem in drItems)
-//            {
-//                ItemGroupData itemGroupData = null;
-//                if (!dicItemGroupData.TryGetValue(drItem.ItemGroupId, out itemGroupData))
-//                {
-//                    DRItemGroup dRItemGroup = dtItemGroup.GetDataRow(drItem.ItemGroupId);
-//                    if (dRItemGroup == null)
-//                    {
-//                        throw new System.Exception("Can not find ItemGroup id :" + drItem.ItemGroupId);
-//                    }
-//                    PoolParamData poolParamData = GameEntry.Data.GetData<DataPoolParam>().GetPoolParamData(dRItemGroup.PoolParamId);
+            DREntity[] drEntitys = dtEntity.GetAllDataRows();
+            foreach (var drEntity in drEntitys)
+            {
+                EntityGroupData entityGroupData = null;
+                if (!dicEntityGroupData.TryGetValue(drEntity.EntityGroupId, out entityGroupData))
+                {
+                    DREntityGroup dREntityGroup = dtEntityGroup.GetDataRow(drEntity.EntityGroupId);
+                    if (dREntityGroup == null)
+                    {
+                        throw new System.Exception("Can not find EntityGroup id :" + drEntity.EntityGroupId);
+                    }
+                    PoolParamData poolParamData = GameEntry.Data.GetData<DataPoolParam>().GetPoolParamData(dREntityGroup.PoolParamId);
 
-//                    itemGroupData = new ItemGroupData(dRItemGroup, poolParamData);
-//                    dicItemGroupData.Add(drItem.ItemGroupId, itemGroupData);
-//                }
+                    entityGroupData = new EntityGroupData(dREntityGroup, poolParamData);
+                    dicEntityGroupData.Add(drEntity.EntityGroupId, entityGroupData);
+                }
 
-//                DRAssetsPath dRAssetsPath = GameEntry.Data.GetData<DataAssetsPath>().GetDRAssetsPathByAssetsId(drItem.AssetId);
+                DRAssetsPath dRAssetsPath = GameEntry.Data.GetData<DataAssetsPath>().GetDRAssetsPathByAssetsId(drEntity.AssetId);
 
-//                ItemData itemData = new ItemData(drItem, dRAssetsPath, itemGroupData);
-//                dicItemData.Add(drItem.Id, itemData);
-//            }
-//        }
+                EntityData entityData = new EntityData(drEntity, dRAssetsPath, entityGroupData);
+                dicEntityData.Add(drEntity.Id, entityData);
+            }
+        }
 
-//        public ItemData GetItemData(int id)
-//        {
-//            if (dicItemData.ContainsKey(id))
-//            {
-//                return dicItemData[id];
-//            }
+        public EntityData GetEntityData(int id)
+        {
+            if (dicEntityData.ContainsKey(id))
+            {
+                return dicEntityData[id];
+            }
 
-//            return null;
-//        }
+            return null;
+        }
 
-//        public ItemGroupData GetItemGroupData(int id)
-//        {
-//            if (dicItemGroupData.ContainsKey(id))
-//            {
-//                return dicItemGroupData[id];
-//            }
+        public EntityGroupData GetEntityGroupData(int id)
+        {
+            if (dicEntityGroupData.ContainsKey(id))
+            {
+                return dicEntityGroupData[id];
+            }
 
-//            return null;
-//        }
+            return null;
+        }
 
-//        public ItemData[] GetAllItemData()
-//        {
-//            int index = 0;
-//            ItemData[] results = new ItemData[dicItemData.Count];
-//            foreach (var itemData in dicItemData.Values)
-//            {
-//                results[index++] = itemData;
-//            }
+        public EntityData[] GetAllEntityData()
+        {
+            int index = 0;
+            EntityData[] results = new EntityData[dicEntityData.Count];
+            foreach (var entityData in dicEntityData.Values)
+            {
+                results[index++] = entityData;
+            }
 
-//            return results;
-//        }
+            return results;
+        }
 
-//        public ItemGroupData[] GetAllItemGroupData()
-//        {
-//            int index = 0;
-//            ItemGroupData[] results = new ItemGroupData[dicItemGroupData.Count];
-//            foreach (var itemGroupData in dicItemGroupData.Values)
-//            {
-//                results[index++] = itemGroupData;
-//            }
+        public EntityGroupData[] GetAllEntityGroupData()
+        {
+            int index = 0;
+            EntityGroupData[] results = new EntityGroupData[dicEntityGroupData.Count];
+            foreach (var entityGroupData in dicEntityGroupData.Values)
+            {
+                results[index++] = entityGroupData;
+            }
 
-//            return results;
-//        }
+            return results;
+        }
 
-//        protected override void OnUnload()
-//        {
-//            GameEntry.DataTable.DestroyDataTable<DRItem>();
-//            GameEntry.DataTable.DestroyDataTable<DRItemGroup>();
+        protected override void OnUnload()
+        {
+            GameEntry.DataTable.DestroyDataTable<DREntity>();
+            GameEntry.DataTable.DestroyDataTable<DREntityGroup>();
 
-//            dtItem = null;
-//            dtItemGroup = null;
-//            dicItemData = null;
-//            dicItemGroupData = null;
-//        }
+            dtEntity = null;
+            dtEntityGroup = null;
+            dicEntityData = null;
+            dicEntityGroupData = null;
+        }
 
-//        protected override void OnShutdown()
-//        {
-//        }
-//    }
-//}
+        protected override void OnShutdown()
+        {
+        }
+    }
+}

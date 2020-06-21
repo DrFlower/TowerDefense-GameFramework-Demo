@@ -2,7 +2,6 @@
 #	Id		Name	PoolParamId
 #	int		string	int
 #	配置编号	策划备注	物体组名字	对象池参数Id
-	1001	关卡选择按钮	LevelSelectionButton	1002
 	1001	突击加农炮	AssaultCannonLevel1	1002
 	1002	火箭	RocketPlatform	1002
 	1003	等离子喷枪	PlasmaLance	1002
