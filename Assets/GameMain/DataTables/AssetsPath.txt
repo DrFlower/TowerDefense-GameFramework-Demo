@@ -22,7 +22,7 @@
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 	2002	关卡选择按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab
 #			
-	3001	突击加农炮	Assets/GameMain/Entity/
+	3001	突击加农炮	Assets/GameMain/Entity/AssaultCannonPreview.prefab
 	3002	火箭	Assets/GameMain/Entity/
 	3003	等离子喷枪	Assets/GameMain/Entity/
 	3004	能量塔	Assets/GameMain/Entity/

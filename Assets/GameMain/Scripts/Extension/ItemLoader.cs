@@ -27,17 +27,27 @@ namespace Flower
 
         public int ShowItem(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null)
         {
+            return ShowItem((int)enumItem, onShowSuccess, userData);
+        }
+
+        public int ShowItem(int itemId, Action<Item> onShowSuccess, object userData = null)
+        {
             int serialId = GameEntry.Item.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Item.ShowItem(serialId, enumItem, userData);
+            GameEntry.Item.ShowItem(serialId, itemId, userData);
             return serialId;
         }
 
         public int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
         {
+            return ShowItem<T>((int)enumItem, onShowSuccess, userData);
+        }
+
+        public int ShowItem<T>(int itemId, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
+        {
             int serialId = GameEntry.Item.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Item.ShowItem<T>(serialId, enumItem, userData);
+            GameEntry.Item.ShowItem<T>(serialId, itemId, userData);
             return serialId;
         }
 

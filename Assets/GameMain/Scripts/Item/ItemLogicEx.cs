@@ -69,6 +69,17 @@ namespace Flower
 
             return itemLoader.ShowItem(enumItem, onShowSuccess, userData);
         }
+
+        public int ShowItem(int itemId, Action<Item> onShowSuccess, object userData = null)
+        {
+            if (itemLoader == null)
+            {
+                itemLoader = ItemLoader.Create(this);
+            }
+
+            return itemLoader.ShowItem(itemId, onShowSuccess, userData);
+        }
+
         public int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
         {
             if (itemLoader == null)
@@ -78,6 +89,17 @@ namespace Flower
 
             return itemLoader.ShowItem<T>(enumItem, onShowSuccess, userData);
         }
+
+        public int ShowItem<T>(int itemId, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
+        {
+            if (itemLoader == null)
+            {
+                itemLoader = ItemLoader.Create(this);
+            }
+
+            return itemLoader.ShowItem<T>(itemId, onShowSuccess, userData);
+        }
+
 
         public bool HasItem(int serialId)
         {
@@ -138,6 +160,17 @@ namespace Flower
 
             return entityLoader.ShowEntity(enumEntity, entityLogicType, onShowSuccess, userData);
         }
+
+        public int ShowEntity(int entityId, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
+        {
+            if (entityLoader == null)
+            {
+                entityLoader = EntityLoader.Create(this);
+            }
+
+            return entityLoader.ShowEntity(entityId, entityLogicType, onShowSuccess, userData);
+        }
+
         public int ShowItem<T>(EnumEntity enumEntity, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
         {
             if (entityLoader == null)
@@ -146,6 +179,16 @@ namespace Flower
             }
 
             return entityLoader.ShowEntity<T>(enumEntity, onShowSuccess, userData);
+        }
+
+        public int ShowItem<T>(int entityId, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
+        {
+            if (entityLoader == null)
+            {
+                entityLoader = EntityLoader.Create(this);
+            }
+
+            return entityLoader.ShowEntity<T>(entityId, onShowSuccess, userData);
         }
 
         public bool HasEntity(int serialId)
@@ -194,5 +237,4 @@ namespace Flower
             entityLoader.HideAllEntity();
         }
     }
-
 }

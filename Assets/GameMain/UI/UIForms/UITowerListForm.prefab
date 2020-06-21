@@ -145,7 +145,7 @@ MonoBehaviour:
   buildInfoName: {fileID: 1934676611639247667}
   buildInfoDps: {fileID: 1934915275585085113}
   BuildInfoDes: {fileID: 1934955669134696179}
-  BuildInfoFadeSpeed: 5
+  BuildInfoFadeSpeed: 10
 --- !u!1 &1966344735852551663
 GameObject:
   m_ObjectHideFlags: 0

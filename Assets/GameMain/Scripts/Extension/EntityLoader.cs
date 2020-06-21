@@ -26,19 +26,30 @@ namespace Flower
 
         public int ShowEntity(EnumEntity enumEntity, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
         {
+            return ShowEntity((int)enumEntity, entityLogicType, onShowSuccess, userData);
+        }
+
+        public int ShowEntity(int entityId, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
+        {
             int serialId = GameEntry.Entity.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Entity.ShowEntity(serialId, enumEntity, entityLogicType, userData);
+            GameEntry.Entity.ShowEntity(serialId, entityId, entityLogicType, userData);
             return serialId;
         }
 
         public int ShowEntity<T>(EnumEntity enumEntity, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
         {
+            return ShowEntity<T>((int)enumEntity, onShowSuccess, userData);
+        }
+
+        public int ShowEntity<T>(int entityId, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
+        {
             int serialId = GameEntry.Entity.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Entity.ShowEntity<T>(serialId, enumEntity, userData);
+            GameEntry.Entity.ShowEntity<T>(serialId, entityId, userData);
             return serialId;
         }
+
         public bool HasEntity(int serialId)
         {
             return GetEntity(serialId) != null;

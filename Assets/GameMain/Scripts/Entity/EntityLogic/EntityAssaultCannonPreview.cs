@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityAssaultCannonPreview : MonoBehaviour
+namespace Flower
 {
-    // Start is called before the first frame update
-    void Start()
+    public class EntityAssaultCannonPreview : EntityLogicEx
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void OnShow(object userData)
+        {
+            base.OnShow(userData);
+        }
     }
 }
+

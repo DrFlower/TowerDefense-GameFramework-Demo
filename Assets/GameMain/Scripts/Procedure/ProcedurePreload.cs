@@ -107,6 +107,7 @@ namespace Flower
         {
             SetDataComponent();
             SetUIComponent();
+            SetEntityComponent();
             SetItemComponent();
             SetSoundComponent();
         }
@@ -132,6 +133,16 @@ namespace Flower
             {
                 PoolParamData poolParamData = item.PoolParamData;
                 GameEntry.Item.AddItemGroup(item.Name, poolParamData.InstanceAutoReleaseInterval, poolParamData.InstanceCapacity, poolParamData.InstanceExpireTime, poolParamData.InstancePriority);
+            }
+        }
+
+        private void SetEntityComponent()
+        {
+            EntityGroupData[] entityGroupDatas = GameEntry.Data.GetData<DataEntity>().GetAllEntityGroupData();
+            foreach (var item in entityGroupDatas)
+            {
+                PoolParamData poolParamData = item.PoolParamData;
+                GameEntry.Entity.AddEntityGroup(item.Name, poolParamData.InstanceAutoReleaseInterval, poolParamData.InstanceCapacity, poolParamData.InstanceExpireTime, poolParamData.InstancePriority);
             }
         }
 

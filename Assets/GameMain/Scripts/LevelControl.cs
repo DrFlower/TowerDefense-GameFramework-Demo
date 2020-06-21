@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace Flower
 {
     class LevelControl
     {
+        private EntityLoader entityLoader;
+
         private int? uiMaskFormSerialId;
 
         private TowerData currentShowPreviewTower;
+        private Entity currentShowTowerEntity;
 
         public void Enter()
         {
+            entityLoader = EntityLoader.Create(this);
+
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
         }
@@ -22,6 +28,16 @@ namespace Flower
             {
                 HidePreviewTower();
             }
+
+            if (currentShowTowerEntity != null)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    currentShowTowerEntity.transform.position = hit.point;
+                }
+            }
         }
 
         public void ShowPreviewTower(TowerData towerData)
@@ -31,6 +47,10 @@ namespace Flower
 
             currentShowPreviewTower = towerData;
             uiMaskFormSerialId = GameEntry.UI.OpenUIForm(EnumUIForm.UIMask);
+            entityLoader.ShowEntity<EntityAssaultCannonPreview>(towerData.EntityId, (entity) =>
+             {
+                 currentShowTowerEntity = entity;
+             });
         }
 
         public void HidePreviewTower()
@@ -39,6 +59,10 @@ namespace Flower
                 GameEntry.UI.CloseUIForm((int)uiMaskFormSerialId);
 
             GameEntry.Event.Fire(this, HidePreviewTowerEventArgs.Create(currentShowPreviewTower));
+            if (currentShowTowerEntity != null)
+                entityLoader.HideEntity(currentShowTowerEntity);
+
+            currentShowTowerEntity = null;
             currentShowPreviewTower = null;
         }
 
