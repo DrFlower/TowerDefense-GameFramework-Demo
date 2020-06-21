@@ -6,88 +6,6 @@ using GameFramework.DataTable;
 
 namespace Flower
 {
-    public sealed class ItemData
-    {
-        private DRItem dRItem;
-        private DRAssetsPath dRAssetsPath;
-        private ItemGroupData itemGroupData;
-
-        public int Id
-        {
-            get
-            {
-                return dRItem.Id;
-            }
-        }
-        public string Name
-        {
-            get
-            {
-                return dRItem.Name;
-            }
-        }
-
-        public string AssetPath
-        {
-            get
-            {
-                return dRAssetsPath.AssetPath;
-            }
-        }
-
-        public ItemGroupData ItemGroupData
-        {
-            get
-            {
-                return itemGroupData;
-            }
-        }
-
-        public ItemData(DRItem dRItem, DRAssetsPath dRAssetsPath, ItemGroupData itemGroupData)
-        {
-            this.dRItem = dRItem;
-            this.dRAssetsPath = dRAssetsPath;
-            this.itemGroupData = itemGroupData;
-        }
-
-    }
-
-    public sealed class ItemGroupData
-    {
-        private DRItemGroup dRItemGroup;
-        private PoolParamData poolParamData;
-
-        public int Id
-        {
-            get
-            {
-                return dRItemGroup.Id;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return dRItemGroup.Name;
-            }
-        }
-
-        public PoolParamData PoolParamData
-        {
-            get
-            {
-                return poolParamData;
-            }
-        }
-
-        public ItemGroupData(DRItemGroup dRItemGroup, PoolParamData poolParamData)
-        {
-            this.dRItemGroup = dRItemGroup;
-            this.poolParamData = poolParamData;
-        }
-    }
-
     public sealed class DataItem : DataBase
     {
         private IDataTable<DRItem> dtItem;
@@ -146,7 +64,7 @@ namespace Flower
 
         public ItemData GetItemData(int id)
         {
-            if(dicItemData.ContainsKey(id))
+            if (dicItemData.ContainsKey(id))
             {
                 return dicItemData[id];
             }
