@@ -2,12 +2,12 @@
 #	Id		Name	AssetId	EntityGroupId
 #	int		string	int	int
 #	配置编号	策划备注	物体名字	资源ID	实体组Id
-	1001	突击加农炮	AssaultCannonLevel1	3001	1001
-	1002	火箭	RocketPlatform	3002	1002
-	1003	等离子喷枪	PlasmaLance	3003	1003
-	1004	能量塔	EnergyPylon	3004	1004
-	1005	电磁脉冲发生器	EMPGenerator	3005	1005
-	1006	导弹阵列	MissileArray	3006	1006
+	1001	突击加农炮	AssaultCannonPreview	3001	1001
+	1002	火箭	RocketPlatformPreview	3002	1002
+	1003	等离子喷枪	PlasmaLancePreview	3003	1003
+	1004	能量塔	EnergyPylonPreview	3004	1004
+	1005	电磁脉冲发生器	EMPGeneratorPreview	3005	1005
+	1006	导弹阵列	MissileArrayPreview	3006	1006
 	1007	突击加农炮等级1	AssaultCannonLevel1	3007	1007
 	1008	突击加农炮等级2	AssaultCannonLevel2	3008	1008
 	1009	突击加农炮等级3	AssaultCannonLevel3	3009	1009
@@ -23,4 +23,4 @@
 	1019	电磁脉冲发生器等级1	EMPGeneratorLevel1	3019	1019
 	1020	电磁脉冲发生器等级2	EMPGeneratorLevel2	3020	1020
 	1021	电磁脉冲发生器等级3	EMPGeneratorLevel3	3021	1021
-	1022	导弹阵列等级1	EnergyPylonLevel1	3022	1022
+	1022	导弹阵列等级1	MissileArrayLevel1	3022	1022

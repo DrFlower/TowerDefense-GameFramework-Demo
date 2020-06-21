@@ -29,7 +29,7 @@ namespace Flower
         {
             int serialId = GameEntry.Item.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Item.ShowItem(serialId, enumItem, Owner);
+            GameEntry.Item.ShowItem(serialId, enumItem, userData);
             return serialId;
         }
 
@@ -37,8 +37,13 @@ namespace Flower
         {
             int serialId = GameEntry.Item.GenerateSerialId();
             dicCallback.Add(serialId, onShowSuccess);
-            GameEntry.Item.ShowItem<T>(serialId, enumItem, Owner);
+            GameEntry.Item.ShowItem<T>(serialId, enumItem, userData);
             return serialId;
+        }
+
+        public bool HasItem(int serialId)
+        {
+            return GetItem(serialId) != null;
         }
 
         public Item GetItem(int serialId)
@@ -87,7 +92,7 @@ namespace Flower
         private void OnShowItemSuccess(object sender, GameEventArgs e)
         {
             ShowItemSuccessEventArgs ne = (ShowItemSuccessEventArgs)e;
-            if ((object)ne.UserData != Owner)
+            if (ne == null)
             {
                 return;
             }
@@ -95,7 +100,6 @@ namespace Flower
             Action<Item> callback = null;
             if (!dicCallback.TryGetValue(ne.Item.Id, out callback))
             {
-                Log.Error("Show item callback is null,item('serial id:{0}') ", ne.Item.Id);
                 return;
             }
 
@@ -107,12 +111,16 @@ namespace Flower
         private void OnShowItemFail(object sender, GameEventArgs e)
         {
             ShowItemFailureEventArgs ne = (ShowItemFailureEventArgs)e;
-            if ((object)ne.UserData != Owner)
+            if (ne == null)
             {
                 return;
             }
 
-            Log.Warning("Show item failure with error message '{0}'.", ne.ErrorMessage);
+            if (dicCallback.ContainsKey(ne.ItemId))
+            {
+                dicCallback.Remove(ne.ItemId);
+                Log.Warning("{0} Show item failure with error message '{1}'.", Owner.ToString(), ne.ErrorMessage);
+            }
         }
 
         public static ItemLoader Create(object owner)

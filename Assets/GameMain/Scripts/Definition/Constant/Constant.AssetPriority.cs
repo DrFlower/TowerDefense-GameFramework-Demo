@@ -13,8 +13,8 @@
             public const int SoundAsset = 30;
             public const int UIFormAsset = 50;
             public const int UISoundAsset = 30;
-            public const int ItemAsset = 10;
-
+            public const int ItemAsset = 70;
+            public const int EntityAsset = 60;
         }
     }
 }

@@ -8,21 +8,28 @@ using GameFramework;
 
 namespace Flower
 {
-    public class UGuiFormEx : UGuiForm
+    public abstract class EntityLogicEx : EntityLogic
     {
         private EventSubscriber eventSubscriber;
         private EntityLoader entityLoader;
         private ItemLoader itemLoader;
 
-        protected override void OnClose(bool isShutdown, object userData)
+        protected override void OnHide(bool isShutdown, object userData)
         {
-            base.OnClose(isShutdown, userData);
+            base.OnHide(isShutdown, userData);
 
             UnSubscribeAll();
             if (eventSubscriber != null)
             {
                 ReferencePool.Release(eventSubscriber);
                 eventSubscriber = null;
+            }
+
+            HideAllEntity();
+            if (entityLoader != null)
+            {
+                ReferencePool.Release(entityLoader);
+                entityLoader = null;
             }
 
             HideAllItem();

@@ -119,7 +119,11 @@ namespace UnityGameFramework.Runtime
                 m_EntityLogic = null;
             }
 
-            m_EntityLogic = gameObject.AddComponent(entityLogicType) as EntityLogic;
+            m_EntityLogic = gameObject.GetComponent(entityLogicType) as EntityLogic;
+
+            if (m_EntityLogic == null)
+                m_EntityLogic = gameObject.AddComponent(entityLogicType) as EntityLogic;
+
             if (m_EntityLogic == null)
             {
                 Log.Error("Entity '{0}' can not add entity logic.", entityAssetName);
