@@ -7,7 +7,7 @@ using GameFramework.Localization;
 
 namespace Flower
 {
-    public class UIOptionsForm : UGuiForm
+    public class UIOptionsForm : UGuiFormEx
     {
         [System.Serializable]
         public class ToggleLanguage

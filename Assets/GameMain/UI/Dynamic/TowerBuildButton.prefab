@@ -321,10 +321,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyText: {fileID: 114571348091315534}
   towerIcon: {fileID: 114379891500743206}
-  buyButton: {fileID: 114286986025489450}
+  buildButton: {fileID: 114286986025489450}
   energyIcon: {fileID: 114188670040651154}
   energyDefaultColor: {r: 0.3647059, g: 0.7058824, b: 1, a: 1}
   energyInvalidColor: {r: 1, g: 0.36470592, b: 0.36470592, a: 1}
+  iconList:
+  - {fileID: 21300000, guid: d6c11b9a43dfb413b86a3ff8908088db, type: 3}
+  - {fileID: 21300000, guid: 3631244dc04164d079a3302a39dbc0c6, type: 3}
+  - {fileID: 21300000, guid: fa91237b5487541158165bfce6ebfa0c, type: 3}
+  - {fileID: 21300000, guid: 8de2b0ca8a36944a9b9dd75dff42644f, type: 3}
+  - {fileID: 21300000, guid: 513d334ef78544f129afabc1ad5af28b, type: 3}
+  - {fileID: 21300000, guid: 53652022b1d444a5c9e9630488e44e13, type: 3}
 --- !u!1 &1648160208574754
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Flower
 {
-    public class UIPausePanelForm : UGuiForm
+    public class UIPausePanelForm : UGuiFormEx
     {
         public Text levelTitleText;
         public Text levelDescriptionText;

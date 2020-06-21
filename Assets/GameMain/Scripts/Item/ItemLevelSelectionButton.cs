@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Flower
 {
-    public class ItemLevelSelectionButton : ItemLogic
+    public class ItemLevelSelectionButton : ItemLogicEx
     {
         private Text levelTitle;
         private Text levelDescription;

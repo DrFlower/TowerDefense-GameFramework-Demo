@@ -80,9 +80,20 @@ namespace Flower
             return ++serialId;
         }
 
+        public TowerData GetTowerData(int id)
+        {
+            if (!dicTowerData.ContainsKey(id))
+            {
+                Log.Error("Can not find tower data id '{0}'.", id);
+                return null;
+            }
+
+            return dicTowerData[id];
+        }
+
         public Tower CreateTower(int towerId, int level = 0)
         {
-            if (dicTowerData.ContainsKey(towerId))
+            if (!dicTowerData.ContainsKey(towerId))
             {
                 Log.Error("Can not find tower data id '{0}'.", towerId);
                 return null;

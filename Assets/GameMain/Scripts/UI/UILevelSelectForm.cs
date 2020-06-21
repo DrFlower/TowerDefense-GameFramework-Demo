@@ -8,7 +8,7 @@ using GameFramework.Event;
 
 namespace Flower
 {
-    public class UILevelSelectForm : UGuiForm
+    public class UILevelSelectForm : UGuiFormEx
     {
         public Button backButton;
         public Transform levelSelectButtonRoot;
@@ -41,7 +41,6 @@ namespace Flower
             LevelData[] levelDatas = GameEntry.Data.GetData<DataLevel>().GetAllLevelData();
             foreach (var levelData in levelDatas)
             {
-
                 ShowItem<ItemLevelSelectionButton>(EnumItem.LevelSelectionButton, (item) =>
                  {
                      item.transform.SetParent(levelSelectButtonRoot, false);

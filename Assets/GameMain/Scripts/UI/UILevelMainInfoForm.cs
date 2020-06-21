@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Flower
 {
-    public class UILevelMainInfoForm : UGuiForm
+    public class UILevelMainInfoForm : UGuiFormEx
     {
         public Text hpText;
         public Text energyText;

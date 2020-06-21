@@ -24,7 +24,7 @@ namespace Flower
         protected override void OnLoad()
         {
             HP = 100;
-            Energy = 50;
+            Energy = 0;
             IsEnableDebugEnergy = true;
             DebugAddEnergyCount = 1000;
         }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Flower
 {
-    public class UITowerListForm : UGuiForm
+    public class UITowerListForm : UGuiFormEx
     {
         public Transform towerBuildButtonRoot;
 
@@ -16,6 +16,7 @@ namespace Flower
 
         private DataLevel dataLevel;
         private LevelData currentLevelData;
+        private DataTower dataTower;
 
         protected override void OnInit(object userData)
         {
@@ -32,8 +33,13 @@ namespace Flower
             dataLevel = GameEntry.Data.GetData<DataLevel>();
             if (dataLevel == null)
                 return;
+
             currentLevelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
             if (currentLevelData == null)
+                return;
+
+            dataTower = GameEntry.Data.GetData<DataTower>();
+            if (dataTower == null)
                 return;
 
             ShowTowerBuildButtons();
@@ -53,13 +59,15 @@ namespace Flower
             foreach (var towers in allowTowers)
             {
                 ShowItem<ItemTowerBuildButton>(EnumItem.TowerBuildButton, (item) =>
-                {        
+                {
                     item.transform.SetParent(towerBuildButtonRoot, false);
-
                     item.transform.localScale = Vector3.one;
                     item.transform.eulerAngles = Vector3.zero;
                     item.transform.localPosition = Vector3.zero;
+
                     ItemTowerBuildButton itemTowerBuildButton = item.GetComponent<ItemTowerBuildButton>();
+                    TowerData towerData = dataTower.GetTowerData(towers);
+                    itemTowerBuildButton.SetTowerBuildButton(towerData);
                 });
             }
         }

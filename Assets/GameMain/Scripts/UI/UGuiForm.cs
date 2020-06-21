@@ -26,9 +26,6 @@ namespace Flower
         private CanvasGroup m_CanvasGroup = null;
         private List<Canvas> m_CachedCanvasContainer = new List<Canvas>();
 
-        private EventSubscriber eventSubscriber;
-        private ItemLoader itemLoader;
-
         public int OriginalDepth
         {
             get;
@@ -144,19 +141,6 @@ namespace Flower
 #endif
         {
             base.OnClose(isShutdown, userData);
-            UnSubscribeAll();
-            if (eventSubscriber != null)
-            {
-                ReferencePool.Release(eventSubscriber);
-                eventSubscriber = null;
-            }
-
-            HideAllItem();
-            if (itemLoader != null)
-            {
-                ReferencePool.Release(itemLoader);
-                itemLoader = null;
-            }
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -240,75 +224,5 @@ namespace Flower
             yield return m_CanvasGroup.FadeToAlpha(0f, duration);
             GameEntry.UI.CloseUIForm(this);
         }
-
-        protected void Subscribe(int id, EventHandler<GameEventArgs> handler)
-        {
-            if (eventSubscriber == null)
-                eventSubscriber = EventSubscriber.Create(this);
-
-            eventSubscriber.Subscribe(id, handler);
-        }
-
-        protected void UnSubscribe(int id, EventHandler<GameEventArgs> handler)
-        {
-            if (eventSubscriber != null)
-                eventSubscriber.UnSubscribe(id, handler);
-        }
-
-        protected void UnSubscribeAll()
-        {
-            if (eventSubscriber != null)
-                eventSubscriber.UnSubscribeAll();
-        }
-
-        public int ShowItem(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null)
-        {
-            if (itemLoader == null)
-            {
-                itemLoader = ItemLoader.Create(this);
-            }
-
-            return itemLoader.ShowItem(enumItem, onShowSuccess, userData);
-        }
-        public int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
-        {
-            if (itemLoader == null)
-            {
-                itemLoader = ItemLoader.Create(this);
-            }
-
-            return itemLoader.ShowItem<T>(enumItem, onShowSuccess, userData);
-        }
-
-        public void HideItem(int serialId)
-        {
-            if (itemLoader == null)
-            {
-                return;
-            }
-
-            itemLoader.HideItem(serialId);
-        }
-
-        public void HideItem(Item item)
-        {
-            if (itemLoader == null)
-            {
-                return;
-            }
-
-            itemLoader.HideItem(item);
-        }
-
-        public void HideAllItem()
-        {
-            if (itemLoader == null)
-            {
-                return;
-            }
-
-            itemLoader.HideAllItem();
-        }
-
     }
 }

@@ -6,7 +6,7 @@ using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class UIMainMenuForm : UGuiForm
+    public class UIMainMenuForm : UGuiFormEx
     {
         public Button levelSelectButton;
         public Button optionButton;
