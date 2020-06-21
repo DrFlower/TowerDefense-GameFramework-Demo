@@ -10,6 +10,11 @@ namespace Flower
     public class UITowerListForm : UGuiFormEx
     {
         public Transform towerBuildButtonRoot;
+        public RectTransform buildInfo;
+        public Text buildInfoName;
+        public Text buildInfoDps;
+        public Text BuildInfoDes;
+        public float BuildInfoFadeSpeed;
 
         private Dictionary<int, GameObject> dicTowerId2Button;
         private Dictionary<int, int> dicSerialId2TowerId;
@@ -17,6 +22,8 @@ namespace Flower
         private DataLevel dataLevel;
         private LevelData currentLevelData;
         private DataTower dataTower;
+
+        private bool showBuildInfo = false;
 
         protected override void OnInit(object userData)
         {
@@ -43,11 +50,29 @@ namespace Flower
                 return;
 
             ShowTowerBuildButtons();
+            buildInfo.anchoredPosition = new Vector2(buildInfo.anchoredPosition.x, -200);
+            showBuildInfo = false;
+
+            Subscribe(HidePreviewTowerEventArgs.EventId, OnHidePreviewTower);
+        }
+
+        protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(elapseSeconds, realElapseSeconds);
+
+            float targetPosY = showBuildInfo ? 0 : -200;
+
+            buildInfo.anchoredPosition = new Vector2(buildInfo.anchoredPosition.x, Mathf.Lerp(buildInfo.anchoredPosition.y, targetPosY, realElapseSeconds * BuildInfoFadeSpeed));
+
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
+
+            buildInfoName.text = string.Empty;
+            buildInfoDps.text = string.Empty;
+            BuildInfoDes.text = string.Empty;
         }
 
         private void ShowTowerBuildButtons()
@@ -67,11 +92,42 @@ namespace Flower
 
                     ItemTowerBuildButton itemTowerBuildButton = item.GetComponent<ItemTowerBuildButton>();
                     TowerData towerData = dataTower.GetTowerData(towers);
-                    itemTowerBuildButton.SetTowerBuildButton(towerData);
+                    itemTowerBuildButton.SetTowerBuildButton(towerData, ShowBuildInfo);
                 });
             }
         }
 
+        public void ShowBuildInfo(TowerData towerData)
+        {
+            if (towerData == null)
+                return;
+
+            TowerLevelData towerLevelData = towerData.GetTowerLevelData(0);
+            if (towerLevelData == null)
+                return;
+
+            buildInfoName.text = towerData.Name;
+            buildInfoDps.text = towerLevelData.DPS.ToString();
+            BuildInfoDes.text = towerLevelData.Des;
+
+            GameEntry.Event.Fire(this, ShowPreviewTowerEventArgs.Create(towerData));
+
+            showBuildInfo = true;
+        }
+
+        private void HideBuildInfo()
+        {
+            showBuildInfo = false;
+        }
+
+        private void OnHidePreviewTower(object sender, GameEventArgs e)
+        {
+            HidePreviewTowerEventArgs ne = (HidePreviewTowerEventArgs)e;
+            if (ne == null)
+                return;
+
+            HideBuildInfo();
+        }
 
     }
 }

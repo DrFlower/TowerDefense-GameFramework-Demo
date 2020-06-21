@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 using UnityEngine.UI;
 using GameFramework.Event;
+using System;
 
 namespace Flower
 {
@@ -27,6 +28,8 @@ namespace Flower
         private TowerLevelData towerLevelData;
         private DataPlayer dataPlayer;
 
+        private Action<TowerData> onClick;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -37,8 +40,6 @@ namespace Flower
             base.OnShow(userData);
 
             buildButton.onClick.AddListener(OnBuildButtonClick);
-            dataPlayer = GameEntry.Data.GetData<DataPlayer>();
-            UpdateEnergyIconColor(dataPlayer.Energy);
 
             Subscribe(PlayerEnergyChangeEventArgs.EventId, OnPlayerEnergyChange);
         }
@@ -51,9 +52,10 @@ namespace Flower
             towerData = null;
             towerLevelData = null;
             dataPlayer = null;
+            this.onClick = null;
         }
 
-        public void SetTowerBuildButton(TowerData towerData)
+        public void SetTowerBuildButton(TowerData towerData, Action<TowerData> onClick)
         {
             if (towerData == null)
                 return;
@@ -68,6 +70,11 @@ namespace Flower
                 if (towerData.Icon == item.name)
                     towerIcon.sprite = item;
             }
+
+            dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+            UpdateEnergyIconColor(dataPlayer.Energy);
+
+            this.onClick = onClick;
         }
 
         private void UpdateEnergyIconColor(int ownEnergy)
@@ -83,7 +90,8 @@ namespace Flower
 
         public void OnBuildButtonClick()
         {
-
+            if (onClick != null)
+                onClick(towerData);
         }
 
         public void OnPlayerEnergyChange(object sender, GameEventArgs gameEventArgs)

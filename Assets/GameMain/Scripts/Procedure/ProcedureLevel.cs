@@ -30,11 +30,12 @@ namespace Flower
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
             //GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
 
-            levelControl.Enter();       
+            levelControl.Enter();
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -45,6 +46,10 @@ namespace Flower
             {
                 ChangeState<ProcedureLoadingScene>(procedureOwner);
             }
+
+            if (levelControl != null)
+                levelControl.Update(elapseSeconds, realElapseSeconds);
+
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -53,8 +58,8 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
-        
             //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
@@ -132,6 +137,18 @@ namespace Flower
 
             changeScene = true;
             procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.LevelData.SceneData.Id);
+        }
+
+        private void OnShowPreviewTower(object sender, GameEventArgs e)
+        {
+            ShowPreviewTowerEventArgs ne = (ShowPreviewTowerEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (levelControl == null)
+                return;
+
+            levelControl.ShowPreviewTower(ne.TowerData);
         }
 
     }

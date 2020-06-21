@@ -7,3 +7,4 @@
 	1003	炮塔列表	TowerList	2
 	1004	暂停界面	PausePanel	3
 	1005	游戏结束	GameOver	4
+	1006	UI遮罩	UIMask	5
