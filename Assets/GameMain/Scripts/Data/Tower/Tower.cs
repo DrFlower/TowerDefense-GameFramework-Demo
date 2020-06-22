@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameFramework;
 
-namespace Flower
+namespace Flower.Data
 {
     public class Tower : IReference
     {

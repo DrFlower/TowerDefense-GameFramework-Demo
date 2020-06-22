@@ -1,13 +1,12 @@
 ﻿using GameFramework;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
-using GameFramework.Data;
 using System;
 using System.Collections.Generic;
 
-namespace Flower
+namespace Flower.Data
 {
-    public abstract class DataBase : Data
+    public abstract class DataBase : GameFramework.Data.Data
     {
         private Dictionary<string, bool> loadedFlag = new Dictionary<string, bool>();
         private EventSubscriber eventSubscriber;

@@ -1,5 +1,5 @@
 ﻿
-namespace Flower
+namespace Flower.Data
 {
     public sealed class EntityData
     {

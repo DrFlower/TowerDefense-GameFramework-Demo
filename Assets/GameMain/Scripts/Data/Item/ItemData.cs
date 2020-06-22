@@ -1,4 +1,4 @@
-﻿namespace Flower
+﻿namespace Flower.Data
 {
     public sealed class ItemData
     {

@@ -5,7 +5,7 @@ using GameFramework.Data;
 using GameFramework.DataTable;
 using UnityGameFramework.Runtime;
 
-namespace Flower
+namespace Flower.Data
 {
     public enum EnumLevelState : byte
     {

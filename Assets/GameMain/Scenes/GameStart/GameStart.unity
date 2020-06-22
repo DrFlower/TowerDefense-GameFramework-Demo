@@ -1590,24 +1590,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataItems:
   - enable: 1
-    dataTypeName: Flower.DataAssetsPath
+    dataTypeName: Flower.Data.DataSetting
   - enable: 1
-    dataTypeName: Flower.DataPoolParam
+    dataTypeName: Flower.Data.DataAssetsPath
   - enable: 1
-    dataTypeName: Flower.DataEntity
+    dataTypeName: Flower.Data.DataScene
   - enable: 1
-    dataTypeName: Flower.DataItem
+    dataTypeName: Flower.Data.DataPoolParam
   - enable: 1
-    dataTypeName: Flower.DataScene
+    dataTypeName: Flower.Data.DataPlayer
   - enable: 1
-    dataTypeName: Flower.DataSetting
+    dataTypeName: Flower.Data.DataEntity
   - enable: 1
-    dataTypeName: Flower.DataSound
+    dataTypeName: Flower.Data.DataUI
   - enable: 1
-    dataTypeName: Flower.DataUI
+    dataTypeName: Flower.Data.DataItem
   - enable: 1
-    dataTypeName: Flower.DataLevel
+    dataTypeName: Flower.Data.DataLevel
   - enable: 1
-    dataTypeName: Flower.DataTower
+    dataTypeName: Flower.Data.DataSound
   - enable: 1
-    dataTypeName: Flower.DataPlayer
+    dataTypeName: Flower.Data.DataTower

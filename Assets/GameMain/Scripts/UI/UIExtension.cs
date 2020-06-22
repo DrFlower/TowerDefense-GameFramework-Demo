@@ -11,6 +11,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using Flower.Data;
 
 namespace Flower
 {

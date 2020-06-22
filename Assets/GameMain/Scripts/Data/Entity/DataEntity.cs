@@ -5,7 +5,7 @@ using GameFramework.Data;
 using GameFramework.DataTable;
 
 
-namespace Flower
+namespace Flower.Data
 {
     public sealed class DataEntity : DataBase
     {

@@ -7,10 +7,13 @@ using UnityGameFramework.Runtime;
 using GameFramework.Procedure;
 using GameFramework.DataTable;
 using UnityEngine;
+using Flower.Data;
 
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using LoadDataTableSuccessEventArgs = UnityGameFramework.Runtime.LoadDataTableSuccessEventArgs;
 using LoadDataTableFailureEventArgs = UnityGameFramework.Runtime.LoadDataTableFailureEventArgs;
+
+using DataItem = Flower.Data.DataItem;
 
 namespace Flower
 {
@@ -34,7 +37,7 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
-            Data[] _datas = GameEntry.Data.GetAllData();
+            GameFramework.Data.Data[] _datas = GameEntry.Data.GetAllData();
 
             datas = new DataBase[_datas.Length];
             for (int i = 0; i < _datas.Length; i++)
@@ -128,7 +131,7 @@ namespace Flower
 
         private void SetItemComponent()
         {
-            ItemGroupData[] itemGroupDatas = GameEntry.Data.GetData<DataItem>().GetAllItemGroupData();
+            ItemGroupData[] itemGroupDatas = GameEntry.Data.GetData<Data.DataItem>().GetAllItemGroupData();
             foreach (var item in itemGroupDatas)
             {
                 PoolParamData poolParamData = item.PoolParamData;

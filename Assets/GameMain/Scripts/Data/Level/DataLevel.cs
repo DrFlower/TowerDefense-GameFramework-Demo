@@ -6,7 +6,7 @@ using GameFramework.DataTable;
 using UnityGameFramework.Runtime;
 using GameFramework.Event;
 
-namespace Flower
+namespace Flower.Data
 {
     public sealed class DataLevel : DataBase
     {

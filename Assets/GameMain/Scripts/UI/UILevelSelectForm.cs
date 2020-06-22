@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using System;
 using GameFramework.Event;
+using Flower.Data;
 
 namespace Flower
 {

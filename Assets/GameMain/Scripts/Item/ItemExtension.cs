@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using System;
+using Flower.Data;
 
 namespace Flower
 {
@@ -37,7 +38,7 @@ namespace Flower
 
         public static void ShowItem(this ItemComponent itemComponent, int serialId, int itemId, Type logicType, object userData = null)
         {
-            ItemData itemData = GameEntry.Data.GetData<DataItem>().GetItemData(itemId);
+            ItemData itemData = GameEntry.Data.GetData<Data.DataItem>().GetItemData(itemId);
 
             if (itemData == null)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using System;
+using Flower.Data;
 
 namespace Flower
 {
@@ -29,7 +30,7 @@ namespace Flower
 
         public static void ShowEntity(this EntityComponent entityComponent, int serialId, int entityId, Type logicType, object userData = null)
         {
-            EntityData entityData = GameEntry.Data.GetData<DataEntity>().GetEntityData(entityId);
+            Data.EntityData entityData = GameEntry.Data.GetData<DataEntity>().GetEntityData(entityId);
 
             if (entityData == null)
             {
