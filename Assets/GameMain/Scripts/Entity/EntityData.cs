@@ -1,34 +1,30 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using System;
+﻿using System;
 using UnityEngine;
+using GameFramework;
 
 namespace Flower
 {
     [Serializable]
-    public abstract class EntityData
+    public abstract class EntityData : IReference
     {
         [SerializeField]
-        private int m_Id = 0;
+        protected int m_Id = 0;
 
         [SerializeField]
-        private int m_TypeId = 0;
+        protected int m_TypeId = 0;
 
         [SerializeField]
-        private Vector3 m_Position = Vector3.zero;
+        protected Vector3 m_Position = Vector3.zero;
 
         [SerializeField]
-        private Quaternion m_Rotation = Quaternion.identity;
+        protected Quaternion m_Rotation = Quaternion.identity;
 
-        public EntityData(int entityId, int typeId)
+        public EntityData()
         {
-            m_Id = entityId;
-            m_TypeId = typeId;
+            m_Id = 0;
+            m_TypeId = 0;
+            m_Position = Vector3.zero;
+            m_Rotation = Quaternion.identity;
         }
 
         /// <summary>
@@ -81,6 +77,14 @@ namespace Flower
             {
                 m_Rotation = value;
             }
+        }
+
+        public virtual void Clear()
+        {
+            m_Id = 0;
+            m_TypeId = 0;
+            m_Position = Vector3.zero;
+            m_Rotation = Quaternion.identity;
         }
     }
 }

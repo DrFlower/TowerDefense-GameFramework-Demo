@@ -11,7 +11,7 @@ using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public abstract class Flower : EntityLogic
+    public abstract class EntityLogicWithData : EntityLogic
     {
         [SerializeField]
         private EntityData m_EntityData = null;

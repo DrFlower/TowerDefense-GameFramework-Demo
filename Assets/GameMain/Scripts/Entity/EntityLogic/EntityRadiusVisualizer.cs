@@ -9,9 +9,6 @@ namespace Flower
 
         public float radiusVisualizerHeight = 0.02f;
 
-        /// <summary>
-        /// The local euler angles
-        /// </summary>
         public Vector3 localEuler;
 
 

@@ -8,7 +8,7 @@ using GameFramework;
 
 namespace Flower
 {
-    public abstract class EntityLogicEx : EntityLogic
+    public abstract class EntityLogicEx : EntityLogicWithData
     {
         private EventSubscriber eventSubscriber;
         private EntityLoader entityLoader;
