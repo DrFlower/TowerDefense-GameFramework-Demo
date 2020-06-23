@@ -24,3 +24,4 @@
 	1020	电磁脉冲发生器等级2	EMPGeneratorLevel2	3020	1020
 	1021	电磁脉冲发生器等级3	EMPGeneratorLevel3	3021	1021
 	1022	导弹阵列等级1	MissileArrayLevel1	3022	1022
+	1023	范围指示器	RadiusVisualiser	3023	1023

@@ -77,6 +77,8 @@ namespace Flower
 #endif
         {
             base.OnHide(isShutdown, userData);
+
+            ReferencePool.Release(m_EntityData);
         }
 
 #if UNITY_2017_3_OR_NEWER

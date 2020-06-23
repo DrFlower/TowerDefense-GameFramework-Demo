@@ -22,12 +22,12 @@
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 	2002	关卡选择按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab
 #			
-	3001	突击加农炮	Assets/GameMain/Entity/AssaultCannonPreview.prefab
-	3002	火箭	Assets/GameMain/Entity/
-	3003	等离子喷枪	Assets/GameMain/Entity/
-	3004	能量塔	Assets/GameMain/Entity/
-	3005	电磁脉冲发生器	Assets/GameMain/Entity/
-	3006	导弹阵列	Assets/GameMain/Entity/
+	3001	突击加农炮预览	Assets/GameMain/Entity/AssaultCannonPreview.prefab
+	3002	火箭预览	Assets/GameMain/Entity/RocketPlatformPreview.prefab
+	3003	等离子喷枪预览	Assets/GameMain/Entity/PlasmaLancePreview.prefab
+	3004	能量塔预览	Assets/GameMain/Entity/EnergyPylonPreview.prefab
+	3005	电磁脉冲发生器预览	Assets/GameMain/Entity/EMPGeneratorPreview.prefab
+	3006	导弹阵列预览	Assets/GameMain/Entity/MissileArrayPreview.prefab
 	3007	突击加农炮等级1	Assets/GameMain/Entity/
 	3008	突击加农炮等级2	Assets/GameMain/Entity/
 	3009	突击加农炮等级3	Assets/GameMain/Entity/
@@ -44,6 +44,7 @@
 	3020	电磁脉冲发生器等级2	Assets/GameMain/Entity/
 	3021	电磁脉冲发生器等级3	Assets/GameMain/Entity/
 	3022	导弹阵列等级1	Assets/GameMain/Entity/
+	3023	范围指示器	Assets/GameMain/Entity/RadiusVisualiser.prefab
 #			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

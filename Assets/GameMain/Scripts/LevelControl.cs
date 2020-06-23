@@ -44,21 +44,22 @@ namespace Flower
             entityLoader.ShowEntity<EntityTowerPreview>(towerData.EntityId, (entity) =>
              {
                  currentShowTowerEntity = entity;
-             });
 
-            TowerLevelData towerLevelData = towerData.GetTowerLevelData(0);
-            if (towerLevelData == null)
-            {
-                Log.Error("Tower '{0}' Level '{1}' data is null.", towerData.Name, 0);
-            }
+                 TowerLevelData towerLevelData = towerData.GetTowerLevelData(0);
+                 if (towerLevelData == null)
+                 {
+                     Log.Error("Tower '{0}' Level '{1}' data is null.", towerData.Name, 0);
+                 }
 
-            EntityDataRadiusVisualiser entityDataRadiusVisualiser = EntityDataRadiusVisualiser.Create(towerLevelData.Range);
+                 EntityDataRadiusVisualiser entityDataRadiusVisualiser = EntityDataRadiusVisualiser.Create(towerLevelData.Range);
 
-            entityLoader.ShowEntity<EntityRadiusVisualizer>(EnumEntity.AssaultCannonLevel1, (entity) =>
-            {
-                GameEntry.Entity.AttachEntity(entity, currentShowTowerEntity);
-            },
-            entityDataRadiusVisualiser);
+                 entityLoader.ShowEntity<EntityRadiusVisualizer>(EnumEntity.RadiusVisualiser, (entityRadiusVisualizer) =>
+                 {
+                     GameEntry.Entity.AttachEntity(entityRadiusVisualizer, currentShowTowerEntity);
+                 },
+                 entityDataRadiusVisualiser);
+             },
+             EntityData.Create());
         }
 
         public void HidePreviewTower()

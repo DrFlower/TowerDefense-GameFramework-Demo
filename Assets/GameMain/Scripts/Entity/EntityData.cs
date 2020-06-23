@@ -56,6 +56,15 @@ namespace Flower
             private set;
         }
 
+        public static EntityData Create(object userData = null)
+        {
+            EntityData entityData = ReferencePool.Acquire<EntityData>();
+            entityData.Position = Vector3.zero;
+            entityData.Rotation = Quaternion.identity;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
         public static EntityData Create(Vector3 position, object userData = null)
         {
             EntityData entityData = ReferencePool.Acquire<EntityData>();
