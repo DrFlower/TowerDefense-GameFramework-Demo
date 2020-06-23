@@ -5,14 +5,8 @@ using GameFramework;
 namespace Flower
 {
     [Serializable]
-    public abstract class EntityData : IReference
+    public class EntityData : IReference
     {
-        [SerializeField]
-        protected int m_Id = 0;
-
-        [SerializeField]
-        protected int m_TypeId = 0;
-
         [SerializeField]
         protected Vector3 m_Position = Vector3.zero;
 
@@ -21,32 +15,9 @@ namespace Flower
 
         public EntityData()
         {
-            m_Id = 0;
-            m_TypeId = 0;
             m_Position = Vector3.zero;
             m_Rotation = Quaternion.identity;
-        }
-
-        /// <summary>
-        /// 实体编号。
-        /// </summary>
-        public int Id
-        {
-            get
-            {
-                return m_Id;
-            }
-        }
-
-        /// <summary>
-        /// 实体类型编号。
-        /// </summary>
-        public int TypeId
-        {
-            get
-            {
-                return m_TypeId;
-            }
+            UserData = null;
         }
 
         /// <summary>
@@ -79,12 +50,35 @@ namespace Flower
             }
         }
 
+        public object UserData
+        {
+            get;
+            private set;
+        }
+
+        public static EntityData Create(Vector3 position, object userData = null)
+        {
+            EntityData entityData = ReferencePool.Acquire<EntityData>();
+            entityData.Position = position;
+            entityData.Rotation = Quaternion.identity;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
+        public static EntityData Create(Vector3 position, Quaternion quaternion, object userData = null)
+        {
+            EntityData entityData = ReferencePool.Acquire<EntityData>();
+            entityData.Position = position;
+            entityData.Rotation = quaternion;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
         public virtual void Clear()
         {
-            m_Id = 0;
-            m_TypeId = 0;
             m_Position = Vector3.zero;
             m_Rotation = Quaternion.identity;
+            UserData = null;
         }
     }
 }

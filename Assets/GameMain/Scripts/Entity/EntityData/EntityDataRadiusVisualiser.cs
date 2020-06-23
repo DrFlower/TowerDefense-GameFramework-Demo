@@ -18,11 +18,9 @@ namespace Flower
             Radius = 0f;
         }
 
-        public static EntityDataRadiusVisualiser Create(int entityId, int typeId, float radius, object userData = null)
+        public static EntityDataRadiusVisualiser Create(float radius, object userData = null)
         {
             EntityDataRadiusVisualiser entityData = ReferencePool.Acquire<EntityDataRadiusVisualiser>();
-            entityData.m_Id = entityId;
-            entityData.m_TypeId = typeId;
             entityData.Radius = radius;
             return entityData;
         }

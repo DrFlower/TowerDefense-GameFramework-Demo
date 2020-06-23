@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using Flower.Data;
+using GameFramework;
 
 namespace Flower
 {
@@ -29,16 +30,6 @@ namespace Flower
             {
                 HidePreviewTower();
             }
-
-            if (currentShowTowerEntity != null)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    currentShowTowerEntity.transform.position = hit.point;
-                }
-            }
         }
 
         public void ShowPreviewTower(TowerData towerData)
@@ -48,10 +39,26 @@ namespace Flower
 
             currentShowPreviewTower = towerData;
             uiMaskFormSerialId = GameEntry.UI.OpenUIForm(EnumUIForm.UIMask);
-            entityLoader.ShowEntity<EntityAssaultCannonPreview>(towerData.EntityId, (entity) =>
+
+
+            entityLoader.ShowEntity<EntityTowerPreview>(towerData.EntityId, (entity) =>
              {
                  currentShowTowerEntity = entity;
              });
+
+            TowerLevelData towerLevelData = towerData.GetTowerLevelData(0);
+            if (towerLevelData == null)
+            {
+                Log.Error("Tower '{0}' Level '{1}' data is null.", towerData.Name, 0);
+            }
+
+            EntityDataRadiusVisualiser entityDataRadiusVisualiser = EntityDataRadiusVisualiser.Create(towerLevelData.Range);
+
+            entityLoader.ShowEntity<EntityRadiusVisualizer>(EnumEntity.AssaultCannonLevel1, (entity) =>
+            {
+                GameEntry.Entity.AttachEntity(entity, currentShowTowerEntity);
+            },
+            entityDataRadiusVisualiser);
         }
 
         public void HidePreviewTower()
@@ -60,6 +67,7 @@ namespace Flower
                 GameEntry.UI.CloseUIForm((int)uiMaskFormSerialId);
 
             GameEntry.Event.Fire(this, HidePreviewTowerEventArgs.Create(currentShowPreviewTower));
+
             if (currentShowTowerEntity != null)
                 entityLoader.HideEntity(currentShowTowerEntity);
 
