@@ -44,6 +44,14 @@ namespace Flower.Data
             }
         }
 
+        public int PreviewEntityId
+        {
+            get
+            {
+                return dRTower.PreviewEntityId;
+            }
+        }
+
         public IntVector2 Dimensions
         {
             get;

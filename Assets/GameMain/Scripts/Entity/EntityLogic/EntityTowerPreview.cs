@@ -30,8 +30,17 @@ namespace Flower
 
         private bool validPos = false;
         private bool visible = true;
+        private bool canPlace = false;
 
         private MeshRenderer[] renderers;
+
+        public bool CanPlace
+        {
+            get
+            {
+                return canPlace;
+            }
+        }
 
 
         protected override void OnInit(object userData)
@@ -52,6 +61,7 @@ namespace Flower
                 return;
             }
 
+            canPlace = false;
             validPos = false;
             moveVel = Vector3.zero;
             SetVisiable(true);
@@ -122,23 +132,23 @@ namespace Flower
 
         }
 
-        private  void MoveGhostWithRaycastHit(RaycastHit raycast)
+        private void MoveGhostWithRaycastHit(RaycastHit raycast)
         {
             m_CurrentArea = raycast.collider.GetComponent<IPlacementArea>();
 
             if (m_CurrentArea == null)
             {
-                Debug.LogError("There is not an IPlacementArea attached to the collider found on the m_PlacementAreaMask");
+                Log.Error("There is not an IPlacementArea attached to the collider found on the m_PlacementAreaMask");
                 return;
             }
             m_GridPosition = m_CurrentArea.WorldToGrid(raycast.point, entityDataTowerPreview.TowerData.Dimensions);
             TowerFitStatus fits = m_CurrentArea.Fits(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
 
             SetVisiable(true);
-            bool ghostPlacementPossible = fits == TowerFitStatus.Fits;
+            canPlace = fits == TowerFitStatus.Fits;
             Move(m_CurrentArea.GridToWorld(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions),
                                 m_CurrentArea.transform.rotation,
-                                ghostPlacementPossible);
+                                canPlace);
         }
 
         protected virtual void MoveGhostOntoWorld(Ray ray, bool hideWhenInvalid)

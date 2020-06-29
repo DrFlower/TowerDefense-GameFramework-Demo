@@ -60,6 +60,8 @@ namespace Flower
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
             //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
+
+            levelControl.Quick();
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)

@@ -13,12 +13,23 @@ namespace Flower
 
         private int? uiMaskFormSerialId;
 
-        private TowerData currentShowPreviewTower;
-        private Entity currentShowTowerEntity;
+        private DataPlayer dataPlayer;
+        private DataTower dataTower;
+
+        private TowerData previewTowerData;
+        private Entity previewTowerEntity;
+        private EntityTowerPreview previewTowerEntityLogic;
+        private bool isBuilding = false;
+
+        private Dictionary<int, Tower> dicTowers;
 
         public void Enter()
         {
             entityLoader = EntityLoader.Create(this);
+            dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+            dataTower = GameEntry.Data.GetData<DataTower>();
+
+            dicTowers = new Dictionary<int, Tower>();
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
@@ -26,9 +37,16 @@ namespace Flower
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (isBuilding)
             {
-                HidePreviewTower();
+                if (Input.GetMouseButtonDown(0) && previewTowerEntityLogic != null && previewTowerEntityLogic.CanPlace)
+                {
+                    CreateTower(previewTowerData);
+                }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    HidePreviewTower();
+                }
             }
         }
 
@@ -37,13 +55,19 @@ namespace Flower
             if (towerData == null)
                 return;
 
-            currentShowPreviewTower = towerData;
+            previewTowerData = towerData;
             uiMaskFormSerialId = GameEntry.UI.OpenUIForm(EnumUIForm.UIMask);
 
 
-            entityLoader.ShowEntity<EntityTowerPreview>(towerData.EntityId, (entity) =>
+            entityLoader.ShowEntity<EntityTowerPreview>(towerData.PreviewEntityId, (entity) =>
              {
-                 currentShowTowerEntity = entity;
+                 previewTowerEntity = entity;
+                 previewTowerEntityLogic = entity.Logic as EntityTowerPreview;
+                 if (previewTowerEntityLogic == null)
+                 {
+                     Log.Error("Entity '{0}' logic type vaild, need EntityTowerPreview", previewTowerEntity.Id);
+                     return;
+                 }
 
                  TowerLevelData towerLevelData = towerData.GetTowerLevelData(0);
                  if (towerLevelData == null)
@@ -55,9 +79,11 @@ namespace Flower
 
                  entityLoader.ShowEntity<EntityRadiusVisualizer>(EnumEntity.RadiusVisualiser, (entityRadiusVisualizer) =>
                  {
-                     GameEntry.Entity.AttachEntity(entityRadiusVisualizer, currentShowTowerEntity);
+                     GameEntry.Entity.AttachEntity(entityRadiusVisualizer, previewTowerEntity);
                  },
                  entityDataRadiusVisualiser);
+
+                 isBuilding = true;
              },
              EntityDataTowerPreview.Create(towerData));
         }
@@ -67,18 +93,31 @@ namespace Flower
             if (uiMaskFormSerialId != null)
                 GameEntry.UI.CloseUIForm((int)uiMaskFormSerialId);
 
-            GameEntry.Event.Fire(this, HidePreviewTowerEventArgs.Create(currentShowPreviewTower));
+            GameEntry.Event.Fire(this, HidePreviewTowerEventArgs.Create(previewTowerData));
 
-            if (currentShowTowerEntity != null)
-                entityLoader.HideEntity(currentShowTowerEntity);
+            if (previewTowerEntity != null)
+                entityLoader.HideEntity(previewTowerEntity);
 
-            currentShowTowerEntity = null;
-            currentShowPreviewTower = null;
+            previewTowerEntity = null;
+            previewTowerData = null;
+
+            isBuilding = false;
         }
 
-        public void CreateTower(Tower tower)
+        public void CreateTower(TowerData towerData)
         {
+            if (towerData == null)
+                return;
 
+            TowerLevelData towerLevelData = towerData.GetTowerLevelData(0);
+
+            if (dataPlayer.Energy < towerLevelData.BuildEnergy)
+                return;
+
+            Tower tower = dataTower.CreateTower(towerData.Id);
+            dicTowers.Add(tower.SerialId, tower);
+
+            HidePreviewTower();
         }
 
         public void StartWave()
@@ -103,7 +142,7 @@ namespace Flower
 
         public void Quick()
         {
-
+            entityLoader.HideAllEntity();
         }
 
     }

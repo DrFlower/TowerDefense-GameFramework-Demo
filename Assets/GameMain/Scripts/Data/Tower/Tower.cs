@@ -94,6 +94,14 @@ namespace Flower.Data
             }
         }
 
+        public int PreviewEntityId
+        {
+            get
+            {
+                return towerData.PreviewEntityId;
+            }
+        }
+
         public int LevelEntityId
         {
             get

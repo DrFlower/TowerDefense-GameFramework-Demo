@@ -73,20 +73,19 @@ namespace Flower
             }
 
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
-            UpdateEnergyIconColor(dataPlayer.Energy);
+            UpdateEnergyState(dataPlayer.Energy);
 
             this.onClick = onClick;
         }
 
-        private void UpdateEnergyIconColor(int ownEnergy)
+        private void UpdateEnergyState(int ownEnergy)
         {
             if (towerLevelData == null)
                 return;
 
-            if (ownEnergy >= towerLevelData.BuildEnergy)
-                energyIcon.color = energyDefaultColor;
-            else
-                energyIcon.color = energyInvalidColor;
+            bool haveEnoughEnergy = ownEnergy >= towerLevelData.BuildEnergy;
+            buildButton.interactable = haveEnoughEnergy;
+            energyIcon.color = haveEnoughEnergy ? energyDefaultColor : energyInvalidColor;
         }
 
         public void OnBuildButtonClick()
@@ -101,7 +100,7 @@ namespace Flower
             if (ne == null)
                 return;
 
-            UpdateEnergyIconColor(ne.CurrentEnergy);
+            UpdateEnergyState(ne.CurrentEnergy);
         }
 
     }
