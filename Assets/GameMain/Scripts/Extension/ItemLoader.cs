@@ -11,6 +11,8 @@ namespace Flower
         private Dictionary<int, Action<Item>> dicCallback;
         private Dictionary<int, Item> dicSerial2Item;
 
+        private List<int> tempList;
+
         public object Owner
         {
             get;
@@ -21,8 +23,8 @@ namespace Flower
         {
             dicSerial2Item = new Dictionary<int, Item>();
             dicCallback = new Dictionary<int, Action<Item>>();
+            tempList = new List<int>();
             Owner = null;
-
         }
 
         public int ShowItem(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null)
@@ -85,14 +87,21 @@ namespace Flower
             if (item == null)
                 return;
 
-            GameEntry.Item.HideItem(item.Id);
+            HideItem(item.Id);
         }
 
         public void HideAllItem()
         {
+            tempList.Clear();
+
             foreach (var serialId in dicSerial2Item.Keys)
             {
-                GameEntry.Item.HideItem(serialId);
+                tempList.Add(serialId);
+            }
+
+            foreach (var serialId in tempList)
+            {
+                HideItem(serialId);
             }
 
             dicSerial2Item.Clear();

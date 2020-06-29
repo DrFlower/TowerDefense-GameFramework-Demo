@@ -11,6 +11,8 @@ namespace Flower
         private Dictionary<int, Action<Entity>> dicCallback;
         private Dictionary<int, Entity> dicSerial2Entity;
 
+        private List<int> tempList;
+
         public object Owner
         {
             get;
@@ -21,6 +23,7 @@ namespace Flower
         {
             dicSerial2Entity = new Dictionary<int, Entity>();
             dicCallback = new Dictionary<int, Action<Entity>>();
+            tempList = new List<int>();
             Owner = null;
         }
 
@@ -76,6 +79,15 @@ namespace Flower
             dicSerial2Entity.Remove(serialId);
             dicCallback.Remove(serialId);
 
+            Entity[] entities = GameEntry.Entity.GetChildEntities(entity);
+            if (entities != null)
+            {
+                foreach (var item in entities)
+                {
+                    HideEntity(item);
+                }
+            }
+
             GameEntry.Entity.HideEntity(entity);
         }
 
@@ -84,14 +96,21 @@ namespace Flower
             if (entity == null)
                 return;
 
-            GameEntry.Entity.HideEntity(entity.Id);
+            HideEntity(entity.Id);
         }
 
         public void HideAllEntity()
         {
+            tempList.Clear();
+
             foreach (var serialId in dicSerial2Entity.Keys)
             {
-                GameEntry.Entity.HideEntity(serialId);
+                tempList.Add(serialId);
+            }
+
+            foreach (var serialId in tempList)
+            {
+                HideEntity(serialId);
             }
 
             dicSerial2Entity.Clear();
