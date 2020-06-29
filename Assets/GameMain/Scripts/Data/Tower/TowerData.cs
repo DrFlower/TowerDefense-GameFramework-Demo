@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameFramework.Data;
 using GameFramework.DataTable;
+using UnityGameFramework.Runtime;
 
 namespace Flower.Data
 {
@@ -43,10 +44,25 @@ namespace Flower.Data
             }
         }
 
+        public IntVector2 Dimensions
+        {
+            get;
+            private set;
+        }
+
         public TowerData(DRTower dRTower, TowerLevelData[] towerLevels)
         {
             this.dRTower = dRTower;
             this.towerLevels = towerLevels;
+
+            int[] dimensions = dRTower.Dimensions;
+            if (dimensions == null || dimensions.Length < 2)
+            {
+                Log.Error("Tower ('{0}') dimensions data vaild", dRTower.Id);
+                return;
+            }
+
+            Dimensions = new IntVector2(dimensions[0], dimensions[1]);
         }
 
         public TowerLevelData GetTowerLevelData(int level)

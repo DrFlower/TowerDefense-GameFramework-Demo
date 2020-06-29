@@ -54,7 +54,7 @@ namespace Flower
         {
             base.OnAttachTo(parentEntity, parentTransform, userData);
 
-            transform.localPosition = parentEntity.transform.localPosition + new Vector3(0, radiusVisualizerHeight, 0);
+            transform.localPosition = entityDataRadiusVisualiser.Position + new Vector3(0, radiusVisualizerHeight, 0);
         }
 
     }

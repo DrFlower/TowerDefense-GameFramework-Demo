@@ -59,7 +59,7 @@ namespace Flower
                  },
                  entityDataRadiusVisualiser);
              },
-             EntityData.Create());
+             EntityDataTowerPreview.Create(towerData));
         }
 
         public void HidePreviewTower()

@@ -1,10 +1,10 @@
-﻿#	炮塔配置表					
-#	Id		NameId	Icon	EntityId	Levels
-#	int		string	string	int	int[]
-#	配置编号	策划备注	炮塔名字Id	图标名称	实体编号	等级列表
-	101	突击加农炮	Assault Cannon	build_machinegun	1001	"""10101,10102,10103"""
-	102	火箭	Rocket Platform	build_missile	1002	"""10201,10202,10203"""
-	103	等离子喷枪	Plasma Lance	build_sniper	1003	"""10301,10302,10303"""
-	104	能量塔	Energy Pylon	build_power	1004	"""10401,10402,10403"""
-	105	电磁脉冲发生器	EMP Generator	build_slow	1005	"""10501"""
-	106	导弹阵列	Missile Array	build_deadly	1006	"""10601"""
+﻿#	炮塔配置表						
+#	Id		NameId	Icon	EntityId	Dimensions	Levels
+#	int		string	string	int	int[]	int[]
+#	配置编号	策划备注	炮塔名字Id	图标名称	实体编号	占用面积	等级列表
+	101	突击加农炮	Assault Cannon	build_machinegun	1001	"""2,2"""	"""10101,10102,10103"""
+	102	火箭	Rocket Platform	build_missile	1002	"""2,2"""	"""10201,10202,10203"""
+	103	等离子喷枪	Plasma Lance	build_sniper	1003	"""2,2"""	"""10301,10302,10303"""
+	104	能量塔	Energy Pylon	build_power	1004	"""2,2"""	"""10401,10402,10403"""
+	105	电磁脉冲发生器	EMP Generator	build_slow	1005	"""2,2"""	"""10501"""
+	106	导弹阵列	Missile Array	build_deadly	1006	"""3,3"""	"""10601"""

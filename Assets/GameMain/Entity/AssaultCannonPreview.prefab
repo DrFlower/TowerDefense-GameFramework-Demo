@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 114795132175009648}
   - component: {fileID: 136187491898878368}
   - component: {fileID: 54009860042693116}
+  - component: {fileID: -5989953485365565850}
   m_Layer: 9
   m_Name: AssaultCannonPreview
   m_TagString: Untagged
@@ -183,6 +184,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5989953485365565850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765953084670540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9de0ca5f8f76d941aedab87bd8b8cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EntityData:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  sphereCastRadius: 1
+  dampSpeed: 0.075
+  ghostWorldPlacementMask:
+    serializedVersion: 2
+    m_Bits: 311
+  placementAreaMask:
+    serializedVersion: 2
+    m_Bits: 256
+  material: {fileID: 2100000, guid: 6fe9580bd67b34580977e0aa4eab9755, type: 2}
+  invalidPositionMaterial: {fileID: 2100000, guid: a33edf12f3c0044e8ba582a16ddaae3f,
+    type: 2}
 --- !u!1 &1819557052583670
 GameObject:
   m_ObjectHideFlags: 0
