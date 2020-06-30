@@ -41,7 +41,7 @@ namespace Flower
             {
                 if (Input.GetMouseButtonDown(0) && previewTowerEntityLogic != null && previewTowerEntityLogic.CanPlace)
                 {
-                    CreateTower(previewTowerData);
+                    previewTowerEntityLogic.TryBuildTower();
                 }
                 if (Input.GetMouseButtonDown(1))
                 {
@@ -104,7 +104,7 @@ namespace Flower
             isBuilding = false;
         }
 
-        public void CreateTower(TowerData towerData)
+        public void CreateTower(TowerData towerData, Vector3 position, Quaternion rotation)
         {
             if (towerData == null)
                 return;
@@ -114,8 +114,12 @@ namespace Flower
             if (dataPlayer.Energy < towerLevelData.BuildEnergy)
                 return;
 
+            dataPlayer.AddEnergy(-towerLevelData.BuildEnergy);
+
             Tower tower = dataTower.CreateTower(towerData.Id);
             dicTowers.Add(tower.SerialId, tower);
+
+            entityLoader.ShowEntity<EntityAssaultCannon>(towerData.EntityId, null, EntityData.Create(position, rotation));
 
             HidePreviewTower();
         }

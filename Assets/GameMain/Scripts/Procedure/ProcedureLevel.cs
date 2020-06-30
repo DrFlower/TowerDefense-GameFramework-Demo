@@ -31,6 +31,7 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
             //GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
+            GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
@@ -60,6 +61,7 @@ namespace Flower
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
             //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
+            GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
 
             levelControl.Quick();
         }
@@ -151,6 +153,18 @@ namespace Flower
                 return;
 
             levelControl.ShowPreviewTower(ne.TowerData);
+        }
+
+        private void OnBuildTower(object sender, GameEventArgs e)
+        {
+            BuildTowerEventArgs ne = (BuildTowerEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (levelControl == null)
+                return;
+
+            levelControl.CreateTower(ne.TowerData, ne.Position, ne.Rotation);
         }
 
     }

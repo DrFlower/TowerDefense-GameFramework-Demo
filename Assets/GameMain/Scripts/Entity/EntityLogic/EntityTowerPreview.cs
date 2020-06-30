@@ -20,7 +20,7 @@ namespace Flower
         [SerializeField]
         private Material invalidPositionMaterial;
 
-        private IPlacementArea m_CurrentArea;
+        private IPlacementArea currentArea;
         private IntVector2 m_GridPosition;
 
         private EntityDataTowerPreview entityDataTowerPreview;
@@ -93,7 +93,7 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
 
-            m_CurrentArea = null;
+            currentArea = null;
             m_GridPosition = IntVector2.zero;
             entityDataTowerPreview = null;
         }
@@ -134,26 +134,26 @@ namespace Flower
 
         private void MoveGhostWithRaycastHit(RaycastHit raycast)
         {
-            m_CurrentArea = raycast.collider.GetComponent<IPlacementArea>();
+            currentArea = raycast.collider.GetComponent<IPlacementArea>();
 
-            if (m_CurrentArea == null)
+            if (currentArea == null)
             {
                 Log.Error("There is not an IPlacementArea attached to the collider found on the m_PlacementAreaMask");
                 return;
             }
-            m_GridPosition = m_CurrentArea.WorldToGrid(raycast.point, entityDataTowerPreview.TowerData.Dimensions);
-            TowerFitStatus fits = m_CurrentArea.Fits(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
+            m_GridPosition = currentArea.WorldToGrid(raycast.point, entityDataTowerPreview.TowerData.Dimensions);
+            TowerFitStatus fits = currentArea.Fits(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
 
             SetVisiable(true);
             canPlace = fits == TowerFitStatus.Fits;
-            Move(m_CurrentArea.GridToWorld(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions),
-                                m_CurrentArea.transform.rotation,
+            Move(currentArea.GridToWorld(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions),
+                                currentArea.transform.rotation,
                                 canPlace);
         }
 
-        protected virtual void MoveGhostOntoWorld(Ray ray, bool hideWhenInvalid)
+        private void MoveGhostOntoWorld(Ray ray, bool hideWhenInvalid)
         {
-            m_CurrentArea = null;
+            currentArea = null;
 
             if (!hideWhenInvalid)
             {
@@ -173,7 +173,7 @@ namespace Flower
             }
         }
 
-        public void Move(Vector3 worldPosition, Quaternion rotation, bool validLocation)
+        private void Move(Vector3 worldPosition, Quaternion rotation, bool validLocation)
         {
             targetPos = worldPosition;
 
@@ -189,6 +189,30 @@ namespace Flower
             {
                 meshRenderer.sharedMaterial = validLocation ? material : invalidPositionMaterial;
             }
+        }
+
+        public bool TryBuildTower()
+        {
+            if (currentArea == null)
+            {
+                Log.Error("Current area is null");
+                return false;
+            }
+
+            Vector3 position = Vector3.zero;
+            Quaternion rotation = currentArea.transform.rotation;
+
+            TowerFitStatus fits = currentArea.Fits(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
+
+            if (fits == TowerFitStatus.Fits)
+            {
+                position = currentArea.GridToWorld(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
+                currentArea.Occupy(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
+                GameEntry.Event.Fire(this, BuildTowerEventArgs.Create(entityDataTowerPreview.TowerData, position, rotation));
+                return true;
+            }
+
+            return false;
         }
     }
 }

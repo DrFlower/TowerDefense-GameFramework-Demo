@@ -124,7 +124,7 @@ namespace Flower
 
             dicSerial2Item.Add(ne.Item.Id, ne.Item);
 
-            callback(ne.Item);
+            callback?.Invoke(ne.Item);
         }
 
         private void OnShowItemFail(object sender, GameEventArgs e)

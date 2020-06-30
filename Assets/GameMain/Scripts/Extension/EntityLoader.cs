@@ -132,7 +132,7 @@ namespace Flower
             }
 
             dicSerial2Entity.Add(ne.Entity.Id, ne.Entity);
-            callback(ne.Entity);
+            callback?.Invoke(ne.Entity);
         }
 
         private void OnShowEntityFail(object sender, GameEventArgs e)

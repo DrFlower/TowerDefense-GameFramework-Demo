@@ -14,7 +14,7 @@ namespace Flower
         public TowerData TowerData
         {
             get;
-            set;
+            private set;
         }
 
         public ShowPreviewTowerEventArgs()
