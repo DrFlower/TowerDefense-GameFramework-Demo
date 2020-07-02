@@ -38,6 +38,22 @@ namespace Flower.Data
             }
         }
 
+        public IntVector2 Dimensions
+        {
+            get
+            {
+                return towerData.Dimensions;
+            }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return towerData.Type;
+            }
+        }
+
         public int MaxLevel
         {
             get

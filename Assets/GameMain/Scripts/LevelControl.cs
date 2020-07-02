@@ -118,7 +118,7 @@ namespace Flower
 
             Tower tower = dataTower.CreateTower(towerData.Id);
             dicTowers.Add(tower.SerialId, tower);
-
+            
             entityLoader.ShowEntity<EntityAssaultCannon>(towerData.EntityId, null, EntityData.Create(position, rotation));
 
             HidePreviewTower();

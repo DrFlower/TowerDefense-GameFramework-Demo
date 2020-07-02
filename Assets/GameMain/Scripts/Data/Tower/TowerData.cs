@@ -58,6 +58,14 @@ namespace Flower.Data
             private set;
         }
 
+        public string Type
+        {
+            get
+            {
+                return dRTower.Type;
+            }
+        }
+
         public TowerData(DRTower dRTower, TowerLevelData[] towerLevels)
         {
             this.dRTower = dRTower;
