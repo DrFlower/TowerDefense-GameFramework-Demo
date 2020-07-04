@@ -22,6 +22,7 @@ namespace Flower
         private bool isBuilding = false;
 
         private Dictionary<int, Tower> dicTowers;
+        private Dictionary<int, EntityTowerBase> dicEntityTower;
 
         public void Enter()
         {
@@ -30,6 +31,7 @@ namespace Flower
             dataTower = GameEntry.Data.GetData<DataTower>();
 
             dicTowers = new Dictionary<int, Tower>();
+            dicEntityTower = new Dictionary<int, EntityTowerBase>();
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
@@ -117,9 +119,22 @@ namespace Flower
             dataPlayer.AddEnergy(-towerLevelData.BuildEnergy);
 
             Tower tower = dataTower.CreateTower(towerData.Id);
+
+            if (tower == null)
+            {
+                Log.Error("Create tower fail,Tower data id is '{0}'.", towerData.Id);
+                return;
+            }
+
             dicTowers.Add(tower.SerialId, tower);
-            
-            entityLoader.ShowEntity<EntityAssaultCannon>(towerData.EntityId, null, EntityData.Create(position, rotation));
+
+            entityLoader.ShowEntity(towerData.EntityId, TypeUtility.GetEntityType(tower.Type),
+            (entity) =>
+            {
+                EntityTowerBase entityTowerBase = entity.Logic as EntityTowerBase;
+                dicEntityTower.Add(entity.Id, entityTowerBase);
+            }
+            , EntityDataTower.Create(tower, position, rotation));
 
             HidePreviewTower();
         }

@@ -164,7 +164,7 @@ namespace Flower
             return entityLoader.ShowEntity(entityId, entityLogicType, onShowSuccess, userData);
         }
 
-        public int ShowItem<T>(EnumEntity enumEntity, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
+        public int ShowEntity<T>(EnumEntity enumEntity, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
         {
             if (entityLoader == null)
             {
@@ -174,7 +174,7 @@ namespace Flower
             return entityLoader.ShowEntity<T>(enumEntity, onShowSuccess, userData);
         }
 
-        public int ShowItem<T>(int entityId, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
+        public int ShowEntity<T>(int entityId, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
         {
             if (entityLoader == null)
             {
