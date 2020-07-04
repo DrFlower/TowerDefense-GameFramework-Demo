@@ -30,7 +30,16 @@ namespace Flower
         {
             base.OnOpen(userData);
 
-            //todo set text by level data
+            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
+            LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
+            if (levelData == null)
+            {
+                Log.Error("Can not found level '{0}.'", dataLevel.CurrentLevel);
+                return;
+            }
+
+            levelTitleText.text = levelData.Name;
+            levelDescriptionText.text = levelData.Description;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
