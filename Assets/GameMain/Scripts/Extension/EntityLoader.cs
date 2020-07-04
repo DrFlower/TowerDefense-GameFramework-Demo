@@ -84,7 +84,13 @@ namespace Flower
             {
                 foreach (var item in entities)
                 {
-                    HideEntity(item);
+                    //若Child Entity由这个Loader对象托管，则由此Loader释放
+                    if (dicSerial2Entity.ContainsKey(item.Id))
+                    {
+                        HideEntity(item);
+                    }
+                    else//若Child Entity不由这个Loader对象托管，则从Parent Entity脱离
+                        GameEntry.Entity.DetachEntity(item);
                 }
             }
 
@@ -102,6 +108,26 @@ namespace Flower
         public void HideAllEntity()
         {
             tempList.Clear();
+
+            foreach (var entity in dicSerial2Entity.Values)
+            {
+                Entity parentEntity = GameEntry.Entity.GetParentEntity(entity);
+                //有ParentEntity
+                if (parentEntity != null)
+                {
+                    //若Parent Entity由这个Loader对象托管，则把这个Child Entity从数据中移除，在隐藏Parent Entity，GF内部会处理Child Entity
+                    if (dicSerial2Entity.ContainsKey(parentEntity.Id))
+                    {
+                        dicSerial2Entity.Remove(entity.Id);
+                        dicCallback.Remove(entity.Id);
+                    }
+                    //若Parent Entity不由这个Loader对象托管，则从Parent Entity脱离
+                    else
+                    {
+                        GameEntry.Entity.DetachEntity(entity);
+                    }
+                }
+            }
 
             foreach (var serialId in dicSerial2Entity.Keys)
             {
