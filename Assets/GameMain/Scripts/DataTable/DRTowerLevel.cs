@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-02 23:53:00.558
+// 生成时间：2020-07-04 21:31:52.453
 //------------------------------------------------------------
 
 using GameFramework;
@@ -46,6 +46,15 @@ namespace Flower
         }
 
         /// <summary>
+        /// 获取炮塔描述Id。
+        /// </summary>
+        public string UpgradeDesId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// 获取实体编号。
         /// </summary>
         public int EntityId
@@ -55,9 +64,36 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取DPS。
+        /// 获取伤害。
         /// </summary>
-        public float DPS
+        public float Damage
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取溅射伤害。
+        /// </summary>
+        public float SplashDamage
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取溅射范围。
+        /// </summary>
+        public float SplashRange
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取开火频率。
+        /// </summary>
+        public float FireRate
         {
             get;
             private set;
@@ -67,6 +103,33 @@ namespace Flower
         /// 获取范围。
         /// </summary>
         public float Range
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取减速率。
+        /// </summary>
+        public float SpeedDownRate
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取生成能量。
+        /// </summary>
+        public float EnergyRaise
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取生成能量。
+        /// </summary>
+        public float EnergyRaiseRate
         {
             get;
             private set;
@@ -106,9 +169,16 @@ namespace Flower
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
                 DesId = columnTexts[index++];
+                UpgradeDesId = columnTexts[index++];
                 EntityId = int.Parse(columnTexts[index++]);
-                DPS = float.Parse(columnTexts[index++]);
+                Damage = float.Parse(columnTexts[index++]);
+                SplashDamage = float.Parse(columnTexts[index++]);
+                SplashRange = float.Parse(columnTexts[index++]);
+                FireRate = float.Parse(columnTexts[index++]);
                 Range = float.Parse(columnTexts[index++]);
+                SpeedDownRate = float.Parse(columnTexts[index++]);
+                EnergyRaise = float.Parse(columnTexts[index++]);
+                EnergyRaiseRate = float.Parse(columnTexts[index++]);
                 BuildEnergy = int.Parse(columnTexts[index++]);
                 SellEnergy = int.Parse(columnTexts[index++]);
             }
@@ -121,9 +191,16 @@ namespace Flower
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         DesId = strings[binaryReader.Read7BitEncodedInt32()];
+                        UpgradeDesId = strings[binaryReader.Read7BitEncodedInt32()];
                         EntityId = binaryReader.Read7BitEncodedInt32();
-                        DPS = binaryReader.ReadSingle();
+                        Damage = binaryReader.ReadSingle();
+                        SplashDamage = binaryReader.ReadSingle();
+                        SplashRange = binaryReader.ReadSingle();
+                        FireRate = binaryReader.ReadSingle();
                         Range = binaryReader.ReadSingle();
+                        SpeedDownRate = binaryReader.ReadSingle();
+                        EnergyRaise = binaryReader.ReadSingle();
+                        EnergyRaiseRate = binaryReader.ReadSingle();
                         BuildEnergy = binaryReader.Read7BitEncodedInt32();
                         SellEnergy = binaryReader.Read7BitEncodedInt32();
                     }

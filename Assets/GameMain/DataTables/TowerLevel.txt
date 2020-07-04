@@ -1,20 +1,20 @@
-﻿#	炮塔等级配置表							
-#	Id		DesId	EntityId	DPS	Range	BuildEnergy	SellEnergy
-#	int		string	int	float	float	int	int
-#	配置编号	策划备注	炮塔描述Id	实体编号	DPS	范围	建造能量	出售能量
-	10101	突击加农炮	Assault Cannon Des 1	1013	10	10	10	10
-	10102	突击加农炮	Assault Cannon Des 2	1014	10	10	10	10
-	10103	突击加农炮	Assault Cannon Des 3	1015	10	10	10	10
-	10201	火箭	Rocket Platform Des 1	1016	10	10	10	10
-	10202	火箭	Rocket Platform Des 2	1017	10	10	10	10
-	10203	火箭	Rocket Platform Des 3	1018	10	10	10	10
-	10301	等离子喷枪	Plasma Lance Des 1	1019	10	10	10	10
-	10302	等离子喷枪	Plasma Lance Des 2	1020	10	10	10	10
-	10303	等离子喷枪	Plasma Lance Des 3	1021	10	10	10	10
-	10401	能量塔	Energy Pylon Des 1	1022	10	10	10	10
-	10402	能量塔	Energy Pylon Des 2	1023	10	10	10	10
-	10403	能量塔	Energy Pylon Des 3	1024	10	10	10	10
-	10501	电磁脉冲发生器	EMP Generator Des 1	1025	10	10	10	10
-	10502	电磁脉冲发生器	EMP Generator Des 2	1026	10	10	10	10
-	10503	电磁脉冲发生器	EMP Generator Des 3	1027	10	10	10	10
-	10601	导弹阵列	Missile Array Des 1	1028	10	15	10	10
+﻿#	炮塔等级配置表														
+#	Id		DesId	UpgradeDesId	EntityId	Damage	SplashDamage	SplashRange	FireRate	Range	SpeedDownRate	EnergyRaise	EnergyRaiseRate	BuildEnergy	SellEnergy
+#	int		string	string	int	float	float	float	float	float	float	float	float	int	int
+#	配置编号	策划备注	炮塔描述Id	炮塔描述Id	实体编号	伤害	溅射伤害	溅射范围	开火频率	范围	减速率	生成能量	生成能量	建造能量	出售能量
+	10101	突击加农炮	Assault Cannon Des 1	Assault Cannon Upgrade Des 1	1013	0.25	0	0	4	8	0	0	0	4	2
+	10102	突击加农炮	Assault Cannon Des 2	Assault Cannon Upgrade Des 2	1014	0.25	0	0	6	8	0	0	0	8	6
+	10103	突击加农炮	Assault Cannon Des 3		1015	0.25	0	0	8	10	0	0	0	14	13
+	10201	火箭	Rocket Platform Des 1	Rocket Platform Upgrade Des 1	1016	3	1.5	2	0.6	8	0	0	0	12	6
+	10202	火箭	Rocket Platform Des 2	Rocket Platform Upgrade Des 2	1017	3	2	2	0.7	10	0	0	0	24	18
+	10203	火箭	Rocket Platform Des 3		1018	5	2.5	2	0.8	12	0	0	0	32	34
+	10301	等离子喷枪	Plasma Lance Des 1	Plasma Lance Upgrade Des 1	1019	12	0	0	0.3	12	0	0	0	15	7
+	10302	等离子喷枪	Plasma Lance Des 2	Plasma Lance Upgrade Des 2	1020	16	0	0	0.35	14	0	0	0	30	22
+	10303	等离子喷枪	Plasma Lance Des 3		1021	20	0	0	0.4	15	0	0	0	40	42
+	10401	能量塔	Energy Pylon Des 1	Energy Pylon Upgrade Des 1	1022	0	0	0	0	0	0	1	0.1	8	4
+	10402	能量塔	Energy Pylon Des 2	Energy Pylon Upgrade Des 2	1023	0	0	0	0	0	0	1	0.125	8	8
+	10403	能量塔	Energy Pylon Des 3		1024	0	0	0	0	0	0	1	0.2	8	12
+	10501	电磁脉冲发生器	EMP Generator Des 1	EMP Generator Upgrade Des 1	1025	0	0	0	0	6	0.75	0	0	6	3
+	10502	电磁脉冲发生器	EMP Generator Des 2	EMP Generator Upgrade Des 2	1026	0	0	0	0	6	0.65	0	0	10	8
+	10503	电磁脉冲发生器	EMP Generator Des 3		1027	0	0	0	0	8	0.65	0	0	10	13
+	10601	导弹阵列	Missile Array Des 1		1028	0	2	0.6	20	16	0	0	0	20	-1

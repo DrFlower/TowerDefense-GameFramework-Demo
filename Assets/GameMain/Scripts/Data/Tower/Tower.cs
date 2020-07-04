@@ -146,6 +146,19 @@ namespace Flower.Data
             }
         }
 
+        public string GetUpgradeDes(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return string.Empty;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).UpgradeDes;
+            }
+        }
+
         public int GetLevelEntityId(int level)
         {
             if (level < 0 || level > MaxLevel)
@@ -156,6 +169,97 @@ namespace Flower.Data
             else
             {
                 return towerData.GetTowerLevelData(level).EntityId;
+            }
+        }
+
+        public float GetDamage(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).Damage;
+            }
+        }
+
+        public float GetSplashDamage(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).SplashDamage;
+            }
+        }
+
+        public float GetSplashRange(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).SplashRange;
+            }
+        }
+
+        public float GetFireRate(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).FireRate;
+            }
+        }
+
+        public float GetSpeedDownRate(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).SpeedDownRate;
+            }
+        }
+
+        public float GetEnergyRaise(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).EnergyRaise;
+            }
+        }
+
+        public float GetEnergyRaiseRate(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).EnergyRaiseRate;
             }
         }
 

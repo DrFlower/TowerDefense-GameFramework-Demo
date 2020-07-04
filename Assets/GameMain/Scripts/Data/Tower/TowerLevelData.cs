@@ -22,7 +22,21 @@ namespace Flower.Data
         {
             get
             {
+                if (string.IsNullOrEmpty(dRTowerLevel.DesId))
+                    return string.Empty;
+
                 return GameEntry.Localization.GetString(dRTowerLevel.DesId);
+            }
+        }
+
+        public string UpgradeDes
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(dRTowerLevel.UpgradeDesId))
+                    return string.Empty;
+
+                return GameEntry.Localization.GetString(dRTowerLevel.UpgradeDesId);
             }
         }
 
@@ -34,11 +48,35 @@ namespace Flower.Data
             }
         }
 
-        public float DPS
+        public float Damage
         {
             get
             {
-                return dRTowerLevel.DPS;
+                return dRTowerLevel.Damage;
+            }
+        }
+
+        public float SplashDamage
+        {
+            get
+            {
+                return dRTowerLevel.SplashDamage;
+            }
+        }
+
+        public float SplashRange
+        {
+            get
+            {
+                return dRTowerLevel.SplashRange;
+            }
+        }
+
+        public float FireRate
+        {
+            get
+            {
+                return dRTowerLevel.FireRate;
             }
         }
 
@@ -47,6 +85,38 @@ namespace Flower.Data
             get
             {
                 return dRTowerLevel.Range;
+            }
+        }
+
+        public float SpeedDownRate
+        {
+            get
+            {
+                return dRTowerLevel.SpeedDownRate;
+            }
+        }
+
+        public float EnergyRaise
+        {
+            get
+            {
+                return dRTowerLevel.EnergyRaise;
+            }
+        }
+
+        public float EnergyRaiseRate
+        {
+            get
+            {
+                return dRTowerLevel.EnergyRaiseRate;
+            }
+        }
+
+        public float DPS
+        {
+            get
+            {
+                return (Damage + SplashDamage) * FireRate;
             }
         }
 
