@@ -52,14 +52,18 @@ namespace Flower
 
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
             if (dataLevel.LevelState == EnumLevelState.Prepare)
-                sellPriceText.text = tower.BuildEnergy.ToString();
+                sellPriceText.text = tower.TotalCostEnergy.ToString();
             else
                 sellPriceText.text = tower.SellEnergy.ToString();
 
             upgradeButton.gameObject.SetActive(!tower.IsMaxLevel);
             if (!tower.IsMaxLevel)
             {
-                upgradePriceText.text = tower.GetBuildEnergy(tower.Level + 1).ToString();
+                int upgradeNeedEngry = tower.GetBuildEnergy(tower.Level + 1);
+                upgradePriceText.text = upgradeNeedEngry.ToString();
+
+                DataPlayer dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+                upgradeButton.interactable = (dataPlayer.Energy >= upgradeNeedEngry);
             }
         }
 

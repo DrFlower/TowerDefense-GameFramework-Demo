@@ -56,6 +56,7 @@ namespace Flower
         {
             int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevel;
             GameEntry.Data.GetData<DataLevel>().LoadLevel(currentLevel);
+            Close();
         }
 
     }

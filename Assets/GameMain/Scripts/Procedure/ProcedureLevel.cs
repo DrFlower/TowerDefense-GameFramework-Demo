@@ -29,7 +29,7 @@ namespace Flower
 
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
-            //GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Subscribe(SellTowerEventArgs.EventId, OnSellTower);
@@ -60,7 +60,7 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
-            //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Unsubscribe(SellTowerEventArgs.EventId, OnSellTower);
@@ -141,8 +141,7 @@ namespace Flower
                 return;
             }
 
-            changeScene = true;
-            procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.LevelData.SceneData.Id);
+            levelControl.Restart();
         }
 
         private void OnShowPreviewTower(object sender, GameEventArgs e)
@@ -178,9 +177,8 @@ namespace Flower
             if (levelControl == null)
                 return;
 
-            levelControl.SellTower(ne.TowerSerialId);
+            levelControl.DestroyTower(ne.TowerSerialId);
         }
-
     }
 }
 

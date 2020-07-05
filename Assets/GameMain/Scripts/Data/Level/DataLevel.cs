@@ -119,11 +119,13 @@ namespace Flower.Data
                 return;
             }
 
+            GameEntry.Data.GetData<DataPlayer>().Reset();
+
             LevelData levelData = dicLevelData[level];
           
             if (level == CurrentLevel)
             {
-                ChangeLevelState(EnumLevelState.Loading);
+                ChangeLevelState(EnumLevelState.Prepare);
                 GameEntry.Event.Fire(this, ReloadLevelEventArgs.Create(levelData));
                 return;
             }

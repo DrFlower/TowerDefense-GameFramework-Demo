@@ -103,7 +103,7 @@ namespace Flower
             }
             else
             {
-                if(Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit raycastHit;
@@ -207,7 +207,7 @@ namespace Flower
             HidePreviewTower();
         }
 
-        public void SellTower(int towerSerialId)
+        public void DestroyTower(int towerSerialId)
         {
             if (!dicTowerInfo.ContainsKey(towerSerialId))
                 return;
@@ -217,6 +217,15 @@ namespace Flower
             towerInfo.PlacementArea.Clear(towerInfo.PlaceGrid, towerInfo.Tower.Dimensions);
             dicTowerInfo.Remove(towerSerialId);
             ReferencePool.Release(towerInfo);
+        }
+
+        private void DestroyAllTower()
+        {
+            List<int> towerSerialIds = new List<int>(dicTowerInfo.Keys);
+            for (int i = 0; i < towerSerialIds.Count; i++)
+            {
+                DestroyTower(towerSerialIds[i]);
+            }
         }
 
         public void StartWave()
@@ -234,6 +243,11 @@ namespace Flower
 
         }
 
+        public void Restart()
+        {
+            DestroyAllTower();
+        }
+
         public void Gameover()
         {
 
@@ -241,7 +255,7 @@ namespace Flower
 
         public void Quick()
         {
-            entityLoader.HideAllEntity();
+            DestroyAllTower();
         }
 
     }

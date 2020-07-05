@@ -119,6 +119,14 @@ namespace Flower.Data
             }
         }
 
+        public int TotalCostEnergy
+        {
+            get
+            {
+                return GetTotalCostEnergy(Level);
+            }
+        }
+
         public int EntityId
         {
             get
@@ -316,6 +324,25 @@ namespace Flower.Data
             else
             {
                 return towerData.GetTowerLevelData(level).BuildEnergy;
+            }
+        }
+
+        public int GetTotalCostEnergy(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return 0;
+            }
+            else
+            {
+                int energy = 0;
+                for (int i = 0; i <= level; i++)
+                {
+                    energy += GetBuildEnergy(i);
+                }
+
+                return energy;
             }
         }
 

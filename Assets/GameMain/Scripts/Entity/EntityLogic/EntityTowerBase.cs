@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameFramework.Event;
 using Flower.Data;
 
 namespace Flower
@@ -29,6 +30,8 @@ namespace Flower
             }
 
             ShowTowerLevelEntity(entityDataTower.Tower.Level);
+
+            Subscribe(UpgradeTowerEventArgs.EventId, OnUpgradeTower);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -61,10 +64,17 @@ namespace Flower
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerControllerForm, entityDataTower.Tower);
         }
 
-        //private void OnMouseDown()
-        //{
-        //    GameEntry.UI.OpenUIForm(EnumUIForm.UITowerControllerForm, entityDataTower.Tower);
-        //}
+        private void OnUpgradeTower(object sender, GameEventArgs e)
+        {
+            UpgradeTowerEventArgs ne = (UpgradeTowerEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (ne.Tower.SerialId != entityDataTower.Tower.SerialId)
+                return;
+
+            ShowTowerLevelEntity(ne.Tower.Level);
+        }
 
     }
 }

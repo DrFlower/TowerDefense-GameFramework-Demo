@@ -137,6 +137,16 @@ namespace Flower.Data
                 return;
             }
 
+            DataPlayer dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+            int needEnergy = tower.GetBuildEnergy(tower.Level + 1);
+            if (dataPlayer.Energy < needEnergy)
+            {
+                Log.Error("Energy lack,need {0},current is {1}", needEnergy, dataPlayer.Energy);
+                return;
+            }
+
+            dataPlayer.AddEnergy(-needEnergy);
+
             int lastLevel = tower.Level;
 
             tower.Upgrade();
@@ -171,7 +181,7 @@ namespace Flower.Data
 
             if (dataLevel.LevelState == EnumLevelState.Prepare)
             {
-                dataPlayer.AddEnergy(tower.BuildEnergy);
+                dataPlayer.AddEnergy(tower.TotalCostEnergy);
             }
             else if (dataLevel.LevelState == EnumLevelState.Normal)
             {

@@ -93,16 +93,25 @@ namespace Flower
             if (ne == null)
                 return;
 
-            if (ne.LastState == EnumLevelState.Prepare && ne.CurrentState == EnumLevelState.Normal)
+            if (ne.CurrentState == EnumLevelState.Normal)
             {
                 btnStartWave.gameObject.SetActive(false);
                 waveInfoPanel.SetActive(true);
+            }
+            else if (ne.CurrentState == EnumLevelState.Prepare)
+            {
+                btnStartWave.gameObject.SetActive(true);
+                waveInfoPanel.SetActive(false);
             }
         }
 
         private void OnWaveUpdate(object sender, GameEventArgs e)
         {
+            WaveInfoUpdateEventArgs ne = (WaveInfoUpdateEventArgs)e;
+            if (ne == null)
+                return;
 
+            waveText.text = string.Format("{0}/{1}", ne.CurrentWave, ne.TotalWave);
         }
 
         private void OnBtnStartWaveClick()

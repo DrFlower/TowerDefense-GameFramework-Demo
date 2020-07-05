@@ -67,6 +67,17 @@ namespace Flower.Data
             AddEnergy(DebugAddEnergyCount);
         }
 
+        public void Reset()
+        {
+            int lastHP = HP;
+            HP = 100;
+            GameEntry.Event.Fire(this, PlayerEnergyChangeEventArgs.Create(lastHP, HP));
+
+            int lastEnergy = Energy;
+            Energy = 0;
+            GameEntry.Event.Fire(this, PlayerEnergyChangeEventArgs.Create(lastEnergy, Energy));
+        }
+
         public bool BuyTower(int towerId)
         {
             return false;
