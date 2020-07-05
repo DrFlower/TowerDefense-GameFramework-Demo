@@ -1,0 +1,12 @@
+﻿#	敌人配置表					
+#	Id		NameId	EntityId	MaxHP	Speed
+#	int		string	int	float	float
+#	配置编号	策划备注	敌人名字Id	实体编号	血量	移动速度
+	101	虫子	Buggy	1031	4	4.8
+	102	直升机	Copter	1032	16	3
+	103	坦克	Tank	1033	35	2
+	104	首领	BOSS	1034	600	1.2
+	105	超级虫子	SuperBuggy	1035	14	4.8
+	106	超级直升机	SuperCopter	1036	32	3
+	107	超级坦克	SuperTank	1037	100	2
+	108	超级首领	SuperBOSS	1038	1400	1.2

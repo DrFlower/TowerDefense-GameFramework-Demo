@@ -9,7 +9,7 @@
 	105	第三关	Assets/GameMain/Scenes/Level3/Level3.unity
 	106	第四关	Assets/GameMain/Scenes/Level4/Level4.unity
 	107	第五关	Assets/GameMain/Scenes/Level5/Level5.unity
-#			
+#UI			
 	1001	主菜单	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab
 	1002	设置界面	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab
 	1003	关卡选择界面	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab
@@ -19,10 +19,10 @@
 	1007	游戏结束	Assets/GameMain/UI/UIForms/UIGameOverForm.prefab
 	1008	UI遮罩	Assets/GameMain/UI/UIForms/UIMask.prefab
 	1009	炮塔控制面板	Assets/GameMain/UI/UIForms/UITowerControllerForm.prefab
-#			
+#Item			
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 	2002	关卡选择按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab
-#			
+#Entity			
 	3001	突击加农炮预览	Assets/GameMain/Entity/AssaultCannon/AssaultCannonPreview.prefab
 	3002	火箭预览	Assets/GameMain/Entity/RocketPlatform/RocketPlatformPreview.prefab
 	3003	等离子喷枪预览	Assets/GameMain/Entity/PlasmaLance/PlasmaLancePreview.prefab
@@ -52,7 +52,16 @@
 	3027	电磁脉冲发生器等级3	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level3.prefab
 	3028	导弹阵列等级1	Assets/GameMain/Entity/MissileArray/MissileArray_Level1.prefab
 	3029	范围指示器	Assets/GameMain/Entity/RadiusVisualiser.prefab
-#			
+	3030	炮塔放置特效	Assets/GameMain/Entity/BuildPfx.prefab
+	3031	虫子	Assets/GameMain/Entity/Enemies/Hoverbuggy.prefab
+	3032	直升机	Assets/GameMain/Entity/Enemies/Hovercopter.prefab
+	3033	坦克	Assets/GameMain/Entity/Enemies/Hovertank.prefab
+	3034	首领	Assets/GameMain/Entity/Enemies/Hoverboss.prefab
+	3035	超级虫子	Assets/GameMain/Entity/Enemies/SuperHoverbuggy.prefab
+	3036	超级直升机	Assets/GameMain/Entity/Enemies/SuperHovercopter.prefab
+	3037	超级坦克	Assets/GameMain/Entity/Enemies/SuperHovertank.prefab
+	3038	超级首领	Assets/GameMain/Entity/Enemies/SuperHoverboss.prefab
+#Sound			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3
 	20001	Enemy Fire	Assets/GameMain/Sounds/SFX/Enemy Fire.wav

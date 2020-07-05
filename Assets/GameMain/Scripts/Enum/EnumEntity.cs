@@ -1,5 +1,5 @@
 ﻿// 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-05 15:25:51.036
+// 生成时间：2020-07-06 01:17:13.156
 //------------------------------------------------------------
 
 namespace Flower
@@ -150,5 +150,50 @@ namespace Flower
         /// 范围指示器
         /// </summary>
         RadiusVisualiser = 1029,
+
+        /// <summary>
+        /// 炮塔放置特效
+        /// </summary>
+        BuildPfx = 1030,
+
+        /// <summary>
+        /// 虫子
+        /// </summary>
+        Buggy = 1031,
+
+        /// <summary>
+        /// 直升机
+        /// </summary>
+        Copter = 1032,
+
+        /// <summary>
+        /// 坦克
+        /// </summary>
+        Tank = 1033,
+
+        /// <summary>
+        /// 首领
+        /// </summary>
+        BOSS = 1034,
+
+        /// <summary>
+        /// 超级虫子
+        /// </summary>
+        SuperBuggy = 1035,
+
+        /// <summary>
+        /// 超级直升机
+        /// </summary>
+        SuperCopter = 1036,
+
+        /// <summary>
+        /// 超级坦克
+        /// </summary>
+        SuperTank = 1037,
+
+        /// <summary>
+        /// 超级首领
+        /// </summary>
+        SuperBOSS = 1038,
     }
 }

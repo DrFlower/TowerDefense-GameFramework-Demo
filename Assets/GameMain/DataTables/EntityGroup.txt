@@ -31,3 +31,12 @@
 	1027	电磁脉冲发生器等级3	EMPGeneratorLevel3	1002
 	1028	导弹阵列等级1	MissileArrayLevel1	1002
 	1029	范围指示器	RadiusVisualiser	1002
+	1030	炮塔放置特效	BuildPfx	1002
+	1031	虫子	Buggy	1002
+	1032	直升机	Copter	1002
+	1033	坦克	Tank	1002
+	1034	首领	BOSS	1002
+	1035	超级虫子	SuperBuggy	1002
+	1036	超级直升机	SuperCopter	1002
+	1037	超级坦克	SuperTank	1002
+	1038	超级首领	SuperBOSS	1002

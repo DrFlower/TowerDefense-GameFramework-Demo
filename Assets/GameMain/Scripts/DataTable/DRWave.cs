@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-04 21:31:52.459
+// 生成时间：2020-07-06 01:33:59.553
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,7 +19,7 @@ using UnityGameFramework.Runtime;
 namespace Flower
 {
     /// <summary>
-    /// 怪物波次配置表。
+    /// 敌人波次配置表。
     /// </summary>
     public class DRWave : DataRowBase
     {
@@ -37,18 +37,18 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取怪物时间间隔。
+        /// 获取波次结束等待时间。
         /// </summary>
-        public float Interval
+        public float FinishWaitTIme
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取敌人ID。
+        /// 获取敌人波次元素ID范围。
         /// </summary>
-        public int[] EnemyIds
+        public int[] WaveElements
         {
             get;
             private set;
@@ -69,8 +69,8 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
-                Interval = float.Parse(columnTexts[index++]);
-                EnemyIds = DataTableExtension.ParseInt32Array(columnTexts[index++]);
+                FinishWaitTIme = float.Parse(columnTexts[index++]);
+                WaveElements = DataTableExtension.ParseInt32Array(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -80,8 +80,8 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
-                        Interval = binaryReader.ReadSingle();
-                        EnemyIds = binaryReader.ReadInt32Array();
+                        FinishWaitTIme = binaryReader.ReadSingle();
+                        WaveElements = binaryReader.ReadInt32Array();
                     }
                 }
             }
