@@ -137,7 +137,10 @@ namespace Flower.Data
                 return;
             }
 
+            int lastLevel = tower.Level;
+
             tower.Upgrade();
+            GameEntry.Event.Fire(this, UpgradeTowerEventArgs.Create(tower, lastLevel));
         }
 
         public void UpgradeTower(Tower tower)
@@ -145,14 +148,37 @@ namespace Flower.Data
             UpgradeTower(tower.SerialId);
         }
 
-        public void SellTower()
+        public void SellTower(int serialId)
         {
+            if (!dicTower.ContainsKey(serialId))
+            {
+                Log.Error("Can not find tower serialId '{0}'.", serialId);
+                return;
+            }
 
-        }
+            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
 
-        public void BuyTower()
-        {
+            if (dataLevel.LevelState != EnumLevelState.Prepare && dataLevel.LevelState != EnumLevelState.Normal)
+            {
 
+                return;
+            }
+
+            Tower tower = dicTower[serialId];
+            GameEntry.Event.FireNow(this, SellTowerEventArgs.Create(tower.SerialId));
+
+            DataPlayer dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+
+            if (dataLevel.LevelState == EnumLevelState.Prepare)
+            {
+                dataPlayer.AddEnergy(tower.BuildEnergy);
+            }
+            else if (dataLevel.LevelState == EnumLevelState.Normal)
+            {
+                dataPlayer.AddEnergy(tower.SellEnergy);
+            }
+
+            DestroyTower(tower);
         }
 
         protected override void OnUnload()

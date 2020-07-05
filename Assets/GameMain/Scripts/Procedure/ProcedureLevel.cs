@@ -32,6 +32,7 @@ namespace Flower
             //GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
+            GameEntry.Event.Subscribe(SellTowerEventArgs.EventId, OnSellTower);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
@@ -62,6 +63,7 @@ namespace Flower
             //GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
+            GameEntry.Event.Unsubscribe(SellTowerEventArgs.EventId, OnSellTower);
 
             levelControl.Quick();
         }
@@ -164,7 +166,19 @@ namespace Flower
             if (levelControl == null)
                 return;
 
-            levelControl.CreateTower(ne.TowerData, ne.Position, ne.Rotation);
+            levelControl.CreateTower(ne.TowerData, ne.PlacementArea, ne.PlaceGrid, ne.Position, ne.Rotation);
+        }
+
+        private void OnSellTower(object sender, GameEventArgs e)
+        {
+            SellTowerEventArgs ne = (SellTowerEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (levelControl == null)
+                return;
+
+            levelControl.SellTower(ne.TowerSerialId);
         }
 
     }

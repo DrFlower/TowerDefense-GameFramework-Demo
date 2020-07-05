@@ -91,7 +91,7 @@ namespace Flower.Data
 
         public int GetMaxLevel()
         {
-            return towerLevels == null ? 0 : towerLevels.Length;
+            return towerLevels == null ? 0 : towerLevels.Length - 1;
         }
     }
 }

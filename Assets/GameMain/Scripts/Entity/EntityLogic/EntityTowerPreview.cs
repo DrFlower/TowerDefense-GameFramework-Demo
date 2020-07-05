@@ -208,7 +208,7 @@ namespace Flower
             {
                 position = currentArea.GridToWorld(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
                 currentArea.Occupy(m_GridPosition, entityDataTowerPreview.TowerData.Dimensions);
-                GameEntry.Event.Fire(this, BuildTowerEventArgs.Create(entityDataTowerPreview.TowerData, position, rotation));
+                GameEntry.Event.Fire(this, BuildTowerEventArgs.Create(entityDataTowerPreview.TowerData, currentArea, m_GridPosition, position, rotation));
                 return true;
             }
 

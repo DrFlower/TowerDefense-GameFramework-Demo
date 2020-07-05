@@ -29,6 +29,18 @@ namespace Flower
             private set;
         }
 
+        public IPlacementArea PlacementArea
+        {
+            get;
+            private set;
+        }
+
+        public IntVector2 PlaceGrid
+        {
+            get;
+            private set;
+        }
+
         public BuildTowerEventArgs()
         {
             TowerData = null;
@@ -51,10 +63,12 @@ namespace Flower
             private set;
         }
 
-        public static BuildTowerEventArgs Create(TowerData towerData, Vector3 position, Quaternion rotation, object userData = null)
+        public static BuildTowerEventArgs Create(TowerData towerData, IPlacementArea placementArea, IntVector2 placeGrid, Vector3 position, Quaternion rotation, object userData = null)
         {
             BuildTowerEventArgs buildTowerEventArgs = ReferencePool.Acquire<BuildTowerEventArgs>();
             buildTowerEventArgs.TowerData = towerData;
+            buildTowerEventArgs.PlacementArea = placementArea;
+            buildTowerEventArgs.PlaceGrid = placeGrid;
             buildTowerEventArgs.Position = position;
             buildTowerEventArgs.Rotation = rotation;
             return buildTowerEventArgs;

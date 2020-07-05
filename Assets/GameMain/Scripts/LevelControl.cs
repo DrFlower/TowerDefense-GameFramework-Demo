@@ -9,6 +9,59 @@ namespace Flower
 {
     class LevelControl
     {
+        public class TowerInfo : IReference
+        {
+            public Tower Tower
+            {
+                get;
+                private set;
+            }
+
+            public EntityTowerBase EntityTower
+            {
+                get;
+                private set;
+            }
+
+            public IPlacementArea PlacementArea
+            {
+                get;
+                private set;
+            }
+
+            public IntVector2 PlaceGrid
+            {
+                get;
+                private set;
+            }
+
+            public TowerInfo()
+            {
+                this.Tower = null;
+                this.EntityTower = null;
+                this.PlacementArea = null;
+                this.PlaceGrid = IntVector2.zero;
+            }
+
+            public static TowerInfo Create(Tower tower, EntityTowerBase entityTower, IPlacementArea placementArea, IntVector2 placeGrid)
+            {
+                TowerInfo towerInfo = ReferencePool.Acquire<TowerInfo>();
+                towerInfo.Tower = tower;
+                towerInfo.EntityTower = entityTower;
+                towerInfo.PlacementArea = placementArea;
+                towerInfo.PlaceGrid = placeGrid;
+                return towerInfo;
+            }
+
+            public void Clear()
+            {
+                this.Tower = null;
+                this.EntityTower = null;
+                this.PlacementArea = null;
+                this.PlaceGrid = IntVector2.zero;
+            }
+        }
+
         private EntityLoader entityLoader;
 
         private int? uiMaskFormSerialId;
@@ -21,8 +74,7 @@ namespace Flower
         private EntityTowerPreview previewTowerEntityLogic;
         private bool isBuilding = false;
 
-        private Dictionary<int, Tower> dicTowers;
-        private Dictionary<int, EntityTowerBase> dicEntityTower;
+        private Dictionary<int, TowerInfo> dicTowerInfo;
 
         public void Enter()
         {
@@ -30,8 +82,7 @@ namespace Flower
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
 
-            dicTowers = new Dictionary<int, Tower>();
-            dicEntityTower = new Dictionary<int, EntityTowerBase>();
+            dicTowerInfo = new Dictionary<int, TowerInfo>();
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
@@ -48,6 +99,25 @@ namespace Flower
                 if (Input.GetMouseButtonDown(1))
                 {
                     HidePreviewTower();
+                }
+            }
+            else
+            {
+                if(Input.GetMouseButtonDown(0))
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit raycastHit;
+                    if (Physics.Raycast(ray, out raycastHit, float.MaxValue, LayerMask.GetMask("Towers")))
+                    {
+                        if (raycastHit.collider != null)
+                        {
+                            EntityTowerBase entityTowerBase = raycastHit.collider.gameObject.GetComponent<EntityTowerBase>();
+                            if (entityTowerBase != null)
+                            {
+                                entityTowerBase.ShowControlForm();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -106,7 +176,7 @@ namespace Flower
             isBuilding = false;
         }
 
-        public void CreateTower(TowerData towerData, Vector3 position, Quaternion rotation)
+        public void CreateTower(TowerData towerData, IPlacementArea placementArea, IntVector2 placeGrid, Vector3 position, Quaternion rotation)
         {
             if (towerData == null)
                 return;
@@ -126,17 +196,27 @@ namespace Flower
                 return;
             }
 
-            dicTowers.Add(tower.SerialId, tower);
-
             entityLoader.ShowEntity(towerData.EntityId, TypeUtility.GetEntityType(tower.Type),
             (entity) =>
             {
                 EntityTowerBase entityTowerBase = entity.Logic as EntityTowerBase;
-                dicEntityTower.Add(entity.Id, entityTowerBase);
+                dicTowerInfo.Add(tower.SerialId, TowerInfo.Create(tower, entityTowerBase, placementArea, placeGrid));
             }
             , EntityDataTower.Create(tower, position, rotation));
 
             HidePreviewTower();
+        }
+
+        public void SellTower(int towerSerialId)
+        {
+            if (!dicTowerInfo.ContainsKey(towerSerialId))
+                return;
+
+            TowerInfo towerInfo = dicTowerInfo[towerSerialId];
+            entityLoader.HideEntity(dicTowerInfo[towerSerialId].EntityTower.Entity);
+            towerInfo.PlacementArea.Clear(towerInfo.PlaceGrid, towerInfo.Tower.Dimensions);
+            dicTowerInfo.Remove(towerSerialId);
+            ReferencePool.Release(towerInfo);
         }
 
         public void StartWave()

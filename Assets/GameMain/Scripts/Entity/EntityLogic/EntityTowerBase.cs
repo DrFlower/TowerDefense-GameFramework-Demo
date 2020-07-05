@@ -56,6 +56,16 @@ namespace Flower
                 EntityData.Create(transform.position, transform.rotation));
         }
 
+        public void ShowControlForm()
+        {
+            GameEntry.UI.OpenUIForm(EnumUIForm.UITowerControllerForm, entityDataTower.Tower);
+        }
+
+        //private void OnMouseDown()
+        //{
+        //    GameEntry.UI.OpenUIForm(EnumUIForm.UITowerControllerForm, entityDataTower.Tower);
+        //}
+
     }
 }
 

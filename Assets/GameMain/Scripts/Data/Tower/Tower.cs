@@ -62,11 +62,27 @@ namespace Flower.Data
             }
         }
 
+        public bool IsMaxLevel
+        {
+            get
+            {
+                return Level >= towerData.GetMaxLevel();
+            }
+        }
+
         public string Des
         {
             get
             {
                 return GetDes(Level);
+            }
+        }
+
+        public string UpgradeDes
+        {
+            get
+            {
+                return GetUpgradeDes(Level);
             }
         }
 
@@ -78,6 +94,7 @@ namespace Flower.Data
             }
         }
 
+
         public float Range
         {
             get
@@ -86,7 +103,7 @@ namespace Flower.Data
             }
         }
 
-        public float BuildEnergy
+        public int BuildEnergy
         {
             get
             {
@@ -94,7 +111,7 @@ namespace Flower.Data
             }
         }
 
-        public float SellEnergy
+        public int SellEnergy
         {
             get
             {
