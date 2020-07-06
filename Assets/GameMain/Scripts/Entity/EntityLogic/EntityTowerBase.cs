@@ -55,6 +55,9 @@ namespace Flower
                     entityTowerLevel = entity;
                     entityLogicTowerLevel = entityTowerLevel.Logic as EntityTowerLevel;
                     GameEntry.Entity.AttachEntity(entityTowerLevel, this.Entity);
+
+                    GameEntry.Entity.ShowEntity<EntityAutoHide>(GameEntry.Entity.GenerateSerialId(),
+                        EnumEntity.BuildPfx, EntityDataAutoHide.Create(1, transform.position, transform.rotation));
                 },
                 EntityData.Create(transform.position, transform.rotation));
         }

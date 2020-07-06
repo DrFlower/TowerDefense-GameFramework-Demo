@@ -48,11 +48,27 @@ namespace Flower.Data
 
             dicLevelData = new Dictionary<int, LevelData>();
 
+            DataWave dataWave = GameEntry.Data.GetData<DataWave>();
+            if (dataWave == null)
+                throw new System.Exception("Can not get data 'DataWave'");
+
             DRLevel[] dRLevels = dtLevel.GetAllDataRows();
             foreach (var dRLevel in dRLevels)
             {
                 SceneData sceneData = GameEntry.Data.GetData<DataScene>().GetSceneData(dRLevel.SceneId);
-                LevelData levelData = new LevelData(dRLevel, sceneData);
+
+                int[] waveIds = dRLevel.WaveIds;
+                WaveData[] waveDatas = new WaveData[waveIds.Length];
+                for (int i = 0; i < waveIds.Length; i++)
+                {
+                    WaveData waveData = dataWave.GetWaveData(waveIds[i]);
+                    if (waveData == null)
+                        throw new System.Exception("Can not find Wave Data id :" + waveIds[i]);
+
+                    waveDatas[i] = waveData;
+                }
+
+                LevelData levelData = new LevelData(dRLevel, waveDatas, sceneData);
                 dicLevelData.Add(dRLevel.Id, levelData);
             }
 
@@ -122,7 +138,7 @@ namespace Flower.Data
             GameEntry.Data.GetData<DataPlayer>().Reset();
 
             LevelData levelData = dicLevelData[level];
-          
+
             if (level == CurrentLevel)
             {
                 ChangeLevelState(EnumLevelState.Prepare);
@@ -189,13 +205,13 @@ namespace Flower.Data
 
         public void ExitLevel()
         {
-            if(CurrentLevel!=NONE_LEVEL_INDEX)
+            if (CurrentLevel != NONE_LEVEL_INDEX)
             {
                 ChangeLevelState(EnumLevelState.None);
                 CurrentLevel = NONE_LEVEL_INDEX;
                 GameEntry.Event.Fire(this, ChangeSceneEventArgs.Create(GameEntry.Config.GetInt("Scene.Menu")));
             }
-        
+
         }
 
         public void Gameover()

@@ -10,6 +10,7 @@ namespace Flower.Data
     public sealed class LevelData
     {
         private DRLevel dRLevel;
+        private WaveData[] waveData;
         private SceneData sceneData;
         private string name;
         private string description;
@@ -38,11 +39,11 @@ namespace Flower.Data
             }
         }
 
-        public int[] WaveIds
+        public WaveData[] WaveDatas
         {
             get
             {
-                return dRLevel.WaveIds;
+                return waveData;
             }
         }
 
@@ -54,7 +55,6 @@ namespace Flower.Data
             }
         }
 
-
         public SceneData SceneData
         {
             get
@@ -63,9 +63,10 @@ namespace Flower.Data
             }
         }
 
-        public LevelData(DRLevel dRLevel, SceneData sceneData)
+        public LevelData(DRLevel dRLevel, WaveData[] waveData, SceneData sceneData)
         {
             this.dRLevel = dRLevel;
+            this.waveData = waveData;
             this.sceneData = sceneData;
         }
     }
