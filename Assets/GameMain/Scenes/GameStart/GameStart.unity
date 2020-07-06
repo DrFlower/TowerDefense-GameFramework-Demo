@@ -1606,8 +1606,12 @@ MonoBehaviour:
   - enable: 1
     dataTypeName: Flower.Data.DataItem
   - enable: 1
+    dataTypeName: Flower.Data.DataWave
+  - enable: 1
     dataTypeName: Flower.Data.DataLevel
   - enable: 1
     dataTypeName: Flower.Data.DataSound
   - enable: 1
     dataTypeName: Flower.Data.DataTower
+  - enable: 1
+    dataTypeName: Flower.Data.DataEnemy
