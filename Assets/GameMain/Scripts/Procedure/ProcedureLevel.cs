@@ -37,7 +37,7 @@ namespace Flower
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
 
-            levelControl.Enter();
+            levelControl.OnEnter();
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

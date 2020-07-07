@@ -7,7 +7,7 @@ using GameFramework;
 
 namespace Flower
 {
-    class LevelControl
+    class LevelControl : IReference
     {
         public class TowerInfo : IReference
         {
@@ -62,6 +62,8 @@ namespace Flower
             }
         }
 
+        private WaveControl waveControl;
+
         private EntityLoader entityLoader;
 
         private int? uiMaskFormSerialId;
@@ -76,8 +78,15 @@ namespace Flower
 
         private Dictionary<int, TowerInfo> dicTowerInfo;
 
-        public void Enter()
+        public LevelControl()
         {
+
+        }
+
+        public void OnEnter()
+        {
+            waveControl = new WaveControl();
+
             entityLoader = EntityLoader.Create(this);
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
@@ -230,33 +239,57 @@ namespace Flower
 
         public void StartWave()
         {
-
+            waveControl.StartWave();
         }
 
         public void Pause()
         {
-
+            waveControl.OnPause();
         }
 
         public void Resume()
         {
-
+            waveControl.OnResume();
         }
 
         public void Restart()
         {
+            waveControl.OnRestart();
             DestroyAllTower();
         }
 
         public void Gameover()
         {
-
+            waveControl.OnGameover();
         }
 
         public void Quick()
         {
+            waveControl.OnQuick();
             DestroyAllTower();
         }
 
+        //public static LevelControl Create(LevelData levelData)
+        //{
+
+        //}
+
+        public void Clear()
+        {
+            ReferencePool.Release(waveControl);
+            ReferencePool.Release(entityLoader);
+
+            uiMaskFormSerialId = null;
+
+            dataPlayer = null;
+            dataTower = null;
+
+            previewTowerData = null;
+            previewTowerEntity = null;
+            previewTowerEntityLogic = null;
+            isBuilding = false;
+
+            dicTowerInfo.Clear();
+        }
     }
 }
