@@ -9,7 +9,7 @@ namespace Flower
 {
     class LevelControl : IReference
     {
-        public class TowerInfo : IReference
+        private class TowerInfo : IReference
         {
             public Tower Tower
             {
@@ -62,6 +62,8 @@ namespace Flower
             }
         }
 
+        private LevelData levelData;
+
         private WaveControl waveControl;
 
         private EntityLoader entityLoader;
@@ -80,19 +82,17 @@ namespace Flower
 
         public LevelControl()
         {
-
-        }
-
-        public void OnEnter()
-        {
-            waveControl = new WaveControl();
+            waveControl = WaveControl.Create(levelData.WaveDatas);
 
             entityLoader = EntityLoader.Create(this);
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
 
             dicTowerInfo = new Dictionary<int, TowerInfo>();
+        }
 
+        public void OnEnter()
+        {
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
         }
@@ -269,13 +269,17 @@ namespace Flower
             DestroyAllTower();
         }
 
-        //public static LevelControl Create(LevelData levelData)
-        //{
-
-        //}
+        public static LevelControl Create(LevelData levelData)
+        {
+            LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
+            levelControl.levelData = levelData;
+            return levelControl;
+        }
 
         public void Clear()
         {
+            levelData = null;
+
             ReferencePool.Release(waveControl);
             ReferencePool.Release(entityLoader);
 
