@@ -82,17 +82,17 @@ namespace Flower
 
         public LevelControl()
         {
+            dicTowerInfo = new Dictionary<int, TowerInfo>();
+        }
+
+        public void OnEnter()
+        {
             waveControl = WaveControl.Create(levelData.WaveDatas);
 
             entityLoader = EntityLoader.Create(this);
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
 
-            dicTowerInfo = new Dictionary<int, TowerInfo>();
-        }
-
-        public void OnEnter()
-        {
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
         }
@@ -273,6 +273,7 @@ namespace Flower
         {
             LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
             levelControl.levelData = levelData;
+
             return levelControl;
         }
 

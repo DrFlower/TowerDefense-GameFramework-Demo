@@ -4,7 +4,8 @@ using GameFramework.Localization;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using GameFramework.Procedure;
-using UnityEngine;
+using GameFramework;
+using Flower.Data;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace Flower
@@ -19,13 +20,16 @@ namespace Flower
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
-
-            levelControl = new LevelControl();
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
+
+            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
+            LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
+
+            levelControl = LevelControl.Create(levelData);
 
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
@@ -51,7 +55,6 @@ namespace Flower
 
             if (levelControl != null)
                 levelControl.Update(elapseSeconds, realElapseSeconds);
-
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -71,6 +74,9 @@ namespace Flower
         protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
             base.OnDestroy(procedureOwner);
+
+            ReferencePool.Release(levelControl);
+            levelControl = null;
         }
 
         private void OnStartWave(object sender, GameEventArgs e)
