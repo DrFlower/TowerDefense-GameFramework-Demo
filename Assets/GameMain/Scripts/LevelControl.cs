@@ -87,8 +87,6 @@ namespace Flower
 
         public void OnEnter()
         {
-            waveControl = WaveControl.Create(levelData.WaveDatas);
-
             entityLoader = EntityLoader.Create(this);
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
@@ -129,6 +127,12 @@ namespace Flower
                     }
                 }
             }
+
+            if (waveControl != null)
+            {
+                waveControl.Update(elapseSeconds, realElapseSeconds);
+            }
+
         }
 
         public void ShowPreviewTower(TowerData towerData)
@@ -239,33 +243,41 @@ namespace Flower
 
         public void StartWave()
         {
+            waveControl = WaveControl.Create(levelData.WaveDatas);
             waveControl.StartWave();
         }
 
         public void Pause()
         {
-            waveControl.OnPause();
+            if (waveControl != null)
+                waveControl.OnPause();
         }
 
         public void Resume()
         {
-            waveControl.OnResume();
+            if (waveControl != null)
+                waveControl.OnResume();
         }
 
         public void Restart()
         {
-            waveControl.OnRestart();
+            if (waveControl != null)
+                waveControl.OnRestart();
+
             DestroyAllTower();
         }
 
         public void Gameover()
         {
-            waveControl.OnGameover();
+            if (waveControl != null)
+                waveControl.OnGameover();
         }
 
         public void Quick()
         {
-            waveControl.OnQuick();
+            if (waveControl != null)
+                waveControl.OnQuick();
+
             DestroyAllTower();
         }
 
@@ -280,9 +292,11 @@ namespace Flower
         public void Clear()
         {
             levelData = null;
+            if (waveControl != null)
+                ReferencePool.Release(waveControl);
 
-            ReferencePool.Release(waveControl);
-            ReferencePool.Release(entityLoader);
+            if (entityLoader != null)
+                ReferencePool.Release(entityLoader);
 
             uiMaskFormSerialId = null;
 
