@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-06 01:33:59.555
+// 生成时间：2020-07-10 01:32:47.071
 //------------------------------------------------------------
 
 using GameFramework;
@@ -46,9 +46,9 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取怪物生成时间。
+        /// 获取获取怪物生成时间。
         /// </summary>
-        public int SpawnTime
+        public float SpawnTime
         {
             get;
             private set;
@@ -70,7 +70,7 @@ namespace Flower
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
                 EnemyId = int.Parse(columnTexts[index++]);
-                SpawnTime = int.Parse(columnTexts[index++]);
+                SpawnTime = float.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -81,7 +81,7 @@ namespace Flower
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         EnemyId = binaryReader.Read7BitEncodedInt32();
-                        SpawnTime = binaryReader.Read7BitEncodedInt32();
+                        SpawnTime = binaryReader.ReadSingle();
                     }
                 }
             }

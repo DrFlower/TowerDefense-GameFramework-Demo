@@ -27,11 +27,11 @@ namespace Flower.Data
             }
         }
 
-        public int SpawnTime
+        public float SpawnTime
         {
             get
             {
-                return dRWaveElement.EnemyId;
+                return dRWaveElement.SpawnTime;
             }
         }
 

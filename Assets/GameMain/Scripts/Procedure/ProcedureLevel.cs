@@ -37,6 +37,7 @@ namespace Flower
             GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Subscribe(SellTowerEventArgs.EventId, OnSellTower);
+            GameEntry.Event.Subscribe(StartWaveEventArgs.EventId, OnStartWave);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
@@ -67,6 +68,7 @@ namespace Flower
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Unsubscribe(SellTowerEventArgs.EventId, OnSellTower);
+            GameEntry.Event.Unsubscribe(StartWaveEventArgs.EventId, OnStartWave);
 
             levelControl.Quick();
         }
