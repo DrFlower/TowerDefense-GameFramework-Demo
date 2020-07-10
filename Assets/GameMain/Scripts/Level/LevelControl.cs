@@ -10,7 +10,7 @@ namespace Flower
     partial class LevelControl : IReference
     {
         private LevelData levelData;
-
+        private LevelPathManager levelPathManager;
         private WaveControl waveControl;
 
         private EntityLoader entityLoader;
@@ -190,7 +190,7 @@ namespace Flower
 
         public void StartWave()
         {
-            waveControl = WaveControl.Create(levelData.WaveDatas);
+            waveControl = WaveControl.Create(levelData.WaveDatas, levelPathManager);
             waveControl.StartWave();
         }
 
@@ -228,17 +228,19 @@ namespace Flower
             DestroyAllTower();
         }
 
-        public static LevelControl Create(LevelData levelData)
+        public static LevelControl Create(LevelData levelData, LevelPathManager levelPathManager)
         {
             LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
             levelControl.levelData = levelData;
-
+            levelControl.levelPathManager = levelPathManager;
             return levelControl;
         }
 
         public void Clear()
         {
             levelData = null;
+            levelPathManager = null;
+
             if (waveControl != null)
                 ReferencePool.Release(waveControl);
 
