@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 using Flower.Data;
 using GameFramework;
+using GameFramework.Event;
 
 namespace Flower
 {
@@ -44,7 +45,6 @@ namespace Flower
                     }
                     else
                     {
-                        Log.Info(string.Format("show enemy {0},at time:{1}", result, timer));
                         SpawnEnemy(result);
                     }
                 }
@@ -61,12 +61,12 @@ namespace Flower
                 return;
             }
 
-            entityLoader.ShowEntity<EntityBaseEnemy>(enemyData.EntityId, null, EntityDataEnemy.Create(enemyData, levelPathManager.GetLevelPath(), levelPathManager.GetStartPathNode().position-new Vector3(0,0.2f,0), Quaternion.identity));
+            entityLoader.ShowEntity<EntityBaseEnemy>(enemyData.EntityId, null, EntityDataEnemy.Create(enemyData, levelPathManager.GetLevelPath(), levelPathManager.GetStartPathNode().position - new Vector3(0, 0.2f, 0), Quaternion.identity));
         }
 
         public void StartWave()
         {
-
+            GameEntry.Event.Subscribe(HideEnemyEventArgs.EventId, HideEnemyEntity);
         }
 
         public void OnPause()
@@ -81,7 +81,8 @@ namespace Flower
 
         public void OnRestart()
         {
-
+            GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, HideEnemyEntity);
+            entityLoader.HideAllEntity();
         }
 
         public void OnGameover()
@@ -91,7 +92,17 @@ namespace Flower
 
         public void OnQuick()
         {
+            GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, HideEnemyEntity);
+            entityLoader.HideAllEntity();
+        }
 
+        private void HideEnemyEntity(object sender, GameEventArgs e)
+        {
+            HideEnemyEventArgs ne = (HideEnemyEventArgs)e;
+            if (ne == null)
+                return;
+
+            entityLoader.HideEntity(ne.EntityId);
         }
 
         public static WaveControl Create(WaveData[] waveDatas, LevelPathManager levelPathManager)

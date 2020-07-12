@@ -40,6 +40,8 @@ namespace Flower
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
+
+            entityLoader.ShowEntity<EntityPlayer>(EnumEntity.Player, null, EntityData.Create(levelData.PlayerPosition));
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)

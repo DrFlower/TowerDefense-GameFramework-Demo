@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-10 01:32:46.893
+// 生成时间：2020-07-12 13:00:24.312
 //------------------------------------------------------------
 
 using GameFramework;
@@ -55,9 +55,18 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取物体组名场景Id。
+        /// 获取场景Id。
         /// </summary>
         public int SceneId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取玩家位置。
+        /// </summary>
+        public Vector3 PlayerPosition
         {
             get;
             private set;
@@ -99,6 +108,7 @@ namespace Flower
                 NameId = columnTexts[index++];
                 DescriptionId = columnTexts[index++];
                 SceneId = int.Parse(columnTexts[index++]);
+                PlayerPosition = DataTableExtension.ParseVector3(columnTexts[index++]);
                 WaveIds = DataTableExtension.ParseInt32Array(columnTexts[index++]);
                 AllowTowers = DataTableExtension.ParseInt32Array(columnTexts[index++]);
             }
@@ -113,6 +123,7 @@ namespace Flower
                         NameId = strings[binaryReader.Read7BitEncodedInt32()];
                         DescriptionId = strings[binaryReader.Read7BitEncodedInt32()];
                         SceneId = binaryReader.Read7BitEncodedInt32();
+                        PlayerPosition = binaryReader.ReadVector3();
                         WaveIds = binaryReader.ReadInt32Array();
                         AllowTowers = binaryReader.ReadInt32Array();
                     }

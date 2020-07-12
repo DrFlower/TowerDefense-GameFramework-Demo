@@ -39,6 +39,14 @@ namespace Flower.Data
             }
         }
 
+        public Vector3 PlayerPosition
+        {
+            get
+            {
+                return dRLevel.PlayerPosition;
+            }
+        }
+
         public WaveData[] WaveDatas
         {
             get

@@ -15,6 +15,8 @@ namespace Flower
 
         protected EntityDataEnemy entityDataEnemy;
 
+        private float hp;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -26,15 +28,27 @@ namespace Flower
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
+            if (levelPath == null || levelPath.PathNodes == null || levelPath.PathNodes.Length == 0)
+                return;
+
             if (levelPath.PathNodes.Length > targetPathNodeIndex)
             {
                 agent.SetDestination(levelPath.PathNodes[targetPathNodeIndex].position);
-
-                if (Vector3.Distance(transform.position, levelPath.PathNodes[targetPathNodeIndex].position) < 0.5f)
+                if (Vector3.Distance(transform.position, levelPath.PathNodes[targetPathNodeIndex].position) < 1f)
                 {
-                    targetPathNodeIndex++;
+                    if (levelPath.PathNodes.Length - 1 == targetPathNodeIndex)
+                    {
+                        agent.isStopped = true;
+                    }
+                    else
+                    {
+                        targetPathNodeIndex++;
+                    }
                 }
             }
+
+
+
         }
 
         protected override void OnShow(object userData)
@@ -49,6 +63,9 @@ namespace Flower
                 return;
             }
 
+            agent.enabled = true;
+            agent.speed = entityDataEnemy.EnemyData.Speed;
+
             levelPath = entityDataEnemy.LevelPath;
 
             targetPathNodeIndex = 0;
@@ -58,7 +75,33 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
 
+
+            levelPath = null;
+            entityDataEnemy = null;
             targetPathNodeIndex = 0;
+            hp = 0;
+            agent.enabled = false;
+        }
+
+        public void AfterAttack()
+        {
+            GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
+        }
+
+        public void Damage(float value)
+        {
+            hp -= value;
+
+            if (hp <= 0)
+            {
+                hp = 0;
+                Dead();
+            }
+        }
+
+        private void Dead()
+        {
+
         }
     }
 }

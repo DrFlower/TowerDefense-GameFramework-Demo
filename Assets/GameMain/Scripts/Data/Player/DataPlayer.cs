@@ -23,13 +23,13 @@ namespace Flower.Data
 
         protected override void OnLoad()
         {
-            HP = 100;
-            Energy = 0;
+            HP = 10;
+            Energy = 20;
             IsEnableDebugEnergy = true;
             DebugAddEnergyCount = 1000;
         }
 
-        public void Damage(int value)
+        public void Damage(int value = 1)
         {
             if (value == 0)
                 return;
@@ -45,7 +45,7 @@ namespace Flower.Data
                 gameover = true;
             }
 
-            GameEntry.Event.Fire(this, PlayerEnergyChangeEventArgs.Create(lastHP, HP));
+            GameEntry.Event.Fire(this, PlayerHPChangeEventArgs.Create(lastHP, HP));
 
             if (gameover)
                 Gameover();

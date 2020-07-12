@@ -61,6 +61,7 @@
 	3036	超级直升机	Assets/GameMain/Entity/Enemies/SuperHovercopter.prefab
 	3037	超级坦克	Assets/GameMain/Entity/Enemies/SuperHovertank.prefab
 	3038	超级首领	Assets/GameMain/Entity/Enemies/SuperHoverboss.prefab
+	3039	玩家	Assets/GameMain/Entity/EntityPlayer.prefab
 #Sound			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

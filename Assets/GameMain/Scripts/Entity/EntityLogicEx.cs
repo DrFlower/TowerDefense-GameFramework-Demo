@@ -59,7 +59,7 @@ namespace Flower
                 eventSubscriber.UnSubscribeAll();
         }
 
-        public int ShowItem(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null)
+        protected int ShowItem(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null)
         {
             if (itemLoader == null)
             {
@@ -69,7 +69,7 @@ namespace Flower
             return itemLoader.ShowItem(enumItem, onShowSuccess, userData);
         }
 
-        public int ShowItem(int itemId, Action<Item> onShowSuccess, object userData = null)
+        protected int ShowItem(int itemId, Action<Item> onShowSuccess, object userData = null)
         {
             if (itemLoader == null)
             {
@@ -79,7 +79,7 @@ namespace Flower
             return itemLoader.ShowItem(itemId, onShowSuccess, userData);
         }
 
-        public int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
+        protected int ShowItem<T>(EnumItem enumItem, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
         {
             if (itemLoader == null)
             {
@@ -89,7 +89,7 @@ namespace Flower
             return itemLoader.ShowItem<T>(enumItem, onShowSuccess, userData);
         }
 
-        public int ShowItem<T>(int itemId, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
+        protected int ShowItem<T>(int itemId, Action<Item> onShowSuccess, object userData = null) where T : ItemLogic
         {
             if (itemLoader == null)
             {
@@ -100,7 +100,7 @@ namespace Flower
         }
 
 
-        public bool HasItem(int serialId)
+        protected bool HasItem(int serialId)
         {
             if (itemLoader == null)
             {
@@ -110,7 +110,7 @@ namespace Flower
             return itemLoader.HasItem(serialId);
         }
 
-        public Item GetItem(int serialId)
+        protected Item GetItem(int serialId)
         {
             if (itemLoader == null)
             {
@@ -120,7 +120,7 @@ namespace Flower
             return itemLoader.GetItem(serialId);
         }
 
-        public void HideItem(int serialId)
+        protected void HideItem(int serialId)
         {
             if (itemLoader == null)
             {
@@ -130,7 +130,7 @@ namespace Flower
             itemLoader.HideItem(serialId);
         }
 
-        public void HideItem(Item item)
+        protected void HideItem(Item item)
         {
             if (itemLoader == null)
             {
@@ -140,7 +140,7 @@ namespace Flower
             itemLoader.HideItem(item);
         }
 
-        public void HideAllItem()
+        protected void HideAllItem()
         {
             if (itemLoader == null)
             {
@@ -150,7 +150,7 @@ namespace Flower
             itemLoader.HideAllItem();
         }
 
-        public int ShowEntity(EnumEntity enumEntity, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
+        protected int ShowEntity(EnumEntity enumEntity, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
         {
             if (entityLoader == null)
             {
@@ -160,7 +160,7 @@ namespace Flower
             return entityLoader.ShowEntity(enumEntity, entityLogicType, onShowSuccess, userData);
         }
 
-        public int ShowEntity(int entityId, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
+        protected int ShowEntity(int entityId, Type entityLogicType, Action<Entity> onShowSuccess, object userData = null)
         {
             if (entityLoader == null)
             {
@@ -170,7 +170,7 @@ namespace Flower
             return entityLoader.ShowEntity(entityId, entityLogicType, onShowSuccess, userData);
         }
 
-        public int ShowEntity<T>(EnumEntity enumEntity, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
+        protected int ShowEntity<T>(EnumEntity enumEntity, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
         {
             if (entityLoader == null)
             {
@@ -180,7 +180,7 @@ namespace Flower
             return entityLoader.ShowEntity<T>(enumEntity, onShowSuccess, userData);
         }
 
-        public int ShowEntity<T>(int entityId, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
+        protected int ShowEntity<T>(int entityId, Action<Entity> onShowSuccess, object userData = null) where T : EntityLogic
         {
             if (entityLoader == null)
             {
@@ -190,7 +190,7 @@ namespace Flower
             return entityLoader.ShowEntity<T>(entityId, onShowSuccess, userData);
         }
 
-        public bool HasEntity(int serialId)
+        protected bool HasEntity(int serialId)
         {
             if (entityLoader == null)
                 return false;
@@ -198,7 +198,7 @@ namespace Flower
             return entityLoader.GetEntity(serialId);
         }
 
-        public Entity GetEntity(int serialId)
+        protected Entity GetEntity(int serialId)
         {
             if (entityLoader == null)
                 return null;
@@ -206,7 +206,7 @@ namespace Flower
             return entityLoader.GetEntity(serialId);
         }
 
-        public void HideEntity(int serialId)
+        protected void HideEntity(int serialId)
         {
             if (entityLoader == null)
             {
@@ -216,7 +216,7 @@ namespace Flower
             entityLoader.HideEntity(serialId);
         }
 
-        public void HideEntity(Entity entity)
+        protected void HideEntity(Entity entity)
         {
             if (entityLoader == null)
             {
@@ -226,7 +226,7 @@ namespace Flower
             entityLoader.HideEntity(entity);
         }
 
-        public void HideAllEntity()
+        protected void HideAllEntity()
         {
             if (entityLoader == null)
             {

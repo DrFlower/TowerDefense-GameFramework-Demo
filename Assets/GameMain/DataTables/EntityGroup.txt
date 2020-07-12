@@ -40,3 +40,4 @@
 	1036	超级直升机	SuperCopter	1002
 	1037	超级坦克	SuperTank	1002
 	1038	超级首领	SuperBOSS	1002
+	1039	玩家	Player	1002
