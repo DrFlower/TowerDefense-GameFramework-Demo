@@ -74,7 +74,7 @@ namespace Flower.Data
             int[] dimensions = dRTower.Dimensions;
             if (dimensions == null || dimensions.Length < 2)
             {
-                Log.Error("Tower ('{0}') dimensions data vaild", dRTower.Id);
+                Log.Error("Tower ('{0}') dimensions data invaild", dRTower.Id);
                 return;
             }
 

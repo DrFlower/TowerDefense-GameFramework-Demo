@@ -3,13 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameFramework.Data;
 using GameFramework.DataTable;
+using UnityGameFramework.Runtime;
 
 namespace Flower.Data
 {
     public sealed class DataPlayer : DataBase
     {
         public int HP { get; private set; }
-        public int Energy { get; private set; }
+
+        private int energy;
+
+        public int Energy
+        {
+            get
+            {
+                DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
+                if (!dataLevel.IsInLevel)
+                {
+                    Log.Error("Is invaild to get player energy outsiede level scene");
+                    return 0;
+                }
+
+                return energy;
+            }
+
+            private set
+            {
+                energy = value;
+            }
+        }
+
+
         public bool IsEnableDebugEnergy { get; private set; }
         public int DebugAddEnergyCount { get; private set; }
 
@@ -23,8 +47,7 @@ namespace Flower.Data
 
         protected override void OnLoad()
         {
-            HP = 10;
-            Energy = 20;
+            HP = GameEntry.Config.GetInt(Constant.Config.PlayerHP);
             IsEnableDebugEnergy = true;
             DebugAddEnergyCount = 1000;
         }
@@ -48,7 +71,7 @@ namespace Flower.Data
             GameEntry.Event.Fire(this, PlayerHPChangeEventArgs.Create(lastHP, HP));
 
             if (gameover)
-                Gameover();
+                GameOver();
         }
 
         public void AddEnergy(int value)
@@ -70,11 +93,22 @@ namespace Flower.Data
         public void Reset()
         {
             int lastHP = HP;
-            HP = 100;
-            GameEntry.Event.Fire(this, PlayerEnergyChangeEventArgs.Create(lastHP, HP));
+            HP = GameEntry.Config.GetInt(Constant.Config.PlayerHP);
+            GameEntry.Event.Fire(this, PlayerHPChangeEventArgs.Create(lastHP, HP));
 
             int lastEnergy = Energy;
-            Energy = 0;
+            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
+            if (!dataLevel.IsInLevel)
+            {
+                Log.Error("Is invaild to get player energy outsiede level scene");
+                Energy = lastEnergy;
+            }
+            else
+            {
+                LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
+                Energy = levelData.InitEnergy;
+            }
+
             GameEntry.Event.Fire(this, PlayerEnergyChangeEventArgs.Create(lastEnergy, Energy));
         }
 
@@ -88,9 +122,9 @@ namespace Flower.Data
 
         }
 
-        private void Gameover()
+        private void GameOver()
         {
-            GameEntry.Data.GetData<DataLevel>().Gameover();
+            GameEntry.Data.GetData<DataLevel>().GameFail();
         }
 
         protected override void OnUnload()

@@ -37,7 +37,8 @@ namespace Flower
                     int result = waveInfo.DequeueEnemy(timer);
                     if (result == -1)
                     {
-                        waveInfos.Dequeue();
+                        waveInfo = waveInfos.Dequeue();
+                        ReferencePool.Release(waveInfo);
                     }
                     else if (result == 0)
                     {
@@ -47,6 +48,10 @@ namespace Flower
                     {
                         SpawnEnemy(result);
                     }
+                }
+                else
+                {
+                    dataLevel.GameSuccess();
                 }
             }
         }
@@ -71,27 +76,39 @@ namespace Flower
 
         public void OnPause()
         {
+            var entities = entityLoader.GetAllEntities();
+            foreach (var eneity in entities)
+            {
+                IPause iPause = eneity.Logic as IPause;
+                if (iPause == null)
+                    continue;
+
+                iPause.Pause();
+            }
 
         }
 
         public void OnResume()
         {
+            var entities = entityLoader.GetAllEntities();
+            foreach (var eneity in entities)
+            {
+                IPause iPause = eneity.Logic as IPause;
+                if (iPause == null)
+                    continue;
 
-        }
-
-        public void OnRestart()
-        {
-            GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, HideEnemyEntity);
-            entityLoader.HideAllEntity();
+                iPause.Resume();
+            }
         }
 
         public void OnGameover()
         {
-
+            OnPause();
         }
 
         public void OnQuick()
         {
+            OnResume();
             GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, HideEnemyEntity);
             entityLoader.HideAllEntity();
         }

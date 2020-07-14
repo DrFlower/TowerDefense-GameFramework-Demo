@@ -24,6 +24,7 @@ namespace Flower
         private Entity previewTowerEntity;
         private EntityTowerPreview previewTowerEntityLogic;
         private bool isBuilding = false;
+        private bool pause = false;
 
         private Dictionary<int, TowerInfo> dicTowerInfo;
 
@@ -41,7 +42,7 @@ namespace Flower
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
 
-            entityLoader.ShowEntity<EntityPlayer>(EnumEntity.Player, null, EntityData.Create(levelData.PlayerPosition));
+            entityLoader.ShowEntity<EntityPlayer>(EnumEntity.Player, null, EntityData.Create(levelData.PlayerPosition, levelData.PlayerQuaternion));
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
@@ -99,7 +100,7 @@ namespace Flower
                  previewTowerEntityLogic = entity.Logic as EntityTowerPreview;
                  if (previewTowerEntityLogic == null)
                  {
-                     Log.Error("Entity '{0}' logic type vaild, need EntityTowerPreview", previewTowerEntity.Id);
+                     Log.Error("Entity '{0}' logic type invaild, need EntityTowerPreview", previewTowerEntity.Id);
                      return;
                  }
 
@@ -198,28 +199,54 @@ namespace Flower
 
         public void Pause()
         {
+            pause = true;
+
             if (waveControl != null)
                 waveControl.OnPause();
+
+            foreach (var towerInfo in dicTowerInfo.Values)
+            {
+                IPause iPause = towerInfo.EntityTower;
+                iPause.Pause();
+            }
         }
 
         public void Resume()
         {
+            pause = false;
+
             if (waveControl != null)
                 waveControl.OnResume();
+
+            foreach (var towerInfo in dicTowerInfo.Values)
+            {
+                IPause iPause = towerInfo.EntityTower;
+                iPause.Resume();
+            }
         }
 
         public void Restart()
         {
-            if (waveControl != null)
-                waveControl.OnRestart();
+            waveControl.OnQuick();
+            ReferencePool.Release(waveControl);
+            waveControl = null;
+
+            if (pause)
+            {
+                Resume();
+                pause = false;
+            }
 
             DestroyAllTower();
         }
 
-        public void Gameover()
+        public void Gameover(EnumGameOverType enumGameOverType, int starCount)
         {
             if (waveControl != null)
                 waveControl.OnGameover();
+
+            Pause();
+            GameEntry.UI.OpenUIForm(EnumUIForm.UIGameOverForm, UIGameOverFormOpenParam.Create(levelData, enumGameOverType, starCount));
         }
 
         public void Quick()
@@ -227,7 +254,14 @@ namespace Flower
             if (waveControl != null)
                 waveControl.OnQuick();
 
+            if (pause)
+            {
+                Resume();
+                pause = false;
+            }
+
             DestroyAllTower();
+            entityLoader.HideAllEntity();
         }
 
         public static LevelControl Create(LevelData levelData, LevelPathManager levelPathManager)
@@ -246,8 +280,12 @@ namespace Flower
             if (waveControl != null)
                 ReferencePool.Release(waveControl);
 
+            waveControl = null;
+
             if (entityLoader != null)
                 ReferencePool.Release(entityLoader);
+
+            entityLoader = null;
 
             uiMaskFormSerialId = null;
 

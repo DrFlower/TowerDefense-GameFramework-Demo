@@ -12,7 +12,8 @@ namespace Flower
 
         public GameoverEventArgs()
         {
-
+            EnumGameOverType = EnumGameOverType.Fail;
+            StarCount = 0;
         }
 
         public override int Id
@@ -23,6 +24,17 @@ namespace Flower
             }
         }
 
+        public EnumGameOverType EnumGameOverType
+        {
+            get;
+            private set;
+        }
+
+        public int StarCount
+        {
+            get;
+            private set;
+        }
 
         public object UserData
         {
@@ -30,15 +42,18 @@ namespace Flower
             private set;
         }
 
-        public static GameoverEventArgs Create(object userData = null)
+        public static GameoverEventArgs Create(EnumGameOverType enumGameOverType, int starCount, object userData = null)
         {
             GameoverEventArgs gameoverEventArgs = ReferencePool.Acquire<GameoverEventArgs>();
+            gameoverEventArgs.EnumGameOverType = enumGameOverType;
+            gameoverEventArgs.StarCount = starCount;
             return gameoverEventArgs;
         }
 
         public override void Clear()
         {
-
+            EnumGameOverType = EnumGameOverType.Fail;
+            StarCount = 0;
         }
     }
 

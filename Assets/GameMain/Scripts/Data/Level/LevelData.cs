@@ -39,11 +39,27 @@ namespace Flower.Data
             }
         }
 
+        public int InitEnergy
+        {
+            get
+            {
+                return dRLevel.InitEnergy;
+            }
+        }
+
         public Vector3 PlayerPosition
         {
             get
             {
                 return dRLevel.PlayerPosition;
+            }
+        }
+
+        public Quaternion PlayerQuaternion
+        {
+            get
+            {
+                return Quaternion.Euler(dRLevel.PlayerQuaternion);
             }
         }
 

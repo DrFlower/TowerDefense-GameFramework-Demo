@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6141398052575252555}
   - component: {fileID: 6138799933866115795}
   - component: {fileID: 6319477020908492797}
+  - component: {fileID: 2887566721663867517}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -60,6 +61,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -77,6 +79,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: MAIN MENU
+--- !u!114 &2887566721663867517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206024346142736499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d74f2db555752a499f0b6dda8fd4509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionaryKey: MAIN MENU
 --- !u!1 &6206070104723075645
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +155,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -259,6 +275,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -421,6 +438,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -445,6 +463,7 @@ GameObject:
   - component: {fileID: 6141185298756322089}
   - component: {fileID: 6138579133291062091}
   - component: {fileID: 6319557936790077489}
+  - component: {fileID: 5752075449006717361}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -494,6 +513,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -511,6 +531,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: NEXT LEVEL
+--- !u!114 &5752075449006717361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206234230821625155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d74f2db555752a499f0b6dda8fd4509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionaryKey: NEXT LEVEL
 --- !u!1 &6206477303288972937
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +604,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -646,6 +680,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -719,6 +754,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.366}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -792,6 +828,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -817,6 +854,7 @@ GameObject:
   - component: {fileID: 6139364435351467547}
   - component: {fileID: 6142509861372543937}
   - component: {fileID: 6322677898897015857}
+  - component: {fileID: 93551493519071026}
   m_Layer: 5
   m_Name: UIGameOverForm
   m_TagString: Untagged
@@ -891,6 +929,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &93551493519071026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206846694663498649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8215fa773084fe4c9400d1b81407ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 6318640059695328183}
+  starImages:
+  - {fileID: 6319572025397855809}
+  - {fileID: 6318952626072207397}
+  - {fileID: 6319092401704956467}
+  starBgSprite: {fileID: 21300000, guid: aa18303c92d9e490abfac36b6e0e8646, type: 3}
+  starSprite: {fileID: 21300000, guid: 1361a7ad4c5a14db584c87ffddd81b29, type: 3}
+  nextLevelButton: {fileID: 6318869685516408957}
+  mainMenuButton: {fileID: 6319443481723585381}
+  restartButton: {fileID: 6318663415405525521}
 --- !u!1 &6206894936466777895
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +1011,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.30588236, g: 0.63529414, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -975,6 +1036,7 @@ GameObject:
   - component: {fileID: 6140747606137681003}
   - component: {fileID: 6138890936312622745}
   - component: {fileID: 6319061609606264365}
+  - component: {fileID: 3627023646920455872}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1024,6 +1086,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1041,6 +1104,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: RESTART
+--- !u!114 &3627023646920455872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206970557995908461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d74f2db555752a499f0b6dda8fd4509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionaryKey: RESTART
 --- !u!1 &6206984407428862241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1256,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1260,6 +1337,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1326,7 +1404,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6141081907202397141}
   - component: {fileID: 6139293104686919575}
-  - component: {fileID: 6318946722084351379}
   - component: {fileID: 6318799795685183469}
   m_Layer: 5
   m_Name: Score Panel
@@ -1365,23 +1442,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6207054882587798261}
   m_CullTransparentMesh: 0
---- !u!114 &6318946722084351379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6207054882587798261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13782b2af64488fa11f380f08dfab63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  starImages:
-  - {fileID: 6319572025397855809}
-  - {fileID: 6318952626072207397}
-  - {fileID: 6319092401704956467}
-  achievedStarSprite: {fileID: 21300000, guid: 6476fa37afe8f46a7825bf79a9e5d28d, type: 3}
 --- !u!114 &6318799795685183469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,6 +1527,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9450981, g: 0.2784314, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1540,6 +1601,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

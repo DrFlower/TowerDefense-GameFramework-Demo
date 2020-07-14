@@ -7,11 +7,13 @@ using Flower.Data;
 
 namespace Flower
 {
-    public abstract class EntityTowerBase : EntityLogicEx
+    public abstract class EntityTowerBase : EntityLogicEx, IPause
     {
         protected EntityDataTower entityDataTower;
         protected Entity entityTowerLevel;
         protected EntityTowerLevel entityLogicTowerLevel;
+
+        protected bool pause = false;
 
         protected override void OnInit(object userData)
         {
@@ -25,7 +27,7 @@ namespace Flower
             entityDataTower = userData as EntityDataTower;
             if (entityDataTower == null)
             {
-                Log.Error("Entity tower '{0}' tower data vaild.", Id);
+                Log.Error("Entity tower '{0}' tower data invaild.", Id);
                 return;
             }
 
@@ -79,6 +81,15 @@ namespace Flower
             ShowTowerLevelEntity(ne.Tower.Level);
         }
 
+        public void Pause()
+        {
+            pause = true;
+        }
+
+        public void Resume()
+        {
+            pause = false;
+        }
     }
 }
 

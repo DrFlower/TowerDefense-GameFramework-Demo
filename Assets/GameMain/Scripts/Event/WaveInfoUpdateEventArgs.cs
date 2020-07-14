@@ -29,6 +29,12 @@ namespace Flower
             private set;
         }
 
+        public float CurrentWaveProgress
+        {
+            get;
+            private set;
+        }
+
         public WaveInfoUpdateEventArgs()
         {
 
@@ -49,12 +55,13 @@ namespace Flower
             private set;
         }
 
-        public static WaveInfoUpdateEventArgs Create(int lastWave, int currentWave, int totalWave, object userData = null)
+        public static WaveInfoUpdateEventArgs Create(int lastWave, int currentWave, int totalWave, float currentWaveProgress, object userData = null)
         {
             WaveInfoUpdateEventArgs waveInfoUpdateEventArgs = ReferencePool.Acquire<WaveInfoUpdateEventArgs>();
             waveInfoUpdateEventArgs.LastWave = lastWave;
             waveInfoUpdateEventArgs.CurrentWave = currentWave;
             waveInfoUpdateEventArgs.TotalWave = totalWave;
+            waveInfoUpdateEventArgs.CurrentWaveProgress = currentWaveProgress;
             return waveInfoUpdateEventArgs;
         }
 
@@ -63,6 +70,7 @@ namespace Flower
             LastWave = 0;
             CurrentWave = 0;
             TotalWave = 0;
+            CurrentWaveProgress = 0;
         }
     }
 

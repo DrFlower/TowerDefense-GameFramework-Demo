@@ -64,6 +64,12 @@ namespace Flower
 
             public void Clear()
             {
+                while (waveElementInfos.Count > 0)
+                {
+                    WaveElementInfo waveElementInfo = waveElementInfos.Dequeue();
+                    ReferencePool.Release(waveElementInfo);
+                }
+
                 waveElementInfos.Clear();
                 totalSpawnTime = 0f;
                 nextWaveTime = 0f;

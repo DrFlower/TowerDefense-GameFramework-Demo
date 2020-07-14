@@ -57,7 +57,7 @@ namespace Flower
             entityDataTowerPreview = userData as EntityDataTowerPreview;
             if (entityDataTowerPreview == null)
             {
-                Log.Error("EntityDataTowerPreview param is vaild");
+                Log.Error("EntityDataTowerPreview param is invaild");
                 return;
             }
 

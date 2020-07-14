@@ -41,7 +41,7 @@ namespace Flower
             tower = userData as Tower;
             if (tower == null)
             {
-                Log.Error("Open UITowerConrollerForm Param Vaild");
+                Log.Error("Open UITowerConrollerForm Param inbaild");
                 return;
             }
 

@@ -22,7 +22,7 @@ namespace Flower
             "Item",
         };
 
-        [MenuItem("Tools/GenerateDataTableEnum", false, 3)]
+        [MenuItem("Tools/Generate DataTable Enum", false, 3)]
         private static void GenerateDataTableEnum()
         {
             foreach (string dataTableName in GenerateDataTables)

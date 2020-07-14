@@ -7,8 +7,8 @@ namespace Flower
 {
     public class LocalizationDictonaryGeneratorMenu
     {
-        [MenuItem("Tools/Generate Localizatio Dictionary")]
-        private static void GenerateLocalizatioDictionary()
+        [MenuItem("Tools/Generate Localization Dictionary")]
+        private static void GenerateLocalizationDictionary()
         {
             LocalizationDictonaryGenerator.GenerateEnglishLocalizationDictionary();
         }

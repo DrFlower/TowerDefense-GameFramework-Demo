@@ -24,7 +24,7 @@ namespace Flower
             EntityDataAutoHide entityDataAutoHide = userData as EntityDataAutoHide;
             if (entityDataAutoHide == null)
             {
-                Log.Error("Entity EntityAutoHide show param vaild.");
+                Log.Error("Entity EntityAutoHide show param invaild.");
             }
 
             hideTime = entityDataAutoHide.Time;

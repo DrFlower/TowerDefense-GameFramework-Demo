@@ -43,6 +43,7 @@ namespace Flower
             Subscribe(PlayerHPChangeEventArgs.EventId, OnPlayerHPChange);
             Subscribe(PlayerEnergyChangeEventArgs.EventId, OnPlayerEnergyChange);
             Subscribe(LevelStateChangeEventArgs.EventId, OnLevelStateChange);
+            Subscribe(WaveInfoUpdateEventArgs.EventId, OnWaveUpdate);
 
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataLevel = GameEntry.Data.GetData<DataLevel>();

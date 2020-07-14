@@ -7,7 +7,7 @@ using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class EntityBaseEnemy : EntityLogicEx
+    public class EntityBaseEnemy : EntityLogicEx, IPause
     {
         private LevelPath levelPath;
         private int targetPathNodeIndex;
@@ -16,6 +16,8 @@ namespace Flower
         protected EntityDataEnemy entityDataEnemy;
 
         private float hp;
+
+        protected bool pause = false;
 
         protected override void OnInit(object userData)
         {
@@ -46,9 +48,6 @@ namespace Flower
                     }
                 }
             }
-
-
-
         }
 
         protected override void OnShow(object userData)
@@ -59,7 +58,7 @@ namespace Flower
 
             if (entityDataEnemy == null)
             {
-                Log.Error("Entity enemy '{0}' entity data vaild.", Id);
+                Log.Error("Entity enemy '{0}' entity data invaild.", Id);
                 return;
             }
 
@@ -102,6 +101,18 @@ namespace Flower
         private void Dead()
         {
 
+        }
+
+        public void Pause()
+        {
+            pause = true;
+            agent.speed = 0;
+        }
+
+        public void Resume()
+        {
+            pause = false;
+            agent.speed = entityDataEnemy.EnemyData.Speed;
         }
     }
 }

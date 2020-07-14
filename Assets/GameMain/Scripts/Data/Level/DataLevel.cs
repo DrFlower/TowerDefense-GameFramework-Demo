@@ -13,6 +13,8 @@ namespace Flower.Data
         private IDataTable<DRLevel> dtLevel;
         private Dictionary<int, LevelData> dicLevelData;
 
+        private int[] starScore;
+
         private readonly static int NONE_LEVEL_INDEX = -1;
 
         private EnumLevelState stateBeforePause;
@@ -29,6 +31,20 @@ namespace Flower.Data
             private set;
         }
 
+        public int MaxLevel
+        {
+            get;
+            private set;
+        }
+
+        public bool IsInLevel
+        {
+            get
+            {
+                return CurrentLevel != NONE_LEVEL_INDEX;
+            }
+        }
+
         protected override void OnInit()
         {
             LevelState = EnumLevelState.None;
@@ -42,6 +58,8 @@ namespace Flower.Data
 
         protected override void OnLoad()
         {
+            MaxLevel = 0;
+
             dtLevel = GameEntry.DataTable.GetDataTable<DRLevel>();
             if (dtLevel == null)
                 throw new System.Exception("Can not get data table Level");
@@ -70,7 +88,16 @@ namespace Flower.Data
 
                 LevelData levelData = new LevelData(dRLevel, waveDatas, sceneData);
                 dicLevelData.Add(dRLevel.Id, levelData);
+
+                if (dRLevel.Id > MaxLevel)
+                    MaxLevel = dRLevel.Id;
             }
+
+            //
+            starScore = new int[3];
+            starScore[0] = GameEntry.Config.GetInt(Constant.Config.LevelStar1);
+            starScore[1] = GameEntry.Config.GetInt(Constant.Config.LevelStar2);
+            starScore[2] = GameEntry.Config.GetInt(Constant.Config.LevelStar3);
 
             Subscribe(LoadLevelFinishEventArgs.EventId, OnLoadLevelFinfish);
         }
@@ -135,19 +162,19 @@ namespace Flower.Data
                 return;
             }
 
-            GameEntry.Data.GetData<DataPlayer>().Reset();
-
             LevelData levelData = dicLevelData[level];
 
             if (level == CurrentLevel)
             {
                 ChangeLevelState(EnumLevelState.Prepare);
+                GameEntry.Data.GetData<DataPlayer>().Reset();
                 GameEntry.Event.Fire(this, ReloadLevelEventArgs.Create(levelData));
                 return;
             }
 
             CurrentLevel = level;
             ChangeLevelState(EnumLevelState.Loading);
+            GameEntry.Data.GetData<DataPlayer>().Reset();
             GameEntry.Event.Fire(this, LoadLevelEventArgs.Create(levelData));
         }
 
@@ -176,7 +203,7 @@ namespace Flower.Data
                 return;
             }
 
-            if (LevelState != EnumLevelState.Normal || LevelState != EnumLevelState.Prepare)
+            if (LevelState != EnumLevelState.Normal && LevelState != EnumLevelState.Prepare)
             {
                 Log.Error("Only can pause when level is in Normal or Prepare State,now is {0}", LevelState.ToString());
                 return;
@@ -214,7 +241,7 @@ namespace Flower.Data
 
         }
 
-        public void Gameover()
+        public void GameSuccess()
         {
             if (CurrentLevel == NONE_LEVEL_INDEX)
             {
@@ -228,8 +255,42 @@ namespace Flower.Data
                 return;
             }
 
-            GameEntry.Event.Fire(this, GameoverEventArgs.Create());
+            DataPlayer dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+            int hp = dataPlayer.HP;
+            int starCount = 0;
+            for (int i = 0; i < starScore.Length; i++)
+            {
+                if (hp >= starScore[i])
+                {
+                    starCount = i + 1;
+                }
+                else
+                {
+                    starCount = i;
+                    break;
+                }
+            }
+
             ChangeLevelState(EnumLevelState.Gameover);
+            GameEntry.Event.Fire(this, GameoverEventArgs.Create(EnumGameOverType.Success, starCount));
+        }
+
+        public void GameFail()
+        {
+            if (CurrentLevel == NONE_LEVEL_INDEX)
+            {
+                Log.Error("Gameover Only heppen in level");
+                return;
+            }
+
+            if (LevelState != EnumLevelState.Normal)
+            {
+                Log.Error("Gameover Only heppen when level is in Normal State,now is {0}", LevelState.ToString());
+                return;
+            }
+
+            ChangeLevelState(EnumLevelState.Gameover);
+            GameEntry.Event.Fire(this, GameoverEventArgs.Create(EnumGameOverType.Fail, 0));
         }
 
         private void OnLoadLevelFinfish(object sender, GameEventArgs e)

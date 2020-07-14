@@ -201,7 +201,7 @@ namespace GameFramework.Data
         {
             if (string.IsNullOrEmpty(null))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Param data name vaild."));
+                throw new GameFrameworkException(Utility.Text.Format("Param data name invaild."));
             }
 
             Data data = null;
@@ -218,7 +218,7 @@ namespace GameFramework.Data
         {
             if (string.IsNullOrEmpty(null))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Param data name vaild."));
+                throw new GameFrameworkException(Utility.Text.Format("Param data name invaild."));
             }
 
             Type type = typeof(T);

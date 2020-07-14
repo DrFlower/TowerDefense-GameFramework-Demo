@@ -40,7 +40,9 @@ namespace Flower
 
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
+            GameEntry.Event.Subscribe(LevelStateChangeEventArgs.EventId, OnLevelStateChange);
             GameEntry.Event.Subscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            GameEntry.Event.Subscribe(GameoverEventArgs.EventId, OnGameOver);
             GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Subscribe(SellTowerEventArgs.EventId, OnSellTower);
@@ -71,21 +73,23 @@ namespace Flower
 
             GameEntry.Event.Unsubscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Unsubscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
+            GameEntry.Event.Unsubscribe(LevelStateChangeEventArgs.EventId, OnLevelStateChange);
             GameEntry.Event.Unsubscribe(ReloadLevelEventArgs.EventId, OnReloadLevel);
+            GameEntry.Event.Unsubscribe(GameoverEventArgs.EventId, OnGameOver);
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Unsubscribe(SellTowerEventArgs.EventId, OnSellTower);
             GameEntry.Event.Unsubscribe(StartWaveEventArgs.EventId, OnStartWave);
 
             levelControl.Quick();
+
+            ReferencePool.Release(levelControl);
+            levelControl = null;
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
             base.OnDestroy(procedureOwner);
-
-            ReferencePool.Release(levelControl);
-            levelControl = null;
         }
 
         private void OnStartWave(object sender, GameEventArgs e)
@@ -95,15 +99,6 @@ namespace Flower
                 return;
 
             levelControl.StartWave();
-        }
-
-        private void OnGameover(object sender, GameEventArgs e)
-        {
-            GameoverEventArgs ne = (GameoverEventArgs)e;
-            if (ne == null)
-                return;
-
-            levelControl.Gameover();
         }
 
         private void OnChangeScene(object sender, GameEventArgs e)
@@ -136,6 +131,31 @@ namespace Flower
 
             changeScene = true;
             procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.LevelData.SceneData.Id);
+        }
+
+        private void OnLevelStateChange(object sender, GameEventArgs e)
+        {
+            LevelStateChangeEventArgs ne = (LevelStateChangeEventArgs)e;
+            if (ne == null)
+                return;
+
+            if (ne.CurrentState == EnumLevelState.Pause)
+            {
+                levelControl.Pause();
+            }
+            else if (ne.LastState == EnumLevelState.Pause)
+            {
+                levelControl.Resume();
+            }
+        }
+
+        private void OnGameOver(object sender, GameEventArgs e)
+        {
+            GameoverEventArgs ne = (GameoverEventArgs)e;
+            if (ne == null)
+                return;
+
+            levelControl.Gameover(ne.EnumGameOverType, ne.StarCount);
         }
 
         private void OnReloadLevel(object sender, GameEventArgs e)

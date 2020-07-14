@@ -23,7 +23,7 @@ namespace Flower
 
             btnMainMenu.onClick.AddListener(OnBtnMainMenu);
             btnRestart.onClick.AddListener(OnBtnRestart);
-            btnClose.onClick.AddListener(Close);
+            btnClose.onClick.AddListener(OnBtnClose);
         }
 
         protected override void OnOpen(object userData)
@@ -40,6 +40,8 @@ namespace Flower
 
             levelTitleText.text = levelData.Name;
             levelDescriptionText.text = levelData.Description;
+
+            dataLevel.LevelPause();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -56,6 +58,13 @@ namespace Flower
         {
             int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevel;
             GameEntry.Data.GetData<DataLevel>().LoadLevel(currentLevel);
+            Close();
+        }
+
+        private void OnBtnClose()
+        {
+            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
+            dataLevel.LevelResume();
             Close();
         }
 

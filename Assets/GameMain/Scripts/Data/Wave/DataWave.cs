@@ -62,7 +62,7 @@ namespace Flower.Data
                 int endIndex = waveElementRange[1];
 
                 if (endIndex < startIndex)
-                    throw new System.Exception("Wave element index vaild,EndIndex should smaller than StartIndex.");
+                    throw new System.Exception("Wave element index invaild,EndIndex should smaller than StartIndex.");
 
                 WaveElementData[] waveElementDatas = new WaveElementData[endIndex - startIndex + 1];
 

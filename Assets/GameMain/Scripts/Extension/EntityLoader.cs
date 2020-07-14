@@ -68,6 +68,11 @@ namespace Flower
             return null;
         }
 
+        public IEnumerable<Entity> GetAllEntities()
+        {
+            return dicSerial2Entity.Values;
+        }
+
         public void HideEntity(int serialId)
         {
             Entity entity = null;
