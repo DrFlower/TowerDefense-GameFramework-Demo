@@ -38,37 +38,31 @@ namespace Flower
             dataPlayer = null;
         }
 
-        void OnTriggerEnter(Collider other)
-        {
-            var entityEnemy = other.GetComponent<EntityBaseEnemy>();
-            if (entityEnemy == null)
-            {
-                return;
-            }
+        //void OnTriggerEnter(Collider other)
+        //{
+        //    var entityEnemy = other.GetComponent<EntityBaseEnemy>();
+        //    if (entityEnemy == null)
+        //    {
+        //        return;
+        //    }
 
-            Charge();
-            StartCoroutine(Damage(entityEnemy));
-        }
+        //    Charge();
+        //    StartCoroutine(Damage(entityEnemy));
+        //}
 
-        private void Charge()
+        public void Charge()
         {
             if (chargeEffect != null)
                 chargeEffect.Play();
         }
 
-        private IEnumerator Damage(EntityBaseEnemy enemy)
+        public void Damage()
         {
-            yield return new WaitForSeconds(1);
-
             if (demagedEffect != null)
                 demagedEffect.Play();
 
-            if (enemy != null)
-                enemy.AfterAttack();
-
             dataPlayer.Damage();
         }
-
     }
 }
 

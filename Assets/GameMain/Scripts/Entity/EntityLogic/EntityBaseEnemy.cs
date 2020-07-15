@@ -16,6 +16,9 @@ namespace Flower
         protected EntityDataEnemy entityDataEnemy;
 
         private float hp;
+        private bool attacked = false;
+        private float attackTimer = 0;
+        private EntityPlayer targetPlayer;
 
         protected bool pause = false;
 
@@ -29,6 +32,17 @@ namespace Flower
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
+
+            if (!pause && targetPlayer != null && !attacked)
+            {
+                attackTimer += elapseSeconds;
+                if (attackTimer > 1)
+                {
+                    targetPlayer.Damage();
+                    attacked = true;
+                    AfterAttack();
+                }
+            }
 
             if (levelPath == null || levelPath.PathNodes == null || levelPath.PathNodes.Length == 0)
                 return;
@@ -80,6 +94,9 @@ namespace Flower
             targetPathNodeIndex = 0;
             hp = 0;
             agent.enabled = false;
+            attacked = false;
+            attackTimer = 0;
+            targetPlayer = null;
         }
 
         public void AfterAttack()
@@ -105,12 +122,17 @@ namespace Flower
 
         private void OnTriggerEnter(Collider other)
         {
+            if (attacked)
+                return;
+
             var player = other.GetComponent<EntityPlayer>();
             if (player == null)
             {
                 return;
             }
-            //Debug.LogError("player:" + other.gameObject.name + " position:" + other.transform.position+" point:"+other.);
+            targetPlayer = player;
+
+            player.Charge();
         }
 
         public void Pause()
