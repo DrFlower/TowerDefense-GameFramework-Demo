@@ -103,6 +103,16 @@ namespace Flower
 
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            var player = other.GetComponent<EntityPlayer>();
+            if (player == null)
+            {
+                return;
+            }
+            //Debug.LogError("player:" + other.gameObject.name + " position:" + other.transform.position+" point:"+other.);
+        }
+
         public void Pause()
         {
             pause = true;

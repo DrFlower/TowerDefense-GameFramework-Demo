@@ -112,6 +112,8 @@ namespace Flower
             if (ne == null)
                 return;
 
+            waveProgressImg.fillAmount = ne.CurrentWaveProgress;
+
             waveText.text = string.Format("{0}/{1}", ne.CurrentWave, ne.TotalWave);
         }
 

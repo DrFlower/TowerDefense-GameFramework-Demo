@@ -11,12 +11,6 @@ namespace Flower
     {
         public static readonly int EventId = typeof(WaveInfoUpdateEventArgs).GetHashCode();
 
-        public int LastWave
-        {
-            get;
-            private set;
-        }
-
         public int CurrentWave
         {
             get;
@@ -55,10 +49,9 @@ namespace Flower
             private set;
         }
 
-        public static WaveInfoUpdateEventArgs Create(int lastWave, int currentWave, int totalWave, float currentWaveProgress, object userData = null)
+        public static WaveInfoUpdateEventArgs Create(int currentWave, int totalWave, float currentWaveProgress, object userData = null)
         {
             WaveInfoUpdateEventArgs waveInfoUpdateEventArgs = ReferencePool.Acquire<WaveInfoUpdateEventArgs>();
-            waveInfoUpdateEventArgs.LastWave = lastWave;
             waveInfoUpdateEventArgs.CurrentWave = currentWave;
             waveInfoUpdateEventArgs.TotalWave = totalWave;
             waveInfoUpdateEventArgs.CurrentWaveProgress = currentWaveProgress;
@@ -67,7 +60,6 @@ namespace Flower
 
         public override void Clear()
         {
-            LastWave = 0;
             CurrentWave = 0;
             TotalWave = 0;
             CurrentWaveProgress = 0;

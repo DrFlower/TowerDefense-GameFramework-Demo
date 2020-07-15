@@ -12,15 +12,47 @@ namespace Flower
         private class WaveInfo : IReference
         {
             private Queue<WaveElementInfo> waveElementInfos;
-            private float totalSpawnTime = 0f;
-            private float nextWaveTime = 0f;
+
             private bool finished = false;
+
+            public float TotalSpawnTime
+            {
+                get;
+                private set;
+            }
+
+            public float NextWaveTime
+            {
+                get;
+                private set;
+            }
+
+            public int CurrentWave
+            {
+                get;
+                private set;
+            }
+
+            public int TotalWave
+            {
+                get;
+                private set;
+            }
+
+            public float TotalTime
+            {
+                get
+                {
+                    return TotalSpawnTime + NextWaveTime;
+                }
+            }
 
             public WaveInfo()
             {
                 waveElementInfos = new Queue<WaveElementInfo>();
-                totalSpawnTime = 0f;
-                nextWaveTime = 0f;
+                CurrentWave = 1;
+                TotalSpawnTime = 0f;
+                NextWaveTime = 0f;
                 finished = false;
             }
 
@@ -33,15 +65,15 @@ namespace Flower
                         WaveElementInfo waveElementInfo = waveElementInfos.Dequeue();
                         int enemyId = waveElementInfo.EnemyId;
                         ReferencePool.Release(waveElementInfo);
+                        waveElementInfo = null;
+                        CurrentWave++;
                         return enemyId;
                     }
                 }
-
-                if (time > nextWaveTime)
+                else if (time >= TotalTime)
                 {
                     return -1;
                 }
-
                 return 0;
             }
 
@@ -57,8 +89,9 @@ namespace Flower
                     waveInfo.waveElementInfos.Enqueue(WaveElementInfo.Create(waveElementData.EnemyId, timer));
                 }
 
-                waveInfo.totalSpawnTime = timer;
-                waveInfo.nextWaveTime = timer + waveData.FinishWaitTIme;
+                waveInfo.TotalWave = waveData.WaveElementDatas.Length;
+                waveInfo.TotalSpawnTime = timer;
+                waveInfo.NextWaveTime = timer + waveData.FinishWaitTIme;
                 return waveInfo;
             }
 
@@ -71,8 +104,10 @@ namespace Flower
                 }
 
                 waveElementInfos.Clear();
-                totalSpawnTime = 0f;
-                nextWaveTime = 0f;
+                CurrentWave = 1;
+                TotalWave = 0;
+                TotalSpawnTime = 0f;
+                NextWaveTime = 0f;
                 finished = false;
             }
         }
