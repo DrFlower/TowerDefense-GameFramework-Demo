@@ -106,7 +106,7 @@ namespace Flower.Data
             }
             else
             {
-                LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
+                LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevelIndex);
                 Energy = levelData.InitEnergy;
             }
 

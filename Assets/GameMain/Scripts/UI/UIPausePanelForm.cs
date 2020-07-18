@@ -31,10 +31,10 @@ namespace Flower
             base.OnOpen(userData);
 
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
-            LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
+            LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevelIndex);
             if (levelData == null)
             {
-                Log.Error("Can not found level '{0}.'", dataLevel.CurrentLevel);
+                Log.Error("Can not found level '{0}.'", dataLevel.CurrentLevelIndex);
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace Flower
 
         private void OnBtnRestart()
         {
-            int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevel;
+            int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevelIndex;
             GameEntry.Data.GetData<DataLevel>().LoadLevel(currentLevel);
             Close();
         }

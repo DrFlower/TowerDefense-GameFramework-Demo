@@ -42,7 +42,7 @@ namespace Flower
             if (dataLevel == null)
                 return;
 
-            currentLevelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
+            currentLevelData = dataLevel.GetLevelData(dataLevel.CurrentLevelIndex);
             if (currentLevelData == null)
                 return;
 

@@ -115,6 +115,7 @@ namespace Flower.Data
             }
 
             ReferencePool.Release(dicTower[serialId]);
+            dicTower.Remove(serialId);
         }
 
         public void DestroyTower(Tower tower)
@@ -198,6 +199,15 @@ namespace Flower.Data
 
             dicTowerData = null;
             dicTowerLevelData = null;
+
+            if (dicTower != null)
+            {
+                foreach (var item in dicTower.Values)
+                {
+                    ReferencePool.Release(item);
+                }
+                dicTower.Clear();
+            }
 
             serialId = 0;
         }

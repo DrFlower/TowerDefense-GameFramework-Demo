@@ -9,16 +9,17 @@ namespace Flower
 {
     partial class LevelControl : IReference
     {
-        private LevelData levelData;
+        private Level level;
         private LevelPathManager levelPathManager;
-        private WaveControl waveControl;
 
         private EntityLoader entityLoader;
 
         private int? uiMaskFormSerialId;
 
+        private DataLevel dataLevel;
         private DataPlayer dataPlayer;
         private DataTower dataTower;
+        private DataEnemy dataEnemy;
 
         private TowerData previewTowerData;
         private Entity previewTowerEntity;
@@ -27,62 +28,68 @@ namespace Flower
         private bool pause = false;
 
         private Dictionary<int, TowerInfo> dicTowerInfo;
+        private Dictionary<int, EntityBaseEnemy> dicEntityEnemy;
 
         public LevelControl()
         {
             dicTowerInfo = new Dictionary<int, TowerInfo>();
+            dicEntityEnemy = new Dictionary<int, EntityBaseEnemy>();
         }
 
         public void OnEnter()
         {
             entityLoader = EntityLoader.Create(this);
+            dataLevel = GameEntry.Data.GetData<DataLevel>();
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
+            dataEnemy = GameEntry.Data.GetData<DataEnemy>();
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
 
-            entityLoader.ShowEntity<EntityPlayer>(EnumEntity.Player, null, EntityData.Create(levelData.PlayerPosition, levelData.PlayerQuaternion));
+            entityLoader.ShowEntity<EntityPlayer>(EnumEntity.Player, null, EntityData.Create(level.PlayerPosition, level.PlayerQuaternion));
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            if (isBuilding)
+            if (level == null || level.Finish)
+                return;
+
+            level.ProcessLevel(elapseSeconds, realElapseSeconds);
+
+            if (dataLevel.LevelState == EnumLevelState.Prepare || dataLevel.LevelState == EnumLevelState.Normal)
             {
-                if (Input.GetMouseButtonDown(0) && previewTowerEntityLogic != null && previewTowerEntityLogic.CanPlace)
+                if (isBuilding)
                 {
-                    previewTowerEntityLogic.TryBuildTower();
-                }
-                if (Input.GetMouseButtonDown(1))
-                {
-                    HidePreviewTower();
-                }
-            }
-            else
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit raycastHit;
-                    if (Physics.Raycast(ray, out raycastHit, float.MaxValue, LayerMask.GetMask("Towers")))
+                    if (Input.GetMouseButtonDown(0) && previewTowerEntityLogic != null && previewTowerEntityLogic.CanPlace)
                     {
-                        if (raycastHit.collider != null)
+                        previewTowerEntityLogic.TryBuildTower();
+                    }
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        HidePreviewTower();
+                    }
+                }
+                else
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                        RaycastHit raycastHit;
+                        if (Physics.Raycast(ray, out raycastHit, float.MaxValue, LayerMask.GetMask("Towers")))
                         {
-                            EntityTowerBase entityTowerBase = raycastHit.collider.gameObject.GetComponent<EntityTowerBase>();
-                            if (entityTowerBase != null)
+                            if (raycastHit.collider != null)
                             {
-                                entityTowerBase.ShowControlForm();
+                                EntityTowerBase entityTowerBase = raycastHit.collider.gameObject.GetComponent<EntityTowerBase>();
+                                if (entityTowerBase != null)
+                                {
+                                    entityTowerBase.ShowControlForm();
+                                }
                             }
                         }
                     }
                 }
             }
-
-            if (waveControl != null)
-            {
-                waveControl.Update(elapseSeconds, realElapseSeconds);
-            }
-
         }
 
         public void ShowPreviewTower(TowerData towerData)
@@ -191,23 +198,64 @@ namespace Flower
             }
         }
 
+        public void SpawnEnemy(int enemyId)
+        {
+            EnemyData enemyData = dataEnemy.GetEnemyData(enemyId);
+
+            if (enemyData == null)
+            {
+                Log.Error("Can not get enemy data by id '{0}'.", enemyId);
+                return;
+            }
+
+            entityLoader.ShowEntity<EntityBaseEnemy>(enemyData.EntityId,
+                (entity) =>
+                {
+                    dicEntityEnemy.Add(entity.Id, (EntityBaseEnemy)entity.Logic);
+                },
+                EntityDataEnemy.Create(
+                    enemyData,
+                    levelPathManager.GetLevelPath(),
+                    levelPathManager.GetStartPathNode().position - new Vector3(0, 0.2f, 0),
+                    Quaternion.identity));
+        }
+
+        public void HideEnemyEntity(int serialId)
+        {
+            if (!dicEntityEnemy.ContainsKey(serialId))
+            {
+                Log.Error("Can find enemy entity('serial id:{0}') ", serialId);
+                return;
+            }
+
+            entityLoader.HideEntity(serialId);
+            dicEntityEnemy.Remove(serialId);
+        }
+
+        private void HideAllEnemyEntity()
+        {
+            foreach (var item in dicEntityEnemy.Values)
+            {
+                entityLoader.HideEntity(item.Entity);
+            }
+
+            dicEntityEnemy.Clear();
+        }
+
         public void StartWave()
         {
-            waveControl = WaveControl.Create(levelData.WaveDatas, levelPathManager);
-            waveControl.StartWave();
+            level.StartWave();
         }
 
         public void Pause()
         {
             pause = true;
 
-            if (waveControl != null)
-                waveControl.OnPause();
-
-            foreach (var towerInfo in dicTowerInfo.Values)
+            foreach (var entity in entityLoader.GetAllEntities())
             {
-                IPause iPause = towerInfo.EntityTower;
-                iPause.Pause();
+                IPause iPause = entity.Logic as IPause;
+                if (iPause != null)
+                    iPause.Pause();
             }
         }
 
@@ -215,22 +263,16 @@ namespace Flower
         {
             pause = false;
 
-            if (waveControl != null)
-                waveControl.OnResume();
-
-            foreach (var towerInfo in dicTowerInfo.Values)
+            foreach (var entity in entityLoader.GetAllEntities())
             {
-                IPause iPause = towerInfo.EntityTower;
-                iPause.Resume();
+                IPause iPause = entity.Logic as IPause;
+                if (iPause != null)
+                    iPause.Resume();
             }
         }
 
         public void Restart()
         {
-            waveControl.OnQuick();
-            ReferencePool.Release(waveControl);
-            waveControl = null;
-
             if (pause)
             {
                 Resume();
@@ -238,22 +280,17 @@ namespace Flower
             }
 
             DestroyAllTower();
+            HideAllEnemyEntity();
         }
 
         public void Gameover(EnumGameOverType enumGameOverType, int starCount)
         {
-            if (waveControl != null)
-                waveControl.OnGameover();
-
             Pause();
-            GameEntry.UI.OpenUIForm(EnumUIForm.UIGameOverForm, UIGameOverFormOpenParam.Create(levelData, enumGameOverType, starCount));
+            GameEntry.UI.OpenUIForm(EnumUIForm.UIGameOverForm, UIGameOverFormOpenParam.Create(level.LevelData, enumGameOverType, starCount));
         }
 
         public void Quick()
         {
-            if (waveControl != null)
-                waveControl.OnQuick();
-
             if (pause)
             {
                 Resume();
@@ -264,23 +301,18 @@ namespace Flower
             entityLoader.HideAllEntity();
         }
 
-        public static LevelControl Create(LevelData levelData, LevelPathManager levelPathManager)
+        public static LevelControl Create(Level level, LevelPathManager levelPathManager)
         {
             LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
-            levelControl.levelData = levelData;
+            levelControl.level = level;
             levelControl.levelPathManager = levelPathManager;
             return levelControl;
         }
 
         public void Clear()
         {
-            levelData = null;
+            level = null;
             levelPathManager = null;
-
-            if (waveControl != null)
-                ReferencePool.Release(waveControl);
-
-            waveControl = null;
 
             if (entityLoader != null)
                 ReferencePool.Release(entityLoader);
@@ -298,6 +330,7 @@ namespace Flower
             isBuilding = false;
 
             dicTowerInfo.Clear();
+            dicEntityEnemy.Clear();
         }
     }
 }

@@ -60,7 +60,7 @@ namespace Flower
 
             nextLevelButton.gameObject.SetActive(uIGameOverFormOpenParam.EnumGameOverType == EnumGameOverType.Success);
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
-            int nextLevel = dataLevel.CurrentLevel + 1;
+            int nextLevel = dataLevel.CurrentLevelIndex + 1;
             nextLevelButton.interactable = nextLevel <= dataLevel.MaxLevel;
 
             ReferencePool.Release(uIGameOverFormOpenParam);
@@ -74,7 +74,7 @@ namespace Flower
         public void OnNextLevelButtonClick()
         {
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
-            int nextLevel = dataLevel.CurrentLevel + 1;
+            int nextLevel = dataLevel.CurrentLevelIndex + 1;
             if (nextLevel <= dataLevel.MaxLevel)
                 dataLevel.LoadLevel(nextLevel);
         }
@@ -86,7 +86,7 @@ namespace Flower
 
         public void OnRestartButtonClick()
         {
-            int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevel;
+            int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevelIndex;
             GameEntry.Data.GetData<DataLevel>().LoadLevel(currentLevel);
             Close();
         }

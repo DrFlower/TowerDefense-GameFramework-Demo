@@ -70,6 +70,12 @@ namespace Flower
             dataLevel = null;
         }
 
+        private void SetWaveInfo(int currentWave, int totalWave, float progress)
+        {
+            waveText.text = string.Format("{0}/{1}", currentWave, totalWave);
+            waveProgressImg.fillAmount = progress;
+        }
+
         private void OnPlayerHPChange(object sender, GameEventArgs e)
         {
             PlayerHPChangeEventArgs ne = (PlayerHPChangeEventArgs)e;
@@ -98,6 +104,9 @@ namespace Flower
             {
                 btnStartWave.gameObject.SetActive(false);
                 waveInfoPanel.SetActive(true);
+
+                Level level = dataLevel.CurrentLevel;
+                SetWaveInfo(level.CurrentWaveIndex, level.WaveCount, 0);
             }
             else if (ne.CurrentState == EnumLevelState.Prepare)
             {
@@ -112,9 +121,7 @@ namespace Flower
             if (ne == null)
                 return;
 
-            waveProgressImg.fillAmount = ne.CurrentWaveProgress;
-
-            waveText.text = string.Format("{0}/{1}", ne.CurrentWave, ne.TotalWave);
+            SetWaveInfo(ne.CurrentWave, ne.TotalWave, ne.CurrentWaveProgress);
         }
 
         private void OnBtnStartWaveClick()

@@ -27,7 +27,6 @@ namespace Flower
             base.OnEnter(procedureOwner);
 
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
-            LevelData levelData = dataLevel.GetLevelData(dataLevel.CurrentLevel);
 
             LevelPathManager levelPathManager = UnityEngine.GameObject.Find("LevelPathManager").GetComponent<LevelPathManager>();
             if (levelPathManager == null)
@@ -36,7 +35,7 @@ namespace Flower
                 return;
             }
 
-            levelControl = LevelControl.Create(levelData, levelPathManager);
+            levelControl = LevelControl.Create(dataLevel.CurrentLevel, levelPathManager);
 
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
@@ -47,6 +46,8 @@ namespace Flower
             GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Subscribe(SellTowerEventArgs.EventId, OnSellTower);
             GameEntry.Event.Subscribe(StartWaveEventArgs.EventId, OnStartWave);
+            GameEntry.Event.Subscribe(SpawnEnemyEventArgs.EventId, OnSpawnEnemy);
+            GameEntry.Event.Subscribe(HideEnemyEventArgs.EventId, OnHideEnemyEntity);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
@@ -80,6 +81,8 @@ namespace Flower
             GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
             GameEntry.Event.Unsubscribe(SellTowerEventArgs.EventId, OnSellTower);
             GameEntry.Event.Unsubscribe(StartWaveEventArgs.EventId, OnStartWave);
+            GameEntry.Event.Unsubscribe(SpawnEnemyEventArgs.EventId, OnSpawnEnemy);
+            GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, OnHideEnemyEntity);
 
             levelControl.Quick();
 
@@ -214,6 +217,25 @@ namespace Flower
 
             levelControl.DestroyTower(ne.TowerSerialId);
         }
+
+        private void OnSpawnEnemy(object sender, GameEventArgs e)
+        {
+            SpawnEnemyEventArgs ne = (SpawnEnemyEventArgs)e;
+            if (ne == null)
+                return;
+
+            levelControl.SpawnEnemy(ne.EnemyId);
+        }
+
+        private void OnHideEnemyEntity(object sender, GameEventArgs e)
+        {
+            HideEnemyEventArgs ne = (HideEnemyEventArgs)e;
+            if (ne == null)
+                return;
+
+            levelControl.HideEnemyEntity(ne.EntityId);
+        }
+
     }
 }
 

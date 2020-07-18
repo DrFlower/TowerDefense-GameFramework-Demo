@@ -33,7 +33,7 @@ namespace Flower.Data
             {
                 return dRWaveElement.SpawnTime;
             }
-        }
+        } 
 
         public WaveElementData(DRWaveElement dRWaveElement)
         {

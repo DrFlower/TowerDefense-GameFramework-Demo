@@ -5,6 +5,7 @@ using GameFramework.Data;
 using GameFramework.DataTable;
 using UnityGameFramework.Runtime;
 using GameFramework.Event;
+using GameFramework;
 
 namespace Flower.Data
 {
@@ -25,7 +26,13 @@ namespace Flower.Data
             private set;
         }
 
-        public int CurrentLevel
+        public Level CurrentLevel
+        {
+            get;
+            private set;
+        }
+
+        public int CurrentLevelIndex
         {
             get;
             private set;
@@ -41,14 +48,14 @@ namespace Flower.Data
         {
             get
             {
-                return CurrentLevel != NONE_LEVEL_INDEX;
+                return CurrentLevelIndex != NONE_LEVEL_INDEX;
             }
         }
 
         protected override void OnInit()
         {
             LevelState = EnumLevelState.None;
-            CurrentLevel = NONE_LEVEL_INDEX;
+            CurrentLevelIndex = NONE_LEVEL_INDEX;
         }
 
         protected override void OnPreload()
@@ -129,10 +136,10 @@ namespace Flower.Data
             if (LevelState == targetLevelState)
                 return;
 
-            LevelData levelData = GetLevelData(CurrentLevel);
+            LevelData levelData = GetLevelData(CurrentLevelIndex);
             if (levelData == null)
             {
-                Log.Error("Can not found level '{0}.'", CurrentLevel);
+                Log.Error("Can not found level '{0}.'", CurrentLevelIndex);
                 return;
             }
 
@@ -164,23 +171,50 @@ namespace Flower.Data
 
             LevelData levelData = dicLevelData[level];
 
-            if (level == CurrentLevel)
+            InternalLoadLevel(levelData);
+
+            //if (level == CurrentLevelIndex)
+            //{
+            //    ChangeLevelState(EnumLevelState.Prepare);
+            //    GameEntry.Data.GetData<DataPlayer>().Reset();
+            //    GameEntry.Event.Fire(this, ReloadLevelEventArgs.Create(levelData));
+            //    return;
+            //}
+
+            //CurrentLevelIndex = level;
+            //ChangeLevelState(EnumLevelState.Loading);
+            //GameEntry.Data.GetData<DataPlayer>().Reset();
+            //GameEntry.Event.Fire(this, LoadLevelEventArgs.Create(levelData));
+        }
+
+        private void InternalLoadLevel(LevelData levelData)
+        {
+            bool isReload = true;
+
+            if (CurrentLevelIndex != levelData.Id)
             {
-                ChangeLevelState(EnumLevelState.Prepare);
-                GameEntry.Data.GetData<DataPlayer>().Reset();
-                GameEntry.Event.Fire(this, ReloadLevelEventArgs.Create(levelData));
-                return;
+                CurrentLevelIndex = levelData.Id;
+                isReload = false;
             }
 
-            CurrentLevel = level;
-            ChangeLevelState(EnumLevelState.Loading);
+            if (CurrentLevel != null)
+                ReferencePool.Release(CurrentLevel);
+
+            CurrentLevel = Level.Create(levelData);
+
             GameEntry.Data.GetData<DataPlayer>().Reset();
-            GameEntry.Event.Fire(this, LoadLevelEventArgs.Create(levelData));
+
+            ChangeLevelState(isReload ? EnumLevelState.Prepare : EnumLevelState.Loading);
+
+            if (isReload)
+                GameEntry.Event.Fire(this, ReloadLevelEventArgs.Create(levelData));
+            else
+                GameEntry.Event.Fire(this, LoadLevelEventArgs.Create(levelData));
         }
 
         public void StartWave()
         {
-            if (CurrentLevel == NONE_LEVEL_INDEX)
+            if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Only can start wave in level");
                 return;
@@ -197,7 +231,7 @@ namespace Flower.Data
 
         public void LevelPause()
         {
-            if (CurrentLevel == NONE_LEVEL_INDEX)
+            if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Only can pause in level");
                 return;
@@ -215,7 +249,7 @@ namespace Flower.Data
 
         public void LevelResume()
         {
-            if (CurrentLevel == NONE_LEVEL_INDEX)
+            if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Only can resume in level");
                 return;
@@ -232,10 +266,14 @@ namespace Flower.Data
 
         public void ExitLevel()
         {
-            if (CurrentLevel != NONE_LEVEL_INDEX)
+            if (CurrentLevelIndex != NONE_LEVEL_INDEX)
             {
+                if (CurrentLevel != null)
+                    ReferencePool.Release(CurrentLevel);
+                CurrentLevel = null;
+
                 ChangeLevelState(EnumLevelState.None);
-                CurrentLevel = NONE_LEVEL_INDEX;
+                CurrentLevelIndex = NONE_LEVEL_INDEX;
                 GameEntry.Event.Fire(this, ChangeSceneEventArgs.Create(GameEntry.Config.GetInt("Scene.Menu")));
             }
 
@@ -243,7 +281,7 @@ namespace Flower.Data
 
         public void GameSuccess()
         {
-            if (CurrentLevel == NONE_LEVEL_INDEX)
+            if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Gameover Only heppen in level");
                 return;
@@ -277,7 +315,7 @@ namespace Flower.Data
 
         public void GameFail()
         {
-            if (CurrentLevel == NONE_LEVEL_INDEX)
+            if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Gameover Only heppen in level");
                 return;
@@ -306,7 +344,7 @@ namespace Flower.Data
                 return;
             }
 
-            LevelData levelData = GetLevelData(CurrentLevel);
+            LevelData levelData = GetLevelData(CurrentLevelIndex);
             if (levelData != null && levelData.SceneData.Id == ne.LevelId)
             {
                 ChangeLevelState(EnumLevelState.Prepare);
@@ -320,8 +358,14 @@ namespace Flower.Data
             dtLevel = null;
             dicLevelData = null;
 
+            if (CurrentLevel != null)
+            {
+                ReferencePool.Release(CurrentLevel);
+                CurrentLevel = null;
+            }
+
             LevelState = EnumLevelState.None;
-            CurrentLevel = NONE_LEVEL_INDEX;
+            CurrentLevelIndex = NONE_LEVEL_INDEX;
         }
 
         protected override void OnShutdown()
