@@ -230,6 +230,9 @@ namespace Flower
 
             entityLoader.HideEntity(serialId);
             dicEntityEnemy.Remove(serialId);
+
+            if (level.Finish && dicEntityEnemy.Count <= 0)
+                dataLevel.GameSuccess();
         }
 
         private void HideAllEnemyEntity()
