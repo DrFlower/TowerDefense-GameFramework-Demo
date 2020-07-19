@@ -38176,6 +38176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4212591820432442}
   - component: {fileID: 114893434427387590}
+  - component: {fileID: 264599514539380356}
+  - component: {fileID: 6397482750974488727}
   m_Layer: 10
   m_Name: PlasmaLance_Level3
   m_TagString: Untagged
@@ -38218,6 +38220,39 @@ MonoBehaviour:
   buildEffectPrefab: {fileID: 1395313577031670, guid: c559c1920b5d04e6d83aa4464fba5c68,
     type: 3}
   levelData: {fileID: 11400000, guid: 12994b0db6ab24a5caf6123d0d999972, type: 2}
+--- !u!114 &264599514539380356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914174764191150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e23c88d156dfd429b464d68528f4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EntityData:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  turret: {fileID: 4608662820397724}
+  projectilePoints:
+  - {fileID: 4980595420705256}
+  epicenter: {fileID: 4212591820432442}
+  launcher: {fileID: 6397482750974488727}
+--- !u!114 &6397482750974488727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914174764191150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02c1db2c9b0dc840a388990976bd759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParticleSystem: {fileID: 198483798911713738}
 --- !u!1 &1956956092625802
 GameObject:
   m_ObjectHideFlags: 0

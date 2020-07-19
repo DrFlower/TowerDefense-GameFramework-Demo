@@ -638,6 +638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4958392881172934}
   - component: {fileID: 114210254157198064}
+  - component: {fileID: 4907774701618819021}
   m_Layer: 10
   m_Name: MissileArray_Level1
   m_TagString: Untagged
@@ -680,6 +681,22 @@ MonoBehaviour:
   buildEffectPrefab: {fileID: 1395313577031670, guid: c559c1920b5d04e6d83aa4464fba5c68,
     type: 3}
   levelData: {fileID: 11400000, guid: ad419182a62d8451880b3a85b8abdd07, type: 2}
+--- !u!114 &4907774701618819021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759168881962760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e23c88d156dfd429b464d68528f4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EntityData:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  turret: {fileID: 4145390463871964}
 --- !u!1 &1812292035156056
 GameObject:
   m_ObjectHideFlags: 0

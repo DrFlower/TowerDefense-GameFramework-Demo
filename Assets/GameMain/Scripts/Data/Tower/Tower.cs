@@ -86,6 +86,63 @@ namespace Flower.Data
             }
         }
 
+
+        public float Damage
+        {
+            get
+            {
+                return GetDamage(Level);
+            }
+        }
+
+        public float SplashDamage
+        {
+            get
+            {
+                return GetSplashDamage(Level);
+            }
+        }
+
+        public float SplashRange
+        {
+            get
+            {
+                return GetSplashRange(Level);
+            }
+        }
+
+        public float FireRate
+        {
+            get
+            {
+                return GetFireRate(Level);
+            }
+        }
+
+        public float SpeedDownRate
+        {
+            get
+            {
+                return GetSpeedDownRate(Level);
+            }
+        }
+
+        public float EnergyRaise
+        {
+            get
+            {
+                return GetEnergyRaise(Level);
+            }
+        }
+
+        public float EnergyRaiseRate
+        {
+            get
+            {
+                return GetEnergyRaiseRate(Level);
+            }
+        }
+
         public float DPS
         {
             get
@@ -142,6 +199,31 @@ namespace Flower.Data
                 return towerData.PreviewEntityId;
             }
         }
+
+        public int ProjectileEntityId
+        {
+            get
+            {
+                return towerData.ProjectileEntityId;
+            }
+        }
+
+        public string ProjectileType
+        {
+            get
+            {
+                return towerData.ProjectileType;
+            }
+        }
+
+        public bool IsMultiAttack
+        {
+            get
+            {
+                return towerData.IsMultiAttack;
+            }
+        }
+
 
         public int LevelEntityId
         {

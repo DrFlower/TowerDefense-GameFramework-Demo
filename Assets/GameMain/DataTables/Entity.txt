@@ -41,3 +41,7 @@
 	1037	超级坦克	SuperTank	3037	1037
 	1038	超级首领	SuperBOSS	3038	1038
 	1039	玩家	Player	3039	1039
+	1040	突击加农炮炮弹	MachineGunProjectile	3040	1040
+	1041	火箭炮弹	RocketProjectile	3041	1041
+	1042	等离子喷枪炮弹	LaserProjectile	3042	1042
+	1043	导弹阵列炮弹	SuperTowerProjectile	3043	1043

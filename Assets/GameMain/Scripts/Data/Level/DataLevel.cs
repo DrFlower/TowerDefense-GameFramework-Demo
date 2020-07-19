@@ -172,19 +172,6 @@ namespace Flower.Data
             LevelData levelData = dicLevelData[level];
 
             InternalLoadLevel(levelData);
-
-            //if (level == CurrentLevelIndex)
-            //{
-            //    ChangeLevelState(EnumLevelState.Prepare);
-            //    GameEntry.Data.GetData<DataPlayer>().Reset();
-            //    GameEntry.Event.Fire(this, ReloadLevelEventArgs.Create(levelData));
-            //    return;
-            //}
-
-            //CurrentLevelIndex = level;
-            //ChangeLevelState(EnumLevelState.Loading);
-            //GameEntry.Data.GetData<DataPlayer>().Reset();
-            //GameEntry.Event.Fire(this, LoadLevelEventArgs.Create(levelData));
         }
 
         private void InternalLoadLevel(LevelData levelData)

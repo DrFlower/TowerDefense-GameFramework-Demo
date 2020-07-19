@@ -8,6 +8,11 @@ namespace Flower
 {
     public class EntityTowerLevel : EntityLogicEx
     {
+        public Transform turret;
+        public Transform[] projectilePoints;
+        public Transform epicenter;
+        public Launcher launcher;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -22,6 +27,8 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
         }
+
+
     }
 }
 

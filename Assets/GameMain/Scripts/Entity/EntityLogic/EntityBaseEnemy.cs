@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Flower.Data;
 using UnityGameFramework.Runtime;
+using System;
 
 namespace Flower
 {
@@ -21,6 +22,18 @@ namespace Flower
         private EntityPlayer targetPlayer;
 
         protected bool pause = false;
+
+        public bool IsDead
+        {
+            get
+            {
+                return hp <= 0;
+            }
+        }
+
+        public event Action<EntityBaseEnemy> OnDead;
+
+        public event Action<EntityBaseEnemy> OnHidden;
 
         protected override void OnInit(object userData)
         {
@@ -82,12 +95,19 @@ namespace Flower
             levelPath = entityDataEnemy.LevelPath;
 
             targetPathNodeIndex = 0;
+
+            hp = entityDataEnemy.EnemyData.MaxHP;
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
 
+            if (OnHidden != null)
+                OnHidden(this);
+
+            OnHidden = null;
+            OnDead = null;
 
             levelPath = null;
             entityDataEnemy = null;
@@ -117,7 +137,8 @@ namespace Flower
 
         private void Dead()
         {
-
+            if (OnDead != null)
+                OnDead(this);
         }
 
         private void OnTriggerEnter(Collider other)

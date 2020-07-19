@@ -41,3 +41,7 @@
 	1037	超级坦克	SuperTank	1002
 	1038	超级首领	SuperBOSS	1002
 	1039	玩家	Player	1002
+	1040	突击加农炮炮弹	MachineGunProjectile	1002
+	1041	火箭炮弹	RocketProjectile	1002
+	1042	等离子喷枪炮弹	LaserProjectile	1002
+	1043	导弹阵列炮弹	SuperTowerProjectile	1002

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-14 19:33:57.358
+// 生成时间：2020-07-19 21:27:32.834
 //------------------------------------------------------------
 
 using GameFramework;
@@ -73,6 +73,33 @@ namespace Flower
         }
 
         /// <summary>
+        /// 获取炮弹实体编号。
+        /// </summary>
+        public int ProjectileEntityId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取炮弹类型。
+        /// </summary>
+        public string ProjectileType
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取是否同时攻击多个敌人。
+        /// </summary>
+        public bool IsMultiAttack
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// 获取占用面积。
         /// </summary>
         public int[] Dimensions
@@ -118,6 +145,9 @@ namespace Flower
                 Icon = columnTexts[index++];
                 PreviewEntityId = int.Parse(columnTexts[index++]);
                 EntityId = int.Parse(columnTexts[index++]);
+                ProjectileEntityId = int.Parse(columnTexts[index++]);
+                ProjectileType = columnTexts[index++];
+                IsMultiAttack = bool.Parse(columnTexts[index++]);
                 Dimensions = DataTableExtension.ParseInt32Array(columnTexts[index++]);
                 Type = columnTexts[index++];
                 Levels = DataTableExtension.ParseInt32Array(columnTexts[index++]);
@@ -134,6 +164,9 @@ namespace Flower
                         Icon = strings[binaryReader.Read7BitEncodedInt32()];
                         PreviewEntityId = binaryReader.Read7BitEncodedInt32();
                         EntityId = binaryReader.Read7BitEncodedInt32();
+                        ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
+                        ProjectileType = strings[binaryReader.Read7BitEncodedInt32()];
+                        IsMultiAttack = binaryReader.ReadBoolean();
                         Dimensions = binaryReader.ReadInt32Array();
                         Type = strings[binaryReader.Read7BitEncodedInt32()];
                         Levels = binaryReader.ReadInt32Array();

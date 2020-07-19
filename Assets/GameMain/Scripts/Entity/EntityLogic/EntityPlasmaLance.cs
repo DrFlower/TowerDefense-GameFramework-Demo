@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Flower
 {
-    public class EntityPlasmaLance : EntityTowerBase
+    public class EntityPlasmaLance : EntityTowerAttacker
     {
         protected override void OnInit(object userData)
         {

@@ -1,5 +1,5 @@
 ﻿// 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-12 13:07:29.606
+// 生成时间：2020-07-19 20:10:16.760
 //------------------------------------------------------------
 
 namespace Flower
@@ -200,5 +200,25 @@ namespace Flower
         /// 玩家
         /// </summary>
         Player = 1039,
+
+        /// <summary>
+        /// 突击加农炮炮弹
+        /// </summary>
+        MachineGunProjectile = 1040,
+
+        /// <summary>
+        /// 火箭炮弹
+        /// </summary>
+        RocketProjectile = 1041,
+
+        /// <summary>
+        /// 等离子喷枪炮弹
+        /// </summary>
+        LaserProjectile = 1042,
+
+        /// <summary>
+        /// 导弹阵列炮弹
+        /// </summary>
+        SuperTowerProjectile = 1043,
     }
 }

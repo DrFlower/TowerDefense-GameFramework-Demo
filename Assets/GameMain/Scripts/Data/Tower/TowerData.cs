@@ -52,6 +52,30 @@ namespace Flower.Data
             }
         }
 
+        public int ProjectileEntityId
+        {
+            get
+            {
+                return dRTower.ProjectileEntityId;
+            }
+        }
+
+        public string ProjectileType
+        {
+            get
+            {
+                return dRTower.ProjectileType;
+            }
+        }
+
+        public bool IsMultiAttack
+        {
+            get
+            {
+                return dRTower.IsMultiAttack;
+            }
+        }
+
         public IntVector2 Dimensions
         {
             get;

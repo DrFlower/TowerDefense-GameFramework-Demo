@@ -62,6 +62,10 @@
 	3037	超级坦克	Assets/GameMain/Entity/Enemies/SuperHovertank.prefab
 	3038	超级首领	Assets/GameMain/Entity/Enemies/SuperHoverboss.prefab
 	3039	玩家	Assets/GameMain/Entity/EntityPlayer.prefab
+	3040	突击加农炮炮弹	Assets/GameMain/Entity/AssaultCannon/MachineGunProjectile.prefab
+	3041	火箭炮弹	Assets/GameMain/Entity/RocketPlatform/RocketProjectile.prefab
+	3042	等离子喷枪炮弹	Assets/GameMain/Entity/PlasmaLance/LaserProjectile.prefab
+	3043	导弹阵列炮弹	Assets/GameMain/Entity/MissileArray/SuperTowerProjectile.prefab
 #Sound			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

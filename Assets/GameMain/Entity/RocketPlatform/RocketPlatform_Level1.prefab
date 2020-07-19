@@ -157,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4182109551995616}
   - component: {fileID: 114645527323658532}
+  - component: {fileID: 8923241987359280820}
   m_Layer: 10
   m_Name: RocketPlatform_Level1
   m_TagString: Untagged
@@ -199,6 +200,22 @@ MonoBehaviour:
   buildEffectPrefab: {fileID: 1395313577031670, guid: c559c1920b5d04e6d83aa4464fba5c68,
     type: 3}
   levelData: {fileID: 11400000, guid: 07ded8c3dc9774e3284fc6865784b606, type: 2}
+--- !u!114 &8923241987359280820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361402013487122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e23c88d156dfd429b464d68528f4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EntityData:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  turret: {fileID: 4641205055848048}
 --- !u!1 &1515290547419108
 GameObject:
   m_ObjectHideFlags: 0

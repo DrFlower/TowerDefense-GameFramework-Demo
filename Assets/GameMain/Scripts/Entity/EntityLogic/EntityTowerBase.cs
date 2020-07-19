@@ -52,16 +52,18 @@ namespace Flower
 
             int entityTypeId = entityDataTower.Tower.GetLevelEntityId(level);
             ShowEntity<EntityTowerLevel>(entityTypeId,
-                (entity) =>
-                {
-                    entityTowerLevel = entity;
-                    entityLogicTowerLevel = entityTowerLevel.Logic as EntityTowerLevel;
-                    GameEntry.Entity.AttachEntity(entityTowerLevel, this.Entity);
-
-                    GameEntry.Entity.ShowEntity<EntityAutoHide>(GameEntry.Entity.GenerateSerialId(),
-                        EnumEntity.BuildPfx, EntityDataAutoHide.Create(1, transform.position, transform.rotation));
-                },
+                OnShowTowerLevelSuccess,
                 EntityData.Create(transform.position, transform.rotation));
+        }
+
+        protected virtual void OnShowTowerLevelSuccess(Entity entity)
+        {
+            entityTowerLevel = entity;
+            entityLogicTowerLevel = entityTowerLevel.Logic as EntityTowerLevel;
+            GameEntry.Entity.AttachEntity(entityTowerLevel, this.Entity);
+
+            GameEntry.Entity.ShowEntity<EntityAutoHide>(GameEntry.Entity.GenerateSerialId(),
+                EnumEntity.BuildPfx, EntityDataAutoHide.Create(1, transform.position, transform.rotation));
         }
 
         public void ShowControlForm()
