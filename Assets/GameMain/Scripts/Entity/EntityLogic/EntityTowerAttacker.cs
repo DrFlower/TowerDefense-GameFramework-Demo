@@ -26,6 +26,9 @@ namespace Flower
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
+            if (pause)
+                return;
+
             towerTargetter.OnUpdate(elapseSeconds, realElapseSeconds);
             towerAttacker.OnUpdate(elapseSeconds, realElapseSeconds);
         }

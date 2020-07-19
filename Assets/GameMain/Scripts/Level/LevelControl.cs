@@ -55,36 +55,36 @@ namespace Flower
             if (level == null || level.Finish)
                 return;
 
+            if (dataLevel.LevelState != EnumLevelState.Prepare && dataLevel.LevelState != EnumLevelState.Normal)
+                return;
+
             level.ProcessLevel(elapseSeconds, realElapseSeconds);
 
-            if (dataLevel.LevelState == EnumLevelState.Prepare || dataLevel.LevelState == EnumLevelState.Normal)
+            if (isBuilding)
             {
-                if (isBuilding)
+                if (Input.GetMouseButtonDown(0) && previewTowerEntityLogic != null && previewTowerEntityLogic.CanPlace)
                 {
-                    if (Input.GetMouseButtonDown(0) && previewTowerEntityLogic != null && previewTowerEntityLogic.CanPlace)
-                    {
-                        previewTowerEntityLogic.TryBuildTower();
-                    }
-                    if (Input.GetMouseButtonDown(1))
-                    {
-                        HidePreviewTower();
-                    }
+                    previewTowerEntityLogic.TryBuildTower();
                 }
-                else
+                if (Input.GetMouseButtonDown(1))
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    HidePreviewTower();
+                }
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit raycastHit;
+                    if (Physics.Raycast(ray, out raycastHit, float.MaxValue, LayerMask.GetMask("Towers")))
                     {
-                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                        RaycastHit raycastHit;
-                        if (Physics.Raycast(ray, out raycastHit, float.MaxValue, LayerMask.GetMask("Towers")))
+                        if (raycastHit.collider != null)
                         {
-                            if (raycastHit.collider != null)
+                            EntityTowerBase entityTowerBase = raycastHit.collider.gameObject.GetComponent<EntityTowerBase>();
+                            if (entityTowerBase != null)
                             {
-                                EntityTowerBase entityTowerBase = raycastHit.collider.gameObject.GetComponent<EntityTowerBase>();
-                                if (entityTowerBase != null)
-                                {
-                                    entityTowerBase.ShowControlForm();
-                                }
+                                entityTowerBase.ShowControlForm();
                             }
                         }
                     }
