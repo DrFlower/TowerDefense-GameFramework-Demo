@@ -7,9 +7,9 @@ namespace Flower
 {
     public abstract class Launcher : MonoBehaviour, ILauncher
     {
-        public abstract void Launch(EntityBaseEnemy enemy, Type projectileType, float damage, Vector3 origin, Transform firingPoint);
+        public abstract void Launch(EntityBaseEnemy enemy, int projectileEntityId, Type projectileType, float damage, Vector3 origin, Transform firingPoint);
 
-        public virtual void Launch(List<EntityBaseEnemy> enemies, Type projectileType, float damage, Vector3 origin, Transform[] firingPoints)
+        public virtual void Launch(List<EntityBaseEnemy> enemies, int projectileEntityId, Type projectileType, float damage, Vector3 origin, Transform[] firingPoints)
         {
             int count = enemies.Count;
             int currentFiringPointIndex = 0;
@@ -19,13 +19,13 @@ namespace Flower
                 EntityBaseEnemy enemy = enemies[i];
                 Transform firingPoint = firingPoints[currentFiringPointIndex];
                 currentFiringPointIndex = (currentFiringPointIndex + 1) % firingPointLength;
-                Launch(enemy, projectileType, damage, origin, firingPoint);
+                Launch(enemy, projectileEntityId, projectileType, damage, origin, firingPoint);
             }
         }
 
-        public virtual void Launch(EntityBaseEnemy enemy, Type projectileType, float damage, Vector3 origin, Transform[] firingPoints)
+        public virtual void Launch(EntityBaseEnemy enemy, int projectileEntityId, Type projectileType, float damage, Vector3 origin, Transform[] firingPoints)
         {
-            Launch(enemy, projectileType, damage, origin, GetRandomTransform(firingPoints));
+            Launch(enemy, projectileEntityId, projectileType, damage, origin, GetRandomTransform(firingPoints));
         }
 
         public void PlayParticles(ParticleSystem particleSystemToPlay, Vector3 origin, Vector3 lookPosition)

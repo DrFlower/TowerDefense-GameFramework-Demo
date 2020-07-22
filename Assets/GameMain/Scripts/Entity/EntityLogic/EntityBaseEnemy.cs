@@ -139,6 +139,8 @@ namespace Flower
         {
             if (OnDead != null)
                 OnDead(this);
+
+            GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
         }
 
         private void OnTriggerEnter(Collider other)

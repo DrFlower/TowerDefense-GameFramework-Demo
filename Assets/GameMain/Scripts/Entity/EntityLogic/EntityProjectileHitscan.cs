@@ -7,11 +7,12 @@ namespace Flower
 {
     public class EntityProjectileHitscan : EntityProjectile
     {
+        public ParticleSystem projectileParticles;
         public ParticleSystem collisionParticles;
 
         private EntityDataProjectileHitscan entityDataProjectileHitscan;
 
-        private float delayTime = 0.1f;
+        private float delayTime = 0.15f;
         private float timer;
 
         protected override void OnInit(object userData)
@@ -32,6 +33,9 @@ namespace Flower
             }
 
 
+            projectileParticles.transform.position = entityDataProjectileHitscan.FiringPoint.position;
+            projectileParticles.transform.LookAt(entityDataProjectileHitscan.EntityEnemy.transform.position);
+            projectileParticles.Play();
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -42,7 +46,7 @@ namespace Flower
             if (timer >= delayTime)
             {
                 AttackEnemy();
-                GameEntry.Entity.HideEntity(Entity);
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
             }
 
 
@@ -52,6 +56,11 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
             timer = 0;
+        }
+
+        private void SetProjectileParticles()
+        {
+
         }
 
         private void AttackEnemy()

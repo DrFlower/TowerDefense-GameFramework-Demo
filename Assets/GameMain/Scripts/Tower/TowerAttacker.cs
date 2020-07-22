@@ -91,7 +91,7 @@ namespace Flower
         }
 
         public void ResetAttack()
-        {         
+        {
             m_TrackingEnemy = null;
             m_FireTimer = 0;
         }
@@ -138,6 +138,7 @@ namespace Flower
                 List<EntityBaseEnemy> enemies = towerTargetter.GetAllTargets();
                 m_Launcher.Launch(
                     enemies,
+                    entityDataTower.Tower.ProjectileEntityId,
                     TypeUtility.GetEntityType(entityDataTower.Tower.ProjectileType),
                     entityDataTower.Tower.Damage,
                     epicenter.position,
@@ -145,7 +146,9 @@ namespace Flower
             }
             else
             {
-                m_Launcher.Launch(m_TrackingEnemy,
+                m_Launcher.Launch(
+                    m_TrackingEnemy,
+                    entityDataTower.Tower.ProjectileEntityId,
                     TypeUtility.GetEntityType(entityDataTower.Tower.ProjectileType),
                     entityDataTower.Tower.Damage,
                     epicenter.position,

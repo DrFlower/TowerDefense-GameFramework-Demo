@@ -40,7 +40,7 @@ namespace Flower
         /// <summary>
         /// If m_Turret rotates freely or only on y;
         /// </summary>
-        private bool onlyYTurretRotation = true;
+        private bool onlyYTurretRotation = false;
 
         /// <summary>
         /// The search rate in searches per second

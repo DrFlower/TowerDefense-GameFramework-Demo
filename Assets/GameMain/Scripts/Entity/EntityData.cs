@@ -53,7 +53,7 @@ namespace Flower
         public object UserData
         {
             get;
-            private set;
+            protected set;
         }
 
         public static EntityData Create(object userData = null)

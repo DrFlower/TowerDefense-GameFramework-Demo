@@ -10,17 +10,10 @@ namespace Flower
 
         public ParticleSystem fireParticleSystem;
 
-        public override void Launch(EntityBaseEnemy enemy, Type projectileType, float damage, Vector3 origin, Transform firingPoint)
+        public override void Launch(EntityBaseEnemy enemy, int projectileEntityId, Type projectileType, float damage, Vector3 origin, Transform firingPoint)
         {
-            
 
-            //var hitscanProjectile = porojectile as EntityProjectileHitscan;
-            //if (hitscanProjectile == null)
-            //{
-            //    return;
-            //}
-            //hitscanProjectile.transform.position = firingPoint.position;
-            //hitscanProjectile.AttackEnemy(firingPoint.position, enemy);
+            GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(projectileEntityId, projectileType, null, EntityDataProjectileHitscan.Create(enemy, damage, origin, firingPoint, firingPoint.position, firingPoint.rotation)));
             PlayParticles(fireParticleSystem, firingPoint.position, enemy.transform.position);
         }
     }

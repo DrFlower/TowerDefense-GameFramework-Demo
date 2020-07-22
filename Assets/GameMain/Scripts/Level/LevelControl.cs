@@ -245,6 +245,16 @@ namespace Flower
             dicEntityEnemy.Clear();
         }
 
+        public void ShowEntity(int entityId, Type entityType, Action<Entity> showSuccess, EntityData entityData)
+        {
+            entityLoader.ShowEntity(entityId, entityType, showSuccess, entityData);
+        }
+
+        public void HideEntity(int entityId)
+        {
+            entityLoader.HideEntity(entityId);
+        }
+
         public void StartWave()
         {
             level.StartWave();

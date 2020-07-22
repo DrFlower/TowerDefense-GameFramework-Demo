@@ -20,7 +20,13 @@ namespace Flower
             private set;
         }
 
-        protected Vector3 Origin
+        public Vector3 Origin
+        {
+            get;
+            private set;
+        }
+
+        public Transform FiringPoint
         {
             get;
             private set;
@@ -31,25 +37,30 @@ namespace Flower
             EntityEnemy = null;
             Damge = 0;
             Origin = Vector3.zero;
+            FiringPoint = null;
         }
 
-        public static EntityDataProjectileHitscan Create(EntityBaseEnemy EntityEnemy, float damage, Vector3 origin, object userData = null)
+        public static EntityDataProjectileHitscan Create(EntityBaseEnemy EntityEnemy, float damage, Vector3 origin, Transform firingPoint, object userData = null)
         {
             EntityDataProjectileHitscan entityData = ReferencePool.Acquire<EntityDataProjectileHitscan>();
             entityData.EntityEnemy = EntityEnemy;
             entityData.Damge = damage;
             entityData.Origin = origin;
+            entityData.FiringPoint = firingPoint;
+            entityData.UserData = userData;
             return entityData;
         }
 
-        public static EntityDataProjectileHitscan Create(EntityBaseEnemy EntityEnemy, float damage, Vector3 origin, Vector3 position, Quaternion rotation, object userData = null)
+        public static EntityDataProjectileHitscan Create(EntityBaseEnemy EntityEnemy, float damage, Vector3 origin, Transform firingPoint, Vector3 position, Quaternion rotation, object userData = null)
         {
             EntityDataProjectileHitscan entityData = ReferencePool.Acquire<EntityDataProjectileHitscan>();
             entityData.EntityEnemy = EntityEnemy;
             entityData.Damge = damage;
             entityData.Origin = origin;
+            entityData.FiringPoint = firingPoint;
             entityData.Position = position;
             entityData.Rotation = rotation;
+            entityData.UserData = userData;
             return entityData;
         }
 
@@ -59,6 +70,7 @@ namespace Flower
             EntityEnemy = null;
             Damge = 0;
             Origin = Vector3.zero;
+            FiringPoint = null;
         }
     }
 }

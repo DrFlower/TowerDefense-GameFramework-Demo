@@ -48,6 +48,8 @@ namespace Flower
             GameEntry.Event.Subscribe(StartWaveEventArgs.EventId, OnStartWave);
             GameEntry.Event.Subscribe(SpawnEnemyEventArgs.EventId, OnSpawnEnemy);
             GameEntry.Event.Subscribe(HideEnemyEventArgs.EventId, OnHideEnemyEntity);
+            GameEntry.Event.Subscribe(ShowEntityInLevelEventArgs.EventId, OnShowEntityInLevel);
+            GameEntry.Event.Subscribe(HideEntityInLevelEventArgs.EventId, OnHideEntityInLevel);
 
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
@@ -83,6 +85,8 @@ namespace Flower
             GameEntry.Event.Unsubscribe(StartWaveEventArgs.EventId, OnStartWave);
             GameEntry.Event.Unsubscribe(SpawnEnemyEventArgs.EventId, OnSpawnEnemy);
             GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, OnHideEnemyEntity);
+            GameEntry.Event.Unsubscribe(ShowEntityInLevelEventArgs.EventId, OnShowEntityInLevel);
+            GameEntry.Event.Unsubscribe(HideEntityInLevelEventArgs.EventId, OnHideEntityInLevel);
 
             levelControl.Quick();
 
@@ -234,6 +238,24 @@ namespace Flower
                 return;
 
             levelControl.HideEnemyEntity(ne.EntityId);
+        }
+
+        private void OnShowEntityInLevel(object sender, GameEventArgs e)
+        {
+            ShowEntityInLevelEventArgs ne = (ShowEntityInLevelEventArgs)e;
+            if (ne == null)
+                return;
+
+            levelControl.ShowEntity(ne.EntityId, ne.Type, ne.ShowSuccess, ne.EntityData);
+        }
+
+        private void OnHideEntityInLevel(object sender, GameEventArgs e)
+        {
+            HideEntityInLevelEventArgs ne = (HideEntityInLevelEventArgs)e;
+            if (ne == null)
+                return;
+
+            levelControl.HideEntity(ne.EntityId);
         }
 
     }
