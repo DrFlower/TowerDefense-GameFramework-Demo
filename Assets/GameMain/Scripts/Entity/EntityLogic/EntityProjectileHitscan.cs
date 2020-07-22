@@ -67,9 +67,10 @@ namespace Flower
         {
             collisionParticles.transform.position = entityDataProjectileHitscan.EntityEnemy.transform.position;
             collisionParticles.Play();
-            entityDataProjectileHitscan.EntityEnemy.Damage(entityDataProjectileHitscan.Damge);
+
+            if (!entityDataProjectileHitscan.EntityEnemy.IsDead)
+                entityDataProjectileHitscan.EntityEnemy.Damage(entityDataProjectileHitscan.Damge);
         }
 
     }
 }
-

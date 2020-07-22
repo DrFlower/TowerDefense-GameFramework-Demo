@@ -185,6 +185,7 @@ namespace Flower
             TowerInfo towerInfo = dicTowerInfo[towerSerialId];
             entityLoader.HideEntity(dicTowerInfo[towerSerialId].EntityTower.Entity);
             towerInfo.PlacementArea.Clear(towerInfo.PlaceGrid, towerInfo.Tower.Dimensions);
+            dataTower.DestroyTower(towerInfo.Tower);
             dicTowerInfo.Remove(towerSerialId);
             ReferencePool.Release(towerInfo);
         }

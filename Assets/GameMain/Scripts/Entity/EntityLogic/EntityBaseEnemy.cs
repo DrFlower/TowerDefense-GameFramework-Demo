@@ -13,6 +13,7 @@ namespace Flower
         private LevelPath levelPath;
         private int targetPathNodeIndex;
         private NavMeshAgent agent;
+        private HPBar hpBar;
 
         protected EntityDataEnemy entityDataEnemy;
 
@@ -40,6 +41,9 @@ namespace Flower
             base.OnInit(userData);
 
             agent = GetComponent<NavMeshAgent>();
+            hpBar = transform.Find("HealthBar").GetComponent<HPBar>();
+
+            hpBar.OnInit(userData);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -75,6 +79,8 @@ namespace Flower
                     }
                 }
             }
+
+            hpBar.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnShow(object userData)
@@ -97,6 +103,8 @@ namespace Flower
             targetPathNodeIndex = 0;
 
             hp = entityDataEnemy.EnemyData.MaxHP;
+
+            hpBar.OnShow(userData);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -117,6 +125,8 @@ namespace Flower
             attacked = false;
             attackTimer = 0;
             targetPlayer = null;
+
+            hpBar.OnHide(isShutdown, userData);
         }
 
         public void AfterAttack()
@@ -127,6 +137,8 @@ namespace Flower
         public void Damage(float value)
         {
             hp -= value;
+
+            hpBar.UpdateHealth(hp / entityDataEnemy.EnemyData.MaxHP);
 
             if (hp <= 0)
             {

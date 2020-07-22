@@ -14822,7 +14822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4525465222503316}
-  - component: {fileID: 114025830460730358}
+  - component: {fileID: 4914673443112127518}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -14846,7 +14846,7 @@ Transform:
   m_Father: {fileID: 4066970842593808}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114025830460730358
+--- !u!114 &4914673443112127518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14855,13 +14855,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1642931047177460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5440fde571ec4db4a719f37df8e972f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6444d327d8ab77f409130a09bb7884da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageableBehaviour: {fileID: 114982529450900332}
   healthBar: {fileID: 4295881374544118}
   backgroundBar: {fileID: 4253674660419408}
-  showWhenFull: 0
 --- !u!1 &1659018388374282
 GameObject:
   m_ObjectHideFlags: 0
