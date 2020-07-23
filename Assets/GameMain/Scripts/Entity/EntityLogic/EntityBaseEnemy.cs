@@ -13,6 +13,7 @@ namespace Flower
         private LevelPath levelPath;
         private int targetPathNodeIndex;
         private NavMeshAgent agent;
+        private Rigidbody mRigidbody;
         private HPBar hpBar;
 
         protected EntityDataEnemy entityDataEnemy;
@@ -23,6 +24,14 @@ namespace Flower
         private EntityPlayer targetPlayer;
 
         protected bool pause = false;
+
+        public Vector3 Velocity
+        {
+            get
+            {
+                return mRigidbody.velocity;
+            }
+        }
 
         public bool IsDead
         {
@@ -41,6 +50,7 @@ namespace Flower
             base.OnInit(userData);
 
             agent = GetComponent<NavMeshAgent>();
+            mRigidbody = GetComponent<Rigidbody>();
             hpBar = transform.Find("HealthBar").GetComponent<HPBar>();
 
             hpBar.OnInit(userData);
