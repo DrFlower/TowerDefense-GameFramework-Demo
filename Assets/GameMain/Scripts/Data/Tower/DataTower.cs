@@ -176,7 +176,7 @@ namespace Flower.Data
             }
 
             Tower tower = dicTower[serialId];
-            GameEntry.Event.FireNow(this, SellTowerEventArgs.Create(tower.SerialId));
+            GameEntry.Event.Fire(this, SellTowerEventArgs.Create(tower.SerialId));
 
             DataPlayer dataPlayer = GameEntry.Data.GetData<DataPlayer>();
 
@@ -188,8 +188,6 @@ namespace Flower.Data
             {
                 dataPlayer.AddEnergy(tower.SellEnergy);
             }
-
-            DestroyTower(tower);
         }
 
         protected override void OnUnload()
