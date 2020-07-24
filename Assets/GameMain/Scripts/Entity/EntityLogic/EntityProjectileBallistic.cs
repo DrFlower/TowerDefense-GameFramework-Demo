@@ -53,25 +53,26 @@ namespace Flower
                 return;
             }
 
-
-            //if (ballisticProjectile.fireMode == BallisticFireMode.UseLaunchSpeed)
-            //{
-            //    // use speed
-            //    targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(
-            //        startPosition,
-            //        enemy.transform.position, enemy.velocity,
-            //        ballisticProjectile.startSpeed, ballisticProjectile.arcPreference, Physics.gravity.y, 4);
-            //}
-            //else
-            //{
-            //    // use angle
-            //    targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(
-            //        startPosition,
-            //        enemy.position, enemy.velocity, ballisticProjectile.firingAngle,
-            //        ballisticProjectile.arcPreference, Physics.gravity.y, 4);
-            //}
-            //ballisticProjectile.FireAtPoint(startPosition, targetPoint);
-            //ballisticProjectile.IgnoreCollision(LevelManager.instance.environmentColliders);
+            Vector3 startPosition = entityDataProjectileBallistic.FiringPoint.position;
+            Vector3 targetPoint;
+            if (fireMode == BallisticFireMode.UseLaunchSpeed)
+            {
+                // use speed
+                targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(
+                    startPosition,
+                    entityDataProjectileBallistic.EntityEnemy.transform.position, entityDataProjectileBallistic.EntityEnemy.Velocity,
+                    startSpeed, arcPreference, Physics.gravity.y, 4);
+            }
+            else
+            {
+                // use angle
+                targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(
+                    startPosition,
+                    entityDataProjectileBallistic.EntityEnemy.transform.position, entityDataProjectileBallistic.EntityEnemy.Velocity, firingAngle,
+                    arcPreference, Physics.gravity.y, 4);
+            }
+            FireAtPoint(startPosition, targetPoint);
+            //IgnoreCollision(LevelManager.instance.environmentColliders);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
