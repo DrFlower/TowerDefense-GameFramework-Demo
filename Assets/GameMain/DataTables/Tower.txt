@@ -3,7 +3,7 @@
 #	int		string	string	int	int	int	string	bool	int[]	string	int[]
 #	配置编号	策划备注	炮塔名字Id	图标名称	预览实体编号	实体编号	炮弹实体编号	炮弹类型	是否同时攻击多个敌人	占用面积	脚本类型	等级列表
 	101	突击加农炮	Assault Cannon	build_machinegun	1001	1007	1040	EntityProjectileHitscan	FALSE	"""2,2"""	EntityAssaultCannon	"""10101,10102,10103"""
-	102	火箭	Rocket Platform	build_missile	1002	1008	1041	null	FALSE	"""2,2"""	EntityRocketPlatform	"""10201,10202,10203"""
+	102	火箭	Rocket Platform	build_missile	1002	1008	1041	EntityProjectileBallistic	FALSE	"""2,2"""	EntityRocketPlatform	"""10201,10202,10203"""
 	103	等离子喷枪	Plasma Lance	build_sniper	1003	1009	1042	EntityProjectileHitscan	FALSE	"""2,2"""	EntityPlasmaLance	"""10301,10302,10303"""
 	104	能量塔	Energy Pylon	build_power	1004	1010	-1	null	FALSE	"""2,2"""	EntityEnergyPylon	"""10401,10402,10403"""
 	105	电磁脉冲发生器	EMP Generator	build_slow	1005	1011	-1	null	FALSE	"""2,2"""	EntityEMPGenerator	"""10501,10502,10503"""

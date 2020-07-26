@@ -6,11 +6,6 @@ namespace Flower
     public interface IProjectile
     {   
         /// <summary>
-        /// Event fired when this projectile is launched
-        /// </summary>
-        event Action fired;
-
-        /// <summary>
         /// Fires this projectile from a designated start point to a designated world coordinate.
         /// </summary>
         /// <param name="startPoint">Start point of the flight.</param>

@@ -110,7 +110,7 @@ namespace Flower
         {
             SetDataComponent();
             SetUIComponent();
-            SetEntityComponent();
+            //SetEntityComponent();
             SetItemComponent();
             SetSoundComponent();
         }

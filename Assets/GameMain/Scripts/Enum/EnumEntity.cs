@@ -1,5 +1,5 @@
 ﻿// 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-19 20:10:16.760
+// 生成时间：2020-07-26 20:37:03.577
 //------------------------------------------------------------
 
 namespace Flower
@@ -220,5 +220,40 @@ namespace Flower
         /// 导弹阵列炮弹
         /// </summary>
         SuperTowerProjectile = 1043,
+
+        /// <summary>
+        /// 子弹击中特效
+        /// </summary>
+        BulletHit = 1044,
+
+        /// <summary>
+        /// 激光击中特效
+        /// </summary>
+        LaserImpactPFX = 1045,
+
+        /// <summary>
+        /// 火箭尾部特效
+        /// </summary>
+        RocketTrail = 1046,
+
+        /// <summary>
+        /// 火箭爆炸特效
+        /// </summary>
+        RocketExplosionPfx = 1047,
+
+        /// <summary>
+        /// 导弹尾部特效
+        /// </summary>
+        SupertowerMissileTrail = 1048,
+
+        /// <summary>
+        /// 敌人死亡特效1
+        /// </summary>
+        SmallDeathExplosionPfx = 1049,
+
+        /// <summary>
+        /// 敌人死亡特效2
+        /// </summary>
+        BigDeathExplosionPfx = 1050,
     }
 }

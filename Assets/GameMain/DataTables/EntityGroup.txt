@@ -45,3 +45,10 @@
 	1041	火箭炮弹	RocketProjectile	1002
 	1042	等离子喷枪炮弹	LaserProjectile	1002
 	1043	导弹阵列炮弹	SuperTowerProjectile	1002
+	1044	子弹击中特效	BulletHit	1002
+	1045	激光击中特效	LaserImpactPFX	1002
+	1046	火箭尾部特效	RocketTrail	1002
+	1047	火箭爆炸特效	RocketExplosionPfx	1002
+	1048	导弹尾部特效	SupertowerMissileTrail	1002
+	1049	敌人死亡特效1	SmallDeathExplosionPfx	1002
+	1050	敌人死亡特效2	BigDeathExplosionPfx	1002

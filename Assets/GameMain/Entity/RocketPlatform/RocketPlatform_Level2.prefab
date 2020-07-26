@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 4466432989218666}
   - component: {fileID: 114132266863938250}
   - component: {fileID: 6580768762329522032}
+  - component: {fileID: 2159501653754853436}
   m_Layer: 10
   m_Name: RocketPlatform_Level2
   m_TagString: Untagged
@@ -543,6 +544,25 @@ MonoBehaviour:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   turret: {fileID: 4888652836128650}
+  projectilePoints:
+  - {fileID: 4338282839285484}
+  - {fileID: 4836723780798740}
+  - {fileID: 4502731117030874}
+  epicenter: {fileID: 4466432989218666}
+  launcher: {fileID: 2159501653754853436}
+--- !u!114 &2159501653754853436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687794794435430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c5627d503daf14f95cd9c02bc1d01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParticleSystem: {fileID: 0}
 --- !u!1 &1802231929644910
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,9 +47,10 @@ MonoBehaviour:
   m_EntityData:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  chanceToSpawnCollisionPrefab: 1
+  collisionParticlesEntityId: 1045
   projectileParticles: {fileID: 3961831952498878926}
-  collisionParticles: {fileID: 198278080792148898, guid: aeef7b8d79b23415c9c75f54ec09a598,
-    type: 3}
+  delayTime: 0.25
 --- !u!1 &3763119992985747314
 GameObject:
   m_ObjectHideFlags: 0

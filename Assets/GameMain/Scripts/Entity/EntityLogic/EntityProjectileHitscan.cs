@@ -8,11 +8,7 @@ namespace Flower
     public class EntityProjectileHitscan : EntityProjectile
     {
         public ParticleSystem projectileParticles;
-        public ParticleSystem collisionParticles;
-
-        private EntityDataProjectileHitscan entityDataProjectileHitscan;
-
-        private float delayTime = 0.15f;
+        public float delayTime = 0f;
         private float timer;
 
         protected override void OnInit(object userData)
@@ -24,17 +20,8 @@ namespace Flower
         {
             base.OnShow(userData);
 
-            entityDataProjectileHitscan = userData as EntityDataProjectileHitscan;
-
-            if (entityDataProjectileHitscan == null)
-            {
-                Log.Error("Entity EntityProjectileHitscan '{0}' entity data invaild.", Id);
-                return;
-            }
-
-
-            projectileParticles.transform.position = entityDataProjectileHitscan.FiringPoint.position;
-            projectileParticles.transform.LookAt(entityDataProjectileHitscan.EntityEnemy.transform.position);
+            projectileParticles.transform.position = entityDataProjectile.FiringPoint.position;
+            projectileParticles.transform.LookAt(entityDataProjectile.EntityEnemy.transform.position);
             projectileParticles.Play();
         }
 
@@ -65,11 +52,10 @@ namespace Flower
 
         private void AttackEnemy()
         {
-            collisionParticles.transform.position = entityDataProjectileHitscan.EntityEnemy.transform.position;
-            collisionParticles.Play();
+            SpawnCollisionParticles();
 
-            if (!entityDataProjectileHitscan.EntityEnemy.IsDead)
-                entityDataProjectileHitscan.EntityEnemy.Damage(entityDataProjectileHitscan.Damge);
+            if (!entityDataProjectile.EntityEnemy.IsDead)
+                entityDataProjectile.EntityEnemy.Damage(entityDataProjectile.Damage);
         }
 
     }

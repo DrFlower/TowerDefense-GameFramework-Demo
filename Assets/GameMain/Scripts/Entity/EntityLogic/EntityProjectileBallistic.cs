@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Flower.Data;
 
 namespace Flower
 {
     public class EntityProjectileBallistic : EntityProjectile, IProjectile
     {
         public BallisticArcHeight arcPreference;
-
         public BallisticFireMode fireMode;
-
         [Range(-90, 90)]
         public float firingAngle;
-
         public float startSpeed;
+
+        public LayerMask mask = -1;
 
         /// <summary>
         /// The duration that collisions between this gameObjects colliders
@@ -23,44 +23,42 @@ namespace Flower
         /// </summary>
         public float collisionIgnoreTime = 0.35f;
 
-        protected bool m_Fired, m_IgnoringCollsions;
-        protected float m_CollisionIgnoreCount = 0;
-        protected Rigidbody m_Rigidbody;
-        protected List<Collider> m_CollidersIgnoring = new List<Collider>();
+        private bool m_Fired, m_IgnoringCollsions;
+        private float m_CollisionIgnoreCount = 0;
+        private Rigidbody m_Rigidbody;
+        private List<Collider> m_CollidersIgnoring = new List<Collider>();
 
         /// <summary>
         /// All the colliders attached to this gameObject and its children
         /// </summary>
-        protected Collider[] m_Colliders;
-        public event Action fired;
+        private Collider[] m_Colliders;
 
-        private EntityDataProjectileBallistic entityDataProjectileBallistic;
+        static readonly Collider[] s_Enemies = new Collider[64];
+
+        public float yDestroyPoint = -50;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
+
+            m_Rigidbody = GetComponent<Rigidbody>();
+            m_Colliders = GetComponentsInChildren<Collider>();
         }
 
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
 
-            entityDataProjectileBallistic = userData as EntityDataProjectileBallistic;
 
-            if (entityDataProjectileBallistic == null)
-            {
-                Log.Error("Entity EntityProjectileBallistic '{0}' entity data invaild.", Id);
-                return;
-            }
 
-            Vector3 startPosition = entityDataProjectileBallistic.FiringPoint.position;
+            Vector3 startPosition = entityDataProjectile.FiringPoint.position;
             Vector3 targetPoint;
             if (fireMode == BallisticFireMode.UseLaunchSpeed)
             {
                 // use speed
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(
                     startPosition,
-                    entityDataProjectileBallistic.EntityEnemy.transform.position, entityDataProjectileBallistic.EntityEnemy.Velocity,
+                    entityDataProjectile.EntityEnemy.transform.position, entityDataProjectile.EntityEnemy.Velocity,
                     startSpeed, arcPreference, Physics.gravity.y, 4);
             }
             else
@@ -68,11 +66,19 @@ namespace Flower
                 // use angle
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(
                     startPosition,
-                    entityDataProjectileBallistic.EntityEnemy.transform.position, entityDataProjectileBallistic.EntityEnemy.Velocity, firingAngle,
+                    entityDataProjectile.EntityEnemy.transform.position, entityDataProjectile.EntityEnemy.Velocity, firingAngle,
                     arcPreference, Physics.gravity.y, 4);
             }
+
+            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
+            if (dataLevel == null || dataLevel.CurrentLevel == null || dataLevel.CurrentLevel.LevelManager == null)
+            {
+                Log.Error("Can not get LevelManager.");
+                return;
+            }
+
             FireAtPoint(startPosition, targetPoint);
-            //IgnoreCollision(LevelManager.instance.environmentColliders);
+            IgnoreCollision(dataLevel.CurrentLevel.LevelManager.EnvironmentColliders);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -103,12 +109,20 @@ namespace Flower
             }
 
             transform.rotation = Quaternion.LookRotation(m_Rigidbody.velocity);
+
+            if (transform.position.y < yDestroyPoint)
+            {
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+            }
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
 
+            m_Fired = m_IgnoringCollsions = false;
+            m_CollisionIgnoreCount = 0;
+            m_CollidersIgnoring.Clear();
         }
 
         /// <summary>
@@ -192,12 +206,6 @@ namespace Flower
             }
         }
 
-        protected virtual void Awake()
-        {
-            m_Rigidbody = GetComponent<Rigidbody>();
-            m_Colliders = GetComponentsInChildren<Collider>();
-        }
-
         protected virtual void Fire(Vector3 firingVector)
         {
             transform.rotation = Quaternion.LookRotation(firingVector);
@@ -207,11 +215,33 @@ namespace Flower
             m_Fired = true;
 
             m_CollidersIgnoring.Clear();
+        }
 
-            if (fired != null)
+        void OnTriggerEnter(Collider other)
+        {
+            EntityBaseEnemy enemy = other.gameObject.GetComponent<EntityBaseEnemy>();
+            if (enemy == null)
+                return;
+
+            if (!enemy.IsDead)
+                enemy.Damage(entityDataProjectile.Damage);
+
+            int number = Physics.OverlapSphereNonAlloc(transform.position, entityDataProjectile.SplashRange, s_Enemies, mask);
+            for (int index = 0; index < number; index++)
             {
-                fired();
+                Collider collider = s_Enemies[index];
+                var rangeEnemy = collider.GetComponent<EntityBaseEnemy>();
+                if (rangeEnemy == null)
+                {
+                    continue;
+                }
+                if (!enemy.IsDead)
+                    rangeEnemy.Damage(entityDataProjectile.SplashDamage);
             }
+
+            SpawnCollisionParticles();
+
+            GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
         }
 
 #if UNITY_EDITOR

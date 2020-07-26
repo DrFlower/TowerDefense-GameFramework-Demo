@@ -10,7 +10,7 @@ namespace Flower
     partial class LevelControl : IReference
     {
         private Level level;
-        private LevelPathManager levelPathManager;
+        private LevelManager levelManager;
 
         private EntityLoader entityLoader;
 
@@ -43,6 +43,9 @@ namespace Flower
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
             dataTower = GameEntry.Data.GetData<DataTower>();
             dataEnemy = GameEntry.Data.GetData<DataEnemy>();
+
+            level.EntityLoader = entityLoader;
+            level.LevelManager = levelManager;
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
@@ -216,8 +219,8 @@ namespace Flower
                 },
                 EntityDataEnemy.Create(
                     enemyData,
-                    levelPathManager.GetLevelPath(),
-                    levelPathManager.GetStartPathNode().position - new Vector3(0, 0.2f, 0),
+                    levelManager.GetLevelPath(),
+                    levelManager.GetStartPathNode().position - new Vector3(0, 0.2f, 0),
                     Quaternion.identity));
         }
 
@@ -225,7 +228,7 @@ namespace Flower
         {
             if (!dicEntityEnemy.ContainsKey(serialId))
             {
-                Log.Error("Can find enemy entity('serial id:{0}') ", serialId);
+                Log.Error("Can't find enemy entity('serial id:{0}') ", serialId);
                 return;
             }
 
@@ -315,18 +318,18 @@ namespace Flower
             entityLoader.HideAllEntity();
         }
 
-        public static LevelControl Create(Level level, LevelPathManager levelPathManager)
+        public static LevelControl Create(Level level, LevelManager levelPathManager)
         {
             LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
             levelControl.level = level;
-            levelControl.levelPathManager = levelPathManager;
+            levelControl.levelManager = levelPathManager;
             return levelControl;
         }
 
         public void Clear()
         {
             level = null;
-            levelPathManager = null;
+            levelManager = null;
 
             if (entityLoader != null)
                 ReferencePool.Release(entityLoader);

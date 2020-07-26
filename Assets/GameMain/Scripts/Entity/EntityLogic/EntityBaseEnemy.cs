@@ -13,10 +13,11 @@ namespace Flower
         private LevelPath levelPath;
         private int targetPathNodeIndex;
         private NavMeshAgent agent;
-        private Rigidbody mRigidbody;
         private HPBar hpBar;
 
-        protected EntityDataEnemy entityDataEnemy;
+        private Vector3 m_CurrentPosition, m_PreviousPosition;
+
+        private EntityDataEnemy entityDataEnemy;
 
         private float hp;
         private bool attacked = false;
@@ -27,10 +28,8 @@ namespace Flower
 
         public Vector3 Velocity
         {
-            get
-            {
-                return mRigidbody.velocity;
-            }
+            get;
+            private set;
         }
 
         public bool IsDead
@@ -50,7 +49,6 @@ namespace Flower
             base.OnInit(userData);
 
             agent = GetComponent<NavMeshAgent>();
-            mRigidbody = GetComponent<Rigidbody>();
             hpBar = transform.Find("HealthBar").GetComponent<HPBar>();
 
             hpBar.OnInit(userData);
@@ -139,6 +137,13 @@ namespace Flower
             hpBar.OnHide(isShutdown, userData);
         }
 
+        void FixedUpdate()
+        {
+            m_CurrentPosition = transform.position;
+            Velocity = (m_CurrentPosition - m_PreviousPosition) / Time.fixedDeltaTime;
+            m_PreviousPosition = m_CurrentPosition;
+        }
+
         public void AfterAttack()
         {
             GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
@@ -146,21 +151,30 @@ namespace Flower
 
         public void Damage(float value)
         {
-            hp -= value;
+            if (IsDead)
+                return;
 
-            hpBar.UpdateHealth(hp / entityDataEnemy.EnemyData.MaxHP);
+            hp -= value;
 
             if (hp <= 0)
             {
                 hp = 0;
                 Dead();
             }
+
+            hpBar.UpdateHealth(hp / entityDataEnemy.EnemyData.MaxHP);
         }
 
         private void Dead()
         {
             if (OnDead != null)
                 OnDead(this);
+
+            GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
+                entityDataEnemy.EnemyData.DeadEffcetEntityId,
+                typeof(EntityParticleAutoHide),
+                null,
+                EntityData.Create(transform.position + entityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
 
             GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Flower
 {
-    public class LevelPathManager : MonoBehaviour
+    public class LevelManager : MonoBehaviour
     {
         [System.Serializable]
         public class LevelPathConfig
@@ -16,6 +16,17 @@ namespace Flower
         [SerializeField]
         private LevelPathConfig[] levelPathConfigs;
         private float totalWeight;
+
+        [SerializeField]
+        private Collider[] environmentColliders;
+
+        public Collider[] EnvironmentColliders
+        {
+            get
+            {
+                return environmentColliders;
+            }
+        }
 
         private void Awake()
         {

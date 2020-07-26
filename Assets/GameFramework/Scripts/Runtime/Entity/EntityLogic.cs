@@ -136,7 +136,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="userData">用户自定义数据。</param>
         protected internal virtual void OnHide(bool isShutdown, object userData)
         {
-            gameObject.SetLayerRecursively(m_OriginalLayer);
+            //gameObject.SetLayerRecursively(m_OriginalLayer);
             Visible = false;
             m_Available = false;
         }

@@ -7,7 +7,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public static class EntityExtension 
+    public static class EntityExtension
     {
         private static int s_SerialId = 0;
 
@@ -34,8 +34,14 @@ namespace Flower
 
             if (entityData == null)
             {
-                Log.Warning("Can not load entity id '{0}' from data table.", entityData.Id.ToString());
+                Log.Error("Can not load entity id '{0}' from data table.", entityId.ToString());
                 return;
+            }
+
+            if (!entityComponent.HasEntityGroup(entityData.EntityGroupData.Name))
+            {
+                PoolParamData poolParamData = entityData.EntityGroupData.PoolParamData;
+                GameEntry.Entity.AddEntityGroup(entityData.EntityGroupData.Name, poolParamData.InstanceAutoReleaseInterval, poolParamData.InstanceCapacity, poolParamData.InstanceExpireTime, poolParamData.InstancePriority);
             }
 
             entityComponent.ShowEntity(serialId, logicType, entityData.AssetPath, entityData.EntityGroupData.Name, Constant.AssetPriority.EntityAsset, userData);

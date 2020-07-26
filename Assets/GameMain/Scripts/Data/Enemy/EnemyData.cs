@@ -51,6 +51,22 @@ namespace Flower.Data
             }
         }
 
+        public int DeadEffcetEntityId
+        {
+            get
+            {
+                return dREnemy.DeadEffcetEntityId;
+            }
+        }
+
+        public Vector3 DeadEffectOffset
+        {
+            get
+            {
+                return dREnemy.DeadEffectOffset;
+            }
+        }
+
         public EnemyData(DREnemy dREnemy)
         {
             this.dREnemy = dREnemy;

@@ -138,9 +138,7 @@ namespace Flower
                 List<EntityBaseEnemy> enemies = towerTargetter.GetAllTargets();
                 m_Launcher.Launch(
                     enemies,
-                    entityDataTower.Tower.ProjectileEntityId,
-                    TypeUtility.GetEntityType(entityDataTower.Tower.ProjectileType),
-                    entityDataTower.Tower.Damage,
+                    entityDataTower.Tower,
                     epicenter.position,
                     projectilePoints);
             }
@@ -148,9 +146,7 @@ namespace Flower
             {
                 m_Launcher.Launch(
                     m_TrackingEnemy,
-                    entityDataTower.Tower.ProjectileEntityId,
-                    TypeUtility.GetEntityType(entityDataTower.Tower.ProjectileType),
-                    entityDataTower.Tower.Damage,
+                    entityDataTower.Tower,
                     epicenter.position,
                     projectilePoints);
             }

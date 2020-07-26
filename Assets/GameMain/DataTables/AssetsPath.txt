@@ -66,6 +66,13 @@
 	3041	火箭炮弹	Assets/GameMain/Entity/RocketPlatform/RocketProjectile.prefab
 	3042	等离子喷枪炮弹	Assets/GameMain/Entity/PlasmaLance/LaserProjectile.prefab
 	3043	导弹阵列炮弹	Assets/GameMain/Entity/MissileArray/SuperTowerProjectile.prefab
+	3044	子弹击中特效	Assets/GameMain/Entity/BulletHit.prefab
+	3045	激光击中特效	Assets/GameMain/Entity/LaserImpactPFX.prefab
+	3046	火箭尾部特效	Assets/GameMain/Entity/RocketTrail.prefab
+	3047	火箭爆炸特效	Assets/GameMain/Entity/RocketExplosionPfx.prefab
+	3048	导弹尾部特效	Assets/GameMain/Entity/SupertowerMissileTrail.prefab
+	3049	敌人死亡特效1	Assets/GameMain/Entity/SmallDeathExplosionPfx.prefab
+	3050	敌人死亡特效2	Assets/GameMain/Entity/BigDeathExplosionPfx.prefab
 #Sound			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

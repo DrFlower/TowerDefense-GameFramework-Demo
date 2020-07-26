@@ -28,7 +28,7 @@ namespace Flower
 
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
 
-            LevelPathManager levelPathManager = UnityEngine.GameObject.Find("LevelPathManager").GetComponent<LevelPathManager>();
+            LevelManager levelPathManager = UnityEngine.GameObject.Find("LevelManager").GetComponent<LevelManager>();
             if (levelPathManager == null)
             {
                 Log.Error("Can not find LevelPathManager instance in scene");
