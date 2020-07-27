@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 4958392881172934}
   - component: {fileID: 114210254157198064}
   - component: {fileID: 4907774701618819021}
+  - component: {fileID: 3543569117685823414}
   m_Layer: 10
   m_Name: MissileArray_Level1
   m_TagString: Untagged
@@ -697,6 +698,27 @@ MonoBehaviour:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   turret: {fileID: 4145390463871964}
+  projectilePoints:
+  - {fileID: 4087311428207534}
+  - {fileID: 4720453727091356}
+  - {fileID: 4930524698921082}
+  - {fileID: 4224631157214890}
+  - {fileID: 4676041355084646}
+  epicenter: {fileID: 4958392881172934}
+  launcher: {fileID: 3543569117685823414}
+--- !u!114 &3543569117685823414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759168881962760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac164ce656c77147a1a433fcf18a4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParticleSystem: {fileID: 0}
 --- !u!1 &1812292035156056
 GameObject:
   m_ObjectHideFlags: 0

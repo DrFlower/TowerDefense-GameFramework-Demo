@@ -80,6 +80,10 @@ namespace Flower
         protected Vector3 m_WobbleVector,
                           m_TargetWobbleVector;
 
+        /// <summary>
+        /// Angle, in degrees, to rotate, on the x axis, the fire vector by
+        /// </summary>
+        public float fireVectorXRotationAdjustment = 45.0f;
 
         protected override void OnInit(object userData)
         {
@@ -93,6 +97,22 @@ namespace Flower
             base.OnShow(userData);
 
             enemy = entityDataProjectile.EntityEnemy;
+
+            Vector3 startingPoint = entityDataProjectile.FiringPoint.position;
+            Vector3 targetPoint = Ballistics.CalculateLinearLeadingTargetPoint(
+                startingPoint, enemy.transform.position,
+                enemy.Velocity, startSpeed,
+                acceleration);
+
+
+            Vector3 direction = entityDataProjectile.FiringPoint.forward;
+
+            Vector3 binormal = Vector3.Cross(direction, Vector3.up);
+            Quaternion rotation = Quaternion.AngleAxis(fireVectorXRotationAdjustment, binormal);
+
+            Vector3 adjustedFireVector = rotation * direction;
+
+            FireInDirection(startingPoint, adjustedFireVector);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
