@@ -5,13 +5,14 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class EntityMissileArray : EntityTowerAttacker
+    public class EntityHideSelfProjectile : EntityProjectile
     {
         public float time;
 
         private float timer;
 
-        private DataLevel dataLevel;
+        public float yDestroyPoint = -50;
+        public float selfDestroyTime = 10;
 
         protected override void OnInit(object userData)
         {
@@ -21,30 +22,28 @@ namespace Flower
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
-
-            dataLevel = GameEntry.Data.GetData<DataLevel>();
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            if (dataLevel.LevelState == EnumLevelState.Normal)
-            {
-                timer += elapseSeconds;
+            if (pause)
+                return;
 
-                if (timer > time)
-                {
-                    GameEntry.Event.Fire(this, SellTowerEventArgs.Create(entityDataTower.Tower.SerialId));
-                }
+            timer += elapseSeconds;
+
+            if (transform.position.y < yDestroyPoint || timer > selfDestroyTime)
+            {
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
             }
+
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
             timer = 0;
-            dataLevel = null;
         }
     }
 }

@@ -28,6 +28,10 @@ namespace Flower
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
+
+            if (pause)
+                return;
+
             timer += elapseSeconds;
 
             if (timer >= delayTime)

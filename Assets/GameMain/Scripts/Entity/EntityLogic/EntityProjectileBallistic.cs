@@ -7,7 +7,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class EntityProjectileBallistic : EntityProjectile, IProjectile
+    public class EntityProjectileBallistic : EntityHideSelfProjectile, IProjectile
     {
         public BallisticArcHeight arcPreference;
         public BallisticFireMode fireMode;
@@ -35,7 +35,7 @@ namespace Flower
 
         static readonly Collider[] s_Enemies = new Collider[64];
 
-        public float yDestroyPoint = -50;
+        private Vector3 tempVelocity;
 
         protected override void OnInit(object userData)
         {
@@ -85,6 +85,9 @@ namespace Flower
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
+            if (pause)
+                return;
+
             if (!m_Fired)
             {
                 return;
@@ -109,11 +112,6 @@ namespace Flower
             }
 
             transform.rotation = Quaternion.LookRotation(m_Rigidbody.velocity);
-
-            if (transform.position.y < yDestroyPoint)
-            {
-                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
-            }
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -123,6 +121,8 @@ namespace Flower
             m_Fired = m_IgnoringCollsions = false;
             m_CollisionIgnoreCount = 0;
             m_CollidersIgnoring.Clear();
+
+            tempVelocity = Vector3.zero;
         }
 
         /// <summary>
@@ -242,6 +242,21 @@ namespace Flower
             SpawnCollisionParticles();
 
             GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+        }
+
+        public override void Pause()
+        {
+            base.Pause();
+            tempVelocity = m_Rigidbody.velocity;
+            m_Rigidbody.velocity = Vector3.zero;
+            m_Rigidbody.isKinematic = true;
+        }
+
+        public override void Resume()
+        {
+            base.Resume();
+            m_Rigidbody.velocity = tempVelocity;
+            m_Rigidbody.isKinematic = false;
         }
 
 #if UNITY_EDITOR

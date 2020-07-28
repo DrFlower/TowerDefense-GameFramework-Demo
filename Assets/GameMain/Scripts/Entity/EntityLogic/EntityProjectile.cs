@@ -5,13 +5,15 @@ using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class EntityProjectile : EntityLogicEx
+    public class EntityProjectile : EntityLogicEx, IPause
     {
         [Range(0, 1)]
         public float chanceToSpawnCollisionPrefab = 1.0f;
         public int collisionParticlesEntityId;
 
         protected EntityDataProjectile entityDataProjectile;
+
+        protected bool pause;
 
         protected override void OnInit(object userData)
         {
@@ -50,6 +52,15 @@ namespace Flower
                 EntityData.Create(entityDataProjectile.EntityEnemy.transform.position, transform.rotation)));
         }
 
+        public virtual void Pause()
+        {
+            pause = true;
+        }
+
+        public virtual void Resume()
+        {
+            pause = false;
+        }
     }
 
 }

@@ -191,6 +191,9 @@ MonoBehaviour:
     m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   chanceToSpawnCollisionPrefab: 1
   collisionParticlesEntityId: 1047
+  time: 5
+  yDestroyPoint: -50
+  selfDestroyTime: 10
   arcPreference: 1
   fireMode: 0
   firingAngle: 0
@@ -199,7 +202,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   collisionIgnoreTime: 0.35
-  yDestroyPoint: -50
 --- !u!1 &1827127167504934
 GameObject:
   m_ObjectHideFlags: 0

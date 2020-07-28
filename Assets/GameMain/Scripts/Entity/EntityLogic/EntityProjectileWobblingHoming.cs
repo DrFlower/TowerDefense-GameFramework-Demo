@@ -7,7 +7,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class EntityProjectileWobblingHoming : EntityProjectile, IProjectile
+    public class EntityProjectileWobblingHoming : EntityHideSelfProjectile, IProjectile
     {
         public float acceleration;
 
@@ -22,6 +22,9 @@ namespace Flower
         public bool leadTarget;
 
         protected EntityBaseEnemy enemy;
+
+        static readonly Collider[] s_Enemies = new Collider[64];
+        public LayerMask mask = -1;
 
         Vector3 m_TargetVelocity;
 
@@ -85,6 +88,8 @@ namespace Flower
         /// </summary>
         public float fireVectorXRotationAdjustment = 45.0f;
 
+        private Vector3 tempVelocity;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -118,6 +123,9 @@ namespace Flower
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
+
+            if (pause)
+                return;
 
             if (enemy == null || m_State == State.Targeting)
             {
@@ -192,6 +200,8 @@ namespace Flower
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
+
+            tempVelocity = Vector3.zero;
         }
 
         /// <summary>
@@ -297,6 +307,48 @@ namespace Flower
             enemy.OnHidden -= OnTargetLost;
             enemy.OnDead -= OnTargetLost;
             this.enemy = null;
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            EntityBaseEnemy enemy = other.gameObject.GetComponent<EntityBaseEnemy>();
+            if (enemy == null)
+                return;
+
+            if (!enemy.IsDead)
+                enemy.Damage(entityDataProjectile.Damage);
+
+            int number = Physics.OverlapSphereNonAlloc(transform.position, entityDataProjectile.SplashRange, s_Enemies, mask);
+            for (int index = 0; index < number; index++)
+            {
+                Collider collider = s_Enemies[index];
+                var rangeEnemy = collider.GetComponent<EntityBaseEnemy>();
+                if (rangeEnemy == null)
+                {
+                    continue;
+                }
+                if (!enemy.IsDead)
+                    rangeEnemy.Damage(entityDataProjectile.SplashDamage);
+            }
+
+            SpawnCollisionParticles();
+            
+            GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+        }
+
+        public override void Pause()
+        {
+            base.Pause();
+            tempVelocity = m_Rigidbody.velocity;
+            m_Rigidbody.velocity = Vector3.zero;
+            m_Rigidbody.isKinematic = true;
+            m_Rigidbody.isKinematic = false;
+        }
+
+        public override void Resume()
+        {
+            base.Resume();
+            m_Rigidbody.velocity = tempVelocity;
         }
     }
 }
