@@ -42,7 +42,7 @@ namespace Flower
 
             if (timer > hideTime)
             {
-                GameEntry.Entity.HideEntity(this.Entity);
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
             }
 
         }
