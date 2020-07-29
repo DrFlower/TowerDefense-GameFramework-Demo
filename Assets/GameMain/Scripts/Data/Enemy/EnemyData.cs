@@ -67,6 +67,22 @@ namespace Flower.Data
             }
         }
 
+        public Vector3 ApplyEffectOffset
+        {
+            get
+            {
+                return dREnemy.ApplyEffectOffset;
+            }
+        }
+
+        public float ApplyEffectScale
+        {
+            get
+            {
+                return dREnemy.ApplyEffectScale;
+            }
+        }
+
         public EnemyData(DREnemy dREnemy)
         {
             this.dREnemy = dREnemy;

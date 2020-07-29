@@ -73,6 +73,7 @@
 	3048	导弹尾部特效	Assets/GameMain/Entity/SupertowerMissileTrail.prefab
 	3049	敌人死亡特效1	Assets/GameMain/Entity/SmallDeathExplosionPfx.prefab
 	3050	敌人死亡特效2	Assets/GameMain/Entity/BigDeathExplosionPfx.prefab
+	3051	敌人减速	Assets/GameMain/Entity/SlowFx.prefab
 #Sound			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

@@ -52,3 +52,4 @@
 	1048	导弹尾部特效	SupertowerMissileTrail	1002
 	1049	敌人死亡特效1	SmallDeathExplosionPfx	1002
 	1050	敌人死亡特效2	BigDeathExplosionPfx	1002
+	1051	敌人减速	SlowFx	1002

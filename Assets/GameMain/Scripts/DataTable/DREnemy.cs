@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-07-26 20:55:15.054
+// 生成时间：2020-07-30 00:58:44.523
 //------------------------------------------------------------
 
 using GameFramework;
@@ -90,6 +90,24 @@ namespace Flower
             private set;
         }
 
+        /// <summary>
+        /// 获取应用特效位置偏移。
+        /// </summary>
+        public Vector3 ApplyEffectOffset
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取应用特效缩放。
+        /// </summary>
+        public float ApplyEffectScale
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
         {
             Type dataType = dataRowSegment.DataType;
@@ -111,6 +129,8 @@ namespace Flower
                 Speed = float.Parse(columnTexts[index++]);
                 DeadEffcetEntityId = int.Parse(columnTexts[index++]);
                 DeadEffectOffset = DataTableExtension.ParseVector3(columnTexts[index++]);
+                ApplyEffectOffset = DataTableExtension.ParseVector3(columnTexts[index++]);
+                ApplyEffectScale = float.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -126,6 +146,8 @@ namespace Flower
                         Speed = binaryReader.ReadSingle();
                         DeadEffcetEntityId = binaryReader.Read7BitEncodedInt32();
                         DeadEffectOffset = binaryReader.ReadVector3();
+                        ApplyEffectOffset = binaryReader.ReadVector3();
+                        ApplyEffectScale = binaryReader.ReadSingle();
                     }
                 }
             }
