@@ -10,13 +10,13 @@ namespace Flower
     {
         public static readonly int EventId = typeof(PlayerEnergyChangeEventArgs).GetHashCode();
 
-        public int LastEnergy
+        public float LastEnergy
         {
             get;
             private set;
         }
 
-        public int CurrentEnergy
+        public float CurrentEnergy
         {
             get;
             private set;
@@ -43,7 +43,7 @@ namespace Flower
             private set;
         }
 
-        public static PlayerEnergyChangeEventArgs Create(int lastEnergy, int currentEnergy, object userData = null)
+        public static PlayerEnergyChangeEventArgs Create(float lastEnergy, float currentEnergy, object userData = null)
         {
             PlayerEnergyChangeEventArgs playerEnergyChangeEventArgs = ReferencePool.Acquire<PlayerEnergyChangeEventArgs>();
             playerEnergyChangeEventArgs.LastEnergy = lastEnergy;

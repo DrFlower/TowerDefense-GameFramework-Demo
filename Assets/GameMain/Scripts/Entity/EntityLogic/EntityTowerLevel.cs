@@ -12,6 +12,7 @@ namespace Flower
         public Transform[] projectilePoints;
         public Transform epicenter;
         public Launcher launcher;
+        public ParticleSystem effect;
 
         protected override void OnInit(object userData)
         {

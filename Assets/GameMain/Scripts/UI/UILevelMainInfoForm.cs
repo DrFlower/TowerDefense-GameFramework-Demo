@@ -49,10 +49,10 @@ namespace Flower
             dataLevel = GameEntry.Data.GetData<DataLevel>();
 
             debugAddEnergyBtton.gameObject.SetActive(dataPlayer.IsEnableDebugEnergy);
-            debugAddEnergyText.text = dataPlayer.DebugAddEnergyCount.ToString();
+            debugAddEnergyText.text = ((int)dataPlayer.DebugAddEnergyCount).ToString();
 
             hpText.text = dataPlayer.HP.ToString();
-            energyText.text = dataPlayer.Energy.ToString();
+            energyText.text = ((int)dataPlayer.Energy).ToString();
 
             btnStartWave.gameObject.SetActive(true);
             waveInfoPanel.SetActive(false);

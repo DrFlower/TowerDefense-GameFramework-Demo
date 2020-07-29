@@ -11,9 +11,9 @@ namespace Flower.Data
     {
         public int HP { get; private set; }
 
-        private int energy;
+        private float energy;
 
-        public int Energy
+        public float Energy
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Flower.Data
 
 
         public bool IsEnableDebugEnergy { get; private set; }
-        public int DebugAddEnergyCount { get; private set; }
+        public float DebugAddEnergyCount { get; private set; }
 
         protected override void OnInit()
         {
@@ -74,12 +74,12 @@ namespace Flower.Data
                 GameOver();
         }
 
-        public void AddEnergy(int value)
+        public void AddEnergy(float value)
         {
             if (value == 0)
                 return;
 
-            int lastEnergy = Energy;
+            float lastEnergy = Energy;
             Energy += value;
 
             GameEntry.Event.Fire(this, PlayerEnergyChangeEventArgs.Create(lastEnergy, Energy));
@@ -97,7 +97,7 @@ namespace Flower.Data
             HP = 100;
             GameEntry.Event.Fire(this, PlayerHPChangeEventArgs.Create(lastHP, HP));
 
-            int lastEnergy = Energy;
+            float lastEnergy = Energy;
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
             if (!dataLevel.IsInLevel)
             {

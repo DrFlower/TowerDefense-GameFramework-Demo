@@ -78,7 +78,7 @@ namespace Flower
             this.onClick = onClick;
         }
 
-        private void UpdateEnergyState(int ownEnergy)
+        private void UpdateEnergyState(float ownEnergy)
         {
             if (towerLevelData == null)
                 return;
