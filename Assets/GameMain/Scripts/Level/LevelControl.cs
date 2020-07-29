@@ -251,7 +251,20 @@ namespace Flower
 
         public void ShowEntity(int entityId, Type entityType, Action<Entity> showSuccess, EntityData entityData)
         {
-            entityLoader.ShowEntity(entityId, entityType, showSuccess, entityData);
+            entityLoader.ShowEntity(entityId, entityType, (entity) =>
+            {
+                //这里处理一下，如果暂停前调用ShowEntity，暂停后才成功加载出来调用Entity的OnShow的话，那这个Entity是没被执行到IPause的逻辑的，这里在ShowEntity成功的回调下补充个调用IPause的逻辑
+                if (pause == true)
+                {
+                    IPause iPause = entity.Logic as IPause;
+                    if (iPause != null)
+                    {
+                        iPause.Pause();
+                    }
+                }
+                if (showSuccess != null)
+                    showSuccess(entity);
+            }, entityData);
         }
 
         public void HideEntity(int entityId)
