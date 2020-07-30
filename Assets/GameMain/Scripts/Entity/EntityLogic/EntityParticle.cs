@@ -5,50 +5,54 @@ using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class EntityAutoHide : EntityLogicEx
+    public class EntityParticle : EntityLogicEx, IPause
     {
-        private float hideTime = 0;
-        private float timer = 0;
+        protected ParticleSystem ps;
+
+        protected bool pause = false;
+        private float pauseTime;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
+            ps = GetComponentInChildren<ParticleSystem>();
         }
 
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
 
-            timer = 0;
-
-            EntityDataAutoHide entityDataAutoHide = userData as EntityDataAutoHide;
-            if (entityDataAutoHide == null)
-            {
-                Log.Error("Entity EntityAutoHide show param invaild.");
-            }
-
-            hideTime = entityDataAutoHide.Time;
+            ps.Play(true);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            timer += elapseSeconds;
-
-            if (timer > hideTime)
-            {
-                GameEntry.Entity.HideEntity(this.Entity);
-            }
-
+            if (pause)
+                return;
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
 
-            timer = 0;
-            hideTime = 0;
+            pauseTime = 0;
+            ps.Stop(true);
+        }
+
+        public void Pause()
+        {
+            pause = true;
+            ps.Pause(true);
+            pauseTime = ps.time;
+        }
+
+        public void Resume()
+        {
+            pause = false;
+            ps.Play();
+            ps.time = pauseTime;
         }
     }
 }
