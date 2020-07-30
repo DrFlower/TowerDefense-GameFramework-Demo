@@ -12,6 +12,8 @@ namespace Flower
         protected bool pause = false;
         private float pauseTime;
 
+        protected EntityDataParticle entityDataParticle;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -22,6 +24,15 @@ namespace Flower
         {
             base.OnShow(userData);
 
+            entityDataParticle = userData as EntityDataParticle;
+            if (entityDataParticle == null)
+            {
+                Log.Error("EntityParticle '{0}' entity data invaild.", Id);
+                return;
+            }
+
+            transform.localScale = entityDataParticle.Scale;
+
             ps.Play(true);
         }
 
@@ -31,11 +42,20 @@ namespace Flower
 
             if (pause)
                 return;
+
+            if (entityDataParticle.Follow != null)
+            {
+                transform.position = entityDataParticle.Follow.position + entityDataParticle.Offset;
+            }
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
+
+            entityDataParticle = null;
+
+            transform.localScale = Vector3.one;
 
             pauseTime = 0;
             ps.Stop(true);

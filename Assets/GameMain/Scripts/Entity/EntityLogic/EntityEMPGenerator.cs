@@ -9,12 +9,15 @@ namespace Flower
     public class EntityEMPGenerator : EntityTowerBase
     {
         private TowerTargetter towerTargetter;
+        private Dictionary<int, Entity> dic;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
             towerTargetter = transform.Find("Targetter").GetComponent<TowerTargetter>();
+
+            dic = new Dictionary<int, Entity>();
 
             towerTargetter.OnInit(userData);
         }
@@ -45,6 +48,8 @@ namespace Flower
             towerTargetter.OnHide(isShutdown, userData);
             towerTargetter.targetEntersRange -= OnTargetEntersRange;
             towerTargetter.targetExitsRange -= OnTargetExitsRange;
+
+            RemoveAllTarget();
         }
 
         protected override void OnShowTowerLevelSuccess(Entity entity)
@@ -59,7 +64,23 @@ namespace Flower
 
         private void OnTargetEntersRange(EntityBaseEnemy other)
         {
-
+            if (other.SlowDown(entityDataTower.Tower.SpeedDownRate))
+            {
+                dic.Add(other.Id, null);
+                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create((int)EnumEntity.SlowFx,
+                    typeof(EntityParticle),
+                    (entity) =>
+                    {
+                        dic[other.Id] = entity;
+                    },
+                        EntityDataParticle.Create(other.transform,
+                        other.EntityDataEnemy.EnemyData.ApplyEffectOffset,
+                        Vector3.one * other.EntityDataEnemy.EnemyData.ApplyEffectScale,
+                        other.transform.position,
+                        other.transform.rotation)
+                    )
+                    );
+            }
         }
 
         /// <summary>
@@ -67,8 +88,31 @@ namespace Flower
         /// </summary>
         private void OnTargetExitsRange(EntityBaseEnemy other)
         {
-
+            if (dic.ContainsKey(other.Id))
+            {
+                if (dic[other.Id] != null)
+                {
+                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(other.Id));
+                }
+                other.ResumeSpeed();
+                dic.Remove(other.Id);
+            }
         }
+
+        private void RemoveAllTarget()
+        {
+            foreach (var item in dic)
+            {
+                if (item.Value != null)
+                {
+                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(item.Value.Id));
+                }
+                //item.Key.ResumeSpeed();
+            }
+
+            dic.Clear();
+        }
+
     }
 }
 

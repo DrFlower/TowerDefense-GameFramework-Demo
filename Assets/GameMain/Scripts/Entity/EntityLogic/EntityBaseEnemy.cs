@@ -16,9 +16,6 @@ namespace Flower
         private HPBar hpBar;
 
         private Vector3 m_CurrentPosition, m_PreviousPosition;
-
-        private EntityDataEnemy entityDataEnemy;
-
         private float hp;
         private bool attacked = false;
         private float attackTimer = 0;
@@ -26,7 +23,19 @@ namespace Flower
 
         protected bool pause = false;
 
+        public EntityDataEnemy EntityDataEnemy
+        {
+            get;
+            private set;
+        }
+
         public Vector3 Velocity
+        {
+            get;
+            private set;
+        }
+
+        public float SlowRate
         {
             get;
             private set;
@@ -88,6 +97,8 @@ namespace Flower
                 }
             }
 
+            agent.speed = EntityDataEnemy.EnemyData.Speed * SlowRate;
+
             hpBar.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
@@ -95,22 +106,22 @@ namespace Flower
         {
             base.OnShow(userData);
 
-            entityDataEnemy = userData as EntityDataEnemy;
+            EntityDataEnemy = userData as EntityDataEnemy;
 
-            if (entityDataEnemy == null)
+            if (EntityDataEnemy == null)
             {
                 Log.Error("Entity enemy '{0}' entity data invaild.", Id);
                 return;
             }
 
             agent.enabled = true;
-            agent.speed = entityDataEnemy.EnemyData.Speed;
+            agent.speed = EntityDataEnemy.EnemyData.Speed * SlowRate;
 
-            levelPath = entityDataEnemy.LevelPath;
+            levelPath = EntityDataEnemy.LevelPath;
 
             targetPathNodeIndex = 0;
 
-            hp = entityDataEnemy.EnemyData.MaxHP;
+            hp = EntityDataEnemy.EnemyData.MaxHP;
 
             hpBar.OnShow(userData);
         }
@@ -126,13 +137,15 @@ namespace Flower
             OnDead = null;
 
             levelPath = null;
-            entityDataEnemy = null;
+            EntityDataEnemy = null;
             targetPathNodeIndex = 0;
             hp = 0;
             agent.enabled = false;
             attacked = false;
             attackTimer = 0;
             targetPlayer = null;
+
+            SlowRate = 1;
 
             hpBar.OnHide(isShutdown, userData);
         }
@@ -162,7 +175,7 @@ namespace Flower
                 Dead();
             }
 
-            hpBar.UpdateHealth(hp / entityDataEnemy.EnemyData.MaxHP);
+            hpBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
         }
 
         private void Dead()
@@ -171,10 +184,10 @@ namespace Flower
                 OnDead(this);
 
             GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
-                entityDataEnemy.EnemyData.DeadEffcetEntityId,
+                EntityDataEnemy.EnemyData.DeadEffcetEntityId,
                 typeof(EntityParticleAutoHide),
                 null,
-                EntityData.Create(transform.position + entityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
+                EntityData.Create(transform.position + EntityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
 
             GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
         }
@@ -194,6 +207,22 @@ namespace Flower
             player.Charge();
         }
 
+        public bool SlowDown(float slowRate)
+        {
+            if (slowRate < SlowRate)
+            {
+                SlowRate = slowRate;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void ResumeSpeed()
+        {
+            SlowRate = 1;
+        }
+
         public void Pause()
         {
             pause = true;
@@ -203,7 +232,7 @@ namespace Flower
         public void Resume()
         {
             pause = false;
-            agent.speed = entityDataEnemy.EnemyData.Speed;
+            agent.speed = EntityDataEnemy.EnemyData.Speed;
         }
     }
 }
