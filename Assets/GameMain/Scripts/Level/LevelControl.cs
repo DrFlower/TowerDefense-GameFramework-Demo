@@ -315,6 +315,7 @@ namespace Flower
 
         public void Gameover(EnumGameOverType enumGameOverType, int starCount)
         {
+            HidePreviewTower();
             Pause();
             GameEntry.UI.OpenUIForm(EnumUIForm.UIGameOverForm, UIGameOverFormOpenParam.Create(level.LevelData, enumGameOverType, starCount));
         }

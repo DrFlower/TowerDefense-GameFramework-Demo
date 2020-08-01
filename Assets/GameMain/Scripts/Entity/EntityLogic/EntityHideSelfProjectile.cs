@@ -14,6 +14,8 @@ namespace Flower
         public float yDestroyPoint = -50;
         public float selfDestroyTime = 10;
 
+        protected bool hide = false;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -35,7 +37,13 @@ namespace Flower
 
             if (transform.position.y < yDestroyPoint || timer > selfDestroyTime)
             {
-                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+                if (!hide)
+                {
+                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+                    hide = true;
+                }
+
+                //GameEntry.Data.GetData<DataLevel>().CurrentLevel.EntityLoader.HideEntity(Entity.Id);
             }
 
         }
@@ -44,6 +52,7 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
             timer = 0;
+            hide = false;
         }
     }
 }

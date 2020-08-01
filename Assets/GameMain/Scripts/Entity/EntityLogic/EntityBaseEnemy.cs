@@ -21,7 +21,14 @@ namespace Flower
         private float attackTimer = 0;
         private EntityPlayer targetPlayer;
 
+        private Dictionary<int, float> dicSlowDownRates;
+
+        //表示是否死亡或已攻击玩家即将回收，以防重复执行回收逻辑
+        private bool hide = false;
+
         protected bool pause = false;
+
+        private Entity slowDownEffect;
 
         public EntityDataEnemy EntityDataEnemy
         {
@@ -35,7 +42,7 @@ namespace Flower
             private set;
         }
 
-        public float SlowRate
+        public float CurrentSlowRate
         {
             get;
             private set;
@@ -59,7 +66,8 @@ namespace Flower
 
             agent = GetComponent<NavMeshAgent>();
             hpBar = transform.Find("HealthBar").GetComponent<HPBar>();
-
+            dicSlowDownRates = new Dictionary<int, float>();
+            CurrentSlowRate = 1;
             hpBar.OnInit(userData);
         }
 
@@ -67,7 +75,10 @@ namespace Flower
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            if (!pause && targetPlayer != null && !attacked)
+            if (pause)
+                return;
+
+            if (targetPlayer != null && !attacked)
             {
                 attackTimer += elapseSeconds;
                 if (attackTimer > 1)
@@ -97,7 +108,7 @@ namespace Flower
                 }
             }
 
-            agent.speed = EntityDataEnemy.EnemyData.Speed * SlowRate;
+            agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
 
             hpBar.OnUpdate(elapseSeconds, realElapseSeconds);
         }
@@ -115,7 +126,7 @@ namespace Flower
             }
 
             agent.enabled = true;
-            agent.speed = EntityDataEnemy.EnemyData.Speed * SlowRate;
+            agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
 
             levelPath = EntityDataEnemy.LevelPath;
 
@@ -145,7 +156,10 @@ namespace Flower
             attackTimer = 0;
             targetPlayer = null;
 
-            SlowRate = 1;
+            hide = false;
+
+            RemoveSlowEffect();
+            dicSlowDownRates.Clear();
 
             hpBar.OnHide(isShutdown, userData);
         }
@@ -159,7 +173,11 @@ namespace Flower
 
         public void AfterAttack()
         {
-            GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
+            if (!hide)
+            {
+                hide = true;
+                GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
+            }
         }
 
         public void Damage(float value)
@@ -189,7 +207,11 @@ namespace Flower
                 null,
                 EntityData.Create(transform.position + EntityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
 
-            GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
+            if (!hide)
+            {
+                hide = true;
+                GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -207,21 +229,79 @@ namespace Flower
             player.Charge();
         }
 
-        public bool SlowDown(float slowRate)
+        public void ApplySlow(int towerId, float slowRate)
         {
-            if (slowRate < SlowRate)
+            if (dicSlowDownRates.ContainsKey(towerId))
             {
-                SlowRate = slowRate;
-                return true;
+                dicSlowDownRates[towerId] = slowRate;
+            }
+            else
+            {
+                dicSlowDownRates.Add(towerId, slowRate);
             }
 
-            return false;
+            foreach (var item in dicSlowDownRates)
+            {
+                CurrentSlowRate = Mathf.Min(CurrentSlowRate, item.Value);
+            }
+
+            //Debug.LogError(string.Format("apply slow by tower {0},slow rate: {1},current slow rate:{2}", towerId, slowRate, CurrentSlowRate));
+
+            ApplySlowEffect();
         }
 
-        public void ResumeSpeed()
+        public void RemoveSlow(int towerId)
         {
-            SlowRate = 1;
+            if (dicSlowDownRates.ContainsKey(towerId))
+            {
+                dicSlowDownRates.Remove(towerId);
+                if (dicSlowDownRates.Count == 0)
+                {
+                    CurrentSlowRate = 1;
+                    RemoveSlowEffect();
+                }
+
+                //Debug.LogError(string.Format("remove slow by tower {0},current slow rate:{1}", towerId, CurrentSlowRate));
+            }
+            else
+            {
+                Log.Error("error");
+            }
         }
+
+        private void ApplySlowEffect()
+        {
+            if (slowDownEffect == null)
+            {
+                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create((int)EnumEntity.SlowFx,
+                    typeof(EntityAnimation),
+                    (entity) =>
+                    {
+                        slowDownEffect = entity;
+                        if (hide)
+                        {
+                            RemoveSlowEffect();
+                        }
+                    },
+                        EntityDataFollower.Create(transform,
+                        EntityDataEnemy.EnemyData.ApplyEffectOffset,
+                        Vector3.one * EntityDataEnemy.EnemyData.ApplyEffectScale,
+                        transform.position,
+                        transform.rotation)
+                    )
+                    );
+            }
+        }
+
+        private void RemoveSlowEffect()
+        {
+            if (slowDownEffect != null)
+            {
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(slowDownEffect.Id));
+                slowDownEffect = null;
+            }
+        }
+
 
         public void Pause()
         {
@@ -232,7 +312,7 @@ namespace Flower
         public void Resume()
         {
             pause = false;
-            agent.speed = EntityDataEnemy.EnemyData.Speed;
+            agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
         }
     }
 }

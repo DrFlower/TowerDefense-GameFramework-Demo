@@ -6,7 +6,7 @@ using Flower.Data;
 namespace Flower
 {
     [Serializable]
-    public class EntityDataParticle : EntityData
+    public class EntityDataFollower : EntityData
     {
         public Transform Follow
         {
@@ -26,33 +26,33 @@ namespace Flower
             private set;
         }
 
-        public EntityDataParticle() : base()
+        public EntityDataFollower() : base()
         {
             Follow = null;
             Offset = Vector3.zero;
             Scale = Vector3.one;
         }
 
-        public static EntityDataParticle Create(Transform follow, object userData = null)
+        public static EntityDataFollower Create(Transform follow, object userData = null)
         {
-            EntityDataParticle entityData = ReferencePool.Acquire<EntityDataParticle>();
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
             entityData.Follow = follow;
             entityData.UserData = userData;
             return entityData;
         }
 
-        public static EntityDataParticle Create(Transform follow, Vector3 offset, object userData = null)
+        public static EntityDataFollower Create(Transform follow, Vector3 offset, object userData = null)
         {
-            EntityDataParticle entityData = ReferencePool.Acquire<EntityDataParticle>();
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
             entityData.Follow = follow;
             entityData.Offset = offset;
             entityData.UserData = userData;
             return entityData;
         }
 
-        public static EntityDataParticle Create(Transform follow, Vector3 offset, Vector3 scale, object userData = null)
+        public static EntityDataFollower Create(Transform follow, Vector3 offset, Vector3 scale, object userData = null)
         {
-            EntityDataParticle entityData = ReferencePool.Acquire<EntityDataParticle>();
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
             entityData.Follow = follow;
             entityData.Offset = offset;
             entityData.Scale = scale;
@@ -60,9 +60,9 @@ namespace Flower
             return entityData;
         }
 
-        public static EntityDataParticle Create(Transform follow, Vector3 offset, Vector3 scale, Vector3 position, Quaternion rotation, object userData = null)
+        public static EntityDataFollower Create(Transform follow, Vector3 offset, Vector3 scale, Vector3 position, Quaternion rotation, object userData = null)
         {
-            EntityDataParticle entityData = ReferencePool.Acquire<EntityDataParticle>();
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
             entityData.Follow = follow;
             entityData.Offset = offset;
             entityData.Scale = scale;

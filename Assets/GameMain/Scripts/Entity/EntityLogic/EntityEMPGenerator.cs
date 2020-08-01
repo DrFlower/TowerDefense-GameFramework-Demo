@@ -9,7 +9,7 @@ namespace Flower
     public class EntityEMPGenerator : EntityTowerBase
     {
         private TowerTargetter towerTargetter;
-        private Dictionary<int, Entity> dic;
+        private List<EntityBaseEnemy> slowList;
 
         protected override void OnInit(object userData)
         {
@@ -17,7 +17,7 @@ namespace Flower
 
             towerTargetter = transform.Find("Targetter").GetComponent<TowerTargetter>();
 
-            dic = new Dictionary<int, Entity>();
+            slowList = new List<EntityBaseEnemy>();
 
             towerTargetter.OnInit(userData);
         }
@@ -27,8 +27,6 @@ namespace Flower
             base.OnShow(userData);
 
             towerTargetter.OnShow(userData);
-            towerTargetter.targetEntersRange += OnTargetEntersRange;
-            towerTargetter.targetExitsRange += OnTargetExitsRange;
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -43,13 +41,13 @@ namespace Flower
 
         protected override void OnHide(bool isShutdown, object userData)
         {
+            RemoveAllTarget();
+
             base.OnHide(isShutdown, userData);
 
             towerTargetter.OnHide(isShutdown, userData);
             towerTargetter.targetEntersRange -= OnTargetEntersRange;
             towerTargetter.targetExitsRange -= OnTargetExitsRange;
-
-            RemoveAllTarget();
         }
 
         protected override void OnShowTowerLevelSuccess(Entity entity)
@@ -60,59 +58,51 @@ namespace Flower
             towerTargetter.SetTurret(entityTowerLevel.turret);
             towerTargetter.SetSearchRange(entityDataTower.Tower.Range);
             towerTargetter.ResetTargetter();
-        }
 
-        private void OnTargetEntersRange(EntityBaseEnemy other)
-        {
-            if (other.SlowDown(entityDataTower.Tower.SpeedDownRate))
+            towerTargetter.targetEntersRange += OnTargetEntersRange;
+            towerTargetter.targetExitsRange += OnTargetExitsRange;
+
+            foreach (var item in slowList)
             {
-                dic.Add(other.Id, null);
-                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create((int)EnumEntity.SlowFx,
-                    typeof(EntityParticle),
-                    (entity) =>
-                    {
-                        dic[other.Id] = entity;
-                    },
-                        EntityDataParticle.Create(other.transform,
-                        other.EntityDataEnemy.EnemyData.ApplyEffectOffset,
-                        Vector3.one * other.EntityDataEnemy.EnemyData.ApplyEffectScale,
-                        other.transform.position,
-                        other.transform.rotation)
-                    )
-                    );
+                item.ApplySlow(entityDataTower.Tower.SerialId, entityDataTower.Tower.SpeedDownRate);
             }
         }
 
-        /// <summary>
-        /// Fired when the targetter aquires loses a targetable
-        /// </summary>
-        private void OnTargetExitsRange(EntityBaseEnemy other)
+        private void OnTargetEntersRange(EntityBaseEnemy enemy)
         {
-            if (dic.ContainsKey(other.Id))
-            {
-                if (dic[other.Id] != null)
-                {
-                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(other.Id));
-                }
-                other.ResumeSpeed();
-                dic.Remove(other.Id);
-            }
+            enemy.ApplySlow(entityDataTower.Tower.SerialId, entityDataTower.Tower.SpeedDownRate);
+            slowList.Add(enemy);
+            enemy.OnDead += RemoveSlowTarget;
+            enemy.OnHidden += RemoveSlowTarget;
+        }
+
+        private void OnTargetExitsRange(EntityBaseEnemy enmey)
+        {
+            RemoveSlowTarget(enmey);
+        }
+
+        private void RemoveSlowTarget(EntityBaseEnemy enemy)
+        {
+            enemy.RemoveSlow(entityDataTower.Tower.SerialId);
+
+            enemy.OnDead -= RemoveSlowTarget;
+            enemy.OnHidden -= RemoveSlowTarget;
+
+            slowList.Remove(enemy);
         }
 
         private void RemoveAllTarget()
         {
-            foreach (var item in dic)
+            foreach (var item in slowList)
             {
-                if (item.Value != null)
-                {
-                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(item.Value.Id));
-                }
-                //item.Key.ResumeSpeed();
+                item.RemoveSlow(entityDataTower.Tower.SerialId);
+
+                item.OnDead -= RemoveSlowTarget;
+                item.OnHidden -= RemoveSlowTarget;
             }
 
-            dic.Clear();
+            slowList.Clear();
         }
-
     }
 }
 

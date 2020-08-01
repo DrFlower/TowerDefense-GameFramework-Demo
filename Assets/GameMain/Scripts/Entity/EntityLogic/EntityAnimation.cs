@@ -5,19 +5,18 @@ using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class EntityParticle : EntityLogicEx, IPause
+    public class EntityAnimation : EntityLogicEx, IPause
     {
-        protected ParticleSystem ps;
+        protected Animation anim;
 
         protected bool pause = false;
-        private float pauseTime;
 
         protected EntityDataFollower entityDatafollower;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            ps = GetComponentInChildren<ParticleSystem>();
+            anim = GetComponentInChildren<Animation>();
         }
 
         protected override void OnShow(object userData)
@@ -27,12 +26,13 @@ namespace Flower
             entityDatafollower = userData as EntityDataFollower;
             if (entityDatafollower == null)
             {
+                Log.Error("EntityParticle '{0}' entity data invaild.", Id);
                 return;
             }
 
             transform.localScale = entityDatafollower.Scale;
 
-            ps.Play(true);
+            anim.Play();
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -42,7 +42,7 @@ namespace Flower
             if (pause)
                 return;
 
-            if (entityDatafollower != null && entityDatafollower.Follow != null)
+            if (entityDatafollower.Follow != null)
             {
                 transform.position = entityDatafollower.Follow.position + entityDatafollower.Offset;
             }
@@ -55,23 +55,19 @@ namespace Flower
             entityDatafollower = null;
 
             transform.localScale = Vector3.one;
-
-            pauseTime = 0;
-            ps.Stop(true);
+            anim.Stop();
         }
 
         public void Pause()
         {
             pause = true;
-            ps.Pause(true);
-            pauseTime = ps.time;
+            anim.Stop();
         }
 
         public void Resume()
         {
             pause = false;
-            ps.Play();
-            ps.time = pauseTime;
+            anim.Play();
         }
     }
 }

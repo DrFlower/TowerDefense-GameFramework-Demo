@@ -24,6 +24,8 @@ namespace Flower
 
         private Tower tower;
 
+        private bool click = false;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -73,15 +75,17 @@ namespace Flower
 
             tower = null;
             confirmSellButton.gameObject.SetActive(false);
+            click = false;
         }
 
         private void OnUpgradeButtonClick()
         {
-            if (tower == null)
+            if (tower == null || click)
                 return;
 
             DataTower dataTower = GameEntry.Data.GetData<DataTower>();
             dataTower.UpgradeTower(tower.SerialId);
+            click = true;
 
             Close();
         }
@@ -96,11 +100,12 @@ namespace Flower
 
         private void OnSellConfirmButtonClick()
         {
-            if (tower == null)
+            if (tower == null || click)
                 return;
 
             DataTower dataTower = GameEntry.Data.GetData<DataTower>();
             dataTower.SellTower(tower.SerialId);
+            click = true;
 
             Close();
         }

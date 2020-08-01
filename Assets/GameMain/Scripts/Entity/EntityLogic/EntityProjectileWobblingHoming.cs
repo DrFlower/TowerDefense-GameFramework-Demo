@@ -333,7 +333,11 @@ namespace Flower
 
             SpawnCollisionParticles();
             
-            GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+            if(!hide)
+            {
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
+                hide = true;
+            }
         }
 
         public override void Pause()
