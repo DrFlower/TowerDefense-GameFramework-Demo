@@ -52,7 +52,7 @@ namespace Flower.Data
             DebugAddEnergyCount = 1000;
         }
 
-        public void Damage(int value = 1)
+        public void Damage(int value)
         {
             if (value == 0)
                 return;

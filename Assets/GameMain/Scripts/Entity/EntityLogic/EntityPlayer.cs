@@ -56,12 +56,12 @@ namespace Flower
                 chargeEffect.Play();
         }
 
-        public void Damage()
+        public void Damage(int value)
         {
             if (demagedEffect != null)
                 demagedEffect.Play();
 
-            dataPlayer.Damage();
+            dataPlayer.Damage(value);
         }
     }
 }

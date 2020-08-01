@@ -21,6 +21,8 @@ namespace Flower
         private float attackTimer = 0;
         private EntityPlayer targetPlayer;
 
+        private DataPlayer dataPlayer;
+
         private Dictionary<int, float> dicSlowDownRates;
 
         //表示是否死亡或已攻击玩家即将回收，以防重复执行回收逻辑
@@ -84,7 +86,7 @@ namespace Flower
                 attackTimer += elapseSeconds;
                 if (attackTimer > 1)
                 {
-                    targetPlayer.Damage();
+                    targetPlayer.Damage(EntityDataEnemy.EnemyData.Damage);
                     attacked = true;
                     AfterAttack();
                 }
@@ -135,6 +137,8 @@ namespace Flower
 
             hp = EntityDataEnemy.EnemyData.MaxHP;
 
+            dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+
             hpBar.OnShow(userData);
         }
 
@@ -158,6 +162,8 @@ namespace Flower
             targetPlayer = null;
 
             hide = false;
+
+            dataPlayer = null;
 
             RemoveSlowEffect();
             dicSlowDownRates.Clear();
@@ -207,6 +213,8 @@ namespace Flower
                 typeof(EntityParticleAutoHide),
                 null,
                 EntityData.Create(transform.position + EntityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
+
+            dataPlayer.AddEnergy(EntityDataEnemy.EnemyData.AddEnergy);
 
             if (!hide)
             {

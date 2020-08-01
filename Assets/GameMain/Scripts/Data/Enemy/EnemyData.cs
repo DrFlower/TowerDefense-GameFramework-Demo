@@ -43,6 +43,22 @@ namespace Flower.Data
             }
         }
 
+        public int Damage
+        {
+            get
+            {
+                return dREnemy.Damage;
+            }
+        }
+
+        public float AddEnergy
+        {
+            get
+            {
+                return dREnemy.AddEnergy;
+            }
+        }
+
         public float Speed
         {
             get
