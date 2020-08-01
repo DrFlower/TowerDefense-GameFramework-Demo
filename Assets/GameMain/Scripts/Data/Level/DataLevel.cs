@@ -299,6 +299,7 @@ namespace Flower.Data
                 }
             }
 
+            SetLevelRecord(CurrentLevelIndex, starCount);
             ChangeLevelState(EnumLevelState.Gameover);
             GameEntry.Event.Fire(this, GameoverEventArgs.Create(EnumGameOverType.Success, starCount));
         }
@@ -322,6 +323,15 @@ namespace Flower.Data
 
             ChangeLevelState(EnumLevelState.Gameover);
             GameEntry.Event.Fire(this, GameoverEventArgs.Create(EnumGameOverType.Fail, 0));
+        }
+
+        private void SetLevelRecord(int levelIndex, int starCount)
+        {
+            int currentStarCount = GameEntry.Setting.GetInt(string.Format(Constant.Setting.LevelStarRecord, levelIndex), 0);
+            if (starCount > currentStarCount)
+            {
+                GameEntry.Setting.SetInt(string.Format(Constant.Setting.LevelStarRecord, levelIndex), starCount);
+            }
         }
 
         private void OnLoadLevelFinfish(object sender, GameEventArgs e)

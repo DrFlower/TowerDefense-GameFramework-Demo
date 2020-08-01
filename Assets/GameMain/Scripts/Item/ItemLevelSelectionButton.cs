@@ -9,10 +9,10 @@ namespace Flower
 {
     public class ItemLevelSelectionButton : ItemLogicEx
     {
-        private Text levelTitle;
-        private Text levelDescription;
-        private Button button;
-        private Image[] stars;
+        public Text levelTitle;
+        public Text levelDescription;
+        public Button button;
+        public Image[] stars;
 
         private LevelData levelData;
 
@@ -32,6 +32,14 @@ namespace Flower
             levelTitle.text = levelData.Name;
             levelDescription.text = levelData.Description;
             button.onClick.AddListener(OnButtonClick);
+
+            int currentStarCount = GameEntry.Setting.GetInt(string.Format(Constant.Setting.LevelStarRecord, levelData.Id), 0);
+            for (int i = 0; i < stars.Length; i++)
+            {
+
+                stars[i].gameObject.SetActive(i < currentStarCount);
+            }
+
         }
 
         protected override void OnRecycle()
