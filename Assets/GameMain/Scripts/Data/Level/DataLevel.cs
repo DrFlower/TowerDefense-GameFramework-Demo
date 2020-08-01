@@ -268,6 +268,9 @@ namespace Flower.Data
 
         public void GameSuccess()
         {
+            if (LevelState == EnumLevelState.Gameover)
+                return;
+
             if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Gameover Only heppen in level");
@@ -302,6 +305,9 @@ namespace Flower.Data
 
         public void GameFail()
         {
+            if (LevelState == EnumLevelState.Gameover)
+                return;
+
             if (CurrentLevelIndex == NONE_LEVEL_INDEX)
             {
                 Log.Error("Gameover Only heppen in level");

@@ -55,13 +55,14 @@ namespace Flower
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            if (level == null || level.Finish)
+            if (level == null)
                 return;
 
             if (dataLevel.LevelState != EnumLevelState.Prepare && dataLevel.LevelState != EnumLevelState.Normal)
                 return;
 
-            level.ProcessLevel(elapseSeconds, realElapseSeconds);
+            if (!level.Finish)
+                level.ProcessLevel(elapseSeconds, realElapseSeconds);
 
             if (isBuilding)
             {
@@ -142,6 +143,8 @@ namespace Flower
 
             if (previewTowerEntity != null)
                 entityLoader.HideEntity(previewTowerEntity);
+
+            uiMaskFormSerialId = null;
 
             previewTowerEntity = null;
             previewTowerData = null;

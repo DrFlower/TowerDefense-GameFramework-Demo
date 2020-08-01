@@ -29,6 +29,7 @@ namespace Flower
         protected bool pause = false;
 
         private Entity slowDownEffect;
+        private bool loadSlowDownEffect = false;
 
         public EntityDataEnemy EntityDataEnemy
         {
@@ -231,6 +232,9 @@ namespace Flower
 
         public void ApplySlow(int towerId, float slowRate)
         {
+            if (hide)
+                return;
+
             if (dicSlowDownRates.ContainsKey(towerId))
             {
                 dicSlowDownRates[towerId] = slowRate;
@@ -271,13 +275,14 @@ namespace Flower
 
         private void ApplySlowEffect()
         {
-            if (slowDownEffect == null)
+            if (slowDownEffect == null && !loadSlowDownEffect)
             {
                 GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create((int)EnumEntity.SlowFx,
                     typeof(EntityAnimation),
                     (entity) =>
                     {
                         slowDownEffect = entity;
+                        //若减速效果加载出后后，此敌人已经死亡或回收，则立马移除特效
                         if (hide)
                         {
                             RemoveSlowEffect();
@@ -290,6 +295,8 @@ namespace Flower
                         transform.rotation)
                     )
                     );
+
+                loadSlowDownEffect = true;
             }
         }
 
@@ -299,6 +306,7 @@ namespace Flower
             {
                 GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(slowDownEffect.Id));
                 slowDownEffect = null;
+                loadSlowDownEffect = false;
             }
         }
 
