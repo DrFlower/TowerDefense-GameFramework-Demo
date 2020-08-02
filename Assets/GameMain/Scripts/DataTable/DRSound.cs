@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-02 00:36:45.725
+// 生成时间：2020-08-02 12:35:34.234
 //------------------------------------------------------------
 
 using GameFramework;
@@ -34,6 +34,15 @@ namespace Flower
             {
                 return m_Id;
             }
+        }
+
+        /// <summary>
+        /// 获取物体名字。
+        /// </summary>
+        public string Name
+        {
+            get;
+            private set;
         }
 
         /// <summary>
@@ -78,6 +87,7 @@ namespace Flower
                 index++;
                 m_Id = int.Parse(columnTexts[index++]);
                 index++;
+                Name = columnTexts[index++];
                 AssetId = int.Parse(columnTexts[index++]);
                 SoundGroupId = int.Parse(columnTexts[index++]);
                 SoundPlayParamId = int.Parse(columnTexts[index++]);
@@ -90,6 +100,7 @@ namespace Flower
                     using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                     {
                         m_Id = binaryReader.Read7BitEncodedInt32();
+                        Name = strings[binaryReader.Read7BitEncodedInt32()];
                         AssetId = binaryReader.Read7BitEncodedInt32();
                         SoundGroupId = binaryReader.Read7BitEncodedInt32();
                         SoundPlayParamId = binaryReader.Read7BitEncodedInt32();

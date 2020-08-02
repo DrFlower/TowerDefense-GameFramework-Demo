@@ -20,6 +20,7 @@ namespace Flower
             "UIForm",
             "Entity",
             "Item",
+            "Sound",
         };
 
         [MenuItem("Tools/Generate DataTable Enum", false, 3)]
