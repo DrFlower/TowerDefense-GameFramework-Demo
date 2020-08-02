@@ -54,6 +54,8 @@ namespace Flower
             this.procedureOwner = procedureOwner;
             this.changeScene = false;
 
+            GameEntry.Sound.PlayMusic(EnumSound.GameBGM);
+
             levelControl.OnEnter();
         }
 
@@ -89,6 +91,8 @@ namespace Flower
             GameEntry.Event.Unsubscribe(HideEntityInLevelEventArgs.EventId, OnHideEntityInLevel);
 
             levelControl.Quick();
+
+            GameEntry.Sound.StopMusic();
 
             ReferencePool.Release(levelControl);
             levelControl = null;

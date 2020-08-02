@@ -77,7 +77,7 @@ namespace Flower
 
         private void OnBackButtonClick()
         {
-            GameEntry.Sound.PlaySound(30007);
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_back);
             Close();
         }
 
@@ -111,12 +111,13 @@ namespace Flower
             GameEntry.Setting.SetInt(Constant.Setting.Language, (int)selectLanguage);
             GameEntry.Setting.Save();
 
-            GameEntry.Sound.StopMusic();
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
             UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Restart);
         }
 
         private void OnCancelButtonClick()
         {
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_back);
             CancelLanguageChange();
             tipsGO.SetActive(false);
         }

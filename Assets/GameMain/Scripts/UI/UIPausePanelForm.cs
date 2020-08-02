@@ -52,6 +52,7 @@ namespace Flower
         private void OnBtnMainMenu()
         {
             GameEntry.Data.GetData<DataLevel>().ExitLevel();
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
         }
 
         private void OnBtnRestart()
@@ -59,6 +60,7 @@ namespace Flower
             int currentLevel = GameEntry.Data.GetData<DataLevel>().CurrentLevelIndex;
             GameEntry.Data.GetData<DataLevel>().LoadLevel(currentLevel);
             Close();
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
         }
 
         private void OnBtnClose()
@@ -66,6 +68,7 @@ namespace Flower
             DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
             dataLevel.LevelResume();
             Close();
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_back);
         }
 
     }

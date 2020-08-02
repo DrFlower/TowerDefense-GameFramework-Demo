@@ -2,6 +2,6 @@
 #	Id		Time	Mute	Loop	Priority	Volume	FadeInSeconds	Pitch	PanStereo	SpatialBlend	MaxDistance	DopplerLevel
 #	int		float	bool	bool	int	float	float	float	float	float	float	float
 #	配置编号	策划备注	播放开始时间	静音	是否循环	优先级（默认0，128最高，-128最低）	音量（0~1）	淡入时间	Pitch	PanStereo	声音空间混合量（0为2D，1为3D，中间值混合效果）	声音最大距离	DopplerLevel
-	1001	背景音乐配置	0	FALSE	TRUE	0	1	1	1	0	0	100	1
+	1001	菜单音乐配置	0	FALSE	TRUE	0	1	1	1	0	0	100	1
 	1002	UI音效配置	0	FALSE	FALSE	0	1	0	1	0	0	100	1
 	1003	特效音效配置	0	FALSE	FALSE	0	1	0	1	0	0	100	1

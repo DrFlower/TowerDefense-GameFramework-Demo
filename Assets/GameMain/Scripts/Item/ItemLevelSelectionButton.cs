@@ -53,7 +53,7 @@ namespace Flower
 
         private void OnButtonClick()
         {
-            GameEntry.Sound.PlaySound(30008);
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
 
             if (levelData == null)
                 return;

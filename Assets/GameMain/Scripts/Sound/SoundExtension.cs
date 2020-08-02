@@ -18,6 +18,14 @@ namespace Flower
         private const float FadeVolumeDuration = 1f;
         private static int? s_MusicSerialId = null;
 
+        public static int? PlayMusic(this SoundComponent soundComponent, EnumSound enumSound, object userData = null)
+        {
+            soundComponent.StopMusic();
+            s_MusicSerialId = soundComponent.PlaySound((int)enumSound, null, userData);
+
+            return s_MusicSerialId;
+        }
+
         public static int? PlayMusic(this SoundComponent soundComponent, int musicId, object userData = null)
         {
             soundComponent.StopMusic();
@@ -33,8 +41,13 @@ namespace Flower
                 return;
             }
 
-            soundComponent.StopSound(s_MusicSerialId.Value, FadeVolumeDuration);
+            soundComponent.StopSound(s_MusicSerialId.Value, 0);
             s_MusicSerialId = null;
+        }
+
+        public static int? PlaySound(this SoundComponent soundComponent, EnumSound enumSound, Entity bindingEntity = null, object userData = null)
+        {
+            return soundComponent.PlaySound((int)enumSound, bindingEntity, userData);
         }
 
         public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)

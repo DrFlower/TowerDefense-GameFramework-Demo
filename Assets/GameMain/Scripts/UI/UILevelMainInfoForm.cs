@@ -127,16 +127,19 @@ namespace Flower
         private void OnBtnStartWaveClick()
         {
             dataLevel.StartWave();
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
         }
 
         private void OnPauseBtnClick()
         {
             GameEntry.UI.OpenUIForm(EnumUIForm.UIPausePanelForm);
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
         }
 
         private void OnBtnAdEnrgyClick()
         {
             dataPlayer.DebugAddEnergy();
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
         }
 
     }

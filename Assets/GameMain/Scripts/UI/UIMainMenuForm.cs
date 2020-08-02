@@ -34,13 +34,13 @@ namespace Flower
 
         private void OnLevelSelectButtonClick()
         {
-            GameEntry.Sound.PlaySound(30008);
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelSelectForm);
         }
 
         private void OnOptionButtonClick()
         {
-            GameEntry.Sound.PlaySound(30008);
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
             GameEntry.UI.OpenUIForm(EnumUIForm.UIOptionsForm);
         }
 

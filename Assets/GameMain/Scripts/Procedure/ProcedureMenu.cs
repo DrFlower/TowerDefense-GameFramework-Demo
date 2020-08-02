@@ -30,7 +30,7 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UIMainMenuForm);
-            GameEntry.Sound.PlayMusic(10002);
+            GameEntry.Sound.PlayMusic(EnumSound.MenuBGM);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
