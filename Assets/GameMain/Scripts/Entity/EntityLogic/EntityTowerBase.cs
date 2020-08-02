@@ -67,6 +67,8 @@ namespace Flower
                 typeof(EntityParticleAutoHide),
                 null,
                 EntityData.Create(transform.position, transform.rotation)));
+
+            GameEntry.Sound.PlaySound(EnumSound.TDTowerUpgrade);
         }
 
         public void ShowControlForm()

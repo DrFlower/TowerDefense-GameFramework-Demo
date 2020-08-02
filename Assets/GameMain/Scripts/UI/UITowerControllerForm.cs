@@ -87,6 +87,7 @@ namespace Flower
             dataTower.UpgradeTower(tower.SerialId);
             click = true;
 
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
             Close();
         }
 
@@ -96,6 +97,7 @@ namespace Flower
                 return;
 
             confirmSellButton.gameObject.SetActive(true);
+            GameEntry.Sound.PlaySound(EnumSound.ui_sound_forward);
         }
 
         private void OnSellConfirmButtonClick()
@@ -106,7 +108,7 @@ namespace Flower
             DataTower dataTower = GameEntry.Data.GetData<DataTower>();
             dataTower.SellTower(tower.SerialId);
             click = true;
-
+            GameEntry.Sound.PlaySound(EnumSound.TDTowerSell);
             Close();
         }
 
