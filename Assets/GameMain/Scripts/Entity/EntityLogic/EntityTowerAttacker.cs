@@ -39,6 +39,7 @@ namespace Flower
 
             towerTargetter.OnShow(userData);
             towerAttacker.OnShow(userData);
+            towerAttacker.SetEntityTowerAttacker(this);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -47,6 +48,7 @@ namespace Flower
 
             towerTargetter.OnHide(isShutdown, userData);
             towerAttacker.OnHide(isShutdown, userData);
+            towerAttacker.EmptyEntityTowerAttacker();
         }
 
         protected override void OnShowTowerLevelSuccess(Entity entity)

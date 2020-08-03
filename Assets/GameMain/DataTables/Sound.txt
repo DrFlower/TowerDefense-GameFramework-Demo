@@ -40,7 +40,7 @@
 	27002	Super Tower Shot 2	SuperTowerShot2	27002	1007	1003
 	27003	Super Tower Shot 3	SuperTowerShot3	27003	1007	1003
 	27004	Super Tower Shot 4	SuperTowerShot4	27004	1007	1003
-	27005	Super Tower Shot 5	SuperTowerhot5	27005	1007	1003
+	27005	Super Tower Shot 5	SuperTowerShot5	27005	1007	1003
 	27006	Super Tower Shot 6	SuperTowerShot6	27006	1007	1003
 	27007	Super Tower Shot 7	SuperTowerShot7	27007	1007	1003
 	30001	TD Currency	TDCurrency	30001	1002	1003

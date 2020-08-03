@@ -38,8 +38,9 @@ namespace Flower
             }
         }
 
-        //public RandomAudioSource randomAudioSource;
+        private RandomSound randomSound;
 
+        private EntityTowerAttacker entityTowerAttacker;
         private TowerTargetter towerTargetter;
         private ILauncher m_Launcher;
         private float m_FireTimer;
@@ -63,7 +64,7 @@ namespace Flower
 
         public void OnInit(object userData)
         {
-
+            randomSound = GetComponent<RandomSound>();
         }
 
         public void OnShow(object userData)
@@ -150,10 +151,10 @@ namespace Flower
                     epicenter.position,
                     projectilePoints);
             }
-            //if (randomAudioSource != null)
-            //{
-            //    randomAudioSource.PlayRandomClip();
-            //}
+            if (randomSound != null)
+            {
+                GameEntry.Sound.PlaySound(randomSound.GetRandomSound(), entityTowerAttacker.Entity);
+            }
         }
 
 
@@ -207,6 +208,16 @@ namespace Flower
         public void EmptyLaunch()
         {
             this.m_Launcher = null;
+        }
+
+        public void SetEntityTowerAttacker(EntityTowerAttacker entityTowerAttacker)
+        {
+            this.entityTowerAttacker = entityTowerAttacker;
+        }
+
+        public void EmptyEntityTowerAttacker()
+        {
+            this.entityTowerAttacker = null;
         }
 
     }

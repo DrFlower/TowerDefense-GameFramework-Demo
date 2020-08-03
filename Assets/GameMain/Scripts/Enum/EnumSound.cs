@@ -1,5 +1,5 @@
 ﻿// 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-02 12:42:26.323
+// 生成时间：2020-08-04 01:18:23.935
 //------------------------------------------------------------
 
 namespace Flower
@@ -199,7 +199,7 @@ namespace Flower
         /// <summary>
         /// Super Tower Shot 5
         /// </summary>
-        SuperTowerhot5 = 27005,
+        SuperTowerShot5 = 27005,
 
         /// <summary>
         /// Super Tower Shot 6

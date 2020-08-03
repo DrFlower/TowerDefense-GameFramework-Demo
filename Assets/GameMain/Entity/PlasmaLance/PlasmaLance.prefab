@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8722133149355036351}
   - component: {fileID: 7696481020145685422}
+  - component: {fileID: 8680839638565471751}
   m_Layer: 10
   m_Name: Attack
   m_TagString: Untagged
@@ -365,3 +366,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cc46ddef4ef0c4a8b3bfa61e74982d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8680839638565471751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629452687900980422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e78ef8a2734284d82c9464f5889964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightedItems:
+  - sound: 24001
+    weight: 1

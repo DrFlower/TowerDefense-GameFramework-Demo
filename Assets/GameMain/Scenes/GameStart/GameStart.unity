@@ -1447,7 +1447,7 @@ MonoBehaviour:
   m_LogHelperTypeName: UnityGameFramework.Runtime.DefaultLogHelper
   m_ZipHelperTypeName: UnityGameFramework.Runtime.DefaultZipHelper
   m_JsonHelperTypeName: UnityGameFramework.Runtime.DefaultJsonHelper
-  m_FrameRate: 30
+  m_FrameRate: 60
   m_GameSpeed: 1
   m_RunInBackground: 1
   m_NeverSleep: 1
