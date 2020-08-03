@@ -8,7 +8,7 @@
 	1004	突击加农炮	SFX/GameSFX/Towers/TowerAttacks/MG	6	FALSE	FALSE	1
 	1005	等离子喷枪	SFX/GameSFX/Towers/TowerAttacks/Laser	6	FALSE	FALSE	1
 	1006	火箭	SFX/GameSFX/Towers/TowerAttacks/Rocket	6	FALSE	FALSE	1
-	1007	导弹阵列	SFX/GameSFX/Towers/TowerAttacks/SuperTower	6	FALSE	FALSE	1
+	1007	导弹阵列	SFX/GameSFX/Towers/TowerAttacks/SuperTower	10	TRUE	FALSE	1
 	1008	敌人死亡	SFX/GameSFX/Explosions/EnemyDeath	6	FALSE	FALSE	1
 	1009	敌人开火	SFX/GameSFX/EnemyFiring	6	FALSE	FALSE	1
 	1010	敌人攻击	SFX/GameSFX/Explosions/BaseHit	6	FALSE	FALSE	1
