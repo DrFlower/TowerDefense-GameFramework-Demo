@@ -71,6 +71,12 @@ namespace Flower
 
             int startRow = 4;
 
+            stringBuilder
+             .AppendLine("        /// <summary>")
+             .AppendFormat("        /// {0}", "无").AppendLine()
+             .AppendLine("        /// </summary>")
+             .AppendFormat("        {0} = {1},", "None", "0").AppendLine().AppendLine();
+
             for (int i = startRow; i < dataTableProcessor.RawRowCount; i++)
             {
                 int index = i - startRow;

@@ -30,6 +30,8 @@ namespace Flower
                 return;
             }
 
+            GameEntry.Sound.PlaySound(entityDatafollower.ShowSound, Entity);
+
             transform.localScale = entityDatafollower.Scale;
 
             ps.Play(true);

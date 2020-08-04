@@ -26,11 +26,18 @@ namespace Flower
             private set;
         }
 
+        public EnumSound ShowSound
+        {
+            get;
+            private set;
+        }
+
         public EntityDataFollower() : base()
         {
             Follow = null;
             Offset = Vector3.zero;
             Scale = Vector3.one;
+            ShowSound = EnumSound.None;
         }
 
         public static EntityDataFollower Create(Transform follow, object userData = null)
@@ -41,11 +48,30 @@ namespace Flower
             return entityData;
         }
 
+        public static EntityDataFollower Create(Transform follow, EnumSound enumSound, object userData = null)
+        {
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
+            entityData.Follow = follow;
+            entityData.ShowSound = enumSound;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
         public static EntityDataFollower Create(Transform follow, Vector3 offset, object userData = null)
         {
             EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
             entityData.Follow = follow;
             entityData.Offset = offset;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
+        public static EntityDataFollower Create(Transform follow, Vector3 offset, EnumSound enumSound, object userData = null)
+        {
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
+            entityData.Follow = follow;
+            entityData.Offset = offset;
+            entityData.ShowSound = enumSound;
             entityData.UserData = userData;
             return entityData;
         }
@@ -60,12 +86,34 @@ namespace Flower
             return entityData;
         }
 
-        public static EntityDataFollower Create(Transform follow, Vector3 offset, Vector3 scale, Vector3 position, Quaternion rotation, object userData = null)
+        public static EntityDataFollower Create(Transform follow, Vector3 offset, Vector3 scale, EnumSound enumSound, object userData = null)
         {
             EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
             entityData.Follow = follow;
             entityData.Offset = offset;
             entityData.Scale = scale;
+            entityData.ShowSound = enumSound;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
+        public static EntityDataFollower Create(Transform follow, Vector3 offset, Vector3 scale, EnumSound enumSound, Vector3 position, Quaternion rotation, object userData = null)
+        {
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
+            entityData.Follow = follow;
+            entityData.Offset = offset;
+            entityData.Scale = scale;
+            entityData.ShowSound = enumSound;
+            entityData.Position = position;
+            entityData.Rotation = rotation;
+            entityData.UserData = userData;
+            return entityData;
+        }
+
+        public static EntityDataFollower Create(EnumSound enumSound, Vector3 position, Quaternion rotation, object userData = null)
+        {
+            EntityDataFollower entityData = ReferencePool.Acquire<EntityDataFollower>();
+            entityData.ShowSound = enumSound;
             entityData.Position = position;
             entityData.Rotation = rotation;
             entityData.UserData = userData;
@@ -78,6 +126,7 @@ namespace Flower
             Follow = null;
             Offset = Vector3.zero;
             Scale = Vector3.one;
+            ShowSound = EnumSound.None;
         }
     }
 }

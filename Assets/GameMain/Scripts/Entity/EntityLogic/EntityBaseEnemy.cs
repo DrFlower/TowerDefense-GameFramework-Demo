@@ -33,6 +33,8 @@ namespace Flower
         private Entity slowDownEffect;
         private bool loadSlowDownEffect = false;
 
+        private RandomSound randomSound;
+
         public EntityDataEnemy EntityDataEnemy
         {
             get;
@@ -69,6 +71,7 @@ namespace Flower
 
             agent = GetComponent<NavMeshAgent>();
             hpBar = transform.Find("HealthBar").GetComponent<HPBar>();
+            randomSound = GetComponent<RandomSound>();
             dicSlowDownRates = new Dictionary<int, float>();
             CurrentSlowRate = 1;
             hpBar.OnInit(userData);
@@ -212,7 +215,7 @@ namespace Flower
                 EntityDataEnemy.EnemyData.DeadEffcetEntityId,
                 typeof(EntityParticleAutoHide),
                 null,
-                EntityData.Create(transform.position + EntityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
+                EntityDataFollower.Create(randomSound.GetRandomSound(), transform.position + EntityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
 
             dataPlayer.AddEnergy(EntityDataEnemy.EnemyData.AddEnergy);
 
@@ -299,6 +302,7 @@ namespace Flower
                         EntityDataFollower.Create(transform,
                         EntityDataEnemy.EnemyData.ApplyEffectOffset,
                         Vector3.one * EntityDataEnemy.EnemyData.ApplyEffectScale,
+                        EnumSound.None,
                         transform.position,
                         transform.rotation)
                     )

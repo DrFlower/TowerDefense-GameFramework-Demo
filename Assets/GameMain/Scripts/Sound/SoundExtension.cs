@@ -20,6 +20,9 @@ namespace Flower
 
         public static int? PlayMusic(this SoundComponent soundComponent, EnumSound enumSound, object userData = null)
         {
+            if (enumSound == EnumSound.None)
+                return null;
+
             soundComponent.StopMusic();
             s_MusicSerialId = soundComponent.PlaySound((int)enumSound, null, userData);
 
@@ -47,6 +50,9 @@ namespace Flower
 
         public static int? PlaySound(this SoundComponent soundComponent, EnumSound enumSound, Entity bindingEntity = null, object userData = null)
         {
+            if (enumSound == EnumSound.None)
+                return null;
+
             return soundComponent.PlaySound((int)enumSound, bindingEntity, userData);
         }
 
