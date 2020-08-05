@@ -49,7 +49,8 @@ namespace Flower
                 collisionParticlesEntityId,
                 typeof(EntityParticleAutoHide),
                 null,
-                EntityData.Create(entityDataProjectile.EntityEnemy.transform.position, transform.rotation)));
+                EntityData.Create(entityDataProjectile.EntityEnemy.transform.position + entityDataProjectile.EntityEnemy.EntityDataEnemy.EnemyData.ApplyEffectOffset,
+                transform.rotation)));
         }
 
         public virtual void Pause()
