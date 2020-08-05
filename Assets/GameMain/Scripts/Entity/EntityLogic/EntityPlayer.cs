@@ -7,6 +7,7 @@ namespace Flower
 {
     public class EntityPlayer : EntityLogicEx
     {
+        public GameObject idleEffect;
         public ParticleSystem chargeEffect;
         public ParticleSystem demagedEffect;
 
@@ -21,6 +22,7 @@ namespace Flower
         {
             base.OnShow(userData);
 
+            idleEffect.SetActive(true);
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
         }
 
@@ -35,31 +37,24 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
 
+            idleEffect.SetActive(false);
             dataPlayer = null;
         }
-
-        //void OnTriggerEnter(Collider other)
-        //{
-        //    var entityEnemy = other.GetComponent<EntityBaseEnemy>();
-        //    if (entityEnemy == null)
-        //    {
-        //        return;
-        //    }
-
-        //    Charge();
-        //    StartCoroutine(Damage(entityEnemy));
-        //}
 
         public void Charge()
         {
             if (chargeEffect != null)
                 chargeEffect.Play();
+
+            GameEntry.Sound.PlaySound(EnumSound.zone_enter, Entity);
         }
 
         public void Damage(int value)
         {
             if (demagedEffect != null)
                 demagedEffect.Play();
+
+            GameEntry.Sound.PlaySound(EnumSound.base_attack, Entity);
 
             dataPlayer.Damage(value);
         }

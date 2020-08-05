@@ -103204,6 +103204,7 @@ MonoBehaviour:
   m_EntityData:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  idleEffect: {fileID: 7001049720510516528}
   chargeEffect: {fileID: 3573594496902468259}
   demagedEffect: {fileID: 2243455078475697978}
 --- !u!1 &5288128317273241782
@@ -140679,7 +140680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9019751426522393017
 Transform:
   m_ObjectHideFlags: 0
