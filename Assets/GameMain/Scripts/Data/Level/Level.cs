@@ -165,14 +165,18 @@ namespace Flower.Data
                 {
                     wave = waves.Dequeue();
                     spawnEnemyTimer -= wave.NextWaveTime;
+                    if (waves.Count > 0)
+                        CurrentWaveIndex++;
+
+                    GameEntry.Event.Fire(this, WaveInfoUpdateEventArgs.Create(CurrentWaveIndex, WaveCount, wave.Progress));
                     ReferencePool.Release(wave);
                     wave = null;
-                    CurrentWaveIndex++;
                 }
             }
             else
             {
                 Finish = true;
+
             }
         }
 

@@ -43,9 +43,11 @@ namespace Flower
             {
                 case EnumGameOverType.Success:
                     title.text = string.Format(GameEntry.Localization.GetString("Level Complete"), uIGameOverFormOpenParam.LevelData.Name);
+                    GameEntry.Sound.PlaySound(EnumSound.TDVictory);
                     break;
                 case EnumGameOverType.Fail:
                     title.text = string.Format(GameEntry.Localization.GetString("Level Failed"), uIGameOverFormOpenParam.LevelData.Name);
+                    GameEntry.Sound.PlaySound(EnumSound.TDDefeat);
                     break;
             }
 

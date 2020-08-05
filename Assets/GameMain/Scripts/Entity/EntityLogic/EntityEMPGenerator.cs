@@ -11,6 +11,8 @@ namespace Flower
         private TowerTargetter towerTargetter;
         private List<EntityBaseEnemy> slowList;
 
+        private int? soundSerialId = null;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -27,6 +29,8 @@ namespace Flower
             base.OnShow(userData);
 
             towerTargetter.OnShow(userData);
+
+            soundSerialId = GameEntry.Sound.PlaySound(EnumSound.TDEMPIdle, Entity);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -48,6 +52,13 @@ namespace Flower
             towerTargetter.OnHide(isShutdown, userData);
             towerTargetter.targetEntersRange -= OnTargetEntersRange;
             towerTargetter.targetExitsRange -= OnTargetExitsRange;
+
+            if (soundSerialId != null)
+            {
+                GameEntry.Sound.StopSound((int)soundSerialId);
+                soundSerialId = null;
+            }
+
         }
 
         protected override void OnShowTowerLevelSuccess(Entity entity)

@@ -12,3 +12,5 @@
 	1008	敌人死亡	SFX/GameSFX/Explosions/EnemyDeath	6	FALSE	FALSE	1
 	1009	敌人开火	SFX/GameSFX/EnemyFiring	6	FALSE	FALSE	1
 	1010	敌人攻击	SFX/GameSFX/Explosions/BaseHit	6	FALSE	FALSE	1
+	1011	炮塔空闲	SFX/GameSFX/Towers/Passive/TowerIdle	1	FALSE	FALSE	1
+	1012	增加货币	SFX/GameSFX/Towers/Passive/CurrencyEarning	1	FALSE	FALSE	1

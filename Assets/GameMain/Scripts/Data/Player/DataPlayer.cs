@@ -94,7 +94,7 @@ namespace Flower.Data
         {
             int lastHP = HP;
             HP = GameEntry.Config.GetInt(Constant.Config.PlayerHP);
-            HP = 100;
+            //HP = 100;
             GameEntry.Event.Fire(this, PlayerHPChangeEventArgs.Create(lastHP, HP));
 
             float lastEnergy = Energy;

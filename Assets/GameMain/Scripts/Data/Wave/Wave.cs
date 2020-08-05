@@ -72,7 +72,11 @@ namespace Flower.Data
         {
             get
             {
-                return (timer / NextWaveTime);
+                float result = (timer / NextWaveTime);
+                if (result > 1)
+                    result = 1;
+
+                return result;
             }
         }
 

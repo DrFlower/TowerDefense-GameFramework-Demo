@@ -35,7 +35,7 @@ namespace Flower
 
                 if (timer > (1 / entityDataTower.Tower.EnergyRaiseRate))
                 {
-                    timer -= (1 / entityDataTower.Tower.EnergyRaiseRate);         
+                    timer -= (1 / entityDataTower.Tower.EnergyRaiseRate);
                     RaiseEnergy();
                 }
             }
@@ -62,6 +62,7 @@ namespace Flower
         private void RaiseEnergy()
         {
             dataPlayer.AddEnergy(entityDataTower.Tower.EnergyRaise);
+            GameEntry.Sound.PlaySound(EnumSound.TDCurrency, Entity);
             if (entityLogicTowerLevel != null && entityLogicTowerLevel.effect != null)
             {
                 entityLogicTowerLevel.effect.gameObject.SetActive(true);
