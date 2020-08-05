@@ -1,138 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1056724386012034
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4444266055056824}
-  - component: {fileID: 114202750766260440}
-  - component: {fileID: 114856504178369868}
-  m_Layer: 10
-  m_Name: Affector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4444266055056824
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056724386012034}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4212591820432442}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114202750766260440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056724386012034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de49640db9f74ca892b78c0d6bb4eb02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireParticleSystem: {fileID: 198483798911713738}
---- !u!114 &114856504178369868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056724386012034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a4f7293b07e4698a4e3b652679f0c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: Offensive
-  projectile: {fileID: 1977158881363050, guid: ddccf3367b3504f2599443e994c1464a, type: 3}
-  projectilePoints:
-  - {fileID: 4980595420705256}
-  epicenter: {fileID: 4212591820432442}
-  isMultiAttack: 0
-  fireRate: 0.4
-  randomAudioSource: {fileID: 114909306659620118}
-  towerTargetter: {fileID: 114127674745810710}
-  radiusEffectColor: {r: 0, g: 1, b: 1, a: 0.09803922}
---- !u!1 &1098962820537336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4569215993009256}
-  - component: {fileID: 114127674745810710}
-  - component: {fileID: 136559076752739096}
-  m_Layer: 12
-  m_Name: Targetter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4569215993009256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098962820537336}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4212591820432442}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114127674745810710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098962820537336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e4035901ee40bba7c0866d2c6338a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret: {fileID: 4608662820397724}
-  turretXRotationRange: {x: 0, y: 0}
-  onlyYTurretRotation: 1
-  searchRate: 0.8
-  idleRotationSpeed: 39
-  idleCorrectionTime: 2
-  attachedCollider: {fileID: 136559076752739096}
-  idleWaitTime: 2
---- !u!136 &136559076752739096
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098962820537336}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 15
-  m_Height: 34
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1117552752173410
 GameObject:
   m_ObjectHideFlags: 0
@@ -14471,7 +14338,7 @@ Transform:
   - {fileID: 4227410762040324}
   - {fileID: 4980595420705256}
   m_Father: {fileID: 4212591820432442}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33240064556055740
 MeshFilter:
@@ -14551,7 +14418,7 @@ Transform:
   m_Children:
   - {fileID: 4484535824257200}
   m_Father: {fileID: 4212591820432442}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33537760276393644
 MeshFilter:
@@ -38175,7 +38042,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4212591820432442}
-  - component: {fileID: 114893434427387590}
   - component: {fileID: 264599514539380356}
   - component: {fileID: 6397482750974488727}
   m_Layer: 10
@@ -38196,30 +38062,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4444266055056824}
-  - {fileID: 4569215993009256}
   - {fileID: 4383048835921268}
   - {fileID: 4608662820397724}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114893434427387590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914174764191150}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d8e55681884ffb9fb6ed0b6f18f0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerGhostPrefab: {fileID: 114921728373014414, guid: 21ab440aa6ad440439b50d4a44077fba,
-    type: 3}
-  buildEffectPrefab: {fileID: 1395313577031670, guid: c559c1920b5d04e6d83aa4464fba5c68,
-    type: 3}
-  levelData: {fileID: 11400000, guid: 12994b0db6ab24a5caf6123d0d999972, type: 2}
 --- !u!114 &264599514539380356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38240,6 +38087,7 @@ MonoBehaviour:
   - {fileID: 4980595420705256}
   epicenter: {fileID: 4212591820432442}
   launcher: {fileID: 6397482750974488727}
+  effect: {fileID: 0}
 --- !u!114 &6397482750974488727
 MonoBehaviour:
   m_ObjectHideFlags: 0

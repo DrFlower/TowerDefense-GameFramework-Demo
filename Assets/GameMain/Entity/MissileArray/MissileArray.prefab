@@ -10,13 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4782211657715402}
   - component: {fileID: 54399548949786262}
-  - component: {fileID: 114238134954616228}
   - component: {fileID: 65951267865829534}
-  - component: {fileID: 114249989916941652}
   - component: {fileID: 208429685695815266}
-  - component: {fileID: 82595329609174926}
-  - component: {fileID: 114062794805217184}
-  - component: {fileID: -7369664548987868987}
+  - component: {fileID: -5948924678899624100}
   m_Layer: 10
   m_Name: MissileArray
   m_TagString: Untagged
@@ -56,34 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114238134954616228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190580923526002}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef49f7917004103834ac7530eb81c64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  configuration:
-    maxHealth: 20
-    startingHealth: 20
-    alignment:
-      unityObjectReference: {fileID: 11400000, guid: 2e20cdb38c63f4edf8ee385c50c089ce,
-        type: 2}
-  targetTransform: {fileID: 0}
-  levels:
-  - {fileID: 114210254157198064, guid: 06f0112fbf82244059dd2f2738a29a93, type: 3}
-  towerName: Missile Array
-  dimensions:
-    x: 3
-    y: 3
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!65 &65951267865829534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -97,20 +65,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &114249989916941652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190580923526002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf1cc7cb7e6b49f893f609dd57fce01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableBehaviour: {fileID: 0}
-  damageScale: 1
 --- !u!208 &208429685695815266
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -127,120 +81,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
---- !u!82 &82595329609174926
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190580923526002}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243875498303300022, guid: c40bed98f23a748f89472abe9c1a6871,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 599f5b1a96b0b478a8f61210e4a9aa48, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 40
-  Pan2D: 0
-  rolloffMode: 1
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &114062794805217184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190580923526002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abee75620e9f84f14a9452041dd7a6da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableBehaviour: {fileID: 114238134954616228}
-  deathParticleSystemPrefab: {fileID: 198059975614214484, guid: 7a0476686964e41ac8320b7cf37868c2,
-    type: 3}
-  deathEffectOffset: {x: 0, y: 0, z: 0}
---- !u!114 &-7369664548987868987
+--- !u!114 &-5948924678899624100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
