@@ -36,6 +36,8 @@ namespace Flower
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
+
+            entityDataProjectile = null;
         }
 
         protected void SpawnCollisionParticles()
@@ -45,12 +47,15 @@ namespace Flower
                 return;
             }
 
-            GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
-                collisionParticlesEntityId,
-                typeof(EntityParticleAutoHide),
-                null,
-                EntityData.Create(entityDataProjectile.EntityEnemy.transform.position + entityDataProjectile.EntityEnemy.EntityDataEnemy.EnemyData.ApplyEffectOffset,
-                transform.rotation)));
+            if (!entityDataProjectile.EntityEnemy.IsDead)
+            {
+                Vector3 pos = entityDataProjectile.EntityEnemy.transform.position + entityDataProjectile.EntityEnemy.EntityDataEnemy.EnemyData.ApplyEffectOffset;
+                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
+                    collisionParticlesEntityId,
+                    typeof(EntityParticleAutoHide),
+                    null,
+                    EntityData.Create(pos, transform.rotation)));
+            }
         }
 
         public virtual void Pause()
