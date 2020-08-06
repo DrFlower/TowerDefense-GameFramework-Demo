@@ -233,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4466432989218666}
   - component: {fileID: 6580768762329522032}
-  - component: {fileID: 2159501653754853436}
+  - component: {fileID: 5901291249030134792}
   m_Layer: 10
   m_Name: RocketPlatform_Level2
   m_TagString: Untagged
@@ -278,9 +278,9 @@ MonoBehaviour:
   - {fileID: 4836723780798740}
   - {fileID: 4502731117030874}
   epicenter: {fileID: 4466432989218666}
-  launcher: {fileID: 2159501653754853436}
+  launcher: {fileID: 5901291249030134792}
   effect: {fileID: 0}
---- !u!114 &2159501653754853436
+--- !u!114 &5901291249030134792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1687794794435430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c5627d503daf14f95cd9c02bc1d01a, type: 3}
+  m_Script: {fileID: 11500000, guid: c02c1db2c9b0dc840a388990976bd759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireParticleSystem: {fileID: 0}

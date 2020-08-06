@@ -7,7 +7,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class EntityProjectileWobblingHoming : EntityHideSelfProjectile, IProjectile
+    public class EntityProjectileWobblingHoming : EntityHideSelfProjectile
     {
         public float acceleration;
 

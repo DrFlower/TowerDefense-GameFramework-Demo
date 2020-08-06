@@ -7,7 +7,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class EntityProjectileBallistic : EntityHideSelfProjectile, IProjectile
+    public class EntityProjectileBallistic : EntityHideSelfProjectile
     {
         public BallisticArcHeight arcPreference;
         public BallisticFireMode fireMode;

@@ -6,7 +6,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class HitscanLauncher : Launcher
+    public class CommonLauncher : Launcher
     {
         public ParticleSystem fireParticleSystem;
 
