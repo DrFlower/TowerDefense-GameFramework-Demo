@@ -13,7 +13,8 @@ namespace Flower
         private LevelPath levelPath;
         private int targetPathNodeIndex;
         private NavMeshAgent agent;
-        private HPBar hpBar;
+        private Transform hpBarRoot;
+        private EntityHPBar entityHPBar;
 
         private Vector3 m_CurrentPosition, m_PreviousPosition;
         private float hp;
@@ -27,6 +28,7 @@ namespace Flower
 
         //表示是否死亡或已攻击玩家即将回收，以防重复执行回收逻辑
         private bool hide = false;
+        private bool loadedHPBarId = false;
 
         protected bool pause = false;
 
@@ -70,11 +72,10 @@ namespace Flower
             base.OnInit(userData);
 
             agent = GetComponent<NavMeshAgent>();
-            hpBar = transform.Find("HealthBar").GetComponent<HPBar>();
+            hpBarRoot = transform.Find("HealthBar");
             randomSound = GetComponent<RandomSound>();
             dicSlowDownRates = new Dictionary<int, float>();
             CurrentSlowRate = 1;
-            hpBar.OnInit(userData);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -115,8 +116,6 @@ namespace Flower
             }
 
             agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
-
-            hpBar.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnShow(object userData)
@@ -141,8 +140,6 @@ namespace Flower
             hp = EntityDataEnemy.EnemyData.MaxHP;
 
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
-
-            hpBar.OnShow(userData);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -155,6 +152,7 @@ namespace Flower
             OnHidden = null;
             OnDead = null;
 
+            entityHPBar = null;
             levelPath = null;
             EntityDataEnemy = null;
             targetPathNodeIndex = 0;
@@ -165,13 +163,12 @@ namespace Flower
             targetPlayer = null;
 
             hide = false;
+            loadedHPBarId = false;
 
             dataPlayer = null;
 
             RemoveSlowEffect();
             dicSlowDownRates.Clear();
-
-            hpBar.OnHide(isShutdown, userData);
         }
 
         void FixedUpdate()
@@ -186,6 +183,12 @@ namespace Flower
             if (!hide)
             {
                 hide = true;
+
+                if (entityHPBar)
+                {
+                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
+                }
+
                 GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
             }
         }
@@ -195,6 +198,26 @@ namespace Flower
             if (IsDead)
                 return;
 
+            if (!loadedHPBarId)
+            {
+                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
+                    (int)EnumEntity.HPBar,
+                    typeof(EntityHPBar),
+                    (entity) =>
+                    {
+                        entityHPBar = entity.Logic as EntityHPBar;
+                        entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
+                    },
+                    EntityDataFollower.Create(hpBarRoot)));
+
+                loadedHPBarId = true;
+            }
+
+            if (entityHPBar)
+            {
+                entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
+            }
+
             hp -= value;
 
             if (hp <= 0)
@@ -202,8 +225,6 @@ namespace Flower
                 hp = 0;
                 Dead();
             }
-
-            hpBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
         }
 
         private void Dead()
@@ -222,6 +243,12 @@ namespace Flower
             if (!hide)
             {
                 hide = true;
+
+                if (entityHPBar)
+                {
+                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
+                }
+
                 GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
             }
         }

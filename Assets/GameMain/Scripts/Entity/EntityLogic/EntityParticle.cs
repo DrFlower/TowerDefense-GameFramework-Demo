@@ -12,7 +12,7 @@ namespace Flower
         protected bool pause = false;
         private float pauseTime;
 
-        protected EntityDataFollower entityDatafollower;
+        protected EntityDataFollower entityDataFollower;
 
         protected override void OnInit(object userData)
         {
@@ -24,15 +24,15 @@ namespace Flower
         {
             base.OnShow(userData);
 
-            entityDatafollower = userData as EntityDataFollower;
-            if (entityDatafollower == null)
+            entityDataFollower = userData as EntityDataFollower;
+            if (entityDataFollower == null)
             {
                 return;
             }
 
-            GameEntry.Sound.PlaySound(entityDatafollower.ShowSound, Entity);
+            GameEntry.Sound.PlaySound(entityDataFollower.ShowSound, Entity);
 
-            transform.localScale = entityDatafollower.Scale;
+            transform.localScale = entityDataFollower.Scale;
 
             ps.Play(true);
         }
@@ -44,9 +44,9 @@ namespace Flower
             if (pause)
                 return;
 
-            if (entityDatafollower != null && entityDatafollower.Follow != null)
+            if (entityDataFollower != null && entityDataFollower.Follow != null)
             {
-                transform.position = entityDatafollower.Follow.position + entityDatafollower.Offset;
+                transform.position = entityDataFollower.Follow.position + entityDataFollower.Offset;
             }
         }
 
@@ -54,7 +54,7 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
 
-            entityDatafollower = null;
+            entityDataFollower = null;
 
             transform.localScale = Vector3.one;
 

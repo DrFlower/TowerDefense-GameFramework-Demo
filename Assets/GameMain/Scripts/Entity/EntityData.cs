@@ -4,13 +4,10 @@ using GameFramework;
 
 namespace Flower
 {
-    [Serializable]
     public class EntityData : IReference
     {
-        [SerializeField]
         protected Vector3 m_Position = Vector3.zero;
 
-        [SerializeField]
         protected Quaternion m_Rotation = Quaternion.identity;
 
         public EntityData()

@@ -1,40 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class HPBar : MonoBehaviour
+    public class EntityHPBar : EntityLogicEx
     {
-
         public Transform healthBar;
         public Transform backgroundBar;
-        private bool showWhenFull = false;
         private Transform cameraToFace;
 
-        public void OnInit(object userData)
-        {
+        private EntityDataFollower entityDataFollower;
 
+        protected override void OnInit(object userData)
+        {
+            base.OnInit(userData);
         }
 
-        public void OnShow(object userData)
+        protected override void OnShow(object userData)
         {
+            base.OnShow(userData);
+
             cameraToFace = Camera.main.transform;
+
+            entityDataFollower = userData as EntityDataFollower;
+            if (entityDataFollower == null)
+            {
+                Log.Error("EntityHPBar param invaild");
+                return;
+            }
         }
 
-        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
+        protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
+            base.OnUpdate(elapseSeconds, realElapseSeconds);
+
             if (cameraToFace != null)
             {
                 Vector3 direction = cameraToFace.transform.forward;
                 transform.forward = -direction;
             }
+
+            if (entityDataFollower != null && entityDataFollower.Follow != null)
+            {
+                transform.position = entityDataFollower.Follow.position + entityDataFollower.Offset;
+            }
         }
 
-        public void OnHide(bool isShutdown, object userData)
+        protected override void OnHide(bool isShutdown, object userData)
         {
+            base.OnHide(isShutdown, userData);
+
             cameraToFace = null;
+            entityDataFollower = null;
+            UpdateHealth(1);
             SetVisible(false);
         }
 
@@ -54,7 +74,7 @@ namespace Flower
                 backgroundBar.transform.localScale = scale;
             }
 
-            SetVisible(showWhenFull || normalizedHealth < 1.0f);
+            SetVisible(normalizedHealth < 1.0f);
         }
 
         public void SetVisible(bool visible)
@@ -63,5 +83,4 @@ namespace Flower
         }
     }
 }
-
 
