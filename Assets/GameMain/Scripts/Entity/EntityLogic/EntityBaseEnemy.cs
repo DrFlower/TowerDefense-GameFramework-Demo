@@ -28,7 +28,7 @@ namespace Flower
 
         //表示是否死亡或已攻击玩家即将回收，以防重复执行回收逻辑
         private bool hide = false;
-        private bool loadedHPBarId = false;
+        private bool loadedHPBar = false;
 
         protected bool pause = false;
 
@@ -129,7 +129,7 @@ namespace Flower
                 Log.Error("Entity enemy '{0}' entity data invaild.", Id);
                 return;
             }
-
+            hide = false;
             agent.enabled = true;
             agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
 
@@ -152,7 +152,6 @@ namespace Flower
             OnHidden = null;
             OnDead = null;
 
-            entityHPBar = null;
             levelPath = null;
             EntityDataEnemy = null;
             targetPathNodeIndex = 0;
@@ -162,12 +161,12 @@ namespace Flower
             attackTimer = 0;
             targetPlayer = null;
 
-            hide = false;
-            loadedHPBarId = false;
+            hide = true;
 
             dataPlayer = null;
 
             RemoveSlowEffect();
+            HideHpBar();
             dicSlowDownRates.Clear();
         }
 
@@ -183,12 +182,6 @@ namespace Flower
             if (!hide)
             {
                 hide = true;
-
-                if (entityHPBar)
-                {
-                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
-                }
-
                 GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
             }
         }
@@ -198,19 +191,15 @@ namespace Flower
             if (IsDead)
                 return;
 
-            if (!loadedHPBarId)
+            if (!loadedHPBar)
             {
                 GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
                     (int)EnumEntity.HPBar,
                     typeof(EntityHPBar),
-                    (entity) =>
-                    {
-                        entityHPBar = entity.Logic as EntityHPBar;
-                        entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
-                    },
+                    OnLoadHpBarSuccess,
                     EntityDataFollower.Create(hpBarRoot)));
 
-                loadedHPBarId = true;
+                loadedHPBar = true;
             }
 
             if (entityHPBar)
@@ -239,16 +228,9 @@ namespace Flower
                 EntityDataFollower.Create(randomSound.GetRandomSound(), transform.position + EntityDataEnemy.EnemyData.DeadEffectOffset, transform.rotation)));
 
             dataPlayer.AddEnergy(EntityDataEnemy.EnemyData.AddEnergy);
-
             if (!hide)
             {
                 hide = true;
-
-                if (entityHPBar)
-                {
-                    GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
-                }
-
                 GameEntry.Event.Fire(this, HideEnemyEventArgs.Create(Id));
             }
         }
@@ -317,25 +299,40 @@ namespace Flower
             {
                 GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create((int)EnumEntity.SlowFx,
                     typeof(EntityAnimation),
-                    (entity) =>
-                    {
-                        slowDownEffect = entity;
-                        //若减速效果加载出后后，此敌人已经死亡或回收，则立马移除特效
-                        if (hide)
-                        {
-                            RemoveSlowEffect();
-                        }
-                    },
-                        EntityDataFollower.Create(transform,
-                        EntityDataEnemy.EnemyData.ApplyEffectOffset,
-                        Vector3.one * EntityDataEnemy.EnemyData.ApplyEffectScale,
-                        EnumSound.None,
-                        transform.position,
-                        transform.rotation)
+                    OnLoadSlowEffectSuccess,
+                    EntityDataFollower.Create(transform,
+                    EntityDataEnemy.EnemyData.ApplyEffectOffset,
+                    Vector3.one * EntityDataEnemy.EnemyData.ApplyEffectScale,
+                    EnumSound.None,
+                    transform.position,
+                    transform.rotation)
                     )
                     );
 
                 loadSlowDownEffect = true;
+            }
+        }
+
+        private void OnLoadSlowEffectSuccess(Entity entity)
+        {
+            slowDownEffect = entity;
+            //若减速效果加载出后后，此敌人已经死亡或回收，则立马移除特效
+            if (hide)
+            {
+                RemoveSlowEffect();
+            }
+        }
+
+        private void OnLoadHpBarSuccess(Entity entity)
+        {
+            entityHPBar = entity.Logic as EntityHPBar;
+            if (hide)
+            {
+                HideHpBar();
+            }
+            else
+            {
+                entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
             }
         }
 
@@ -346,6 +343,16 @@ namespace Flower
                 GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(slowDownEffect.Id));
                 slowDownEffect = null;
                 loadSlowDownEffect = false;
+            }
+        }
+
+        private void HideHpBar()
+        {
+            if (entityHPBar)
+            {
+                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
+                loadedHPBar = false;
+                entityHPBar = null;
             }
         }
 
