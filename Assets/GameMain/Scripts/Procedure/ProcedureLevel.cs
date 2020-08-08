@@ -35,7 +35,14 @@ namespace Flower
                 return;
             }
 
-            levelControl = LevelControl.Create(dataLevel.CurrentLevel, levelPathManager);
+            CameraInput cameraInput = UnityEngine.GameObject.Find("GameCamera").GetComponent<CameraInput>();
+            if (cameraInput == null)
+            {
+                Log.Error("Can not find CameraInput instance in scene");
+                return;
+            }
+
+            levelControl = LevelControl.Create(dataLevel.CurrentLevel, levelPathManager, cameraInput);
 
             GameEntry.Event.Subscribe(ChangeSceneEventArgs.EventId, OnChangeScene);
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);

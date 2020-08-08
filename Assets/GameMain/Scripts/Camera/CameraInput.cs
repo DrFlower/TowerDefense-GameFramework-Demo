@@ -6,8 +6,10 @@ namespace Flower
     /// <summary>
     /// Abstract base input scheme for schemes that control the CameraRig
     /// </summary>
-    public class CameraInput : MonoBehaviour
+    public class CameraInput : MonoBehaviour, IPause
     {
+        private bool pause;
+
         /// <summary>
         /// Camera rig to control
         /// </summary>
@@ -181,7 +183,7 @@ namespace Flower
 
         private void Update()
         {
-            if (cameraControl != null)
+            if (cameraControl != null && !pause)
             {
                 DoScreenEdgePan();
                 DoKeyboardPan();
@@ -189,5 +191,14 @@ namespace Flower
             }
         }
 
+        public void Pause()
+        {
+            pause = true;
+        }
+
+        public void Resume()
+        {
+            pause = false;
+        }
     }
 }

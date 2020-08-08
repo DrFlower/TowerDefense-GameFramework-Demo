@@ -11,6 +11,7 @@ namespace Flower
     {
         private Level level;
         private LevelManager levelManager;
+        private CameraInput cameraInput;
 
         private EntityLoader entityLoader;
 
@@ -290,6 +291,8 @@ namespace Flower
                 if (iPause != null)
                     iPause.Pause();
             }
+
+            cameraInput.Pause();
         }
 
         public void Resume()
@@ -302,6 +305,8 @@ namespace Flower
                 if (iPause != null)
                     iPause.Resume();
             }
+
+            cameraInput.Resume();
         }
 
         public void Restart()
@@ -335,11 +340,12 @@ namespace Flower
             entityLoader.HideAllEntity();
         }
 
-        public static LevelControl Create(Level level, LevelManager levelPathManager)
+        public static LevelControl Create(Level level, LevelManager levelPathManager,CameraInput cameraInput)
         {
             LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
             levelControl.level = level;
             levelControl.levelManager = levelPathManager;
+            levelControl.cameraInput = cameraInput;
             return levelControl;
         }
 
@@ -347,6 +353,7 @@ namespace Flower
         {
             level = null;
             levelManager = null;
+            cameraInput = null;
 
             if (entityLoader != null)
                 ReferencePool.Release(entityLoader);
