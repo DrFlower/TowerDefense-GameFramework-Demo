@@ -49,18 +49,6 @@ namespace Flower.Data
             private set;
         }
 
-        public EntityLoader EntityLoader
-        {
-            get;
-            set;
-        }
-
-        public LevelManager LevelManager
-        {
-            get;
-            set;
-        }
-
         #region LevelData
         public LevelData LevelData
         {
