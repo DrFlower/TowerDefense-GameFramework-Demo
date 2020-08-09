@@ -213,10 +213,10 @@ MonoBehaviour:
   zoomedCamAngle: {fileID: 44733054}
   mapSize:
     serializedVersion: 2
-    x: -31.353924
-    y: -32.8802
-    width: 43.05899
-    height: 42.328835
+    x: -31.349724
+    y: -32.8673
+    width: 43.052284
+    height: 42.318848
   springyZoom: 0
 --- !u!124 &46167512
 Behaviour:
@@ -461,8 +461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: 2155307401497911774, guid: c707bc95ab948454ca1e378dce5e9358,
-    type: 3}
-  placementTilePrefabMobile: {fileID: -3292042640782101027, guid: 52128319b43ce1b4989cc6e150e15e6c,
     type: 3}
   dimensions:
     x: 3
@@ -752,7 +750,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 726079707}
-  - component: {fileID: 726079710}
   - component: {fileID: 726079708}
   - component: {fileID: 726079709}
   m_Layer: 8
@@ -805,22 +802,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: -503531917072818642, guid: faa270e3d0214c242bcbde40d8acb7a9,
     type: 3}
-  placementTilePrefabMobile: {fileID: -8032536972223081711, guid: 2b27e54ad2e21f345a083fadf220cf1c,
-    type: 3}
---- !u!65 &726079710
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 65041113772777824, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726079706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1242468553
 Transform:
   m_ObjectHideFlags: 0
@@ -885,8 +866,6 @@ MonoBehaviour:
   levelPathConfigs:
   - levelPath: {fileID: 1798036068}
     weight: 1
-  environmentColliders:
-  - {fileID: 125252141}
 --- !u!4 &1307760869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4a4f98795c1bb4f299e0a3d35e32dc0e,
@@ -1002,8 +981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: 2155307401497911774, guid: c707bc95ab948454ca1e378dce5e9358,
-    type: 3}
-  placementTilePrefabMobile: {fileID: -3292042640782101027, guid: 52128319b43ce1b4989cc6e150e15e6c,
     type: 3}
   dimensions:
     x: 8
@@ -1158,8 +1135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: -503531917072818642, guid: faa270e3d0214c242bcbde40d8acb7a9,
     type: 3}
-  placementTilePrefabMobile: {fileID: -8032536972223081711, guid: 2b27e54ad2e21f345a083fadf220cf1c,
-    type: 3}
 --- !u!1 &1705981836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1145,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705981837}
-  - component: {fileID: 1705981840}
   - component: {fileID: 1705981838}
   - component: {fileID: 1705981839}
   m_Layer: 8
@@ -1223,22 +1197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: -503531917072818642, guid: faa270e3d0214c242bcbde40d8acb7a9,
     type: 3}
-  placementTilePrefabMobile: {fileID: -8032536972223081711, guid: 2b27e54ad2e21f345a083fadf220cf1c,
-    type: 3}
---- !u!65 &1705981840
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 65555803079940408, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705981836}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1798036066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,8 +1303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: 2155307401497911774, guid: c707bc95ab948454ca1e378dce5e9358,
     type: 3}
-  placementTilePrefabMobile: {fileID: -3292042640782101027, guid: 52128319b43ce1b4989cc6e150e15e6c,
-    type: 3}
   dimensions:
     x: 2
     y: 10
@@ -1375,7 +1331,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1971323305}
-  - component: {fileID: 1971323308}
   - component: {fileID: 1971323306}
   - component: {fileID: 1971323307}
   m_Layer: 8
@@ -1428,22 +1383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: -503531917072818642, guid: faa270e3d0214c242bcbde40d8acb7a9,
     type: 3}
-  placementTilePrefabMobile: {fileID: -8032536972223081711, guid: 2b27e54ad2e21f345a083fadf220cf1c,
-    type: 3}
---- !u!65 &1971323308
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 65216014464421648, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971323304}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2072545715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1713,8 +1652,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: -503531917072818642, guid: faa270e3d0214c242bcbde40d8acb7a9,
     type: 3}
-  placementTilePrefabMobile: {fileID: -8032536972223081711, guid: 2b27e54ad2e21f345a083fadf220cf1c,
-    type: 3}
 --- !u!135 &2141937633
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1761,8 +1698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementTilePrefab: {fileID: 2155307401497911774, guid: c707bc95ab948454ca1e378dce5e9358,
-    type: 3}
-  placementTilePrefabMobile: {fileID: -3292042640782101027, guid: 52128319b43ce1b4989cc6e150e15e6c,
     type: 3}
   dimensions:
     x: 2
