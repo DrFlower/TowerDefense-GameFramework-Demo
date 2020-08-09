@@ -17,17 +17,6 @@ namespace Flower
         private LevelPathConfig[] levelPathConfigs;
         private float totalWeight;
 
-        [SerializeField]
-        private Collider[] environmentColliders;
-
-        public Collider[] EnvironmentColliders
-        {
-            get
-            {
-                return environmentColliders;
-            }
-        }
-
         private void Awake()
         {
             for (int i = 0; i < levelPathConfigs.Length; i++)

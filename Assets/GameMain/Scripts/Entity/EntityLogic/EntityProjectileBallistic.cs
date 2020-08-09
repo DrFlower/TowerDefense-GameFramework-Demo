@@ -70,15 +70,7 @@ namespace Flower
                     arcPreference, Physics.gravity.y, 4);
             }
 
-            DataLevel dataLevel = GameEntry.Data.GetData<DataLevel>();
-            if (dataLevel == null || dataLevel.CurrentLevel == null || dataLevel.CurrentLevel.LevelManager == null)
-            {
-                Log.Error("Can not get LevelManager.");
-                return;
-            }
-
             FireAtPoint(startPosition, targetPoint);
-            IgnoreCollision(dataLevel.CurrentLevel.LevelManager.EnvironmentColliders);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)

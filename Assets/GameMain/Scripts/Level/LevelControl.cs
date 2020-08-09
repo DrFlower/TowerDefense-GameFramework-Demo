@@ -45,9 +45,6 @@ namespace Flower
             dataTower = GameEntry.Data.GetData<DataTower>();
             dataEnemy = GameEntry.Data.GetData<DataEnemy>();
 
-            level.EntityLoader = entityLoader;
-            level.LevelManager = levelManager;
-
             GameEntry.UI.OpenUIForm(EnumUIForm.UILevelMainInfoForm);
             GameEntry.UI.OpenUIForm(EnumUIForm.UITowerListForm);
 
