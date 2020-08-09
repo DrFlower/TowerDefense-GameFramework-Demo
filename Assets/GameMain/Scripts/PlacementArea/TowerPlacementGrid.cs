@@ -18,11 +18,6 @@ namespace Flower
 		public PlacementTile placementTilePrefab;
 
 		/// <summary>
-		/// Visualisation prefab to instantiate on mobile platforms
-		/// </summary>
-		public PlacementTile placementTilePrefabMobile;
-
-		/// <summary>
 		/// The dimensions of the grid 
 		/// </summary>
 		public IntVector2 dimensions;
@@ -236,11 +231,7 @@ namespace Flower
 		protected void SetUpGrid()
 		{
 			PlacementTile tileToUse;
-#if UNITY_STANDALONE
 			tileToUse = placementTilePrefab;
-#else
-			tileToUse = placementTilePrefabMobile;
-#endif
 
 			if (tileToUse != null)
 			{

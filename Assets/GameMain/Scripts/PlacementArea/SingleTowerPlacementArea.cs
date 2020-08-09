@@ -16,11 +16,6 @@ namespace Flower
 		public PlacementTile placementTilePrefab;
 
 		/// <summary>
-		/// Visualisation prefab to instantiate on mobile platforms
-		/// </summary>
-		public PlacementTile placementTilePrefabMobile;
-
-		/// <summary>
 		/// <see cref="PlacementTile"/> we've spawned on our spot
 		/// </summary>
 		PlacementTile m_SpawnedTile;
@@ -36,11 +31,8 @@ namespace Flower
 		protected void Awake()
 		{
 			PlacementTile tileToUse;
-#if UNITY_STANDALONE
+
 			tileToUse = placementTilePrefab;
-#else
-			tileToUse = placementTilePrefabMobile;
-#endif
 
 			if (tileToUse != null)
 			{
