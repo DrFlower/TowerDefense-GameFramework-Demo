@@ -102,7 +102,7 @@ namespace Flower
             if (levelPath.PathNodes.Length > targetPathNodeIndex)
             {
                 agent.SetDestination(levelPath.PathNodes[targetPathNodeIndex].position);
-                if (Vector3.Distance(transform.position, levelPath.PathNodes[targetPathNodeIndex].position) < 1f)
+                if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(levelPath.PathNodes[targetPathNodeIndex].position.x, 0, levelPath.PathNodes[targetPathNodeIndex].position.z)) < 1f)
                 {
                     if (levelPath.PathNodes.Length - 1 == targetPathNodeIndex)
                     {
