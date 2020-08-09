@@ -29,9 +29,13 @@ namespace Flower
         {
             float random = Random.Range(0f, totalWeight);
 
+            float sum = 0;
+
             for (int i = 0; i < levelPathConfigs.Length; i++)
             {
-                if (levelPathConfigs[i].weight > random)
+                sum += levelPathConfigs[i].weight;
+
+                if (sum > random)
                     return levelPathConfigs[i].levelPath;
             }
 
