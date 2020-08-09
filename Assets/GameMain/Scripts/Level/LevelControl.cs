@@ -29,12 +29,12 @@ namespace Flower
         private bool pause = false;
 
         private Dictionary<int, TowerInfo> dicTowerInfo;
-        private Dictionary<int, EntityBaseEnemy> dicEntityEnemy;
+        private Dictionary<int, EntityEnemy> dicEntityEnemy;
 
         public LevelControl()
         {
             dicTowerInfo = new Dictionary<int, TowerInfo>();
-            dicEntityEnemy = new Dictionary<int, EntityBaseEnemy>();
+            dicEntityEnemy = new Dictionary<int, EntityEnemy>();
         }
 
         public void OnEnter()
@@ -213,10 +213,10 @@ namespace Flower
                 return;
             }
 
-            entityLoader.ShowEntity<EntityBaseEnemy>(enemyData.EntityId,
+            entityLoader.ShowEntity<EntityEnemy>(enemyData.EntityId,
                 (entity) =>
                 {
-                    dicEntityEnemy.Add(entity.Id, (EntityBaseEnemy)entity.Logic);
+                    dicEntityEnemy.Add(entity.Id, (EntityEnemy)entity.Logic);
                 },
                 EntityDataEnemy.Create(
                     enemyData,

@@ -44,7 +44,7 @@ namespace Flower
         private TowerTargetter towerTargetter;
         private ILauncher m_Launcher;
         private float m_FireTimer;
-        private EntityBaseEnemy m_TrackingEnemy;
+        private EntityEnemy m_TrackingEnemy;
 
         public float searchRate
         {
@@ -52,7 +52,7 @@ namespace Flower
             set { towerTargetter.searchRate = value; }
         }
 
-        public EntityBaseEnemy trackingEnemy
+        public EntityEnemy trackingEnemy
         {
             get { return m_TrackingEnemy; }
         }
@@ -102,7 +102,7 @@ namespace Flower
             m_TrackingEnemy = null;
         }
 
-        void OnAcquiredTarget(EntityBaseEnemy acquiredTarget)
+        void OnAcquiredTarget(EntityEnemy acquiredTarget)
         {
             m_TrackingEnemy = acquiredTarget;
         }
@@ -136,7 +136,7 @@ namespace Flower
 
             if (IsMultiAttack)
             {
-                List<EntityBaseEnemy> enemies = towerTargetter.GetAllTargets();
+                List<EntityEnemy> enemies = towerTargetter.GetAllTargets();
                 m_Launcher.Launch(
                     enemies,
                     entityDataTower.Tower,
@@ -158,7 +158,7 @@ namespace Flower
         }
 
 
-        protected virtual int ByDistance(EntityBaseEnemy first, EntityBaseEnemy second)
+        protected virtual int ByDistance(EntityEnemy first, EntityEnemy second)
         {
             float firstSqrMagnitude = Vector3.SqrMagnitude(first.transform.position - epicenter.position);
             float secondSqrMagnitude = Vector3.SqrMagnitude(second.transform.position - epicenter.position);

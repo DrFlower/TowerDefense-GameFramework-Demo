@@ -10,17 +10,17 @@ namespace Flower
         /// <summary>
         /// Fires when a targetable enters the target collider
         /// </summary>
-        public event Action<EntityBaseEnemy> targetEntersRange;
+        public event Action<EntityEnemy> targetEntersRange;
 
         /// <summary>
         /// Fires when a targetable exits the target collider
         /// </summary>
-        public event Action<EntityBaseEnemy> targetExitsRange;
+        public event Action<EntityEnemy> targetExitsRange;
 
         /// <summary>
         /// Fires when an appropriate target is found
         /// </summary>
-        public event Action<EntityBaseEnemy> acquiredTarget;
+        public event Action<EntityEnemy> acquiredTarget;
 
         /// <summary>
         /// Fires when the current target was lost
@@ -70,7 +70,7 @@ namespace Flower
         /// <summary>
         /// The current targetables in the collider
         /// </summary>
-        protected List<EntityBaseEnemy> m_TargetsInRange = new List<EntityBaseEnemy>();
+        protected List<EntityEnemy> m_TargetsInRange = new List<EntityEnemy>();
 
         /// <summary>
         /// The seconds until a search is allowed
@@ -85,7 +85,7 @@ namespace Flower
         /// <summary>
         /// The current targetable
         /// </summary>
-        protected EntityBaseEnemy m_CurrrentTargetable;
+        protected EntityEnemy m_CurrrentTargetable;
 
         /// <summary>
         /// Counter used for x rotation correction
@@ -132,7 +132,7 @@ namespace Flower
         /// <summary>
         /// Returns the current target
         /// </summary>
-        public EntityBaseEnemy GetTarget()
+        public EntityEnemy GetTarget()
         {
             return m_CurrrentTargetable;
         }
@@ -164,7 +164,7 @@ namespace Flower
         /// Returns all the targets within the collider. This list must not be changed as it is the working
         /// list of the targetter. Changing it could break the targetter
         /// </summary>
-        public List<EntityBaseEnemy> GetAllTargets()
+        public List<EntityEnemy> GetAllTargets()
         {
             return m_TargetsInRange;
         }
@@ -174,7 +174,7 @@ namespace Flower
         /// </summary>
         /// <param name="targetable"></param>
         /// <returns>true if targetable is vaild, false if not</returns>
-        protected virtual bool IsTargetableValid(EntityBaseEnemy targetable)
+        protected virtual bool IsTargetableValid(EntityEnemy targetable)
         {
             if (targetable == null)
             {
@@ -190,7 +190,7 @@ namespace Flower
         /// <param name="other">The other collider in the collision</param>
         protected virtual void OnTriggerExit(Collider other)
         {
-            var targetable = other.GetComponent<EntityBaseEnemy>();
+            var targetable = other.GetComponent<EntityEnemy>();
             if (!IsTargetableValid(targetable))
             {
                 return;
@@ -220,7 +220,7 @@ namespace Flower
         /// <param name="other">The other collider in the collision</param>
         protected virtual void OnTriggerEnter(Collider other)
         {
-            var targetable = other.GetComponent<EntityBaseEnemy>();
+            var targetable = other.GetComponent<EntityEnemy>();
             if (!IsTargetableValid(targetable))
             {
                 return;
@@ -239,7 +239,7 @@ namespace Flower
         /// Returns the nearest targetable within the currently tracked targetables 
         /// </summary>
         /// <returns>The nearest targetable if there is one, null otherwise</returns>
-        protected virtual EntityBaseEnemy GetNearestTargetable()
+        protected virtual EntityEnemy GetNearestTargetable()
         {
             int length = m_TargetsInRange.Count;
 
@@ -248,11 +248,11 @@ namespace Flower
                 return null;
             }
 
-            EntityBaseEnemy nearest = null;
+            EntityEnemy nearest = null;
             float distance = float.MaxValue;
             for (int i = length - 1; i >= 0; i--)
             {
-                EntityBaseEnemy targetable = m_TargetsInRange[i];
+                EntityEnemy targetable = m_TargetsInRange[i];
                 if (targetable == null || !targetable.Available || targetable.IsDead)
                 {
                     m_TargetsInRange.RemoveAt(i);
@@ -319,7 +319,7 @@ namespace Flower
         /// Fired by the agents died event or when the current target moves out of range,
         /// Fires the lostTarget event.
         /// </summary>
-        void OnTargetRemoved(EntityBaseEnemy target)
+        void OnTargetRemoved(EntityEnemy target)
         {
             //target.removed -= OnTargetRemoved;
             target.OnHidden += OnTargetRemoved;

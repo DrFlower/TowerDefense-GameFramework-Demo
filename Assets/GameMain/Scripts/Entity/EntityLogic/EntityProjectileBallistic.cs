@@ -211,7 +211,7 @@ namespace Flower
 
         void OnTriggerEnter(Collider other)
         {
-            EntityBaseEnemy enemy = other.gameObject.GetComponent<EntityBaseEnemy>();
+            EntityEnemy enemy = other.gameObject.GetComponent<EntityEnemy>();
             if (enemy == null)
                 return;
 
@@ -222,7 +222,7 @@ namespace Flower
             for (int index = 0; index < number; index++)
             {
                 Collider collider = s_Enemies[index];
-                var rangeEnemy = collider.GetComponent<EntityBaseEnemy>();
+                var rangeEnemy = collider.GetComponent<EntityEnemy>();
                 if (rangeEnemy == null)
                 {
                     continue;

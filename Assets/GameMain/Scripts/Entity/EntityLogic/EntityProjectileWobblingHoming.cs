@@ -21,7 +21,7 @@ namespace Flower
 
         public bool leadTarget;
 
-        protected EntityBaseEnemy enemy;
+        protected EntityEnemy enemy;
 
         static readonly Collider[] s_Enemies = new Collider[64];
         public LayerMask mask = -1;
@@ -302,7 +302,7 @@ namespace Flower
             m_CurrentWobbleTime = 0.0f;
         }
 
-        void OnTargetLost(EntityBaseEnemy enemy)
+        void OnTargetLost(EntityEnemy enemy)
         {
             enemy.OnHidden -= OnTargetLost;
             enemy.OnDead -= OnTargetLost;
@@ -311,7 +311,7 @@ namespace Flower
 
         void OnTriggerEnter(Collider other)
         {
-            EntityBaseEnemy enemy = other.gameObject.GetComponent<EntityBaseEnemy>();
+            EntityEnemy enemy = other.gameObject.GetComponent<EntityEnemy>();
             if (enemy == null)
                 return;
 
@@ -322,7 +322,7 @@ namespace Flower
             for (int index = 0; index < number; index++)
             {
                 Collider collider = s_Enemies[index];
-                var rangeEnemy = collider.GetComponent<EntityBaseEnemy>();
+                var rangeEnemy = collider.GetComponent<EntityEnemy>();
                 if (rangeEnemy == null)
                 {
                     continue;

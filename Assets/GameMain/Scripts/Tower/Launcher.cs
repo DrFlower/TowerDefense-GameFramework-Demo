@@ -8,23 +8,23 @@ namespace Flower
 {
     public abstract class Launcher : MonoBehaviour, ILauncher
     {
-        public abstract void Launch(EntityBaseEnemy enemy, Tower tower, Vector3 origin, Transform firingPoint);
+        public abstract void Launch(EntityEnemy enemy, Tower tower, Vector3 origin, Transform firingPoint);
 
-        public virtual void Launch(List<EntityBaseEnemy> enemies, Tower tower, Vector3 origin, Transform[] firingPoints)
+        public virtual void Launch(List<EntityEnemy> enemies, Tower tower, Vector3 origin, Transform[] firingPoints)
         {
             int count = enemies.Count;
             int currentFiringPointIndex = 0;
             int firingPointLength = firingPoints.Length;
             for (int i = 0; i < count; i++)
             {
-                EntityBaseEnemy enemy = enemies[i];
+                EntityEnemy enemy = enemies[i];
                 Transform firingPoint = firingPoints[currentFiringPointIndex];
                 currentFiringPointIndex = (currentFiringPointIndex + 1) % firingPointLength;
                 Launch(enemy, tower, origin, firingPoint);
             }
         }
 
-        public virtual void Launch(EntityBaseEnemy enemy, Tower tower, Vector3 origin, Transform[] firingPoints)
+        public virtual void Launch(EntityEnemy enemy, Tower tower, Vector3 origin, Transform[] firingPoints)
         {
             Launch(enemy, tower, origin, GetRandomTransform(firingPoints));
         }

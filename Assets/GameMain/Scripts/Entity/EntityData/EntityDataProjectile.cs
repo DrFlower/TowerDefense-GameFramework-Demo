@@ -8,7 +8,7 @@ namespace Flower
     [Serializable]
     public class EntityDataProjectile : EntityData
     {
-        public EntityBaseEnemy EntityEnemy
+        public EntityEnemy EntityEnemy
         {
             get;
             private set;
@@ -116,7 +116,7 @@ namespace Flower
             FiringPoint = null;
         }
 
-        public static EntityDataProjectile Create(EntityBaseEnemy EntityEnemy, Tower tower, Vector3 origin, Transform firingPoint, object userData = null)
+        public static EntityDataProjectile Create(EntityEnemy EntityEnemy, Tower tower, Vector3 origin, Transform firingPoint, object userData = null)
         {
             EntityDataProjectile entityData = ReferencePool.Acquire<EntityDataProjectile>();
             entityData.EntityEnemy = EntityEnemy;
@@ -138,7 +138,7 @@ namespace Flower
             return entityData;
         }
 
-        public static EntityDataProjectile Create(EntityBaseEnemy EntityEnemy, Tower tower, Vector3 origin, Transform firingPoint, Vector3 position, Quaternion rotation, object userData = null)
+        public static EntityDataProjectile Create(EntityEnemy EntityEnemy, Tower tower, Vector3 origin, Transform firingPoint, Vector3 position, Quaternion rotation, object userData = null)
         {
             EntityDataProjectile entityData = ReferencePool.Acquire<EntityDataProjectile>();
             entityData.EntityEnemy = EntityEnemy;

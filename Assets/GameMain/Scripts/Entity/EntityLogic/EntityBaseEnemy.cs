@@ -8,7 +8,7 @@ using System;
 
 namespace Flower
 {
-    public class EntityBaseEnemy : EntityLogicEx, IPause
+    public class EntityEnemy : EntityLogicEx, IPause
     {
         private LevelPath levelPath;
         private int targetPathNodeIndex;
@@ -63,9 +63,9 @@ namespace Flower
             }
         }
 
-        public event Action<EntityBaseEnemy> OnDead;
+        public event Action<EntityEnemy> OnDead;
 
-        public event Action<EntityBaseEnemy> OnHidden;
+        public event Action<EntityEnemy> OnHidden;
 
         protected override void OnInit(object userData)
         {
@@ -370,5 +370,3 @@ namespace Flower
         }
     }
 }
-
-

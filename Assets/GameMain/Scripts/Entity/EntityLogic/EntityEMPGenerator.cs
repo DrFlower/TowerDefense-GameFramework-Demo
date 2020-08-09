@@ -9,7 +9,7 @@ namespace Flower
     public class EntityEMPGenerator : EntityTowerBase
     {
         private TowerTargetter towerTargetter;
-        private List<EntityBaseEnemy> slowList;
+        private List<EntityEnemy> slowList;
 
         private int? soundSerialId = null;
 
@@ -19,7 +19,7 @@ namespace Flower
 
             towerTargetter = transform.Find("Targetter").GetComponent<TowerTargetter>();
 
-            slowList = new List<EntityBaseEnemy>();
+            slowList = new List<EntityEnemy>();
 
             towerTargetter.OnInit(userData);
         }
@@ -79,7 +79,7 @@ namespace Flower
             }
         }
 
-        private void OnTargetEntersRange(EntityBaseEnemy enemy)
+        private void OnTargetEntersRange(EntityEnemy enemy)
         {
             enemy.ApplySlow(entityDataTower.Tower.SerialId, entityDataTower.Tower.SpeedDownRate);
             slowList.Add(enemy);
@@ -87,12 +87,12 @@ namespace Flower
             enemy.OnHidden += RemoveSlowTarget;
         }
 
-        private void OnTargetExitsRange(EntityBaseEnemy enmey)
+        private void OnTargetExitsRange(EntityEnemy enmey)
         {
             RemoveSlowTarget(enmey);
         }
 
-        private void RemoveSlowTarget(EntityBaseEnemy enemy)
+        private void RemoveSlowTarget(EntityEnemy enemy)
         {
             enemy.RemoveSlow(entityDataTower.Tower.SerialId);
 
