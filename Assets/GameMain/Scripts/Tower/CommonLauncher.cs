@@ -10,15 +10,15 @@ namespace Flower
     {
         public ParticleSystem fireParticleSystem;
 
-        public override void Launch(EntityEnemy enemy, Tower tower, Vector3 origin, Transform firingPoint)
+        public override void Launch(EntityTargetable target, AttackerData attackerData, ProjectileData projectileData, Vector3 origin, Transform firingPoint)
         {
             GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
-                tower.ProjectileEntityId,
-                TypeUtility.GetEntityType(tower.ProjectileType),
+                attackerData.ProjectileEntityId,
+                TypeUtility.GetEntityType(attackerData.ProjectileType),
                 null,
-                EntityDataProjectile.Create(enemy, tower, origin, firingPoint, firingPoint.position, firingPoint.rotation)));
+                EntityDataProjectile.Create(target, projectileData, origin, firingPoint, firingPoint.position, firingPoint.rotation)));
 
-            PlayParticles(fireParticleSystem, firingPoint.position, enemy.transform.position);
+            PlayParticles(fireParticleSystem, firingPoint.position, target.transform.position);
         }
     }
 

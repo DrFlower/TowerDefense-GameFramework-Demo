@@ -10,22 +10,22 @@ namespace Flower
     {
         public ParticleSystem fireParticleSystem;
 
-        public override void Launch(List<EntityEnemy> enemies, Tower tower, Vector3 origin, Transform[] firingPoints)
+        public override void Launch(List<EntityTargetable> targets, AttackerData attackerData, ProjectileData projectileData, Vector3 origin, Transform[] firingPoints)
         {
-            EntityEnemy enemy = enemies[UnityEngine.Random.Range(0, enemies.Count)];
+            EntityTargetable target = targets[UnityEngine.Random.Range(0, targets.Count)];
             Transform firingPoint = GetRandomTransform(firingPoints);
-            Launch(enemy, tower, origin, firingPoint);
+            Launch(target, attackerData, projectileData, origin, firingPoint);
         }
 
-        public override void Launch(EntityEnemy enemy, Tower tower, Vector3 origin, Transform firingPoint)
+        public override void Launch(EntityTargetable target, AttackerData attackerData, ProjectileData projectileData, Vector3 origin, Transform firingPoint)
         {
             GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
-                tower.ProjectileEntityId,
-                TypeUtility.GetEntityType(tower.ProjectileType),
+                attackerData.ProjectileEntityId,
+                TypeUtility.GetEntityType(attackerData.ProjectileType),
                 null,
-                EntityDataProjectile.Create(enemy, tower, origin, firingPoint, firingPoint.position, firingPoint.rotation)));
+                EntityDataProjectile.Create(target, projectileData, origin, firingPoint, firingPoint.position, firingPoint.rotation)));
 
-            PlayParticles(fireParticleSystem, firingPoint.position, enemy.transform.position);
+            PlayParticles(fireParticleSystem, firingPoint.position, target.transform.position);
         }
     }
 

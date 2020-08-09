@@ -1,5 +1,5 @@
 ﻿// 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-07 01:05:34.111
+// 生成时间：2020-08-09 21:46:43.313
 //------------------------------------------------------------
 
 namespace Flower
@@ -270,5 +270,20 @@ namespace Flower
         /// 血条
         /// </summary>
         HPBar = 1052,
+
+        /// <summary>
+        /// 敌人攻击炮弹
+        /// </summary>
+        EnemyProjectile = 1053,
+
+        /// <summary>
+        /// 敌人攻击特效
+        /// </summary>
+        EnemyShootEffect = 1054,
+
+        /// <summary>
+        /// 炮塔死亡特效
+        /// </summary>
+        TowerDeathExplosion = 1055,
     }
 }

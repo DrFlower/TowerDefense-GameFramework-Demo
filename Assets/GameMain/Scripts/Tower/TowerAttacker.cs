@@ -4,60 +4,39 @@ using UnityEngine;
 using System;
 using UnityGameFramework.Runtime;
 using Flower.Data;
+using GameFramework;
 
 namespace Flower
 {
     public class TowerAttacker : MonoBehaviour
     {
-
-        //public LayerMask enemyMask { get; protected set; }
+        //public LayerMask targetMask { get; protected set; }
         private Transform[] projectilePoints;
         private Transform epicenter;
 
-        private EntityDataTower entityDataTower;
-
-        private bool IsMultiAttack
-        {
-            get
-            {
-                if (entityDataTower == null)
-                    return false;
-                else
-                    return entityDataTower.Tower.IsMultiAttack;
-            }
-        }
-
-        private float FireRate
-        {
-            get
-            {
-                if (entityDataTower == null)
-                    return 0;
-                else
-                    return entityDataTower.Tower.FireRate;
-            }
-        }
+        private AttackerData attackerData;
+        private ProjectileData projectileData;
 
         private RandomSound randomSound;
 
-        private EntityTowerAttacker entityTowerAttacker;
+        private Entity ownerEntity;
         private TowerTargetter towerTargetter;
         private ILauncher m_Launcher;
         private float m_FireTimer;
-        private EntityEnemy m_TrackingEnemy;
+        private EntityTargetable m_TrackingTarget;
 
-        public float searchRate
+        public float SearchRate
         {
             get { return towerTargetter.searchRate; }
             set { towerTargetter.searchRate = value; }
         }
 
-        public EntityEnemy trackingEnemy
+        public EntityTargetable TrackingTarget
         {
-            get { return m_TrackingEnemy; }
+            get { return m_TrackingTarget; }
         }
 
-        public TowerTargetter targetter
+        public TowerTargetter Targetter
         {
             get { return towerTargetter; }
         }
@@ -69,14 +48,7 @@ namespace Flower
 
         public void OnShow(object userData)
         {
-            entityDataTower = userData as EntityDataTower;
-            if (entityDataTower == null)
-            {
-                Log.Error("TowerAttacker show data invaild.");
-                return;
-            }
-
-            //enemyMask = mask;
+            //targetMask = mask;
 
             SetUpTimers();
         }
@@ -84,41 +56,40 @@ namespace Flower
         public void OnHide(bool isShutdown, object userData)
         {
             ResetAttack();
+            EmptyData();
             RemoveTowerTargetter();
             EmptyProjectilePoints();
             EmptyEpicenter();
-
-            entityDataTower = null;
         }
 
         public void ResetAttack()
         {
-            m_TrackingEnemy = null;
+            m_TrackingTarget = null;
             m_FireTimer = 0;
         }
 
         void OnLostTarget()
         {
-            m_TrackingEnemy = null;
+            m_TrackingTarget = null;
         }
 
-        void OnAcquiredTarget(EntityEnemy acquiredTarget)
+        void OnAcquiredTarget(EntityTargetable acquiredTarget)
         {
-            m_TrackingEnemy = acquiredTarget;
+            m_TrackingTarget = acquiredTarget;
         }
 
         protected virtual void SetUpTimers()
         {
-            m_FireTimer = 1 / FireRate;
+            m_FireTimer = 1 / attackerData.FireRate;
         }
 
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             m_FireTimer -= elapseSeconds;
-            if (trackingEnemy != null && m_FireTimer <= 0.0f)
+            if (TrackingTarget != null && m_FireTimer <= 0.0f)
             {
                 OnFireTimer();
-                m_FireTimer = 1 / FireRate;
+                m_FireTimer = 1 / attackerData.FireRate;
             }
         }
 
@@ -129,40 +100,60 @@ namespace Flower
 
         protected virtual void FireProjectile()
         {
-            if (m_TrackingEnemy == null)
+            if (m_TrackingTarget == null)
             {
                 return;
             }
 
-            if (IsMultiAttack)
+            if (attackerData.IsMultiAttack)
             {
-                List<EntityEnemy> enemies = towerTargetter.GetAllTargets();
+                List<EntityTargetable> enemies = towerTargetter.GetAllTargets();
                 m_Launcher.Launch(
                     enemies,
-                    entityDataTower.Tower,
+                    attackerData,
+                    projectileData,
                     epicenter.position,
                     projectilePoints);
             }
             else
             {
                 m_Launcher.Launch(
-                    m_TrackingEnemy,
-                    entityDataTower.Tower,
+                    m_TrackingTarget,
+                    attackerData,
+                    projectileData,
                     epicenter.position,
                     projectilePoints);
             }
             if (randomSound != null)
             {
-                GameEntry.Sound.PlaySound(randomSound.GetRandomSound(), entityTowerAttacker.Entity);
+                GameEntry.Sound.PlaySound(randomSound.GetRandomSound(), ownerEntity);
             }
         }
 
 
-        protected virtual int ByDistance(EntityEnemy first, EntityEnemy second)
+        protected virtual int ByDistance(EntityTargetable first, EntityTargetable second)
         {
             float firstSqrMagnitude = Vector3.SqrMagnitude(first.transform.position - epicenter.position);
             float secondSqrMagnitude = Vector3.SqrMagnitude(second.transform.position - epicenter.position);
             return firstSqrMagnitude.CompareTo(secondSqrMagnitude);
+        }
+
+        public void SetData(AttackerData attackerData, ProjectileData projectileData)
+        {
+            if (this.attackerData != null)
+                ReferencePool.Release(this.attackerData);
+
+            this.attackerData = attackerData;
+            this.projectileData = projectileData;
+        }
+
+        private void EmptyData()
+        {
+            if (attackerData != null)
+                ReferencePool.Release(attackerData);
+
+            this.attackerData = null;
+            this.projectileData = null;
         }
 
         public void SetProjectilePoints(Transform[] tfs)
@@ -210,14 +201,14 @@ namespace Flower
             this.m_Launcher = null;
         }
 
-        public void SetEntityTowerAttacker(EntityTowerAttacker entityTowerAttacker)
+        public void SetOwnerEntity(Entity entity)
         {
-            this.entityTowerAttacker = entityTowerAttacker;
+            this.ownerEntity = entity;
         }
 
-        public void EmptyEntityTowerAttacker()
+        public void EmptyOwnerEntity()
         {
-            this.entityTowerAttacker = null;
+            this.ownerEntity = null;
         }
 
     }

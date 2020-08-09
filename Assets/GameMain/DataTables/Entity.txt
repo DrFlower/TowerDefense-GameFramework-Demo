@@ -54,3 +54,6 @@
 	1050	敌人死亡特效2	BigDeathExplosionPfx	3050	1050
 	1051	敌人减速	SlowFx	3051	1051
 	1052	血条	HPBar	3052	1052
+	1053	敌人攻击炮弹	EnemyProjectile	3053	1053
+	1054	敌人攻击特效	EnemyShootEffect	3054	1054
+	1055	炮塔死亡特效	TowerDeathExplosion	3055	1055

@@ -151,6 +151,13 @@ namespace Flower.Data
             }
         }
 
+        public ProjectileData ProjectileData
+        {
+            get
+            {
+                return GetProjectileData(Level);
+            }
+        }
 
         public float Range
         {
@@ -276,6 +283,19 @@ namespace Flower.Data
             else
             {
                 return towerData.GetTowerLevelData(level).EntityId;
+            }
+        }
+
+        public ProjectileData GetProjectileData(int level)
+        {
+            if (level < 0 || level > MaxLevel)
+            {
+                Log.Error("Param level '{0} invaild'", level);
+                return null;
+            }
+            else
+            {
+                return towerData.GetTowerLevelData(level).ProjectileData;
             }
         }
 

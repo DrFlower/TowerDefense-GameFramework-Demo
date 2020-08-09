@@ -6,7 +6,7 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class EntityTowerAttacker : EntityTowerBase
+    public abstract class EntityTowerAttacker : EntityTowerBase
     {
         private TowerTargetter towerTargetter;
         private TowerAttacker towerAttacker;
@@ -36,19 +36,25 @@ namespace Flower
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
+            AttackerData attackerData = AttackerData.Create(entityDataTower.Tower.Range,
+                entityDataTower.Tower.FireRate,
+                entityDataTower.Tower.IsMultiAttack,
+                entityDataTower.Tower.ProjectileType,
+                entityDataTower.Tower.ProjectileEntityId
+                );
+            towerAttacker.SetData(attackerData, entityDataTower.Tower.ProjectileData);
 
             towerTargetter.OnShow(userData);
             towerAttacker.OnShow(userData);
-            towerAttacker.SetEntityTowerAttacker(this);
+            towerAttacker.SetOwnerEntity(Entity);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
-
             towerTargetter.OnHide(isShutdown, userData);
             towerAttacker.OnHide(isShutdown, userData);
-            towerAttacker.EmptyEntityTowerAttacker();
+            towerAttacker.EmptyOwnerEntity();
         }
 
         protected override void OnShowTowerLevelSuccess(Entity entity)
@@ -60,6 +66,14 @@ namespace Flower
             towerTargetter.SetSearchRange(entityDataTower.Tower.Range);
             towerTargetter.ResetTargetter();
 
+            AttackerData attackerData = AttackerData.Create(entityDataTower.Tower.Range,
+                entityDataTower.Tower.FireRate,
+                entityDataTower.Tower.IsMultiAttack,
+                entityDataTower.Tower.ProjectileType,
+                entityDataTower.Tower.ProjectileEntityId
+                );
+
+            towerAttacker.SetData(attackerData, entityDataTower.Tower.ProjectileData);
             towerAttacker.SetTowerTargetter(towerTargetter);
             towerAttacker.SetProjectilePoints(entityTowerLevel.projectilePoints);
             towerAttacker.SetEpicenter(entityTowerLevel.epicenter);

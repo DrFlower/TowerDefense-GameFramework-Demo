@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-02 12:35:34.245
+// 生成时间：2020-08-09 21:46:34.601
 //------------------------------------------------------------
 
 using GameFramework;
@@ -64,27 +64,9 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取伤害。
+        /// 获取炮弹数据。
         /// </summary>
-        public float Damage
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取溅射伤害。
-        /// </summary>
-        public float SplashDamage
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取溅射范围。
-        /// </summary>
-        public float SplashRange
+        public int ProjectileData
         {
             get;
             private set;
@@ -171,9 +153,7 @@ namespace Flower
                 DesId = columnTexts[index++];
                 UpgradeDesId = columnTexts[index++];
                 EntityId = int.Parse(columnTexts[index++]);
-                Damage = float.Parse(columnTexts[index++]);
-                SplashDamage = float.Parse(columnTexts[index++]);
-                SplashRange = float.Parse(columnTexts[index++]);
+                ProjectileData = int.Parse(columnTexts[index++]);
                 FireRate = float.Parse(columnTexts[index++]);
                 Range = float.Parse(columnTexts[index++]);
                 SpeedDownRate = float.Parse(columnTexts[index++]);
@@ -193,9 +173,7 @@ namespace Flower
                         DesId = strings[binaryReader.Read7BitEncodedInt32()];
                         UpgradeDesId = strings[binaryReader.Read7BitEncodedInt32()];
                         EntityId = binaryReader.Read7BitEncodedInt32();
-                        Damage = binaryReader.ReadSingle();
-                        SplashDamage = binaryReader.ReadSingle();
-                        SplashRange = binaryReader.ReadSingle();
+                        ProjectileData = binaryReader.Read7BitEncodedInt32();
                         FireRate = binaryReader.ReadSingle();
                         Range = binaryReader.ReadSingle();
                         SpeedDownRate = binaryReader.ReadSingle();

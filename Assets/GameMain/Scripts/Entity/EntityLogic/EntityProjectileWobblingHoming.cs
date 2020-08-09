@@ -21,7 +21,7 @@ namespace Flower
 
         public bool leadTarget;
 
-        protected EntityEnemy enemy;
+        protected EntityTargetable enemy;
 
         static readonly Collider[] s_Enemies = new Collider[64];
         public LayerMask mask = -1;
@@ -101,7 +101,7 @@ namespace Flower
         {
             base.OnShow(userData);
 
-            enemy = entityDataProjectile.EntityEnemy;
+            enemy = entityDataProjectile.EntityTargetable;
 
             Vector3 startingPoint = entityDataProjectile.FiringPoint.position;
             Vector3 targetPoint = Ballistics.CalculateLinearLeadingTargetPoint(
@@ -302,7 +302,7 @@ namespace Flower
             m_CurrentWobbleTime = 0.0f;
         }
 
-        void OnTargetLost(EntityEnemy enemy)
+        void OnTargetLost(EntityTargetable enemy)
         {
             enemy.OnHidden -= OnTargetLost;
             enemy.OnDead -= OnTargetLost;
@@ -316,9 +316,9 @@ namespace Flower
                 return;
 
             if (!enemy.IsDead)
-                enemy.Damage(entityDataProjectile.Damage);
+                enemy.Damage(entityDataProjectile.ProjectileData.Damage);
 
-            int number = Physics.OverlapSphereNonAlloc(transform.position, entityDataProjectile.SplashRange, s_Enemies, mask);
+            int number = Physics.OverlapSphereNonAlloc(transform.position, entityDataProjectile.ProjectileData.SplashRange, s_Enemies, mask);
             for (int index = 0; index < number; index++)
             {
                 Collider collider = s_Enemies[index];
@@ -328,12 +328,12 @@ namespace Flower
                     continue;
                 }
                 if (!enemy.IsDead)
-                    rangeEnemy.Damage(entityDataProjectile.SplashDamage);
+                    rangeEnemy.Damage(entityDataProjectile.ProjectileData.SplashDamage);
             }
 
             SpawnCollisionParticles();
-            
-            if(!hide)
+
+            if (!hide)
             {
                 GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
                 hide = true;

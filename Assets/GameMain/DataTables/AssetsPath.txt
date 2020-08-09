@@ -21,7 +21,7 @@
 	1009	炮塔控制面板	Assets/GameMain/UI/UIForms/UITowerControllerForm.prefab
 #Item			
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
-	2002	关卡选择按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab
+	2002	构建炮塔按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab
 #Entity			
 	3001	突击加农炮预览	Assets/GameMain/Entity/AssaultCannon/AssaultCannonPreview.prefab
 	3002	火箭预览	Assets/GameMain/Entity/RocketPlatform/RocketPlatformPreview.prefab
@@ -75,6 +75,9 @@
 	3050	敌人死亡特效2	Assets/GameMain/Entity/BigDeathExplosionPfx.prefab
 	3051	敌人减速	Assets/GameMain/Entity/SlowFx.prefab
 	3052	血条	Assets/GameMain/Entity/HPBar.prefab
+	3053	敌人攻击炮弹	Assets/GameMain/Entity/EnemyProjectile.prefab
+	3054	敌人攻击特效	Assets/GameMain/Entity/EnemyShootEffect.prefab
+	3055	炮塔死亡特效	Assets/GameMain/Entity/TowerDeathExplosion.prefab
 #Sound			
 	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
 	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3

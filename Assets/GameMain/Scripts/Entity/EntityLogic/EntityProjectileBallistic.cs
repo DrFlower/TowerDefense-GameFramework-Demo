@@ -58,7 +58,7 @@ namespace Flower
                 // use speed
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithSpeed(
                     startPosition,
-                    entityDataProjectile.EntityEnemy.transform.position, entityDataProjectile.EntityEnemy.Velocity,
+                    entityDataProjectile.EntityTargetable.transform.position, entityDataProjectile.EntityTargetable.Velocity,
                     startSpeed, arcPreference, Physics.gravity.y, 4);
             }
             else
@@ -66,7 +66,7 @@ namespace Flower
                 // use angle
                 targetPoint = Ballistics.CalculateBallisticLeadingTargetPointWithAngle(
                     startPosition,
-                    entityDataProjectile.EntityEnemy.transform.position, entityDataProjectile.EntityEnemy.Velocity, firingAngle,
+                    entityDataProjectile.EntityTargetable.transform.position, entityDataProjectile.EntityTargetable.Velocity, firingAngle,
                     arcPreference, Physics.gravity.y, 4);
             }
 
@@ -216,9 +216,9 @@ namespace Flower
                 return;
 
             if (!enemy.IsDead)
-                enemy.Damage(entityDataProjectile.Damage);
+                enemy.Damage(entityDataProjectile.ProjectileData.Damage);
 
-            int number = Physics.OverlapSphereNonAlloc(transform.position, entityDataProjectile.SplashRange, s_Enemies, mask);
+            int number = Physics.OverlapSphereNonAlloc(transform.position, entityDataProjectile.ProjectileData.SplashRange, s_Enemies, mask);
             for (int index = 0; index < number; index++)
             {
                 Collider collider = s_Enemies[index];
@@ -228,7 +228,7 @@ namespace Flower
                     continue;
                 }
                 if (!enemy.IsDead)
-                    rangeEnemy.Damage(entityDataProjectile.SplashDamage);
+                    rangeEnemy.Damage(entityDataProjectile.ProjectileData.SplashDamage);
             }
 
             SpawnCollisionParticles();

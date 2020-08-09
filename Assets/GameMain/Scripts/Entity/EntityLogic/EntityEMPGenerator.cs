@@ -79,21 +79,29 @@ namespace Flower
             }
         }
 
-        private void OnTargetEntersRange(EntityEnemy enemy)
+        private void OnTargetEntersRange(EntityTargetable target)
         {
+            EntityEnemy enemy = target as EntityEnemy;
+            if (enemy == null)
+                return;
+
             enemy.ApplySlow(entityDataTower.Tower.SerialId, entityDataTower.Tower.SpeedDownRate);
             slowList.Add(enemy);
             enemy.OnDead += RemoveSlowTarget;
             enemy.OnHidden += RemoveSlowTarget;
         }
 
-        private void OnTargetExitsRange(EntityEnemy enmey)
+        private void OnTargetExitsRange(EntityTargetable enmey)
         {
             RemoveSlowTarget(enmey);
         }
 
-        private void RemoveSlowTarget(EntityEnemy enemy)
+        private void RemoveSlowTarget(EntityTargetable target)
         {
+            EntityEnemy enemy = target as EntityEnemy;
+            if (enemy == null)
+                return;
+
             enemy.RemoveSlow(entityDataTower.Tower.SerialId);
 
             enemy.OnDead -= RemoveSlowTarget;

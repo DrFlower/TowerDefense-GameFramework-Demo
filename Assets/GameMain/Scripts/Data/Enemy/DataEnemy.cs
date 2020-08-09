@@ -29,12 +29,20 @@ namespace Flower.Data
             if (dtEnemy == null)
                 throw new System.Exception("Can not get data table Enemy");
 
+            DataProjectile dataProjectile = GameEntry.Data.GetData<DataProjectile>();
+            if (dataProjectile == null)
+            {
+                Log.Error("Can't load DataProjectile");
+                return;
+            }
+
             dicEnemyData = new Dictionary<int, EnemyData>();
 
             DREnemy[] dREnemies = dtEnemy.GetAllDataRows();
             foreach (var drEnemy in dREnemies)
             {
-                EnemyData enemyData = new EnemyData(drEnemy);
+                ProjectileData projectileData = dataProjectile.GetProjectileData(drEnemy.ProjectileData);
+                EnemyData enemyData = new EnemyData(drEnemy, projectileData);
                 dicEnemyData.Add(drEnemy.Id, enemyData);
             }
         }

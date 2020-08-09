@@ -1,12 +1,12 @@
-﻿#	敌人配置表											
-#	Id		NameId	EntityId	MaxHP	Damage	Speed	AddEnergy	DeadEffcetEntityId	DeadEffectOffset	ApplyEffectOffset	ApplyEffectScale
-#	int		string	int	float	int	float	float	int	vector3	vector3	float
-#	配置编号	策划备注	敌人名字Id	实体编号	血量	伤害	移动速度	死亡时玩家获得能量	死亡特效实体Id	死亡特效偏移	应用特效位置偏移	应用特效缩放
-	101	虫子	Buggy	1031	4	1	4.8	1	1049	"0,0.5,0"	"0,0.5,0"	1
-	102	直升机	Copter	1032	16	1	3	3	1049	"0,0,0"	"0,1.5,0"	1
-	103	坦克	Tank	1033	35	1	2	4	1050	"0,1.5,0"	"0,0.5,0"	1
-	104	首领	BOSS	1034	600	2	1.2	8	1050	"0,1.5,0"	"0,0.2,0"	1.5
-	105	超级虫子	SuperBuggy	1035	14	1	4.8	2	1049	"0,0.5,0"	"0,0.2,0"	1
-	106	超级直升机	SuperCopter	1036	32	1	3	4	1049	"0,0,0"	"0,1.5,0"	1
-	107	超级坦克	SuperTank	1037	100	1	2	4	1050	"0,1.5,0"	"0,0.2,0"	1
-	108	超级首领	SuperBOSS	1038	1400	2	1.2	16	1050	"0,1.5,0"	"0,0.2,0"	1.5
+﻿#	敌人配置表																	
+#	Id		NameId	EntityId	MaxHP	Damage	ProjectileEntityId	ProjectileType	ProjectileData	FireRate	Range	IsMultiAttack	Speed	AddEnergy	DeadEffcetEntityId	DeadEffectOffset	ApplyEffectOffset	ApplyEffectScale
+#	int		string	int	float	int	int	string	int	float	float	bool	float	float	int	vector3	vector3	float
+#	配置编号	策划备注	敌人名字Id	实体编号	血量	对基地伤害	炮弹实体编号	炮弹类型	炮弹数据	开火频率	范围	是否同时攻击多个敌人	移动速度	死亡时玩家获得能量	死亡特效实体Id	死亡特效偏移	应用特效位置偏移	应用特效缩放
+	101	虫子	Buggy	1031	4	1	3052	EntityProjectileHitscan	1011	1	4	FALSE	4.8	1	1049	"0,0.5,0"	"0,0.5,0"	1
+	102	直升机	Copter	1032	16	1	3052	EntityProjectileHitscan	1011	1	6	FALSE	3	3	1049	"0,0,0"	"0,1.5,0"	1
+	103	坦克	Tank	1033	35	1	3052	EntityProjectileHitscan	1011	1	6	FALSE	2	4	1050	"0,1.5,0"	"0,0.5,0"	1
+	104	首领	BOSS	1034	600	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	1.2	8	1050	"0,1.5,0"	"0,0.2,0"	1.5
+	105	超级虫子	SuperBuggy	1035	14	1	3052	EntityProjectileHitscan	1011	1	4	FALSE	4.8	2	1049	"0,0.5,0"	"0,0.2,0"	1
+	106	超级直升机	SuperCopter	1036	32	1	3052	EntityProjectileHitscan	1011	1	6	FALSE	3	4	1049	"0,0,0"	"0,1.5,0"	1
+	107	超级坦克	SuperTank	1037	100	1	3052	EntityProjectileHitscan	1011	1	6	FALSE	2	4	1050	"0,1.5,0"	"0,0.2,0"	1
+	108	超级首领	SuperBOSS	1038	1400	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	1.2	16	1050	"0,1.5,0"	"0,0.2,0"	1.5

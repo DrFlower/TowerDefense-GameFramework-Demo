@@ -32,6 +32,13 @@ namespace Flower.Data
 
         protected override void OnLoad()
         {
+            DataProjectile dataProjectile = GameEntry.Data.GetData<DataProjectile>();
+            if (dataProjectile == null)
+            {
+                Log.Error("Can't load DataProjectile");
+                return;
+            }
+
             dtTower = GameEntry.DataTable.GetDataTable<DRTower>();
             if (dtTower == null)
                 throw new System.Exception("Can not get data table Tower");
@@ -52,7 +59,8 @@ namespace Flower.Data
                     throw new System.Exception(string.Format("Data tower level id '{0}' duplicate.", drTowerLevel.Id));
                 }
 
-                TowerLevelData towerLevelData = new TowerLevelData(drTowerLevel);
+                ProjectileData projectileData = dataProjectile.GetProjectileData(drTowerLevel.ProjectileData);
+                TowerLevelData towerLevelData = new TowerLevelData(drTowerLevel, projectileData);
                 dicTowerLevelData.Add(drTowerLevel.Id, towerLevelData);
             }
 

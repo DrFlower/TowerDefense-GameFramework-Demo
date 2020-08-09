@@ -21,7 +21,7 @@ namespace Flower
             base.OnShow(userData);
 
             projectileParticles.transform.position = entityDataProjectile.FiringPoint.position;
-            projectileParticles.transform.LookAt(entityDataProjectile.EntityEnemy.transform.position);
+            projectileParticles.transform.LookAt(entityDataProjectile.EntityTargetable.transform.position);
             projectileParticles.Play();
         }
 
@@ -58,8 +58,8 @@ namespace Flower
         {
             SpawnCollisionParticles();
 
-            if (!entityDataProjectile.EntityEnemy.IsDead)
-                entityDataProjectile.EntityEnemy.Damage(entityDataProjectile.Damage);
+            if (!entityDataProjectile.EntityTargetable.IsDead)
+                entityDataProjectile.EntityTargetable.Damage(entityDataProjectile.ProjectileData.Damage);
         }
 
     }

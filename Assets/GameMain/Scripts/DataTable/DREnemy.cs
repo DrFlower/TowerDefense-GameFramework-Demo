@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-02 12:35:34.208
+// 生成时间：2020-08-09 21:46:34.566
 //------------------------------------------------------------
 
 using GameFramework;
@@ -64,9 +64,63 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取伤害。
+        /// 获取对基地伤害。
         /// </summary>
         public int Damage
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取炮弹实体编号。
+        /// </summary>
+        public int ProjectileEntityId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取炮弹类型。
+        /// </summary>
+        public string ProjectileType
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取炮弹数据。
+        /// </summary>
+        public int ProjectileData
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取开火频率。
+        /// </summary>
+        public float FireRate
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取范围。
+        /// </summary>
+        public float Range
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取是否同时攻击多个敌人。
+        /// </summary>
+        public bool IsMultiAttack
         {
             get;
             private set;
@@ -145,6 +199,12 @@ namespace Flower
                 EntityId = int.Parse(columnTexts[index++]);
                 MaxHP = float.Parse(columnTexts[index++]);
                 Damage = int.Parse(columnTexts[index++]);
+                ProjectileEntityId = int.Parse(columnTexts[index++]);
+                ProjectileType = columnTexts[index++];
+                ProjectileData = int.Parse(columnTexts[index++]);
+                FireRate = float.Parse(columnTexts[index++]);
+                Range = float.Parse(columnTexts[index++]);
+                IsMultiAttack = bool.Parse(columnTexts[index++]);
                 Speed = float.Parse(columnTexts[index++]);
                 AddEnergy = float.Parse(columnTexts[index++]);
                 DeadEffcetEntityId = int.Parse(columnTexts[index++]);
@@ -164,6 +224,12 @@ namespace Flower
                         EntityId = binaryReader.Read7BitEncodedInt32();
                         MaxHP = binaryReader.ReadSingle();
                         Damage = binaryReader.Read7BitEncodedInt32();
+                        ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
+                        ProjectileType = strings[binaryReader.Read7BitEncodedInt32()];
+                        ProjectileData = binaryReader.Read7BitEncodedInt32();
+                        FireRate = binaryReader.ReadSingle();
+                        Range = binaryReader.ReadSingle();
+                        IsMultiAttack = binaryReader.ReadBoolean();
                         Speed = binaryReader.ReadSingle();
                         AddEnergy = binaryReader.ReadSingle();
                         DeadEffcetEntityId = binaryReader.Read7BitEncodedInt32();

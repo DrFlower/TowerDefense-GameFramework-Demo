@@ -9,10 +9,10 @@ namespace Flower
     public interface ILauncher
     {
 
-        void Launch(EntityEnemy enemy, Tower tower, Vector3 origin, Transform firingPoint);
+        void Launch(EntityTargetable target, AttackerData attackerData, ProjectileData projectileData, Vector3 origin, Transform firingPoint);
 
-        void Launch(EntityEnemy enemy, Tower tower, Vector3 origin, Transform[] firingPoints);
+        void Launch(EntityTargetable target, AttackerData attackerData, ProjectileData projectileData, Vector3 origin, Transform[] firingPoints);
 
-        void Launch(List<EntityEnemy> enemies, Tower tower, Vector3 origin, Transform[] firingPoints);
+        void Launch(List<EntityTargetable> targets, AttackerData attackerData, ProjectileData projectileData, Vector3 origin, Transform[] firingPoints);
     }
 }

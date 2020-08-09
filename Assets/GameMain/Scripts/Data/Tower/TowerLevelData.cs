@@ -9,6 +9,7 @@ namespace Flower.Data
     public class TowerLevelData
     {
         private DRTowerLevel dRTowerLevel;
+        private ProjectileData projectileData;
 
         public int Id
         {
@@ -48,11 +49,22 @@ namespace Flower.Data
             }
         }
 
+        public ProjectileData ProjectileData
+        {
+            get
+            {
+                return projectileData;
+            }
+        }
+
         public float Damage
         {
             get
             {
-                return dRTowerLevel.Damage;
+                if (projectileData == null)
+                    return 0;
+                else
+                    return projectileData.Damage;
             }
         }
 
@@ -60,7 +72,10 @@ namespace Flower.Data
         {
             get
             {
-                return dRTowerLevel.SplashDamage;
+                if (projectileData == null)
+                    return 0;
+                else
+                    return projectileData.SplashDamage;
             }
         }
 
@@ -68,7 +83,10 @@ namespace Flower.Data
         {
             get
             {
-                return dRTowerLevel.SplashRange;
+                if (projectileData == null)
+                    return 0;
+                else
+                    return projectileData.SplashRange;
             }
         }
 
@@ -136,9 +154,10 @@ namespace Flower.Data
             }
         }
 
-        public TowerLevelData(DRTowerLevel dRTowerLevel)
+        public TowerLevelData(DRTowerLevel dRTowerLevel, ProjectileData projectileData)
         {
             this.dRTowerLevel = dRTowerLevel;
+            this.projectileData = projectileData;
         }
 
     }

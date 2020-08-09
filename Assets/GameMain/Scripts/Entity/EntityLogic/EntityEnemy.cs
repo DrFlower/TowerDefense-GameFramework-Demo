@@ -8,16 +8,16 @@ using System;
 
 namespace Flower
 {
-    public class EntityEnemy : EntityLogicEx, IPause
+    public class EntityEnemy : EntityTargetable, IPause
     {
         private LevelPath levelPath;
         private int targetPathNodeIndex;
         private NavMeshAgent agent;
-        private Transform hpBarRoot;
+        //private Transform hpBarRoot;
         private EntityHPBar entityHPBar;
 
-        private Vector3 m_CurrentPosition, m_PreviousPosition;
-        private float hp;
+        //private Vector3 m_CurrentPosition, m_PreviousPosition;
+        //private float hp;
         private bool attacked = false;
         private float attackTimer = 0;
         private EntityPlayer targetPlayer;
@@ -28,7 +28,7 @@ namespace Flower
 
         //表示是否死亡或已攻击玩家即将回收，以防重复执行回收逻辑
         private bool hide = false;
-        private bool loadedHPBar = false;
+        // private bool loadedHPBar = false;
 
         protected bool pause = false;
 
@@ -37,17 +37,28 @@ namespace Flower
 
         private RandomSound randomSound;
 
+        protected override float MaxHP
+        {
+            get
+            {
+                if (EntityDataEnemy != null)
+                    return EntityDataEnemy.EnemyData.MaxHP;
+                else
+                    return 0;
+            }
+        }
+
         public EntityDataEnemy EntityDataEnemy
         {
             get;
             private set;
         }
 
-        public Vector3 Velocity
-        {
-            get;
-            private set;
-        }
+        //public Vector3 Velocity
+        //{
+        //    get;
+        //    private set;
+        //}
 
         public float CurrentSlowRate
         {
@@ -55,17 +66,17 @@ namespace Flower
             private set;
         }
 
-        public bool IsDead
-        {
-            get
-            {
-                return hp <= 0;
-            }
-        }
+        //public bool IsDead
+        //{
+        //    get
+        //    {
+        //        return hp <= 0;
+        //    }
+        //}
 
-        public event Action<EntityEnemy> OnDead;
+        //public event Action<EntityEnemy> OnDead;
 
-        public event Action<EntityEnemy> OnHidden;
+        //public event Action<EntityEnemy> OnHidden;
 
         protected override void OnInit(object userData)
         {
@@ -146,11 +157,11 @@ namespace Flower
         {
             base.OnHide(isShutdown, userData);
 
-            if (OnHidden != null)
-                OnHidden(this);
+            //if (OnHidden != null)
+            //    OnHidden(this);
 
-            OnHidden = null;
-            OnDead = null;
+            //OnHidden = null;
+            //OnDead = null;
 
             levelPath = null;
             EntityDataEnemy = null;
@@ -166,16 +177,16 @@ namespace Flower
             dataPlayer = null;
 
             RemoveSlowEffect();
-            HideHpBar();
+            //HideHpBar();
             dicSlowDownRates.Clear();
         }
 
-        void FixedUpdate()
-        {
-            m_CurrentPosition = transform.position;
-            Velocity = (m_CurrentPosition - m_PreviousPosition) / Time.fixedDeltaTime;
-            m_PreviousPosition = m_CurrentPosition;
-        }
+        //void FixedUpdate()
+        //{
+        //    m_CurrentPosition = transform.position;
+        //    Velocity = (m_CurrentPosition - m_PreviousPosition) / Time.fixedDeltaTime;
+        //    m_PreviousPosition = m_CurrentPosition;
+        //}
 
         public void AfterAttack()
         {
@@ -186,40 +197,39 @@ namespace Flower
             }
         }
 
-        public void Damage(float value)
+        //public void Damage(float value)
+        //{
+        //    if (IsDead)
+        //        return;
+
+        //    if (!loadedHPBar)
+        //    {
+        //        GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
+        //            (int)EnumEntity.HPBar,
+        //            typeof(EntityHPBar),
+        //            OnLoadHpBarSuccess,
+        //            EntityDataFollower.Create(hpBarRoot)));
+
+        //        loadedHPBar = true;
+        //    }
+
+        //    if (entityHPBar)
+        //    {
+        //        entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
+        //    }
+
+        //    hp -= value;
+
+        //    if (hp <= 0)
+        //    {
+        //        hp = 0;
+        //        Dead();
+        //    }
+        //}
+
+        protected override void Dead()
         {
-            if (IsDead)
-                return;
-
-            if (!loadedHPBar)
-            {
-                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
-                    (int)EnumEntity.HPBar,
-                    typeof(EntityHPBar),
-                    OnLoadHpBarSuccess,
-                    EntityDataFollower.Create(hpBarRoot)));
-
-                loadedHPBar = true;
-            }
-
-            if (entityHPBar)
-            {
-                entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
-            }
-
-            hp -= value;
-
-            if (hp <= 0)
-            {
-                hp = 0;
-                Dead();
-            }
-        }
-
-        private void Dead()
-        {
-            if (OnDead != null)
-                OnDead(this);
+            base.Dead();
 
             GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
                 EntityDataEnemy.EnemyData.DeadEffcetEntityId,
@@ -323,18 +333,18 @@ namespace Flower
             }
         }
 
-        private void OnLoadHpBarSuccess(Entity entity)
-        {
-            entityHPBar = entity.Logic as EntityHPBar;
-            if (hide)
-            {
-                HideHpBar();
-            }
-            else
-            {
-                entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
-            }
-        }
+        //private void OnLoadHpBarSuccess(Entity entity)
+        //{
+        //    entityHPBar = entity.Logic as EntityHPBar;
+        //    if (hide)
+        //    {
+        //        HideHpBar();
+        //    }
+        //    else
+        //    {
+        //        entityHPBar.UpdateHealth(hp / EntityDataEnemy.EnemyData.MaxHP);
+        //    }
+        //}
 
         private void RemoveSlowEffect()
         {
@@ -346,15 +356,15 @@ namespace Flower
             }
         }
 
-        private void HideHpBar()
-        {
-            if (entityHPBar)
-            {
-                GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
-                loadedHPBar = false;
-                entityHPBar = null;
-            }
-        }
+        //private void HideHpBar()
+        //{
+        //    if (entityHPBar)
+        //    {
+        //        GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(entityHPBar.Id));
+        //        loadedHPBar = false;
+        //        entityHPBar = null;
+        //    }
+        //}
 
 
         public void Pause()
