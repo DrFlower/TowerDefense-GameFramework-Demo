@@ -15,11 +15,11 @@
 	22003	Enemies Exploding 3	EnemiesExploding3	22003	1008	1003
 	22004	Enemies Exploding 4	EnemiesExploding4	22004	1008	1003
 	22005	Enemies Exploding 5	EnemiesExploding5	22005	1008	1003
-	23001	Destruction 1	Destruction1	23001	1003	1003
-	23002	Destruction 2	Destruction2	23002	1003	1003
-	23003	Destruction 3	Destruction3	23002	1003	1003
-	23004	Destruction 4	Destruction4	23002	1003	1003
-	23005	Destruction 5	Destruction5	23002	1003	1003
+	23001	Destruction 1	Destruction1	23001	1013	1003
+	23002	Destruction 2	Destruction2	23002	1013	1003
+	23003	Destruction 3	Destruction3	23002	1013	1003
+	23004	Destruction 4	Destruction4	23002	1013	1003
+	23005	Destruction 5	Destruction5	23002	1013	1003
 	24001	LaserFire	LaserFire	24001	1005	1003
 	25001	MG 1	MG1	25001	1004	1003
 	25002	MG 2	MG2	25002	1004	1003
