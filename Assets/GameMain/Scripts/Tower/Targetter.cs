@@ -5,7 +5,7 @@ using System;
 
 namespace Flower
 {
-    public class TowerTargetter : MonoBehaviour
+    public class Targetter : MonoBehaviour
     {
         /// <summary>
         /// Fires when a targetable enters the target collider

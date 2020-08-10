@@ -76,6 +76,14 @@ namespace Flower.Data
             }
         }
 
+        public float MaxHP
+        {
+            get
+            {
+                return dRTower.MaxHP;
+            }
+        }
+
         public IntVector2 Dimensions
         {
             get;

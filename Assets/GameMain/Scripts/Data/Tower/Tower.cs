@@ -70,6 +70,14 @@ namespace Flower.Data
             }
         }
 
+        public float MaxHP
+        {
+            get
+            {
+                return towerData.MaxHP;
+            }
+        }
+
         public string Des
         {
             get

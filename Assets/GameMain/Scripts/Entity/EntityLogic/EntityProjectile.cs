@@ -47,16 +47,16 @@ namespace Flower
                 return;
             }
 
-            //if (!entityDataProjectile.EntityTargetable.IsDead)
-            //{
-            //    Vector3 pos = entityDataProjectile.EntityTargetable.transform.position + entityDataProjectile.EntityTargetable.EntityDataEnemy.EnemyData.ApplyEffectOffset;
-            //    GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
-            //        collisionParticlesEntityId,
-            //        typeof(EntityParticleAutoHide),
-            //        null,
-            //        EntityData.Create(pos, transform.rotation)));
-            //}
-            Debug.LogError("暂时屏蔽");
+            if (!entityDataProjectile.EntityTargetable.IsDead)
+            {
+                Vector3 pos = entityDataProjectile.EntityTargetable.transform.position + entityDataProjectile.EntityTargetable.ApplyEffectOffset;
+                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
+                    collisionParticlesEntityId,
+                    typeof(EntityParticleAutoHide),
+                    null,
+                    EntityData.Create(pos, transform.rotation)));
+            }
+
         }
 
         public virtual void Pause()

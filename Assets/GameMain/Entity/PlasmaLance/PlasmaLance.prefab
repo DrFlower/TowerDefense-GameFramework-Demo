@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 54006964752909544}
   - component: {fileID: 65894491822834668}
   - component: {fileID: 208075326523738980}
+  - component: {fileID: 152648971733777657}
+  - component: {fileID: 8759741349544591916}
   m_Layer: 10
   m_Name: PlasmaLance
   m_TagString: Untagged
@@ -80,6 +82,43 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &152648971733777657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444973102034290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc25b38e7ba31884c944d823251a32d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffectEntity: 1055
+  deadEffectOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &8759741349544591916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444973102034290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e78ef8a2734284d82c9464f5889964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightedItems:
+  - sound: 23001
+    weight: 1
+  - sound: 23002
+    weight: 1
+  - sound: 23003
+    weight: 1
+  - sound: 23004
+    weight: 1
+  - sound: 23005
+    weight: 1
 --- !u!1 &4999023312021975986
 GameObject:
   m_ObjectHideFlags: 0

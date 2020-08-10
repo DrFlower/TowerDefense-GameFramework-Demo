@@ -76,6 +76,8 @@ GameObject:
   - component: {fileID: 54943286195798258}
   - component: {fileID: 136123838071042730}
   - component: {fileID: -8901520418164559954}
+  - component: {fileID: 6887146816301097989}
+  - component: {fileID: 5581118407849851143}
   m_Layer: 11
   m_Name: SuperHoverboss
   m_TagString: Untagged
@@ -174,6 +176,34 @@ MonoBehaviour:
     weight: 1
   - sound: 23005
     weight: 1
+--- !u!114 &6887146816301097989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300474929184216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc25b38e7ba31884c944d823251a32d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffectEntity: 1050
+  deadEffectOffset: {x: 0, y: 1.5, z: 0}
+--- !u!114 &5581118407849851143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300474929184216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81d750df8cb13948ab32cca8f80a711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyEffectOffset: {x: 0, y: 0.2, z: 0}
+  applyEffectScale: 1.5
 --- !u!1 &1341545582985454
 GameObject:
   m_ObjectHideFlags: 0

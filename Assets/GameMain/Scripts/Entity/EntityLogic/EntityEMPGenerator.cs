@@ -8,7 +8,7 @@ namespace Flower
 {
     public class EntityEMPGenerator : EntityTowerBase
     {
-        private TowerTargetter towerTargetter;
+        private Targetter towerTargetter;
         private List<EntityEnemy> slowList;
 
         private int? soundSerialId = null;
@@ -17,7 +17,7 @@ namespace Flower
         {
             base.OnInit(userData);
 
-            towerTargetter = transform.Find("Targetter").GetComponent<TowerTargetter>();
+            towerTargetter = transform.Find("Targetter").GetComponent<Targetter>();
 
             slowList = new List<EntityEnemy>();
 

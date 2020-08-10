@@ -124,38 +124,6 @@ namespace Flower.Data
             }
         }
 
-        public int DeadEffcetEntityId
-        {
-            get
-            {
-                return dREnemy.DeadEffcetEntityId;
-            }
-        }
-
-        public Vector3 DeadEffectOffset
-        {
-            get
-            {
-                return dREnemy.DeadEffectOffset;
-            }
-        }
-
-        public Vector3 ApplyEffectOffset
-        {
-            get
-            {
-                return dREnemy.ApplyEffectOffset;
-            }
-        }
-
-        public float ApplyEffectScale
-        {
-            get
-            {
-                return dREnemy.ApplyEffectScale;
-            }
-        }
-
         public EnemyData(DREnemy dREnemy, ProjectileData projectileData)
         {
             this.dREnemy = dREnemy;

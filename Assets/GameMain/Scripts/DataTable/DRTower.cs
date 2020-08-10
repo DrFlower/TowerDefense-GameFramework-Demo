@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-09 21:46:34.598
+// 生成时间：2020-08-11 01:25:33.359
 //------------------------------------------------------------
 
 using GameFramework;
@@ -100,36 +100,9 @@ namespace Flower
         }
 
         /// <summary>
-        /// 获取死亡特效实体Id。
+        /// 获取血量。
         /// </summary>
-        public int DeadEffcetEntityId
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取死亡特效偏移。
-        /// </summary>
-        public Vector3 DeadEffectOffset
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取应用特效位置偏移。
-        /// </summary>
-        public Vector3 ApplyEffectOffset
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取应用特效缩放。
-        /// </summary>
-        public float ApplyEffectScale
+        public float MaxHP
         {
             get;
             private set;
@@ -184,10 +157,7 @@ namespace Flower
                 ProjectileEntityId = int.Parse(columnTexts[index++]);
                 ProjectileType = columnTexts[index++];
                 IsMultiAttack = bool.Parse(columnTexts[index++]);
-                DeadEffcetEntityId = int.Parse(columnTexts[index++]);
-                DeadEffectOffset = DataTableExtension.ParseVector3(columnTexts[index++]);
-                ApplyEffectOffset = DataTableExtension.ParseVector3(columnTexts[index++]);
-                ApplyEffectScale = float.Parse(columnTexts[index++]);
+                MaxHP = float.Parse(columnTexts[index++]);
                 Dimensions = DataTableExtension.ParseInt32Array(columnTexts[index++]);
                 Type = columnTexts[index++];
                 Levels = DataTableExtension.ParseInt32Array(columnTexts[index++]);
@@ -207,10 +177,7 @@ namespace Flower
                         ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
                         ProjectileType = strings[binaryReader.Read7BitEncodedInt32()];
                         IsMultiAttack = binaryReader.ReadBoolean();
-                        DeadEffcetEntityId = binaryReader.Read7BitEncodedInt32();
-                        DeadEffectOffset = binaryReader.ReadVector3();
-                        ApplyEffectOffset = binaryReader.ReadVector3();
-                        ApplyEffectScale = binaryReader.ReadSingle();
+                        MaxHP = binaryReader.ReadSingle();
                         Dimensions = binaryReader.ReadInt32Array();
                         Type = strings[binaryReader.Read7BitEncodedInt32()];
                         Levels = binaryReader.ReadInt32Array();

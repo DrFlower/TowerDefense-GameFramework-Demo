@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-09 21:46:34.566
+// 生成时间：2020-08-11 01:25:33.332
 //------------------------------------------------------------
 
 using GameFramework;
@@ -67,6 +67,15 @@ namespace Flower
         /// 获取对基地伤害。
         /// </summary>
         public int Damage
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取对炮塔伤害。
+        /// </summary>
+        public float TowerDamage
         {
             get;
             private set;
@@ -144,42 +153,6 @@ namespace Flower
             private set;
         }
 
-        /// <summary>
-        /// 获取死亡特效实体Id。
-        /// </summary>
-        public int DeadEffcetEntityId
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取死亡特效偏移。
-        /// </summary>
-        public Vector3 DeadEffectOffset
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取应用特效位置偏移。
-        /// </summary>
-        public Vector3 ApplyEffectOffset
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 获取应用特效缩放。
-        /// </summary>
-        public float ApplyEffectScale
-        {
-            get;
-            private set;
-        }
-
         public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
         {
             Type dataType = dataRowSegment.DataType;
@@ -199,6 +172,7 @@ namespace Flower
                 EntityId = int.Parse(columnTexts[index++]);
                 MaxHP = float.Parse(columnTexts[index++]);
                 Damage = int.Parse(columnTexts[index++]);
+                TowerDamage = float.Parse(columnTexts[index++]);
                 ProjectileEntityId = int.Parse(columnTexts[index++]);
                 ProjectileType = columnTexts[index++];
                 ProjectileData = int.Parse(columnTexts[index++]);
@@ -207,10 +181,6 @@ namespace Flower
                 IsMultiAttack = bool.Parse(columnTexts[index++]);
                 Speed = float.Parse(columnTexts[index++]);
                 AddEnergy = float.Parse(columnTexts[index++]);
-                DeadEffcetEntityId = int.Parse(columnTexts[index++]);
-                DeadEffectOffset = DataTableExtension.ParseVector3(columnTexts[index++]);
-                ApplyEffectOffset = DataTableExtension.ParseVector3(columnTexts[index++]);
-                ApplyEffectScale = float.Parse(columnTexts[index++]);
             }
             else if (dataType == typeof(byte[]))
             {
@@ -224,6 +194,7 @@ namespace Flower
                         EntityId = binaryReader.Read7BitEncodedInt32();
                         MaxHP = binaryReader.ReadSingle();
                         Damage = binaryReader.Read7BitEncodedInt32();
+                        TowerDamage = binaryReader.ReadSingle();
                         ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
                         ProjectileType = strings[binaryReader.Read7BitEncodedInt32()];
                         ProjectileData = binaryReader.Read7BitEncodedInt32();
@@ -232,10 +203,6 @@ namespace Flower
                         IsMultiAttack = binaryReader.ReadBoolean();
                         Speed = binaryReader.ReadSingle();
                         AddEnergy = binaryReader.ReadSingle();
-                        DeadEffcetEntityId = binaryReader.Read7BitEncodedInt32();
-                        DeadEffectOffset = binaryReader.ReadVector3();
-                        ApplyEffectOffset = binaryReader.ReadVector3();
-                        ApplyEffectScale = binaryReader.ReadSingle();
                     }
                 }
             }

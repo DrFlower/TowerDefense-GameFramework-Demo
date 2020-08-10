@@ -9,9 +9,13 @@ namespace Flower
 {
     public abstract class EntityTargetable : EntityLogicEx
     {
+        public EnumEntity DeadEffect;
+
         protected Transform hpBarRoot;
 
         private Vector3 m_CurrentPosition, m_PreviousPosition;
+
+        private RandomSound randomSound;
 
         protected float hp;
 
@@ -38,6 +42,39 @@ namespace Flower
             }
         }
 
+        public Vector3 DeadEffectOffset
+        {
+            get
+            {
+                if (deadEffect == null)
+                    return Vector3.zero;
+
+                return deadEffect.deadEffectOffset;
+            }
+        }
+
+        public Vector3 ApplyEffectOffset
+        {
+            get
+            {
+                if (effectPointData == null)
+                    return Vector3.zero;
+
+                return effectPointData.applyEffectOffset;
+            }
+        }
+
+        public float ApplyEffectScale
+        {
+            get
+            {
+                if (effectPointData == null)
+                    return 1;
+
+                return effectPointData.applyEffectScale;
+            }
+        }
+
         public Vector3 Velocity
         {
             get;
@@ -50,10 +87,15 @@ namespace Flower
         public event Action<EntityTargetable> OnDead;
         public event Action<EntityTargetable> OnHidden;
 
+        private EffectPointData effectPointData;
+        private DeadEffect deadEffect;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-
+            randomSound = GetComponent<RandomSound>();
+            effectPointData = GetComponent<EffectPointData>();
+            deadEffect = GetComponent<DeadEffect>();
             hpBarRoot = transform.Find("HealthBar");
         }
 
@@ -123,6 +165,15 @@ namespace Flower
         {
             if (OnDead != null)
                 OnDead(this);
+
+            if (deadEffect != null)
+            {
+                GameEntry.Event.Fire(this, ShowEntityInLevelEventArgs.Create(
+                    (int)deadEffect.deadEffectEntity,
+                    typeof(EntityParticleAutoHide),
+                    null,
+                    EntityDataFollower.Create(randomSound ? randomSound.GetRandomSound() : EnumSound.None, transform.position + DeadEffectOffset, transform.rotation)));
+            }
         }
 
         private void OnLoadHpBarSuccess(Entity entity)

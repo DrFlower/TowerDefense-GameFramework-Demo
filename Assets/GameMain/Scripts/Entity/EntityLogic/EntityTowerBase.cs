@@ -7,13 +7,24 @@ using Flower.Data;
 
 namespace Flower
 {
-    public abstract class EntityTowerBase : EntityLogicEx, IPause
+    public abstract class EntityTowerBase : EntityTargetable, IPause
     {
         protected EntityDataTower entityDataTower;
         protected Entity entityTowerLevel;
         protected EntityTowerLevel entityLogicTowerLevel;
 
         protected bool pause = false;
+
+        protected override float MaxHP
+        {
+            get
+            {
+                if (entityDataTower == null)
+                    return 0;
+                else
+                    return entityDataTower.Tower.MaxHP;
+            }
+        }
 
         protected override void OnInit(object userData)
         {

@@ -8,7 +8,7 @@ using GameFramework;
 
 namespace Flower
 {
-    public class TowerAttacker : MonoBehaviour
+    public class Attacker : MonoBehaviour
     {
         //public LayerMask targetMask { get; protected set; }
         private Transform[] projectilePoints;
@@ -20,7 +20,7 @@ namespace Flower
         private RandomSound randomSound;
 
         private Entity ownerEntity;
-        private TowerTargetter towerTargetter;
+        private Targetter towerTargetter;
         private ILauncher m_Launcher;
         private float m_FireTimer;
         private EntityTargetable m_TrackingTarget;
@@ -36,7 +36,7 @@ namespace Flower
             get { return m_TrackingTarget; }
         }
 
-        public TowerTargetter Targetter
+        public Targetter Targetter
         {
             get { return towerTargetter; }
         }
@@ -176,7 +176,7 @@ namespace Flower
             epicenter = null;
         }
 
-        public void SetTowerTargetter(TowerTargetter towerTargetter)
+        public void SetTargetter(Targetter towerTargetter)
         {
             this.towerTargetter = towerTargetter;
             this.towerTargetter.acquiredTarget += OnAcquiredTarget;

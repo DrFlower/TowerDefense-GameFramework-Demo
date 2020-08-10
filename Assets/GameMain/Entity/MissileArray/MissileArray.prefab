@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 65951267865829534}
   - component: {fileID: 208429685695815266}
   - component: {fileID: -5948924678899624100}
+  - component: {fileID: 203136505196543330}
+  - component: {fileID: 1953651760984626364}
   m_Layer: 10
   m_Name: MissileArray
   m_TagString: Untagged
@@ -93,10 +95,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b424e8f69bf01074a800ab471334a7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EntityData:
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  DeadEffect: 0
   time: 10
+--- !u!114 &203136505196543330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190580923526002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc25b38e7ba31884c944d823251a32d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffectEntity: 1055
+  deadEffectOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1953651760984626364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190580923526002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e78ef8a2734284d82c9464f5889964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightedItems:
+  - sound: 23001
+    weight: 1
+  - sound: 23002
+    weight: 1
+  - sound: 23003
+    weight: 1
+  - sound: 23004
+    weight: 1
+  - sound: 23005
+    weight: 1
 --- !u!1 &5580354955075105239
 GameObject:
   m_ObjectHideFlags: 0
