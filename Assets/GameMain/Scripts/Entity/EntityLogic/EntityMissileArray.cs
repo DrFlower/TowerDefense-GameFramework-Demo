@@ -35,7 +35,7 @@ namespace Flower
 
                 if (timer > time)
                 {
-                    GameEntry.Event.Fire(this, SellTowerEventArgs.Create(entityDataTower.Tower.SerialId));
+                    GameEntry.Event.Fire(this, HideTowerInLevelEventArgs.Create(entityDataTower.Tower.SerialId));
                 }
             }
         }

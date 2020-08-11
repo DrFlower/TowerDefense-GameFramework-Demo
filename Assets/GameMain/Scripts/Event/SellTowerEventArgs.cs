@@ -7,9 +7,9 @@ using Flower.Data;
 
 namespace Flower
 {
-    public class SellTowerEventArgs : GameEventArgs
+    public class HideTowerInLevelEventArgs : GameEventArgs
     {
-        public static readonly int EventId = typeof(SellTowerEventArgs).GetHashCode();
+        public static readonly int EventId = typeof(HideTowerInLevelEventArgs).GetHashCode();
 
         public int TowerSerialId
         {
@@ -17,7 +17,7 @@ namespace Flower
             private set;
         }
 
-        public SellTowerEventArgs()
+        public HideTowerInLevelEventArgs()
         {
             TowerSerialId = 0;
         }
@@ -36,9 +36,9 @@ namespace Flower
             private set;
         }
 
-        public static SellTowerEventArgs Create(int towerSerialId, object userData = null)
+        public static HideTowerInLevelEventArgs Create(int towerSerialId, object userData = null)
         {
-            SellTowerEventArgs sellTowerEventArgs = ReferencePool.Acquire<SellTowerEventArgs>();
+            HideTowerInLevelEventArgs sellTowerEventArgs = ReferencePool.Acquire<HideTowerInLevelEventArgs>();
             sellTowerEventArgs.TowerSerialId = towerSerialId;
             return sellTowerEventArgs;
         }

@@ -9,13 +9,19 @@ namespace Flower
 {
     public abstract class EntityTargetable : EntityLogicEx
     {
-        public EnumEntity DeadEffect;
-
         protected Transform hpBarRoot;
 
         private Vector3 m_CurrentPosition, m_PreviousPosition;
 
         private RandomSound randomSound;
+
+        public virtual EnumAlignment Alignment
+        {
+            get
+            {
+                return EnumAlignment.None;
+            }
+        }
 
         protected float hp;
 

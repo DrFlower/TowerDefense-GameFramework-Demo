@@ -61,7 +61,7 @@ Transform:
   - {fileID: 4509685366740576}
   - {fileID: 4388978090588064}
   m_Father: {fileID: 4527377347391372}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300474929184216
 GameObject:
@@ -78,6 +78,8 @@ GameObject:
   - component: {fileID: -8901520418164559954}
   - component: {fileID: 6887146816301097989}
   - component: {fileID: 5581118407849851143}
+  - component: {fileID: -7387320608984128167}
+  - component: {fileID: 7240300221118807812}
   m_Layer: 11
   m_Name: SuperHoverboss
   m_TagString: Untagged
@@ -96,6 +98,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2079124830984291970}
+  - {fileID: 5168373907386000258}
   - {fileID: 4536612545928252}
   - {fileID: 4967274193597520}
   m_Father: {fileID: 0}
@@ -204,6 +208,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applyEffectOffset: {x: 0, y: 0.2, z: 0}
   applyEffectScale: 1.5
+--- !u!114 &-7387320608984128167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300474929184216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc439661f4da4a544a4cb6e0a629ccc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 4509685366740576}
+  projectilePoints:
+  - {fileID: 4004142885804742}
+  - {fileID: 4254310097177378}
+  epicenter: {fileID: 4527377347391372}
+  launcher: {fileID: 7240300221118807812}
+--- !u!114 &7240300221118807812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300474929184216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02c1db2c9b0dc840a388990976bd759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParticleSystem: {fileID: 198084062290970560, guid: 472ed7c77852d9246b992f343f81a8f2,
+    type: 3}
 --- !u!1 &1341545582985454
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +319,7 @@ Transform:
   m_LocalScale: {x: 1.4, y: 0.18135011, z: 1}
   m_Children: []
   m_Father: {fileID: 4527377347391372}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1570297304350686
 GameObject:
@@ -751,3 +787,149 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3199387779924626076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079124830984291970}
+  - component: {fileID: 4209818419162504375}
+  - component: {fileID: 8919908445780840405}
+  m_Layer: 11
+  m_Name: Targetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079124830984291970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199387779924626076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4527377347391372}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4209818419162504375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199387779924626076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed6fb3391123434293c0583d1b41502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchRate: 0
+  idleRotationSpeed: 39
+  idleCorrectionTime: 2
+  idleWaitTime: 2
+--- !u!135 &8919908445780840405
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199387779924626076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3590342568926660433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5168373907386000258}
+  - component: {fileID: 1124176785894170287}
+  - component: {fileID: 1129294317416832672}
+  m_Layer: 0
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5168373907386000258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3590342568926660433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4527377347391372}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1124176785894170287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3590342568926660433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cc46ddef4ef0c4a8b3bfa61e74982d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1129294317416832672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3590342568926660433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e78ef8a2734284d82c9464f5889964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightedItems:
+  - sound: 25001
+    weight: 1
+  - sound: 25002
+    weight: 1
+  - sound: 25003
+    weight: 1
+  - sound: 25004
+    weight: 1
+  - sound: 25005
+    weight: 1
+  - sound: 25006
+    weight: 1
+  - sound: 25007
+    weight: 1
+  - sound: 25008
+    weight: 1
+  - sound: 25009
+    weight: 1
+  - sound: 25010
+    weight: 1
+  - sound: 25011
+    weight: 1
+  - sound: 25012
+    weight: 1
+  - sound: 25013
+    weight: 1
+  - sound: 25014
+    weight: 1

@@ -11,7 +11,6 @@ namespace Flower
         private Targetter targetter;
         private Attacker attacker;
 
-
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -62,6 +61,7 @@ namespace Flower
             base.OnShowTowerLevelSuccess(entity);
 
             EntityTowerLevel entityTowerLevel = entity.Logic as EntityTowerLevel;
+            targetter.SetAlignment(Alignment);
             targetter.SetTurret(entityTowerLevel.turret);
             targetter.SetSearchRange(entityDataTower.Tower.Range);
             targetter.ResetTargetter();

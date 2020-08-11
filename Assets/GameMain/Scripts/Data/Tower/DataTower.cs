@@ -179,12 +179,11 @@ namespace Flower.Data
 
             if (dataLevel.LevelState != EnumLevelState.Prepare && dataLevel.LevelState != EnumLevelState.Normal)
             {
-
                 return;
             }
 
             Tower tower = dicTower[serialId];
-            GameEntry.Event.Fire(this, SellTowerEventArgs.Create(tower.SerialId));
+            GameEntry.Event.Fire(this, HideTowerInLevelEventArgs.Create(tower.SerialId));
 
             DataPlayer dataPlayer = GameEntry.Data.GetData<DataPlayer>();
 

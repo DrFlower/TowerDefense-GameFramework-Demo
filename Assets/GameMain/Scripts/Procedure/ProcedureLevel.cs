@@ -51,7 +51,7 @@ namespace Flower
             GameEntry.Event.Subscribe(GameoverEventArgs.EventId, OnGameOver);
             GameEntry.Event.Subscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Subscribe(BuildTowerEventArgs.EventId, OnBuildTower);
-            GameEntry.Event.Subscribe(SellTowerEventArgs.EventId, OnSellTower);
+            GameEntry.Event.Subscribe(HideTowerInLevelEventArgs.EventId, OnSellTower);
             GameEntry.Event.Subscribe(StartWaveEventArgs.EventId, OnStartWave);
             GameEntry.Event.Subscribe(SpawnEnemyEventArgs.EventId, OnSpawnEnemy);
             GameEntry.Event.Subscribe(HideEnemyEventArgs.EventId, OnHideEnemyEntity);
@@ -90,7 +90,7 @@ namespace Flower
             GameEntry.Event.Unsubscribe(GameoverEventArgs.EventId, OnGameOver);
             GameEntry.Event.Unsubscribe(ShowPreviewTowerEventArgs.EventId, OnShowPreviewTower);
             GameEntry.Event.Unsubscribe(BuildTowerEventArgs.EventId, OnBuildTower);
-            GameEntry.Event.Unsubscribe(SellTowerEventArgs.EventId, OnSellTower);
+            GameEntry.Event.Unsubscribe(HideTowerInLevelEventArgs.EventId, OnSellTower);
             GameEntry.Event.Unsubscribe(StartWaveEventArgs.EventId, OnStartWave);
             GameEntry.Event.Unsubscribe(SpawnEnemyEventArgs.EventId, OnSpawnEnemy);
             GameEntry.Event.Unsubscribe(HideEnemyEventArgs.EventId, OnHideEnemyEntity);
@@ -223,14 +223,14 @@ namespace Flower
 
         private void OnSellTower(object sender, GameEventArgs e)
         {
-            SellTowerEventArgs ne = (SellTowerEventArgs)e;
+            HideTowerInLevelEventArgs ne = (HideTowerInLevelEventArgs)e;
             if (ne == null)
                 return;
 
             if (levelControl == null)
                 return;
 
-            levelControl.DestroyTower(ne.TowerSerialId);
+            levelControl.HideTower(ne.TowerSerialId);
         }
 
         private void OnSpawnEnemy(object sender, GameEventArgs e)

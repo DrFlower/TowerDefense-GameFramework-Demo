@@ -10,6 +10,11 @@ namespace Flower
 {
     public class EntityEnemy : EntityTargetable, IPause
     {
+        public Transform turret;
+        public Transform[] projectilePoints;
+        public Transform epicenter;
+        public Launcher launcher;
+
         private LevelPath levelPath;
         private int targetPathNodeIndex;
         private NavMeshAgent agent;
@@ -30,6 +35,14 @@ namespace Flower
 
         private Entity slowDownEffect;
         private bool loadSlowDownEffect = false;
+
+        public override EnumAlignment Alignment
+        {
+            get
+            {
+                return EnumAlignment.Enemy;
+            }
+        }
 
         protected override float MaxHP
         {

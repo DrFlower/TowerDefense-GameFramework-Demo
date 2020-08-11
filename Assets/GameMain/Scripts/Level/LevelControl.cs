@@ -181,7 +181,7 @@ namespace Flower
             HidePreviewTower();
         }
 
-        public void DestroyTower(int towerSerialId)
+        public void HideTower(int towerSerialId)
         {
             if (!dicTowerInfo.ContainsKey(towerSerialId))
                 return;
@@ -194,12 +194,12 @@ namespace Flower
             ReferencePool.Release(towerInfo);
         }
 
-        private void DestroyAllTower()
+        private void HideAllTower()
         {
             List<int> towerSerialIds = new List<int>(dicTowerInfo.Keys);
             for (int i = 0; i < towerSerialIds.Count; i++)
             {
-                DestroyTower(towerSerialIds[i]);
+                HideTower(towerSerialIds[i]);
             }
         }
 
@@ -314,7 +314,7 @@ namespace Flower
                 pause = false;
             }
 
-            DestroyAllTower();
+            HideAllTower();
             HideAllEnemyEntity();
         }
 
@@ -333,7 +333,7 @@ namespace Flower
                 pause = false;
             }
 
-            DestroyAllTower();
+            HideAllTower();
             entityLoader.HideAllEntity();
         }
 

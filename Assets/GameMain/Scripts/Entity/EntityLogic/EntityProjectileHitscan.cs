@@ -36,7 +36,7 @@ namespace Flower
 
             if (timer >= delayTime)
             {
-                AttackEnemy();
+                AttackTarget();
                 GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
             }
 
@@ -54,7 +54,7 @@ namespace Flower
 
         }
 
-        private void AttackEnemy()
+        private void AttackTarget()
         {
             SpawnCollisionParticles();
 

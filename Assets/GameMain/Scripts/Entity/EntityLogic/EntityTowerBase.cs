@@ -15,6 +15,14 @@ namespace Flower
 
         protected bool pause = false;
 
+        public override EnumAlignment Alignment
+        {
+            get
+            {
+                return EnumAlignment.Tower;
+            }
+        }
+
         protected override float MaxHP
         {
             get
@@ -41,6 +49,8 @@ namespace Flower
                 Log.Error("Entity tower '{0}' tower data invaild.", Id);
                 return;
             }
+
+            hp = entityDataTower.Tower.MaxHP;
 
             ShowTowerLevelEntity(entityDataTower.Tower.Level);
 
@@ -97,6 +107,13 @@ namespace Flower
                 return;
 
             ShowTowerLevelEntity(ne.Tower.Level);
+        }
+
+        protected override void Dead()
+        {
+            base.Dead();
+
+            GameEntry.Event.Fire(this, HideTowerInLevelEventArgs.Create(entityDataTower.Tower.SerialId));
         }
 
         public void Pause()

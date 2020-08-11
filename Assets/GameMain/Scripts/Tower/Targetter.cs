@@ -102,32 +102,8 @@ namespace Flower
         /// </summary>
         protected float m_CurrentRotationSpeed;
 
-        ///// <summary>
-        ///// returns the radius of the collider whether
-        ///// its a sphere or capsule
-        ///// </summary>
-        //public float effectRadius
-        //{
-        //    get
-        //    {
-        //        var sphere = sphereCollider as SphereCollider;
-        //        if (sphere != null)
-        //        {
-        //            return sphere.radius;
-        //        }
-        //        var capsule = sphereCollider as CapsuleCollider;
-        //        if (capsule != null)
-        //        {
-        //            return capsule.radius;
-        //        }
-        //        return 0;
-        //    }
-        //}
 
-        ///// <summary>
-        ///// The alignment of the affector
-        ///// </summary>
-        //public IAlignmentProvider alignment;
+        private EnumAlignment alignment;
 
         /// <summary>
         /// Returns the current target
@@ -176,12 +152,12 @@ namespace Flower
         /// <returns>true if targetable is vaild, false if not</returns>
         protected virtual bool IsTargetableValid(EntityTargetable targetable)
         {
-            if (targetable == null)
+            if (targetable == null || alignment == EnumAlignment.None || targetable.Alignment == EnumAlignment.None)
             {
                 return false;
             }
 
-            return targetable.Available && !targetable.IsDead;
+            return targetable.Available && !targetable.IsDead && alignment != targetable.Alignment;
         }
 
         /// <summary>
@@ -313,6 +289,7 @@ namespace Flower
             EmptyTurret();
             SetSearchRangeZero();
             enabled = false;
+            alignment = EnumAlignment.None;
         }
 
         /// <summary>
@@ -423,6 +400,11 @@ namespace Flower
         public void EmptyTurret()
         {
             this.turret = null;
+        }
+
+        public void SetAlignment(EnumAlignment enumAlignment)
+        {
+            this.alignment = enumAlignment;
         }
 
         public void SetSearchRange(float range)
