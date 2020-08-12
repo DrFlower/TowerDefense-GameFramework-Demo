@@ -5,6 +5,8 @@ using UnityEngine.AI;
 using Flower.Data;
 using UnityGameFramework.Runtime;
 using System;
+using GameFramework.Fsm;
+using GameFramework;
 
 namespace Flower
 {
@@ -15,14 +17,7 @@ namespace Flower
         public Transform epicenter;
         public Launcher launcher;
 
-        private LevelPath levelPath;
-        private int targetPathNodeIndex;
-        private NavMeshAgent agent;
-        private EntityHPBar entityHPBar;
-
-        private bool attacked = false;
-        private float attackTimer = 0;
-        private EntityPlayer targetPlayer;
+        private IFsm<EntityEnemy> fsm;
 
         private DataPlayer dataPlayer;
 
@@ -31,10 +26,22 @@ namespace Flower
         //表示是否死亡或已攻击玩家即将回收，以防重复执行回收逻辑
         private bool hide = false;
 
-        protected bool pause = false;
-
         private Entity slowDownEffect;
         private bool loadSlowDownEffect = false;
+
+        private List<FsmState<EntityEnemy>> stateList;
+
+        public Targetter Targetter
+        {
+            get;
+            private set;
+        }
+
+        public Attacker attacker
+        {
+            get;
+            private set;
+        }
 
         public override EnumAlignment Alignment
         {
@@ -67,54 +74,66 @@ namespace Flower
             private set;
         }
 
+        public NavMeshAgent Agent
+        {
+            get;
+            private set;
+        }
+
+        public bool isPathBlocked
+        {
+            get { return Agent.pathStatus == NavMeshPathStatus.PathPartial; }
+        }
+
+        public bool isAtDestination
+        {
+            get { return Agent.remainingDistance <= Agent.stoppingDistance; }
+        }
+
+        public LevelPath LevelPath
+        {
+            get;
+            private set;
+        }
+
+        public EntityPlayer TargetPlayer
+        {
+            get;
+            private set;
+        }
+
+        public bool IsPause
+        {
+            get;
+            private set;
+        }
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            agent = GetComponent<NavMeshAgent>();
+            Agent = GetComponent<NavMeshAgent>();
             hpBarRoot = transform.Find("HealthBar");
             dicSlowDownRates = new Dictionary<int, float>();
+            stateList = new List<FsmState<EntityEnemy>>();
             CurrentSlowRate = 1;
+
+            Targetter = transform.Find("Targetter").GetComponent<Targetter>();
+            attacker = transform.Find("Attack").GetComponent<Attacker>();
+
+            Targetter.OnInit(userData);
+            attacker.OnInit(userData);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            if (pause)
+            if (IsPause)
                 return;
 
-            if (targetPlayer != null && !attacked)
-            {
-                attackTimer += elapseSeconds;
-                if (attackTimer > 1)
-                {
-                    targetPlayer.Damage(EntityDataEnemy.EnemyData.Damage);
-                    attacked = true;
-                    AfterAttack();
-                }
-            }
-
-            if (levelPath == null || levelPath.PathNodes == null || levelPath.PathNodes.Length == 0)
-                return;
-
-            if (levelPath.PathNodes.Length > targetPathNodeIndex)
-            {
-                agent.SetDestination(levelPath.PathNodes[targetPathNodeIndex].position);
-                if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(levelPath.PathNodes[targetPathNodeIndex].position.x, 0, levelPath.PathNodes[targetPathNodeIndex].position.z)) < 1f)
-                {
-                    if (levelPath.PathNodes.Length - 1 == targetPathNodeIndex)
-                    {
-                        agent.isStopped = true;
-                    }
-                    else
-                    {
-                        targetPathNodeIndex++;
-                    }
-                }
-            }
-
-            agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
+            Targetter.OnUpdate(elapseSeconds, realElapseSeconds);
+            attacker.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnShow(object userData)
@@ -128,38 +147,82 @@ namespace Flower
                 Log.Error("Entity enemy '{0}' entity data invaild.", Id);
                 return;
             }
+
             hide = false;
-            agent.enabled = true;
-            agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
-
-            levelPath = EntityDataEnemy.LevelPath;
-
-            targetPathNodeIndex = 0;
-
+            Agent.enabled = true;
+            LevelPath = EntityDataEnemy.LevelPath;
             hp = EntityDataEnemy.EnemyData.MaxHP;
-
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
+
+            attacker.SetOwnerEntity(Entity);
+            Targetter.SetAlignment(Alignment);
+            Targetter.SetTurret(turret);
+            Targetter.SetSearchRange(EntityDataEnemy.EnemyData.Range);
+            Targetter.ResetTargetter();
+
+            AttackerData attackerData = AttackerData.Create(EntityDataEnemy.EnemyData.Range,
+                EntityDataEnemy.EnemyData.FireRate,
+                EntityDataEnemy.EnemyData.IsMultiAttack,
+                EntityDataEnemy.EnemyData.ProjectileType,
+                EntityDataEnemy.EnemyData.ProjectileEntityId
+                );
+
+            attacker.SetData(attackerData, EntityDataEnemy.EnemyData.ProjectileData);
+            attacker.SetTargetter(Targetter);
+            attacker.SetProjectilePoints(projectilePoints);
+            attacker.SetEpicenter(epicenter);
+            attacker.SetLaunch(launcher);
+            attacker.ResetAttack();
+
+            Targetter.OnShow(userData);
+            attacker.OnShow(userData);
+
+            CreateFsm();
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
 
-            levelPath = null;
+            Targetter.OnHide(isShutdown, userData);
+            attacker.OnHide(isShutdown, userData);
+            attacker.EmptyOwnerEntity();
+
+            LevelPath = null;
             EntityDataEnemy = null;
-            targetPathNodeIndex = 0;
             hp = 0;
-            agent.enabled = false;
-            attacked = false;
-            attackTimer = 0;
-            targetPlayer = null;
-
+            Agent.enabled = false;
+            TargetPlayer = null;
             hide = true;
-
             dataPlayer = null;
-
+            DestroyFsm();
             RemoveSlowEffect();
             dicSlowDownRates.Clear();
+        }
+
+        protected virtual void AddFsmState()
+        {
+            stateList.Add(EnemyMoveState.Create());
+            stateList.Add(EnemyAttackHomeBaseState.Create());
+        }
+
+        private void CreateFsm()
+        {
+            AddFsmState();
+            fsm = GameEntry.Fsm.CreateFsm<EntityEnemy>(gameObject.name, this, stateList);
+            fsm.Start<EnemyMoveState>();
+        }
+
+        private void DestroyFsm()
+        {
+            GameEntry.Fsm.DestroyFsm(fsm);
+            foreach (var item in stateList)
+            {
+                ReferencePool.Release((IReference)item);
+            }
+
+            stateList.Clear();
+            fsm = null;
         }
 
         public void AfterAttack()
@@ -185,17 +248,12 @@ namespace Flower
 
         private void OnTriggerEnter(Collider other)
         {
-            if (attacked)
-                return;
-
             var player = other.GetComponent<EntityPlayer>();
             if (player == null)
             {
                 return;
             }
-            targetPlayer = player;
-
-            player.Charge();
+            TargetPlayer = player;
         }
 
         public void ApplySlow(int towerId, float slowRate)
@@ -279,14 +337,14 @@ namespace Flower
 
         public void Pause()
         {
-            pause = true;
-            agent.speed = 0;
+            IsPause = true;
+            Agent.speed = 0;
         }
 
         public void Resume()
         {
-            pause = false;
-            agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
+            IsPause = false;
+            Agent.speed = EntityDataEnemy.EnemyData.Speed * CurrentSlowRate;
         }
     }
 }

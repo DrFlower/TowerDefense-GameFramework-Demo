@@ -2,11 +2,11 @@
 #	Id		NameId	EntityId	MaxHP	Damage	TowerDamage	ProjectileEntityId	ProjectileType	ProjectileData	FireRate	Range	IsMultiAttack	Speed	AddEnergy
 #	int		string	int	float	int	float	int	string	int	float	float	bool	float	float
 #	配置编号	策划备注	敌人名字Id	实体编号	血量	对基地伤害	对炮塔伤害	炮弹实体编号	炮弹类型	炮弹数据	开火频率	范围	是否同时攻击多个敌人	移动速度	死亡时玩家获得能量
-	101	虫子	Buggy	1031	4	1	2	3052	EntityProjectileHitscan	1011	1	4	FALSE	4.8	1
-	102	直升机	Copter	1032	16	1	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	3	3
-	103	坦克	Tank	1033	35	1	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	2	4
-	104	首领	BOSS	1034	600	2	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	1.2	8
-	105	超级虫子	SuperBuggy	1035	14	1	2	3052	EntityProjectileHitscan	1011	1	4	FALSE	4.8	2
-	106	超级直升机	SuperCopter	1036	32	1	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	3	4
-	107	超级坦克	SuperTank	1037	100	1	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	2	4
-	108	超级首领	SuperBOSS	1038	1400	2	2	3052	EntityProjectileHitscan	1011	1	6	FALSE	1.2	16
+	101	虫子	Buggy	1031	4	1	2	1053	EntityProjectileHitscan	1011	1	4	FALSE	4.8	1
+	102	直升机	Copter	1032	16	1	2	1053	EntityProjectileHitscan	1011	1	6	FALSE	3	3
+	103	坦克	Tank	1033	35	1	2	1053	EntityProjectileHitscan	1011	1	6	FALSE	2	4
+	104	首领	BOSS	1034	600	2	2	1053	EntityProjectileHitscan	1011	1	6	FALSE	1.2	8
+	105	超级虫子	SuperBuggy	1035	14	1	2	1053	EntityProjectileHitscan	1011	1	4	FALSE	4.8	2
+	106	超级直升机	SuperCopter	1036	32	1	2	1053	EntityProjectileHitscan	1011	1	6	FALSE	3	4
+	107	超级坦克	SuperTank	1037	100	1	2	1053	EntityProjectileHitscan	1011	1	6	FALSE	2	4
+	108	超级首领	SuperBOSS	1038	1400	2	2	1053	EntityProjectileHitscan	1011	1	6	FALSE	1.2	16

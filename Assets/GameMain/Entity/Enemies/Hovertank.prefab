@@ -240,6 +240,8 @@ MonoBehaviour:
   - {fileID: 4039770894478588}
   epicenter: {fileID: 4379824046344048}
   launcher: {fileID: 2885124783351344908}
+  targetter: {fileID: 0}
+  attacker: {fileID: 0}
 --- !u!114 &2885124783351344908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02c1db2c9b0dc840a388990976bd759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireParticleSystem: {fileID: 198084062290970560, guid: 472ed7c77852d9246b992f343f81a8f2,
-    type: 3}
+  fireParticleSystem: {fileID: 0}
 --- !u!1 &1304416442214840
 GameObject:
   m_ObjectHideFlags: 0
