@@ -9,6 +9,8 @@ namespace Flower
 {
     public class EnemyAttackTowerState : FsmState<EntityEnemy>, IReference
     {
+        private EntityEnemy owner;
+
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
@@ -18,22 +20,28 @@ namespace Flower
         {
             base.OnEnter(procedureOwner);
 
+            owner = procedureOwner.Owner;
+            owner.Agent.isStopped = true;
+            owner.Attacker.enabled = false;
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            var owner = procedureOwner.Owner;
-
             if (owner.IsPause)
                 return;
 
+            owner.Attacker.OnUpdate(elapseSeconds, realElapseSeconds);
+
+            if (!owner.isPathBlocked)
+                ChangeState<EnemyMoveState>(procedureOwner);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
+            owner = null;
         }
 
 

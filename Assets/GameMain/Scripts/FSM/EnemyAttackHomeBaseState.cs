@@ -9,6 +9,7 @@ namespace Flower
 {
     public class EnemyAttackHomeBaseState : FsmState<EntityEnemy>, IReference
     {
+        private EntityEnemy owner;
         private bool attacked = false;
         private float attackTimer = 0;
 
@@ -21,7 +22,7 @@ namespace Flower
         {
             base.OnEnter(procedureOwner);
 
-            var owner = procedureOwner.Owner;
+            owner = procedureOwner.Owner;
 
             if (owner.TargetPlayer != null)
                 owner.TargetPlayer.Charge();
@@ -30,8 +31,6 @@ namespace Flower
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-
-            var owner = procedureOwner.Owner;
 
             if (owner.IsPause)
                 return;
@@ -56,6 +55,7 @@ namespace Flower
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
+            owner = null;
         }
 
 

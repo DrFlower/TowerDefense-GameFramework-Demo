@@ -37,7 +37,7 @@ namespace Flower
             private set;
         }
 
-        public Attacker attacker
+        public Attacker Attacker
         {
             get;
             private set;
@@ -119,10 +119,10 @@ namespace Flower
             CurrentSlowRate = 1;
 
             Targetter = transform.Find("Targetter").GetComponent<Targetter>();
-            attacker = transform.Find("Attack").GetComponent<Attacker>();
+            Attacker = transform.Find("Attack").GetComponent<Attacker>();
 
             Targetter.OnInit(userData);
-            attacker.OnInit(userData);
+            Attacker.OnInit(userData);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -131,9 +131,6 @@ namespace Flower
 
             if (IsPause)
                 return;
-
-            Targetter.OnUpdate(elapseSeconds, realElapseSeconds);
-            attacker.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnShow(object userData)
@@ -154,7 +151,7 @@ namespace Flower
             hp = EntityDataEnemy.EnemyData.MaxHP;
             dataPlayer = GameEntry.Data.GetData<DataPlayer>();
 
-            attacker.SetOwnerEntity(Entity);
+            Attacker.SetOwnerEntity(Entity);
             Targetter.SetAlignment(Alignment);
             Targetter.SetTurret(turret);
             Targetter.SetSearchRange(EntityDataEnemy.EnemyData.Range);
@@ -167,15 +164,15 @@ namespace Flower
                 EntityDataEnemy.EnemyData.ProjectileEntityId
                 );
 
-            attacker.SetData(attackerData, EntityDataEnemy.EnemyData.ProjectileData);
-            attacker.SetTargetter(Targetter);
-            attacker.SetProjectilePoints(projectilePoints);
-            attacker.SetEpicenter(epicenter);
-            attacker.SetLaunch(launcher);
-            attacker.ResetAttack();
+            Attacker.SetData(attackerData, EntityDataEnemy.EnemyData.ProjectileData);
+            Attacker.SetTargetter(Targetter);
+            Attacker.SetProjectilePoints(projectilePoints);
+            Attacker.SetEpicenter(epicenter);
+            Attacker.SetLaunch(launcher);
+            Attacker.ResetAttack();
 
             Targetter.OnShow(userData);
-            attacker.OnShow(userData);
+            Attacker.OnShow(userData);
 
             CreateFsm();
         }
@@ -185,8 +182,8 @@ namespace Flower
             base.OnHide(isShutdown, userData);
 
             Targetter.OnHide(isShutdown, userData);
-            attacker.OnHide(isShutdown, userData);
-            attacker.EmptyOwnerEntity();
+            Attacker.OnHide(isShutdown, userData);
+            Attacker.EmptyOwnerEntity();
 
             LevelPath = null;
             EntityDataEnemy = null;
@@ -204,6 +201,7 @@ namespace Flower
         {
             stateList.Add(EnemyMoveState.Create());
             stateList.Add(EnemyAttackHomeBaseState.Create());
+            stateList.Add(EnemyAttackTowerState.Create());
         }
 
         private void CreateFsm()
