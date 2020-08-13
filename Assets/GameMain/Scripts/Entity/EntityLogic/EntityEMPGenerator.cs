@@ -8,7 +8,7 @@ namespace Flower
 {
     public class EntityEMPGenerator : EntityTowerBase
     {
-        private Targetter towerTargetter;
+        private Targetter targetter;
         private List<EntityEnemy> slowList;
 
         private int? soundSerialId = null;
@@ -17,18 +17,18 @@ namespace Flower
         {
             base.OnInit(userData);
 
-            towerTargetter = transform.Find("Targetter").GetComponent<Targetter>();
+            targetter = transform.Find("Targetter").GetComponent<Targetter>();
 
             slowList = new List<EntityEnemy>();
 
-            towerTargetter.OnInit(userData);
+            targetter.OnInit(userData);
         }
 
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
 
-            towerTargetter.OnShow(userData);
+            targetter.OnShow(userData);
 
             soundSerialId = GameEntry.Sound.PlaySound(EnumSound.TDEMPIdle, Entity);
         }
@@ -40,7 +40,7 @@ namespace Flower
             if (pause)
                 return;
 
-            towerTargetter.OnUpdate(elapseSeconds, realElapseSeconds);
+            targetter.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -49,9 +49,9 @@ namespace Flower
 
             base.OnHide(isShutdown, userData);
 
-            towerTargetter.OnHide(isShutdown, userData);
-            towerTargetter.targetEntersRange -= OnTargetEntersRange;
-            towerTargetter.targetExitsRange -= OnTargetExitsRange;
+            targetter.OnHide(isShutdown, userData);
+            targetter.targetEntersRange -= OnTargetEntersRange;
+            targetter.targetExitsRange -= OnTargetExitsRange;
 
             if (soundSerialId != null)
             {
@@ -66,12 +66,13 @@ namespace Flower
             base.OnShowTowerLevelSuccess(entity);
 
             EntityTowerLevel entityTowerLevel = entity.Logic as EntityTowerLevel;
-            towerTargetter.SetTurret(entityTowerLevel.turret);
-            towerTargetter.SetSearchRange(entityDataTower.Tower.Range);
-            towerTargetter.ResetTargetter();
+            targetter.SetAlignment(Alignment);
+            targetter.SetTurret(entityTowerLevel.turret);
+            targetter.SetSearchRange(entityDataTower.Tower.Range);
+            targetter.ResetTargetter();
 
-            towerTargetter.targetEntersRange += OnTargetEntersRange;
-            towerTargetter.targetExitsRange += OnTargetExitsRange;
+            targetter.targetEntersRange += OnTargetEntersRange;
+            targetter.targetExitsRange += OnTargetExitsRange;
 
             foreach (var item in slowList)
             {
@@ -84,7 +85,6 @@ namespace Flower
             EntityEnemy enemy = target as EntityEnemy;
             if (enemy == null)
                 return;
-
             enemy.ApplySlow(entityDataTower.Tower.SerialId, entityDataTower.Tower.SpeedDownRate);
             slowList.Add(enemy);
             enemy.OnDead += RemoveSlowTarget;
