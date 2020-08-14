@@ -36,6 +36,14 @@ namespace Flower.Data
             }
         }
 
+        public string Type
+        {
+            get
+            {
+                return dREnemy.Type;
+            }
+        }
+
         public float MaxHP
         {
             get

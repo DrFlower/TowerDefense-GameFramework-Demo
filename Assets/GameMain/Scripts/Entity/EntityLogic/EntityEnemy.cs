@@ -17,7 +17,7 @@ namespace Flower
         public Transform epicenter;
         public Launcher launcher;
 
-        private IFsm<EntityEnemy> fsm;
+        protected IFsm<EntityEnemy> fsm;
 
         private DataPlayer dataPlayer;
 
@@ -29,7 +29,7 @@ namespace Flower
         private Entity slowDownEffect;
         private bool loadSlowDownEffect = false;
 
-        private List<FsmState<EntityEnemy>> stateList;
+        protected List<FsmState<EntityEnemy>> stateList;
 
         public Targetter Targetter
         {
@@ -204,11 +204,16 @@ namespace Flower
             stateList.Add(EnemyAttackTowerState.Create());
         }
 
+        protected virtual void StartFsm()
+        {
+            fsm.Start<EnemyMoveState>();
+        }
+
         private void CreateFsm()
         {
             AddFsmState();
             fsm = GameEntry.Fsm.CreateFsm<EntityEnemy>(gameObject.name, this, stateList);
-            fsm.Start<EnemyMoveState>();
+            StartFsm();
         }
 
         private void DestroyFsm()

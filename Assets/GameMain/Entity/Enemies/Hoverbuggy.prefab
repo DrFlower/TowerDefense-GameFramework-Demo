@@ -302,8 +302,6 @@ MonoBehaviour:
   - {fileID: 4013251577074370}
   epicenter: {fileID: 4066970842593808}
   launcher: {fileID: 7983052861202465810}
-  targetter: {fileID: 0}
-  attacker: {fileID: 0}
 --- !u!114 &7983052861202465810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +534,7 @@ GameObject:
   - component: {fileID: 5190285210085605761}
   - component: {fileID: 3709137159518309917}
   - component: {fileID: 3818540502101782669}
+  - component: {fileID: 4932419788821004646}
   m_Layer: 11
   m_Name: Targetter
   m_TagString: Untagged
@@ -586,6 +585,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.00001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4932419788821004646
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716511909853235442}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3117867131515921595
 GameObject:
   m_ObjectHideFlags: 0

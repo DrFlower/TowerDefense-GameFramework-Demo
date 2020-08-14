@@ -213,7 +213,7 @@ namespace Flower
                 return;
             }
 
-            entityLoader.ShowEntity<EntityEnemy>(enemyData.EntityId,
+            entityLoader.ShowEntity(enemyData.EntityId, TypeUtility.GetEntityType(enemyData.Type),
                 (entity) =>
                 {
                     dicEntityEnemy.Add(entity.Id, (EntityEnemy)entity.Logic);
@@ -337,7 +337,7 @@ namespace Flower
             entityLoader.HideAllEntity();
         }
 
-        public static LevelControl Create(Level level, LevelManager levelPathManager,CameraInput cameraInput)
+        public static LevelControl Create(Level level, LevelManager levelPathManager, CameraInput cameraInput)
         {
             LevelControl levelControl = ReferencePool.Acquire<LevelControl>();
             levelControl.level = level;

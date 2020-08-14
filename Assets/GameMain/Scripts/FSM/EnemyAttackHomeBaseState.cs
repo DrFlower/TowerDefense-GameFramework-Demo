@@ -42,10 +42,8 @@ namespace Flower
                     attackTimer += elapseSeconds;
                     if (attackTimer > 1)
                     {
-
                         owner.TargetPlayer.Damage(owner.EntityDataEnemy.EnemyData.Damage);
                         attacked = true;
-
                         owner.AfterAttack();
                     }
                 }
@@ -55,7 +53,6 @@ namespace Flower
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-            owner = null;
         }
 
 
@@ -72,6 +69,7 @@ namespace Flower
 
         public void Clear()
         {
+            owner = null;
             attacked = false;
             attackTimer = 0;
         }

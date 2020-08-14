@@ -4,16 +4,18 @@ using UnityEngine;
 using GameFramework;
 using GameFramework.Fsm;
 using ProcedureOwner = GameFramework.Fsm.IFsm<Flower.EntityEnemy>;
+using UnityEngine.AI;
+using UnityGameFramework.Runtime;
 
 namespace Flower
 {
-    public class EnemyMoveState : FsmState<EntityEnemy>, IReference
+    public class FlyingEnemyMoveState : FsmState<EntityEnemy>, IReference
     {
+        ProcedureOwner m_procedureOwner;
         private EntityEnemy owner;
         private int targetPathNodeIndex = 0;
-        protected EntityTargetable m_TargetTower;
 
-        public EnemyMoveState()
+        public FlyingEnemyMoveState()
         {
 
         }
@@ -28,10 +30,9 @@ namespace Flower
             base.OnEnter(procedureOwner);
 
             owner = procedureOwner.Owner;
-            owner.Agent.isStopped = false;
-            owner.Attacker.enabled = false;
+            owner.Agent.enabled = true;
+            m_procedureOwner = procedureOwner;
             owner.Agent.SetDestination(owner.LevelPath.PathNodes[targetPathNodeIndex].position);
-            owner.Targetter.transform.position = owner.transform.position;
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -40,8 +41,6 @@ namespace Flower
 
             if (owner.IsPause)
                 return;
-
-            owner.Targetter.OnUpdate(elapseSeconds, realElapseSeconds);
 
             if (owner.TargetPlayer != null)
             {
@@ -53,6 +52,7 @@ namespace Flower
             if (owner.LevelPath == null || owner.LevelPath.PathNodes == null || owner.LevelPath.PathNodes.Length == 0)
                 return;
 
+
             if (owner.LevelPath.PathNodes.Length > targetPathNodeIndex && owner.isAtDestination)
             {
                 if (owner.LevelPath.PathNodes.Length - 1 != targetPathNodeIndex)
@@ -63,47 +63,18 @@ namespace Flower
 
             owner.Agent.speed = owner.EntityDataEnemy.EnemyData.Speed * owner.CurrentSlowRate;
 
+
             if (owner.isPathBlocked)
             {
-                owner.Targetter.transform.position = owner.Agent.pathEndPosition;
-                EntityTargetable tower = owner.Targetter.GetTarget();
-                if (tower != m_TargetTower)
-                {
-                    // if the current target is to be replaced, unsubscribe from removed event
-                    if (m_TargetTower != null)
-                    {
-                        m_TargetTower.OnHidden -= OnTargetTowerDestroyed;
-                    }
-
-                    // assign target, can be null
-                    m_TargetTower = tower;
-
-                    // if new target found subscribe to removed event
-                    if (m_TargetTower != null)
-                    {
-                        m_TargetTower.OnHidden += OnTargetTowerDestroyed;
-                    }
-                }
-                if (m_TargetTower == null)
-                {
-                    return;
-                }
-                float distanceToTower = Vector3.Distance(owner.transform.position, m_TargetTower.transform.position);
-                if (distanceToTower > owner.EntityDataEnemy.EnemyData.Range)
-                {
-                    return;
-                }
-
-                ChangeState<EnemyAttackTowerState>(procedureOwner);
+                ChangeState<FlyingEnemyPushingThroughState>(procedureOwner);
             }
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-            owner.Targetter.transform.position = owner.transform.position;
+            procedureOwner.SetData<VarInt>(Constant.ProcedureData.TargetPathNodeIndex, targetPathNodeIndex);
             owner = null;
-            m_TargetTower = null;
         }
 
 
@@ -112,26 +83,18 @@ namespace Flower
             base.OnDestroy(procedureOwner);
         }
 
-        private void OnTargetTowerDestroyed(EntityTargetable target)
-        {
-            if (m_TargetTower == target)
-            {
-                m_TargetTower.OnHidden -= OnTargetTowerDestroyed;
-                m_TargetTower = null;
-            }
-        }
 
-        public static EnemyMoveState Create()
+        public static FlyingEnemyMoveState Create()
         {
-            EnemyMoveState state = ReferencePool.Acquire<EnemyMoveState>();
+            FlyingEnemyMoveState state = ReferencePool.Acquire<FlyingEnemyMoveState>();
             return state;
         }
 
         public void Clear()
         {
             targetPathNodeIndex = 0;
+            m_procedureOwner.RemoveData(Constant.ProcedureData.TargetPathNodeIndex);
             owner = null;
-            m_TargetTower = null;
         }
     }
 }

@@ -237,8 +237,8 @@ GameObject:
   - component: {fileID: -1773874297114128252}
   - component: {fileID: -4469754986838924556}
   - component: {fileID: -3641990469454879387}
-  - component: {fileID: -3655492496836249724}
   - component: {fileID: 1128857807036743523}
+  - component: {fileID: -5286689693305635623}
   m_Layer: 14
   m_Name: Hovercopter
   m_TagString: Untagged
@@ -367,25 +367,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applyEffectOffset: {x: 0, y: 1.5, z: 0}
   applyEffectScale: 1
---- !u!114 &-3655492496836249724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567776943554846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc439661f4da4a544a4cb6e0a629ccc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turret: {fileID: 0}
-  projectilePoints:
-  - {fileID: 4147061605537532}
-  epicenter: {fileID: 4844500266223364}
-  launcher: {fileID: 1128857807036743523}
-  targetter: {fileID: 0}
-  attacker: {fileID: 0}
 --- !u!114 &1128857807036743523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +380,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireParticleSystem: {fileID: 0}
+--- !u!114 &-5286689693305635623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567776943554846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3e3b4c3d141d24db11df81f5f1b9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 0}
+  projectilePoints:
+  - {fileID: 4147061605537532}
+  epicenter: {fileID: 4844500266223364}
+  launcher: {fileID: 1128857807036743523}
 --- !u!1 &1827873515105730
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +534,7 @@ GameObject:
   - component: {fileID: 8860786828291933351}
   - component: {fileID: 2810146100027069090}
   - component: {fileID: 9157755221224733347}
+  - component: {fileID: 8356201086145885879}
   m_Layer: 14
   m_Name: Targetter
   m_TagString: Untagged
@@ -586,6 +585,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.00001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8356201086145885879
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063248128674910288}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5404599742601089374
 GameObject:
   m_ObjectHideFlags: 0

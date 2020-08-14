@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-11 01:25:33.332
+// 生成时间：2020-08-14 01:28:19.700
 //------------------------------------------------------------
 
 using GameFramework;
@@ -49,6 +49,15 @@ namespace Flower
         /// 获取实体编号。
         /// </summary>
         public int EntityId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取脚本类型。
+        /// </summary>
+        public string Type
         {
             get;
             private set;
@@ -170,6 +179,7 @@ namespace Flower
                 index++;
                 NameId = columnTexts[index++];
                 EntityId = int.Parse(columnTexts[index++]);
+                Type = columnTexts[index++];
                 MaxHP = float.Parse(columnTexts[index++]);
                 Damage = int.Parse(columnTexts[index++]);
                 TowerDamage = float.Parse(columnTexts[index++]);
@@ -192,6 +202,7 @@ namespace Flower
                         m_Id = binaryReader.Read7BitEncodedInt32();
                         NameId = strings[binaryReader.Read7BitEncodedInt32()];
                         EntityId = binaryReader.Read7BitEncodedInt32();
+                        Type = strings[binaryReader.Read7BitEncodedInt32()];
                         MaxHP = binaryReader.ReadSingle();
                         Damage = binaryReader.Read7BitEncodedInt32();
                         TowerDamage = binaryReader.ReadSingle();
