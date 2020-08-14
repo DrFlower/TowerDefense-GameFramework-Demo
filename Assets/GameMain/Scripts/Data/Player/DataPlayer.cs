@@ -62,7 +62,7 @@ namespace Flower.Data
 
             bool gameover = false;
 
-            if (HP < 0)
+            if (HP <= 0)
             {
                 HP = 0;
                 gameover = true;
