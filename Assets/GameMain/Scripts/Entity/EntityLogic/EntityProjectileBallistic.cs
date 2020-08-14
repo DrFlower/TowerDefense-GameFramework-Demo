@@ -238,7 +238,6 @@ namespace Flower
                 GameEntry.Event.Fire(this, HideEntityInLevelEventArgs.Create(Entity.Id));
                 hide = true;
             }
-            //GameEntry.Data.GetData<DataLevel>().CurrentLevel.EntityLoader.HideEntity(Entity.Id);
         }
 
         public override void Pause()

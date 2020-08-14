@@ -153,12 +153,13 @@ namespace Flower
                 loadedHPBar = true;
             }
 
+            hp -= value;
+
             if (entityHPBar)
             {
                 entityHPBar.UpdateHealth(hp / MaxHP);
             }
 
-            hp -= value;
 
             if (hp <= 0)
             {
