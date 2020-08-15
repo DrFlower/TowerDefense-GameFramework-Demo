@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -492,6 +494,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9450981, g: 0.2784314, b: 0, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -592,7 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5367988062897029175}
   - component: {fileID: 5367988062897029174}
-  - component: {fileID: 5367988062897029177}
+  - component: {fileID: 413142970616082997}
   m_Layer: 5
   m_Name: Scroll
   m_TagString: Untagged
@@ -650,7 +653,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5367988062897029177
+--- !u!114 &413142970616082997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,7 +662,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5367988062897029172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a369de68c1e3344039aa479d145fd018, type: 3}
+  m_Script: {fileID: 11500000, guid: 40e3a5ddc9d6ff24586961d6c774811a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clampScroll: 1
@@ -725,6 +728,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.428}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
