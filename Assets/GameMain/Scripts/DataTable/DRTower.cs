@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-14 01:28:19.736
+// 生成时间：2020-08-15 14:09:04.117
 //------------------------------------------------------------
 
 using GameFramework;
@@ -135,59 +135,53 @@ namespace Flower
             private set;
         }
 
-        public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
+        public override bool ParseDataRow(string dataRowString, object userData)
         {
-            Type dataType = dataRowSegment.DataType;
-            if (dataType == typeof(string))
+            string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
+            for (int i = 0; i < columnStrings.Length; i++)
             {
-                string[] columnTexts = ((string)dataRowSegment.Data).Substring(dataRowSegment.Offset, dataRowSegment.Length).Split(DataTableExtension.DataSplitSeparators);
-                for (int i = 0; i < columnTexts.Length; i++)
-                {
-                    columnTexts[i] = columnTexts[i].Trim(DataTableExtension.DataTrimSeparators);
-                }
+                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);
+            }
 
-                int index = 0;
-                index++;
-                m_Id = int.Parse(columnTexts[index++]);
-                index++;
-                NameId = columnTexts[index++];
-                Icon = columnTexts[index++];
-                PreviewEntityId = int.Parse(columnTexts[index++]);
-                EntityId = int.Parse(columnTexts[index++]);
-                ProjectileEntityId = int.Parse(columnTexts[index++]);
-                ProjectileType = columnTexts[index++];
-                IsMultiAttack = bool.Parse(columnTexts[index++]);
-                MaxHP = float.Parse(columnTexts[index++]);
-                Dimensions = DataTableExtension.ParseInt32Array(columnTexts[index++]);
-                Type = columnTexts[index++];
-                Levels = DataTableExtension.ParseInt32Array(columnTexts[index++]);
-            }
-            else if (dataType == typeof(byte[]))
+            int index = 0;
+            index++;
+            m_Id = int.Parse(columnStrings[index++]);
+            index++;
+            NameId = columnStrings[index++];
+            Icon = columnStrings[index++];
+            PreviewEntityId = int.Parse(columnStrings[index++]);
+            EntityId = int.Parse(columnStrings[index++]);
+            ProjectileEntityId = int.Parse(columnStrings[index++]);
+            ProjectileType = columnStrings[index++];
+            IsMultiAttack = bool.Parse(columnStrings[index++]);
+            MaxHP = float.Parse(columnStrings[index++]);
+                Dimensions = DataTableExtension.ParseInt32Array(columnStrings[index++]);
+            Type = columnStrings[index++];
+                Levels = DataTableExtension.ParseInt32Array(columnStrings[index++]);
+
+            GeneratePropertyArray();
+            return true;
+        }
+
+        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))
             {
-                string[] strings = (string[])dataTableUserData;
-                using (MemoryStream memoryStream = new MemoryStream((byte[])dataRowSegment.Data, dataRowSegment.Offset, dataRowSegment.Length, false))
+                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
-                    using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
-                    {
-                        m_Id = binaryReader.Read7BitEncodedInt32();
-                        NameId = strings[binaryReader.Read7BitEncodedInt32()];
-                        Icon = strings[binaryReader.Read7BitEncodedInt32()];
-                        PreviewEntityId = binaryReader.Read7BitEncodedInt32();
-                        EntityId = binaryReader.Read7BitEncodedInt32();
-                        ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
-                        ProjectileType = strings[binaryReader.Read7BitEncodedInt32()];
-                        IsMultiAttack = binaryReader.ReadBoolean();
-                        MaxHP = binaryReader.ReadSingle();
+                    m_Id = binaryReader.Read7BitEncodedInt32();
+                    NameId = binaryReader.ReadString();
+                    Icon = binaryReader.ReadString();
+                    PreviewEntityId = binaryReader.Read7BitEncodedInt32();
+                    EntityId = binaryReader.Read7BitEncodedInt32();
+                    ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
+                    ProjectileType = binaryReader.ReadString();
+                    IsMultiAttack = binaryReader.ReadBoolean();
+                    MaxHP = binaryReader.ReadSingle();
                         Dimensions = binaryReader.ReadInt32Array();
-                        Type = strings[binaryReader.Read7BitEncodedInt32()];
+                    Type = binaryReader.ReadString();
                         Levels = binaryReader.ReadInt32Array();
-                    }
                 }
-            }
-            else
-            {
-                Log.Warning("Can not parse data row which type '{0}' is invalid.", dataType.FullName);
-                return false;
             }
 
             GeneratePropertyArray();

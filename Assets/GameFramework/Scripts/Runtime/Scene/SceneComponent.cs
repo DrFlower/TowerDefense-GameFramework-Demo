@@ -8,6 +8,7 @@
 using GameFramework;
 using GameFramework.Resource;
 using GameFramework.Scene;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,7 +26,7 @@ namespace UnityGameFramework.Runtime
 
         private ISceneManager m_SceneManager = null;
         private EventComponent m_EventComponent = null;
-        private readonly SortedDictionary<string, int> m_SceneOrder = new SortedDictionary<string, int>();
+        private readonly SortedDictionary<string, int> m_SceneOrder = new SortedDictionary<string, int>(StringComparer.Ordinal);
         private Camera m_MainCamera = null;
         private Scene m_GameFrameworkScene = default(Scene);
 
@@ -108,6 +109,36 @@ namespace UnityGameFramework.Runtime
             {
                 m_SceneManager.SetResourceManager(GameFrameworkEntry.GetModule<IResourceManager>());
             }
+        }
+
+        /// <summary>
+        /// 获取场景名称。
+        /// </summary>
+        /// <param name="sceneAssetName">场景资源名称。</param>
+        /// <returns>场景名称。</returns>
+        public static string GetSceneName(string sceneAssetName)
+        {
+            if (string.IsNullOrEmpty(sceneAssetName))
+            {
+                Log.Error("Scene asset name is invalid.");
+                return null;
+            }
+
+            int sceneNamePosition = sceneAssetName.LastIndexOf('/');
+            if (sceneNamePosition + 1 >= sceneAssetName.Length)
+            {
+                Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
+                return null;
+            }
+
+            string sceneName = sceneAssetName.Substring(sceneNamePosition + 1);
+            sceneNamePosition = sceneName.LastIndexOf(".unity");
+            if (sceneNamePosition > 0)
+            {
+                sceneName = sceneName.Substring(0, sceneNamePosition);
+            }
+
+            return sceneName;
         }
 
         /// <summary>
@@ -207,7 +238,7 @@ namespace UnityGameFramework.Runtime
                 return false;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/") || !sceneAssetName.EndsWith(".unity"))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return false;
@@ -259,7 +290,7 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/") || !sceneAssetName.EndsWith(".unity"))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
@@ -290,7 +321,7 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/") || !sceneAssetName.EndsWith(".unity"))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
@@ -300,6 +331,11 @@ namespace UnityGameFramework.Runtime
             m_SceneOrder.Remove(sceneAssetName);
         }
 
+        /// <summary>
+        /// 设置场景顺序。
+        /// </summary>
+        /// <param name="sceneAssetName">场景资源名称。</param>
+        /// <param name="sceneOrder">要设置的场景顺序。</param>
         public void SetSceneOrder(string sceneAssetName, int sceneOrder)
         {
             if (string.IsNullOrEmpty(sceneAssetName))
@@ -308,7 +344,7 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/") || !sceneAssetName.EndsWith(".unity"))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
@@ -331,33 +367,11 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取场景名称。
+        /// 刷新当前场景主摄像机。
         /// </summary>
-        /// <param name="sceneAssetName">场景资源名称。</param>
-        /// <returns>场景名称。</returns>
-        public static string GetSceneName(string sceneAssetName)
+        public void RefreshMainCamera()
         {
-            if (string.IsNullOrEmpty(sceneAssetName))
-            {
-                Log.Error("Scene asset name is invalid.");
-                return null;
-            }
-
-            int sceneNamePosition = sceneAssetName.LastIndexOf('/');
-            if (sceneNamePosition + 1 >= sceneAssetName.Length)
-            {
-                Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
-                return null;
-            }
-
-            string sceneName = sceneAssetName.Substring(sceneNamePosition + 1);
-            sceneNamePosition = sceneName.LastIndexOf(".unity");
-            if (sceneNamePosition > 0)
-            {
-                sceneName = sceneName.Substring(0, sceneNamePosition);
-            }
-
-            return sceneName;
+            m_MainCamera = Camera.main;
         }
 
         private void RefreshSceneOrder()
@@ -368,6 +382,11 @@ namespace UnityGameFramework.Runtime
                 int maxSceneOrder = 0;
                 foreach (KeyValuePair<string, int> sceneOrder in m_SceneOrder)
                 {
+                    if (SceneIsLoading(sceneOrder.Key))
+                    {
+                        continue;
+                    }
+
                     if (maxSceneName == null)
                     {
                         maxSceneName = sceneOrder.Key;
@@ -380,6 +399,12 @@ namespace UnityGameFramework.Runtime
                         maxSceneName = sceneOrder.Key;
                         maxSceneOrder = sceneOrder.Value;
                     }
+                }
+
+                if (maxSceneName == null)
+                {
+                    SetActiveScene(m_GameFrameworkScene);
+                    return;
                 }
 
                 Scene scene = SceneManager.GetSceneByName(GetSceneName(maxSceneName));
@@ -403,9 +428,10 @@ namespace UnityGameFramework.Runtime
             if (lastActiveScene != activeScene)
             {
                 SceneManager.SetActiveScene(activeScene);
-                m_MainCamera = Camera.main;
                 m_EventComponent.Fire(this, ActiveSceneChangedEventArgs.Create(lastActiveScene, activeScene));
             }
+
+            RefreshMainCamera();
         }
 
         private void OnLoadSceneSuccess(object sender, GameFramework.Scene.LoadSceneSuccessEventArgs e)

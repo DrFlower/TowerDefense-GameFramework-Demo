@@ -40,7 +40,7 @@ namespace GameFramework.Entity
         public EntityManager()
         {
             m_EntityInfos = new Dictionary<int, EntityInfo>();
-            m_EntityGroups = new Dictionary<string, EntityGroup>();
+            m_EntityGroups = new Dictionary<string, EntityGroup>(StringComparer.Ordinal);
             m_EntitiesBeingLoaded = new Dictionary<int, int>();
             m_EntitiesToReleaseOnLoad = new HashSet<int>();
             m_RecycleQueue = new Queue<EntityInfo>();
@@ -1119,7 +1119,7 @@ namespace GameFramework.Entity
                 IEntity entity = m_EntityHelper.CreateEntity(entityInstance, entityGroup, userData);
                 if (entity == null)
                 {
-                    throw new GameFrameworkException("Can not create entity in helper.");
+                    throw new GameFrameworkException("Can not create entity in entity helper.");
                 }
 
                 EntityInfo entityInfo = EntityInfo.Create(entity);

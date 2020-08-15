@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-14 01:28:19.717
+// 生成时间：2020-08-15 14:09:04.099
 //------------------------------------------------------------
 
 using GameFramework;
@@ -81,47 +81,41 @@ namespace Flower
             private set;
         }
 
-        public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
+        public override bool ParseDataRow(string dataRowString, object userData)
         {
-            Type dataType = dataRowSegment.DataType;
-            if (dataType == typeof(string))
+            string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
+            for (int i = 0; i < columnStrings.Length; i++)
             {
-                string[] columnTexts = ((string)dataRowSegment.Data).Substring(dataRowSegment.Offset, dataRowSegment.Length).Split(DataTableExtension.DataSplitSeparators);
-                for (int i = 0; i < columnTexts.Length; i++)
-                {
-                    columnTexts[i] = columnTexts[i].Trim(DataTableExtension.DataTrimSeparators);
-                }
+                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);
+            }
 
-                int index = 0;
-                index++;
-                m_Id = int.Parse(columnTexts[index++]);
-                index++;
-                GroupName = columnTexts[index++];
-                InstanceAutoReleaseInterval = float.Parse(columnTexts[index++]);
-                InstanceCapacity = int.Parse(columnTexts[index++]);
-                InstanceExpireTime = float.Parse(columnTexts[index++]);
-                InstancePriority = int.Parse(columnTexts[index++]);
-            }
-            else if (dataType == typeof(byte[]))
+            int index = 0;
+            index++;
+            m_Id = int.Parse(columnStrings[index++]);
+            index++;
+            GroupName = columnStrings[index++];
+            InstanceAutoReleaseInterval = float.Parse(columnStrings[index++]);
+            InstanceCapacity = int.Parse(columnStrings[index++]);
+            InstanceExpireTime = float.Parse(columnStrings[index++]);
+            InstancePriority = int.Parse(columnStrings[index++]);
+
+            GeneratePropertyArray();
+            return true;
+        }
+
+        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))
             {
-                string[] strings = (string[])dataTableUserData;
-                using (MemoryStream memoryStream = new MemoryStream((byte[])dataRowSegment.Data, dataRowSegment.Offset, dataRowSegment.Length, false))
+                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
-                    using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
-                    {
-                        m_Id = binaryReader.Read7BitEncodedInt32();
-                        GroupName = strings[binaryReader.Read7BitEncodedInt32()];
-                        InstanceAutoReleaseInterval = binaryReader.ReadSingle();
-                        InstanceCapacity = binaryReader.Read7BitEncodedInt32();
-                        InstanceExpireTime = binaryReader.ReadSingle();
-                        InstancePriority = binaryReader.Read7BitEncodedInt32();
-                    }
+                    m_Id = binaryReader.Read7BitEncodedInt32();
+                    GroupName = binaryReader.ReadString();
+                    InstanceAutoReleaseInterval = binaryReader.ReadSingle();
+                    InstanceCapacity = binaryReader.Read7BitEncodedInt32();
+                    InstanceExpireTime = binaryReader.ReadSingle();
+                    InstancePriority = binaryReader.Read7BitEncodedInt32();
                 }
-            }
-            else
-            {
-                Log.Warning("Can not parse data row which type '{0}' is invalid.", dataType.FullName);
-                return false;
             }
 
             GeneratePropertyArray();

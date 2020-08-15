@@ -38,7 +38,7 @@ namespace GameFramework
         /// </summary>
         /// <param name="binaryWriter">目标流。</param>
         /// <param name="data">要序列化的数据。</param>
-        /// <returns>序列化数据是否成功。</returns>
+        /// <returns>是否序列化数据成功。</returns>
         public delegate bool SerializeCallback(BinaryWriter binaryWriter, T data);
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace GameFramework
         /// <param name="binaryReader">指定流。</param>
         /// <param name="key">指定键。</param>
         /// <param name="value">指定键的值。</param>
-        /// <returns>从指定流获取指定键的值是否成功。</returns>
+        /// <returns>是否从指定流获取指定键的值成功。</returns>
         public delegate bool TryGetValueCallback(BinaryReader binaryReader, string key, out object value);
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace GameFramework
         /// </summary>
         /// <param name="stream">目标流。</param>
         /// <param name="data">要序列化的数据。</param>
-        /// <returns>序列化数据是否成功。</returns>
+        /// <returns>是否序列化数据成功。</returns>
         public bool Serialize(Stream stream, T data)
         {
             if (m_SerializeCallbacks.Count <= 0)
@@ -128,7 +128,7 @@ namespace GameFramework
         /// <param name="stream">目标流。</param>
         /// <param name="data">要序列化的数据。</param>
         /// <param name="version">序列化回调函数的版本。</param>
-        /// <returns>序列化数据是否成功。</returns>
+        /// <returns>是否序列化数据成功。</returns>
         public bool Serialize(Stream stream, T data, byte version)
         {
             using (BinaryWriter binaryWriter = new BinaryWriter(stream, Encoding.UTF8))
@@ -158,9 +158,14 @@ namespace GameFramework
             using (BinaryReader binaryReader = new BinaryReader(stream, Encoding.UTF8))
             {
                 byte[] header = GetHeader();
-                if (binaryReader.ReadByte() != header[0] || binaryReader.ReadByte() != header[1] || binaryReader.ReadByte() != header[2])
+                byte header0 = binaryReader.ReadByte();
+                byte header1 = binaryReader.ReadByte();
+                byte header2 = binaryReader.ReadByte();
+                if (header0 != header[0] || header1 != header[1] || header2 != header[2])
                 {
-                    throw new GameFrameworkException("Header is invalid.");
+                    throw new GameFrameworkException(Utility.Text.Format("Header is invalid, need '{0}{1}{2}', current '{3}{4}{5}'.",
+                        ((char)header[0]).ToString(), ((char)header[1]).ToString(), ((char)header[2]).ToString(),
+                        ((char)header0).ToString(), ((char)header1).ToString(), ((char)header2).ToString()));
                 }
 
                 byte version = binaryReader.ReadByte();
@@ -180,14 +185,17 @@ namespace GameFramework
         /// <param name="stream">指定流。</param>
         /// <param name="key">指定键。</param>
         /// <param name="value">指定键的值。</param>
-        /// <returns>从指定流获取指定键的值是否成功。</returns>
+        /// <returns>是否从指定流获取指定键的值成功。</returns>
         public bool TryGetValue(Stream stream, string key, out object value)
         {
             value = null;
             using (BinaryReader binaryReader = new BinaryReader(stream, Encoding.UTF8))
             {
                 byte[] header = GetHeader();
-                if (binaryReader.ReadByte() != header[0] || binaryReader.ReadByte() != header[1] || binaryReader.ReadByte() != header[2])
+                byte header0 = binaryReader.ReadByte();
+                byte header1 = binaryReader.ReadByte();
+                byte header2 = binaryReader.ReadByte();
+                if (header0 != header[0] || header1 != header[1] || header2 != header[2])
                 {
                     return false;
                 }

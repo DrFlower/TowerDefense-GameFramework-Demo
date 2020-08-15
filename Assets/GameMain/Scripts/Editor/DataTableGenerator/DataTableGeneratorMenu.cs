@@ -8,7 +8,6 @@
 using GameFramework;
 using UnityEditor;
 using UnityEngine;
-using UnityGameFramework.Editor.DataTableTools;
 using System.IO;
 
 namespace Flower.Editor.DataTableTools

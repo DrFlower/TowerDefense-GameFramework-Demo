@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-14 01:28:19.730
+// 生成时间：2020-08-15 14:09:04.115
 //------------------------------------------------------------
 
 using GameFramework;
@@ -135,59 +135,53 @@ namespace Flower
             private set;
         }
 
-        public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
+        public override bool ParseDataRow(string dataRowString, object userData)
         {
-            Type dataType = dataRowSegment.DataType;
-            if (dataType == typeof(string))
+            string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
+            for (int i = 0; i < columnStrings.Length; i++)
             {
-                string[] columnTexts = ((string)dataRowSegment.Data).Substring(dataRowSegment.Offset, dataRowSegment.Length).Split(DataTableExtension.DataSplitSeparators);
-                for (int i = 0; i < columnTexts.Length; i++)
-                {
-                    columnTexts[i] = columnTexts[i].Trim(DataTableExtension.DataTrimSeparators);
-                }
+                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);
+            }
 
-                int index = 0;
-                index++;
-                m_Id = int.Parse(columnTexts[index++]);
-                index++;
-                Time = float.Parse(columnTexts[index++]);
-                Mute = bool.Parse(columnTexts[index++]);
-                Loop = bool.Parse(columnTexts[index++]);
-                Priority = int.Parse(columnTexts[index++]);
-                Volume = float.Parse(columnTexts[index++]);
-                FadeInSeconds = float.Parse(columnTexts[index++]);
-                Pitch = float.Parse(columnTexts[index++]);
-                PanStereo = float.Parse(columnTexts[index++]);
-                SpatialBlend = float.Parse(columnTexts[index++]);
-                MaxDistance = float.Parse(columnTexts[index++]);
-                DopplerLevel = float.Parse(columnTexts[index++]);
-            }
-            else if (dataType == typeof(byte[]))
+            int index = 0;
+            index++;
+            m_Id = int.Parse(columnStrings[index++]);
+            index++;
+            Time = float.Parse(columnStrings[index++]);
+            Mute = bool.Parse(columnStrings[index++]);
+            Loop = bool.Parse(columnStrings[index++]);
+            Priority = int.Parse(columnStrings[index++]);
+            Volume = float.Parse(columnStrings[index++]);
+            FadeInSeconds = float.Parse(columnStrings[index++]);
+            Pitch = float.Parse(columnStrings[index++]);
+            PanStereo = float.Parse(columnStrings[index++]);
+            SpatialBlend = float.Parse(columnStrings[index++]);
+            MaxDistance = float.Parse(columnStrings[index++]);
+            DopplerLevel = float.Parse(columnStrings[index++]);
+
+            GeneratePropertyArray();
+            return true;
+        }
+
+        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))
             {
-                string[] strings = (string[])dataTableUserData;
-                using (MemoryStream memoryStream = new MemoryStream((byte[])dataRowSegment.Data, dataRowSegment.Offset, dataRowSegment.Length, false))
+                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
-                    using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
-                    {
-                        m_Id = binaryReader.Read7BitEncodedInt32();
-                        Time = binaryReader.ReadSingle();
-                        Mute = binaryReader.ReadBoolean();
-                        Loop = binaryReader.ReadBoolean();
-                        Priority = binaryReader.Read7BitEncodedInt32();
-                        Volume = binaryReader.ReadSingle();
-                        FadeInSeconds = binaryReader.ReadSingle();
-                        Pitch = binaryReader.ReadSingle();
-                        PanStereo = binaryReader.ReadSingle();
-                        SpatialBlend = binaryReader.ReadSingle();
-                        MaxDistance = binaryReader.ReadSingle();
-                        DopplerLevel = binaryReader.ReadSingle();
-                    }
+                    m_Id = binaryReader.Read7BitEncodedInt32();
+                    Time = binaryReader.ReadSingle();
+                    Mute = binaryReader.ReadBoolean();
+                    Loop = binaryReader.ReadBoolean();
+                    Priority = binaryReader.Read7BitEncodedInt32();
+                    Volume = binaryReader.ReadSingle();
+                    FadeInSeconds = binaryReader.ReadSingle();
+                    Pitch = binaryReader.ReadSingle();
+                    PanStereo = binaryReader.ReadSingle();
+                    SpatialBlend = binaryReader.ReadSingle();
+                    MaxDistance = binaryReader.ReadSingle();
+                    DopplerLevel = binaryReader.ReadSingle();
                 }
-            }
-            else
-            {
-                Log.Warning("Can not parse data row which type '{0}' is invalid.", dataType.FullName);
-                return false;
             }
 
             GeneratePropertyArray();

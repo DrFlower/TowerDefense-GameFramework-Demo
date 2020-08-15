@@ -7,6 +7,7 @@
 
 using GameFramework;
 using GameFramework.Download;
+using GameFramework.FileSystem;
 using GameFramework.ObjectPool;
 using GameFramework.Resource;
 using System;
@@ -194,6 +195,17 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
+        /// 获取资源包版本资源列表序列化器。
+        /// </summary>
+        public ResourcePackVersionListSerializer ResourcePackVersionListSerializer
+        {
+            get
+            {
+                return m_ResourceManager.ResourcePackVersionListSerializer;
+            }
+        }
+
+        /// <summary>
         /// 获取或设置无用资源释放间隔时间。
         /// </summary>
         public float UnloadUnusedAssetsInterval
@@ -231,7 +243,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取已准备完毕资源数量。
+        /// 获取资源数量。
         /// </summary>
         public int AssetCount
         {
@@ -242,7 +254,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取已准备完毕资源数量。
+        /// 获取资源数量。
         /// </summary>
         public int ResourceCount
         {
@@ -279,7 +291,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取或设置每下载多少字节的资源，重新生成一次版本资源列表。
+        /// 获取或设置每更新多少字节的资源，重新生成一次版本资源列表。
         /// </summary>
         public int GenerateReadWriteVersionListLength
         {
@@ -290,6 +302,28 @@ namespace UnityGameFramework.Runtime
             set
             {
                 m_ResourceManager.GenerateReadWriteVersionListLength = m_GenerateReadWriteVersionListLength = value;
+            }
+        }
+
+        /// <summary>
+        /// 获取正在应用的资源包路径。
+        /// </summary>
+        public string ApplyingResourcePackPath
+        {
+            get
+            {
+                return m_ResourceManager.ApplyingResourcePackPath;
+            }
+        }
+
+        /// <summary>
+        /// 获取等待应用资源数量。
+        /// </summary>
+        public int ApplyWaitingCount
+        {
+            get
+            {
+                return m_ResourceManager.ApplyWaitingCount;
             }
         }
 
@@ -548,6 +582,8 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
+            m_ResourceManager.ResourceApplySuccess += OnResourceApplySuccess;
+            m_ResourceManager.ResourceApplyFailure += OnResourceApplyFailure;
             m_ResourceManager.ResourceUpdateStart += OnResourceUpdateStart;
             m_ResourceManager.ResourceUpdateChanged += OnResourceUpdateChanged;
             m_ResourceManager.ResourceUpdateSuccess += OnResourceUpdateSuccess;
@@ -574,8 +610,9 @@ namespace UnityGameFramework.Runtime
             }
 
             SetResourceMode(m_ResourceMode);
-            m_ResourceManager.SetDownloadManager(GameFrameworkEntry.GetModule<IDownloadManager>());
             m_ResourceManager.SetObjectPoolManager(GameFrameworkEntry.GetModule<IObjectPoolManager>());
+            m_ResourceManager.SetFileSystemManager(GameFrameworkEntry.GetModule<IFileSystemManager>());
+            m_ResourceManager.SetDownloadManager(GameFrameworkEntry.GetModule<IDownloadManager>());
             m_ResourceManager.AssetAutoReleaseInterval = m_AssetAutoReleaseInterval;
             m_ResourceManager.AssetCapacity = m_AssetCapacity;
             m_ResourceManager.AssetExpireTime = m_AssetExpireTime;
@@ -584,7 +621,7 @@ namespace UnityGameFramework.Runtime
             m_ResourceManager.ResourceCapacity = m_ResourceCapacity;
             m_ResourceManager.ResourceExpireTime = m_ResourceExpireTime;
             m_ResourceManager.ResourcePriority = m_ResourcePriority;
-            if (m_ResourceMode == ResourceMode.Updatable)
+            if (m_ResourceMode == ResourceMode.Updatable || m_ResourceMode == ResourceMode.UpdatableWhilePlaying)
             {
                 m_ResourceManager.UpdatePrefixUri = m_UpdatePrefixUri;
                 m_ResourceManager.GenerateReadWriteVersionListLength = m_GenerateReadWriteVersionListLength;
@@ -652,21 +689,34 @@ namespace UnityGameFramework.Runtime
             switch (resourceMode)
             {
                 case ResourceMode.Package:
-                    m_ResourceManager.PackageVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.DeserializePackageVersionListCallback_V0);
-                    m_ResourceManager.PackageVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.DeserializePackageVersionListCallback_V1);
+                    m_ResourceManager.PackageVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.PackageVersionListDeserializeCallback_V0);
+                    m_ResourceManager.PackageVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.PackageVersionListDeserializeCallback_V1);
+                    m_ResourceManager.PackageVersionListSerializer.RegisterDeserializeCallback(2, BuiltinVersionListSerializer.PackageVersionListDeserializeCallback_V2);
                     break;
 
                 case ResourceMode.Updatable:
-                    m_ResourceManager.UpdatableVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.DeserializeUpdatableVersionListCallback_V0);
-                    m_ResourceManager.UpdatableVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.DeserializeUpdatableVersionListCallback_V1);
-                    m_ResourceManager.UpdatableVersionListSerializer.RegisterTryGetValueCallback(0, BuiltinVersionListSerializer.TryGetValueUpdatableVersionListCallback_V0);
-                    m_ResourceManager.UpdatableVersionListSerializer.RegisterTryGetValueCallback(1, BuiltinVersionListSerializer.TryGetValueUpdatableVersionListCallback_V1);
-                    m_ResourceManager.ReadOnlyVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.DeserializeLocalVersionListCallback_V0);
-                    m_ResourceManager.ReadOnlyVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.DeserializeLocalVersionListCallback_V1);
-                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterSerializeCallback(0, BuiltinVersionListSerializer.SerializeLocalVersionListCallback_V0);
-                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterSerializeCallback(1, BuiltinVersionListSerializer.SerializeLocalVersionListCallback_V1);
-                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.DeserializeLocalVersionListCallback_V0);
-                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.DeserializeLocalVersionListCallback_V1);
+                case ResourceMode.UpdatableWhilePlaying:
+                    m_ResourceManager.UpdatableVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.UpdatableVersionListDeserializeCallback_V0);
+                    m_ResourceManager.UpdatableVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.UpdatableVersionListDeserializeCallback_V1);
+                    m_ResourceManager.UpdatableVersionListSerializer.RegisterDeserializeCallback(2, BuiltinVersionListSerializer.UpdatableVersionListDeserializeCallback_V2);
+
+                    m_ResourceManager.UpdatableVersionListSerializer.RegisterTryGetValueCallback(0, BuiltinVersionListSerializer.UpdatableVersionListTryGetValueCallback_V0);
+                    m_ResourceManager.UpdatableVersionListSerializer.RegisterTryGetValueCallback(1, BuiltinVersionListSerializer.UpdatableVersionListTryGetValueCallback_V1_V2);
+                    m_ResourceManager.UpdatableVersionListSerializer.RegisterTryGetValueCallback(2, BuiltinVersionListSerializer.UpdatableVersionListTryGetValueCallback_V1_V2);
+
+                    m_ResourceManager.ReadOnlyVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.LocalVersionListDeserializeCallback_V0);
+                    m_ResourceManager.ReadOnlyVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.LocalVersionListDeserializeCallback_V1);
+                    m_ResourceManager.ReadOnlyVersionListSerializer.RegisterDeserializeCallback(2, BuiltinVersionListSerializer.LocalVersionListDeserializeCallback_V2);
+
+                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterSerializeCallback(0, BuiltinVersionListSerializer.LocalVersionListSerializeCallback_V0);
+                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterSerializeCallback(1, BuiltinVersionListSerializer.LocalVersionListSerializeCallback_V1);
+                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterSerializeCallback(2, BuiltinVersionListSerializer.LocalVersionListSerializeCallback_V2);
+
+                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.LocalVersionListDeserializeCallback_V0);
+                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterDeserializeCallback(1, BuiltinVersionListSerializer.LocalVersionListDeserializeCallback_V1);
+                    m_ResourceManager.ReadWriteVersionListSerializer.RegisterDeserializeCallback(2, BuiltinVersionListSerializer.LocalVersionListDeserializeCallback_V2);
+
+                    m_ResourceManager.ResourcePackVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.ResourcePackVersionListDeserializeCallback_V0);
                     break;
             }
         }
@@ -754,7 +804,27 @@ namespace UnityGameFramework.Runtime
         /// <param name="checkResourcesCompleteCallback">使用可更新模式并检查资源完成时的回调函数。</param>
         public void CheckResources(CheckResourcesCompleteCallback checkResourcesCompleteCallback)
         {
-            m_ResourceManager.CheckResources(checkResourcesCompleteCallback);
+            m_ResourceManager.CheckResources(false, checkResourcesCompleteCallback);
+        }
+
+        /// <summary>
+        /// 使用可更新模式并检查资源。
+        /// </summary>
+        /// <param name="ignoreOtherVariant">是否忽略处理其它变体的资源，若不忽略，将会移除其它变体的资源。</param>
+        /// <param name="checkResourcesCompleteCallback">使用可更新模式并检查资源完成时的回调函数。</param>
+        public void CheckResources(bool ignoreOtherVariant, CheckResourcesCompleteCallback checkResourcesCompleteCallback)
+        {
+            m_ResourceManager.CheckResources(ignoreOtherVariant, checkResourcesCompleteCallback);
+        }
+
+        /// <summary>
+        /// 使用可更新模式并应用资源包资源。
+        /// </summary>
+        /// <param name="resourcePackPath">要应用的资源包路径。</param>
+        /// <param name="applyResourcesCompleteCallback">使用可更新模式并应用资源包资源完成时的回调函数。</param>
+        public void ApplyResources(string resourcePackPath, ApplyResourcesCompleteCallback applyResourcesCompleteCallback)
+        {
+            m_ResourceManager.ApplyResources(resourcePackPath, applyResourcesCompleteCallback);
         }
 
         /// <summary>
@@ -774,6 +844,16 @@ namespace UnityGameFramework.Runtime
         public void UpdateResources(string resourceGroupName, UpdateResourcesCompleteCallback updateResourcesCompleteCallback)
         {
             m_ResourceManager.UpdateResources(resourceGroupName, updateResourcesCompleteCallback);
+        }
+
+        /// <summary>
+        /// 校验资源包。
+        /// </summary>
+        /// <param name="resourcePackPath">要校验的资源包路径。</param>
+        /// <returns>是否校验资源包成功。</returns>
+        public bool VerifyResourcePack(string resourcePackPath)
+        {
+            return m_ResourceManager.VerifyResourcePack(resourcePackPath);
         }
 
         /// <summary>
@@ -881,7 +961,7 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!assetName.StartsWith("Assets/"))
+            if (!assetName.StartsWith("Assets/", StringComparison.Ordinal))
             {
                 Log.Error("Asset name '{0}' is invalid.", assetName);
                 return;
@@ -904,6 +984,7 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         /// <param name="binaryAssetName">要获取实际路径的二进制资源的名称。</param>
         /// <returns>二进制资源的实际路径。</returns>
+        /// <remarks>此方法仅适用于二进制资源存储在磁盘（而非文件系统）中的情况。若二进制资源存储在文件系统中时，返回值将始终为空。</remarks>
         public string GetBinaryPath(string binaryAssetName)
         {
             return m_ResourceManager.GetBinaryPath(binaryAssetName);
@@ -913,12 +994,24 @@ namespace UnityGameFramework.Runtime
         /// 获取二进制资源的实际路径。
         /// </summary>
         /// <param name="binaryAssetName">要获取实际路径的二进制资源的名称。</param>
-        /// <param name="storageInReadOnly">资源是否在只读区。</param>
-        /// <param name="relativePath">二进制资源相对于只读区或者读写区的相对路径。</param>
-        /// <returns>获取二进制资源的实际路径是否成功。</returns>
-        public bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out string relativePath)
+        /// <param name="storageInReadOnly">二进制资源是否存储在只读区中。</param>
+        /// <param name="storageInFileSystem">二进制资源是否存储在文件系统中。</param>
+        /// <param name="relativePath">二进制资源或存储二进制资源的文件系统，相对于只读区或者读写区的相对路径。</param>
+        /// <param name="fileName">若二进制资源存储在文件系统中，则指示二进制资源在文件系统中的名称，否则此参数返回空。</param>
+        /// <returns>是否获取二进制资源的实际路径成功。</returns>
+        public bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem, out string relativePath, out string fileName)
         {
-            return m_ResourceManager.GetBinaryPath(binaryAssetName, out storageInReadOnly, out relativePath);
+            return m_ResourceManager.GetBinaryPath(binaryAssetName, out storageInReadOnly, out storageInFileSystem, out relativePath, out fileName);
+        }
+
+        /// <summary>
+        /// 获取二进制资源的长度。
+        /// </summary>
+        /// <param name="binaryAssetName">要获取长度的二进制资源的名称。</param>
+        /// <returns>二进制资源的长度。</returns>
+        public int GetBinaryLength(string binaryAssetName)
+        {
+            return m_ResourceManager.GetBinaryLength(binaryAssetName);
         }
 
         /// <summary>
@@ -945,13 +1038,241 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!binaryAssetName.StartsWith("Assets/"))
+            if (!binaryAssetName.StartsWith("Assets/", StringComparison.Ordinal))
             {
                 Log.Error("Binary asset name '{0}' is invalid.", binaryAssetName);
                 return;
             }
 
             m_ResourceManager.LoadBinary(binaryAssetName, loadBinaryCallbacks, userData);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <returns>存储加载二进制资源的二进制流。</returns>
+        public byte[] LoadBinaryFromFileSystem(string binaryAssetName)
+        {
+            if (string.IsNullOrEmpty(binaryAssetName))
+            {
+                Log.Error("Binary asset name is invalid.");
+                return null;
+            }
+
+            if (!binaryAssetName.StartsWith("Assets/", StringComparison.Ordinal))
+            {
+                Log.Error("Binary asset name '{0}' is invalid.", binaryAssetName);
+                return null;
+            }
+
+            return m_ResourceManager.LoadBinaryFromFileSystem(binaryAssetName);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源的二进制流。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinaryFromFileSystem(string binaryAssetName, byte[] buffer)
+        {
+            if (buffer == null)
+            {
+                Log.Error("Buffer is invalid.");
+                return 0;
+            }
+
+            return LoadBinaryFromFileSystem(binaryAssetName, buffer, 0, buffer.Length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源的二进制流的起始位置。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinaryFromFileSystem(string binaryAssetName, byte[] buffer, int startIndex)
+        {
+            if (buffer == null)
+            {
+                Log.Error("Buffer is invalid.");
+                return 0;
+            }
+
+            return LoadBinaryFromFileSystem(binaryAssetName, buffer, startIndex, buffer.Length - startIndex);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源的二进制流的起始位置。</param>
+        /// <param name="length">存储加载二进制资源的二进制流的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinaryFromFileSystem(string binaryAssetName, byte[] buffer, int startIndex, int length)
+        {
+            if (string.IsNullOrEmpty(binaryAssetName))
+            {
+                Log.Error("Binary asset name is invalid.");
+                return 0;
+            }
+
+            if (!binaryAssetName.StartsWith("Assets/", StringComparison.Ordinal))
+            {
+                Log.Error("Binary asset name '{0}' is invalid.", binaryAssetName);
+                return 0;
+            }
+
+            if (buffer == null)
+            {
+                Log.Error("Buffer is invalid.");
+                return 0;
+            }
+
+            return m_ResourceManager.LoadBinaryFromFileSystem(binaryAssetName, buffer, startIndex, length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>存储加载二进制资源片段内容的二进制流。</returns>
+        public byte[] LoadBinarySegmentFromFileSystem(string binaryAssetName, int length)
+        {
+            return LoadBinarySegmentFromFileSystem(binaryAssetName, 0, length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>存储加载二进制资源片段内容的二进制流。</returns>
+        public byte[] LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, int length)
+        {
+            if (string.IsNullOrEmpty(binaryAssetName))
+            {
+                Log.Error("Binary asset name is invalid.");
+                return null;
+            }
+
+            if (!binaryAssetName.StartsWith("Assets/", StringComparison.Ordinal))
+            {
+                Log.Error("Binary asset name '{0}' is invalid.", binaryAssetName);
+                return null;
+            }
+
+            return m_ResourceManager.LoadBinarySegmentFromFileSystem(binaryAssetName, offset, length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, byte[] buffer)
+        {
+            if (buffer == null)
+            {
+                Log.Error("Buffer is invalid.");
+                return 0;
+            }
+
+            return LoadBinarySegmentFromFileSystem(binaryAssetName, 0, buffer, 0, buffer.Length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, byte[] buffer, int length)
+        {
+            return LoadBinarySegmentFromFileSystem(binaryAssetName, 0, buffer, 0, length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, byte[] buffer, int startIndex, int length)
+        {
+            return LoadBinarySegmentFromFileSystem(binaryAssetName, 0, buffer, startIndex, length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer)
+        {
+            if (buffer == null)
+            {
+                Log.Error("Buffer is invalid.");
+                return 0;
+            }
+
+            return LoadBinarySegmentFromFileSystem(binaryAssetName, offset, buffer, 0, buffer.Length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int length)
+        {
+            return LoadBinarySegmentFromFileSystem(binaryAssetName, offset, buffer, 0, length);
+        }
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex, int length)
+        {
+            if (string.IsNullOrEmpty(binaryAssetName))
+            {
+                Log.Error("Binary asset name is invalid.");
+                return 0;
+            }
+
+            if (!binaryAssetName.StartsWith("Assets/", StringComparison.Ordinal))
+            {
+                Log.Error("Binary asset name '{0}' is invalid.", binaryAssetName);
+                return 0;
+            }
+
+            if (buffer == null)
+            {
+                Log.Error("Buffer is invalid.");
+                return 0;
+            }
+
+            return m_ResourceManager.LoadBinarySegmentFromFileSystem(binaryAssetName, offset, buffer, startIndex, length);
         }
 
         /// <summary>
@@ -1011,6 +1332,16 @@ namespace UnityGameFramework.Runtime
             transform.localScale = Vector3.one;
 
             m_ResourceManager.AddLoadResourceAgentHelper(loadResourceAgentHelper);
+        }
+
+        private void OnResourceApplySuccess(object sender, GameFramework.Resource.ResourceApplySuccessEventArgs e)
+        {
+            m_EventComponent.Fire(this, ResourceApplySuccessEventArgs.Create(e));
+        }
+
+        private void OnResourceApplyFailure(object sender, GameFramework.Resource.ResourceApplyFailureEventArgs e)
+        {
+            m_EventComponent.Fire(this, ResourceApplyFailureEventArgs.Create(e));
         }
 
         private void OnResourceUpdateStart(object sender, GameFramework.Resource.ResourceUpdateStartEventArgs e)

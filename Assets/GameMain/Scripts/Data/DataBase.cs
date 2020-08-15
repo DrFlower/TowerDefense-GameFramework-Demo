@@ -15,10 +15,12 @@ namespace Flower.Data
         {
             get
             {
-                foreach (var item in loadedFlag.Values)
+                foreach (var item in loadedFlag)
                 {
-                    if (!item)
+                    if (!item.Value)
+                    {
                         return false;
+                    }
                 }
 
                 return true;
@@ -107,20 +109,23 @@ namespace Flower.Data
 
         protected void LoadConfig(string configName)
         {
-            loadedFlag.Add(Utility.Text.Format("Config.{0}", configName), false);
-            GameEntry.Config.LoadConfig(configName, false, this);
+            string configAssetName = AssetUtility.GetConfigAsset(configName, false);
+            loadedFlag.Add(configAssetName, false);
+            GameEntry.Config.ReadData(configAssetName, this);
         }
 
         protected void LoadDataTable(string dataTableName)
         {
-            loadedFlag.Add(Utility.Text.Format("DataTable.{0}", dataTableName), false);
-            GameEntry.DataTable.LoadDataTable(dataTableName, true, this);
+            string dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, true);
+            loadedFlag.Add(dataTableAssetName, false);
+            GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
         }
 
         protected void LoadDictionary(string dictionaryName)
         {
-            loadedFlag.Add(Utility.Text.Format("Dictionary.{0}", dictionaryName), false);
-            GameEntry.Localization.LoadDictionary(dictionaryName, false, this);
+            string dictionaryAssetName = AssetUtility.GetDictionaryAsset(dictionaryName, false);
+            loadedFlag.Add(dictionaryAssetName, false);
+            GameEntry.Localization.ReadData(dictionaryAssetName, this);
         }
 
         private void OnLoadConfigSuccess(object sender, GameEventArgs e)
@@ -131,8 +136,8 @@ namespace Flower.Data
                 return;
             }
 
-            loadedFlag[Utility.Text.Format("Config.{0}", ne.ConfigName)] = true;
-            Log.Info("Load config '{0}' OK.", ne.ConfigName);
+            loadedFlag[ne.ConfigAssetName] = true;
+            Log.Info("Load config '{0}' OK.", ne.ConfigAssetName);
         }
 
         private void OnLoadConfigFailure(object sender, GameEventArgs e)
@@ -143,7 +148,7 @@ namespace Flower.Data
                 return;
             }
 
-            Log.Error("Can not load config '{0}' from '{1}' with error message '{2}'.", ne.ConfigName, ne.ConfigAssetName, ne.ErrorMessage);
+            Log.Error("Can not load config '{0}' from '{1}' with error message '{2}'.", ne.ConfigAssetName, ne.ConfigAssetName, ne.ErrorMessage);
         }
 
         private void OnLoadDataTableSuccess(object sender, GameEventArgs e)
@@ -154,8 +159,8 @@ namespace Flower.Data
                 return;
             }
 
-            loadedFlag[Utility.Text.Format("DataTable.{0}", ne.DataTableName)] = true;
-            Log.Info("Load data table '{0}' OK.", ne.DataTableName);
+            loadedFlag[ne.DataTableAssetName] = true;
+            Log.Info("Load data table '{0}' OK.", ne.DataTableAssetName);
         }
 
         private void OnLoadDataTableFailure(object sender, GameEventArgs e)
@@ -166,7 +171,7 @@ namespace Flower.Data
                 return;
             }
 
-            Log.Error("Can not load data table '{0}' from '{1}' with error message '{2}'.", ne.DataTableName, ne.DataTableAssetName, ne.ErrorMessage);
+            Log.Error("Can not load data table '{0}' from '{1}' with error message '{2}'.", ne.DataTableAssetName, ne.DataTableAssetName, ne.ErrorMessage);
         }
 
         private void OnLoadDictionarySuccess(object sender, GameEventArgs e)
@@ -177,8 +182,8 @@ namespace Flower.Data
                 return;
             }
 
-            loadedFlag[Utility.Text.Format("Dictionary.{0}", ne.DictionaryName)] = true;
-            Log.Info("Load dictionary '{0}' OK.", ne.DictionaryName);
+            loadedFlag[ne.DictionaryAssetName] = true;
+            Log.Info("Load dictionary '{0}' OK.", ne.DictionaryAssetName);
         }
 
         private void OnLoadDictionaryFailure(object sender, GameEventArgs e)
@@ -189,7 +194,7 @@ namespace Flower.Data
                 return;
             }
 
-            Log.Error("Can not load dictionary '{0}' from '{1}' with error message '{2}'.", ne.DictionaryName, ne.DictionaryAssetName, ne.ErrorMessage);
+            Log.Error("Can not load dictionary '{0}' from '{1}' with error message '{2}'.", ne.DictionaryAssetName, ne.DictionaryAssetName, ne.ErrorMessage);
         }
     }
 

@@ -15,16 +15,18 @@ namespace UnityGameFramework.Editor.ResourceTools
         {
             private readonly string m_Name;
             private readonly string m_Variant;
+            private readonly string m_FileSystem;
             private readonly LoadType m_LoadType;
             private readonly bool m_Packed;
             private readonly string[] m_ResourceGroups;
             private readonly List<AssetData> m_AssetDatas;
             private readonly List<ResourceCode> m_Codes;
 
-            public ResourceData(string name, string variant, LoadType loadType, bool packed, string[] resourceGroups)
+            public ResourceData(string name, string variant, string fileSystem, LoadType loadType, bool packed, string[] resourceGroups)
             {
                 m_Name = name;
                 m_Variant = variant;
+                m_FileSystem = fileSystem;
                 m_LoadType = loadType;
                 m_Packed = packed;
                 m_ResourceGroups = resourceGroups;
@@ -45,6 +47,22 @@ namespace UnityGameFramework.Editor.ResourceTools
                 get
                 {
                     return m_Variant;
+                }
+            }
+
+            public string FileSystem
+            {
+                get
+                {
+                    return m_FileSystem;
+                }
+            }
+
+            public bool IsLoadFromBinary
+            {
+                get
+                {
+                    return m_LoadType == LoadType.LoadFromBinary || m_LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || m_LoadType == LoadType.LoadFromBinaryAndDecrypt;
                 }
             }
 
@@ -75,6 +93,17 @@ namespace UnityGameFramework.Editor.ResourceTools
             public string[] GetResourceGroups()
             {
                 return m_ResourceGroups;
+            }
+
+            public string[] GetAssetGuids()
+            {
+                string[] assetGuids = new string[m_AssetDatas.Count];
+                for (int i = 0; i < m_AssetDatas.Count; i++)
+                {
+                    assetGuids[i] = m_AssetDatas[i].Guid;
+                }
+
+                return assetGuids;
             }
 
             public string[] GetAssetNames()

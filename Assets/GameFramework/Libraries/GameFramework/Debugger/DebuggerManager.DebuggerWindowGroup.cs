@@ -125,8 +125,8 @@ namespace GameFramework.Debugger
 
             private void RefreshDebuggerWindowNames()
             {
-                m_DebuggerWindowNames = new string[m_DebuggerWindows.Count];
                 int index = 0;
+                m_DebuggerWindowNames = new string[m_DebuggerWindows.Count];
                 foreach (KeyValuePair<string, IDebuggerWindow> debuggerWindow in m_DebuggerWindows)
                 {
                     m_DebuggerWindowNames[index++] = debuggerWindow.Key;
@@ -241,6 +241,39 @@ namespace GameFramework.Debugger
 
                     debuggerWindowGroup.RegisterDebuggerWindow(leftPath, debuggerWindow);
                 }
+            }
+
+            /// <summary>
+            /// 解除注册调试器窗口。
+            /// </summary>
+            /// <param name="path">调试器窗口路径。</param>
+            /// <returns>是否解除注册调试器窗口成功。</returns>
+            public bool UnregisterDebuggerWindow(string path)
+            {
+                if (string.IsNullOrEmpty(path))
+                {
+                    return false;
+                }
+
+                int pos = path.IndexOf('/');
+                if (pos < 0 || pos >= path.Length - 1)
+                {
+                    IDebuggerWindow debuggerWindow = InternalGetDebuggerWindow(path);
+                    bool result = m_DebuggerWindows.Remove(new KeyValuePair<string, IDebuggerWindow>(path, debuggerWindow));
+                    debuggerWindow.Shutdown();
+                    RefreshDebuggerWindowNames();
+                    return result;
+                }
+
+                string debuggerWindowGroupName = path.Substring(0, pos);
+                string leftPath = path.Substring(pos + 1);
+                DebuggerWindowGroup debuggerWindowGroup = (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
+                if (debuggerWindowGroup == null)
+                {
+                    return false;
+                }
+
+                return debuggerWindowGroup.UnregisterDebuggerWindow(leftPath);
             }
 
             private IDebuggerWindow InternalGetDebuggerWindow(string name)

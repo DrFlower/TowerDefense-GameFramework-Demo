@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-14 01:28:19.700
+// 生成时间：2020-08-15 14:09:04.084
 //------------------------------------------------------------
 
 using GameFramework;
@@ -162,65 +162,59 @@ namespace Flower
             private set;
         }
 
-        public override bool ParseDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
+        public override bool ParseDataRow(string dataRowString, object userData)
         {
-            Type dataType = dataRowSegment.DataType;
-            if (dataType == typeof(string))
+            string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
+            for (int i = 0; i < columnStrings.Length; i++)
             {
-                string[] columnTexts = ((string)dataRowSegment.Data).Substring(dataRowSegment.Offset, dataRowSegment.Length).Split(DataTableExtension.DataSplitSeparators);
-                for (int i = 0; i < columnTexts.Length; i++)
-                {
-                    columnTexts[i] = columnTexts[i].Trim(DataTableExtension.DataTrimSeparators);
-                }
+                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);
+            }
 
-                int index = 0;
-                index++;
-                m_Id = int.Parse(columnTexts[index++]);
-                index++;
-                NameId = columnTexts[index++];
-                EntityId = int.Parse(columnTexts[index++]);
-                Type = columnTexts[index++];
-                MaxHP = float.Parse(columnTexts[index++]);
-                Damage = int.Parse(columnTexts[index++]);
-                TowerDamage = float.Parse(columnTexts[index++]);
-                ProjectileEntityId = int.Parse(columnTexts[index++]);
-                ProjectileType = columnTexts[index++];
-                ProjectileData = int.Parse(columnTexts[index++]);
-                FireRate = float.Parse(columnTexts[index++]);
-                Range = float.Parse(columnTexts[index++]);
-                IsMultiAttack = bool.Parse(columnTexts[index++]);
-                Speed = float.Parse(columnTexts[index++]);
-                AddEnergy = float.Parse(columnTexts[index++]);
-            }
-            else if (dataType == typeof(byte[]))
+            int index = 0;
+            index++;
+            m_Id = int.Parse(columnStrings[index++]);
+            index++;
+            NameId = columnStrings[index++];
+            EntityId = int.Parse(columnStrings[index++]);
+            Type = columnStrings[index++];
+            MaxHP = float.Parse(columnStrings[index++]);
+            Damage = int.Parse(columnStrings[index++]);
+            TowerDamage = float.Parse(columnStrings[index++]);
+            ProjectileEntityId = int.Parse(columnStrings[index++]);
+            ProjectileType = columnStrings[index++];
+            ProjectileData = int.Parse(columnStrings[index++]);
+            FireRate = float.Parse(columnStrings[index++]);
+            Range = float.Parse(columnStrings[index++]);
+            IsMultiAttack = bool.Parse(columnStrings[index++]);
+            Speed = float.Parse(columnStrings[index++]);
+            AddEnergy = float.Parse(columnStrings[index++]);
+
+            GeneratePropertyArray();
+            return true;
+        }
+
+        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))
             {
-                string[] strings = (string[])dataTableUserData;
-                using (MemoryStream memoryStream = new MemoryStream((byte[])dataRowSegment.Data, dataRowSegment.Offset, dataRowSegment.Length, false))
+                using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
-                    using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
-                    {
-                        m_Id = binaryReader.Read7BitEncodedInt32();
-                        NameId = strings[binaryReader.Read7BitEncodedInt32()];
-                        EntityId = binaryReader.Read7BitEncodedInt32();
-                        Type = strings[binaryReader.Read7BitEncodedInt32()];
-                        MaxHP = binaryReader.ReadSingle();
-                        Damage = binaryReader.Read7BitEncodedInt32();
-                        TowerDamage = binaryReader.ReadSingle();
-                        ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
-                        ProjectileType = strings[binaryReader.Read7BitEncodedInt32()];
-                        ProjectileData = binaryReader.Read7BitEncodedInt32();
-                        FireRate = binaryReader.ReadSingle();
-                        Range = binaryReader.ReadSingle();
-                        IsMultiAttack = binaryReader.ReadBoolean();
-                        Speed = binaryReader.ReadSingle();
-                        AddEnergy = binaryReader.ReadSingle();
-                    }
+                    m_Id = binaryReader.Read7BitEncodedInt32();
+                    NameId = binaryReader.ReadString();
+                    EntityId = binaryReader.Read7BitEncodedInt32();
+                    Type = binaryReader.ReadString();
+                    MaxHP = binaryReader.ReadSingle();
+                    Damage = binaryReader.Read7BitEncodedInt32();
+                    TowerDamage = binaryReader.ReadSingle();
+                    ProjectileEntityId = binaryReader.Read7BitEncodedInt32();
+                    ProjectileType = binaryReader.ReadString();
+                    ProjectileData = binaryReader.Read7BitEncodedInt32();
+                    FireRate = binaryReader.ReadSingle();
+                    Range = binaryReader.ReadSingle();
+                    IsMultiAttack = binaryReader.ReadBoolean();
+                    Speed = binaryReader.ReadSingle();
+                    AddEnergy = binaryReader.ReadSingle();
                 }
-            }
-            else
-            {
-                Log.Warning("Can not parse data row which type '{0}' is invalid.", dataType.FullName);
-                return false;
             }
 
             GeneratePropertyArray();

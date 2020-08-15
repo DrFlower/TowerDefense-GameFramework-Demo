@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using GameFramework.Download;
+using GameFramework.FileSystem;
 using GameFramework.ObjectPool;
 using System;
 
@@ -81,6 +82,14 @@ namespace GameFramework.Resource
         }
 
         /// <summary>
+        /// 获取资源包版本资源列表序列化器。
+        /// </summary>
+        ResourcePackVersionListSerializer ResourcePackVersionListSerializer
+        {
+            get;
+        }
+
+        /// <summary>
         /// 获取当前资源适用的游戏版本号。
         /// </summary>
         string ApplicableGameVersion
@@ -97,7 +106,7 @@ namespace GameFramework.Resource
         }
 
         /// <summary>
-        /// 获取已准备完毕资源数量。
+        /// 获取资源数量。
         /// </summary>
         int AssetCount
         {
@@ -105,7 +114,7 @@ namespace GameFramework.Resource
         }
 
         /// <summary>
-        /// 获取已准备完毕资源数量。
+        /// 获取资源数量。
         /// </summary>
         int ResourceCount
         {
@@ -130,12 +139,28 @@ namespace GameFramework.Resource
         }
 
         /// <summary>
-        /// 获取或设置每下载多少字节的资源，重新生成一次版本资源列表。
+        /// 获取或设置每更新多少字节的资源，重新生成一次版本资源列表。
         /// </summary>
         int GenerateReadWriteVersionListLength
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// 获取正在应用的资源包路径。
+        /// </summary>
+        string ApplyingResourcePackPath
+        {
+            get;
+        }
+
+        /// <summary>
+        /// 获取等待应用资源数量。
+        /// </summary>
+        int ApplyWaitingCount
+        {
+            get;
         }
 
         /// <summary>
@@ -284,6 +309,16 @@ namespace GameFramework.Resource
         }
 
         /// <summary>
+        /// 资源应用成功事件。
+        /// </summary>
+        event EventHandler<ResourceApplySuccessEventArgs> ResourceApplySuccess;
+
+        /// <summary>
+        /// 资源应用失败事件。
+        /// </summary>
+        event EventHandler<ResourceApplyFailureEventArgs> ResourceApplyFailure;
+
+        /// <summary>
         /// 资源更新开始事件。
         /// </summary>
         event EventHandler<ResourceUpdateStartEventArgs> ResourceUpdateStart;
@@ -332,6 +367,12 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="objectPoolManager">对象池管理器。</param>
         void SetObjectPoolManager(IObjectPoolManager objectPoolManager);
+
+        /// <summary>
+        /// 设置文件系统管理器。
+        /// </summary>
+        /// <param name="fileSystemManager">文件系统管理器。</param>
+        void SetFileSystemManager(IFileSystemManager fileSystemManager);
 
         /// <summary>
         /// 设置下载管理器。
@@ -384,8 +425,16 @@ namespace GameFramework.Resource
         /// <summary>
         /// 使用可更新模式并检查资源。
         /// </summary>
+        /// <param name="ignoreOtherVariant">是否忽略处理其它变体的资源，若不忽略，将会移除其它变体的资源。</param>
         /// <param name="checkResourcesCompleteCallback">使用可更新模式并检查资源完成时的回调函数。</param>
-        void CheckResources(CheckResourcesCompleteCallback checkResourcesCompleteCallback);
+        void CheckResources(bool ignoreOtherVariant, CheckResourcesCompleteCallback checkResourcesCompleteCallback);
+
+        /// <summary>
+        /// 使用可更新模式并应用资源包资源。
+        /// </summary>
+        /// <param name="resourcePackPath">要应用的资源包路径。</param>
+        /// <param name="applyResourcesCompleteCallback">使用可更新模式并应用资源包资源完成时的回调函数。</param>
+        void ApplyResources(string resourcePackPath, ApplyResourcesCompleteCallback applyResourcesCompleteCallback);
 
         /// <summary>
         /// 使用可更新模式并更新全部资源。
@@ -399,6 +448,13 @@ namespace GameFramework.Resource
         /// <param name="resourceGroupName">要更新的资源组名称。</param>
         /// <param name="updateResourcesCompleteCallback">使用可更新模式并更新指定资源组完成时的回调函数。</param>
         void UpdateResources(string resourceGroupName, UpdateResourcesCompleteCallback updateResourcesCompleteCallback);
+
+        /// <summary>
+        /// 校验资源包。
+        /// </summary>
+        /// <param name="resourcePackPath">要校验的资源包路径。</param>
+        /// <returns>是否校验资源包成功。</returns>
+        bool VerifyResourcePack(string resourcePackPath);
 
         /// <summary>
         /// 检查资源是否存在。
@@ -533,16 +589,26 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="binaryAssetName">要获取实际路径的二进制资源的名称。</param>
         /// <returns>二进制资源的实际路径。</returns>
+        /// <remarks>此方法仅适用于二进制资源存储在磁盘（而非文件系统）中的情况。若二进制资源存储在文件系统中时，返回值将始终为空。</remarks>
         string GetBinaryPath(string binaryAssetName);
 
         /// <summary>
         /// 获取二进制资源的实际路径。
         /// </summary>
         /// <param name="binaryAssetName">要获取实际路径的二进制资源的名称。</param>
-        /// <param name="storageInReadOnly">资源是否在只读区。</param>
-        /// <param name="relativePath">二进制资源相对于只读区或者读写区的相对路径。</param>
-        /// <returns>获取二进制资源的实际路径是否成功。</returns>
-        bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out string relativePath);
+        /// <param name="storageInReadOnly">二进制资源是否存储在只读区中。</param>
+        /// <param name="storageInFileSystem">二进制资源是否存储在文件系统中。</param>
+        /// <param name="relativePath">二进制资源或存储二进制资源的文件系统，相对于只读区或者读写区的相对路径。</param>
+        /// <param name="fileName">若二进制资源存储在文件系统中，则指示二进制资源在文件系统中的名称，否则此参数返回空。</param>
+        /// <returns>是否获取二进制资源的实际路径成功。</returns>
+        bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem, out string relativePath, out string fileName);
+
+        /// <summary>
+        /// 获取二进制资源的长度。
+        /// </summary>
+        /// <param name="binaryAssetName">要获取长度的二进制资源的名称。</param>
+        /// <returns>二进制资源的长度。</returns>
+        int GetBinaryLength(string binaryAssetName);
 
         /// <summary>
         /// 异步加载二进制资源。
@@ -558,6 +624,114 @@ namespace GameFramework.Resource
         /// <param name="loadBinaryCallbacks">加载二进制资源回调函数集。</param>
         /// <param name="userData">用户自定义数据。</param>
         void LoadBinary(string binaryAssetName, LoadBinaryCallbacks loadBinaryCallbacks, object userData);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <returns>存储加载二进制资源的二进制流。</returns>
+        byte[] LoadBinaryFromFileSystem(string binaryAssetName);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源的二进制流。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinaryFromFileSystem(string binaryAssetName, byte[] buffer);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源的二进制流的起始位置。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinaryFromFileSystem(string binaryAssetName, byte[] buffer, int startIndex);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源的二进制流的起始位置。</param>
+        /// <param name="length">存储加载二进制资源的二进制流的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinaryFromFileSystem(string binaryAssetName, byte[] buffer, int startIndex, int length);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>存储加载二进制资源片段内容的二进制流。</returns>
+        byte[] LoadBinarySegmentFromFileSystem(string binaryAssetName, int length);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>存储加载二进制资源片段内容的二进制流。</returns>
+        byte[] LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, int length);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, byte[] buffer);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, byte[] buffer, int length);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, byte[] buffer, int startIndex, int length);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int length);
+
+        /// <summary>
+        /// 从文件系统中加载二进制资源的片段。
+        /// </summary>
+        /// <param name="binaryAssetName">要加载片段的二进制资源的名称。</param>
+        /// <param name="offset">要加载片段的偏移。</param>
+        /// <param name="buffer">存储加载二进制资源片段内容的二进制流。</param>
+        /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
+        /// <param name="length">要加载片段的长度。</param>
+        /// <returns>实际加载了多少字节。</returns>
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex, int length);
 
         /// <summary>
         /// 检查资源组是否存在。

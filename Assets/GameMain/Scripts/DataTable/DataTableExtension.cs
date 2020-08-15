@@ -9,6 +9,7 @@ using GameFramework;
 using System;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameFramework.DataTable;
 
 namespace Flower
 {
@@ -18,7 +19,7 @@ namespace Flower
         internal static readonly char[] DataSplitSeparators = new char[] { '\t' };
         internal static readonly char[] DataTrimSeparators = new char[] { '\"' };
 
-        public static void LoadDataTable(this DataTableComponent dataTableComponent, string dataTableName, bool fromBytes, object userData = null)
+        public static void LoadDataTable(this DataTableComponent dataTableComponent, string dataTableName, string dataTableAssetName, object userData = null)
         {
             if (string.IsNullOrEmpty(dataTableName))
             {
@@ -26,15 +27,14 @@ namespace Flower
                 return;
             }
 
-            string[] splitNames = dataTableName.Split('_');
-            if (splitNames.Length > 2)
+            string[] splitedNames = dataTableName.Split('_');
+            if (splitedNames.Length > 2)
             {
                 Log.Warning("Data table name is invalid.");
                 return;
             }
 
-            string dataRowClassName = DataRowClassPrefixName + splitNames[0];
-
+            string dataRowClassName = DataRowClassPrefixName + splitedNames[0];
             Type dataRowType = Type.GetType(dataRowClassName);
             if (dataRowType == null)
             {
@@ -42,8 +42,9 @@ namespace Flower
                 return;
             }
 
-            string dataTableNameInType = splitNames.Length > 1 ? splitNames[1] : null;
-            dataTableComponent.LoadDataTable(dataRowType, dataTableName, dataTableNameInType, AssetUtility.GetDataTableAsset(dataTableName, fromBytes), Constant.AssetPriority.DataTableAsset, userData);
+            string name = splitedNames.Length > 1 ? splitedNames[1] : null;
+            DataTableBase dataTable = dataTableComponent.CreateDataTable(dataRowType, name);
+            dataTable.ReadData(AssetUtility.GetDataTableAsset(dataTableName), Constant.AssetPriority.DataTableAsset, userData);
         }
 
         public static Color32 ParseColor32(string value)

@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using GameFramework.FileSystem;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,9 +21,9 @@ namespace GameFramework.Resource
             /// </summary>
             private sealed partial class LoadResourceAgent : ITaskAgent<LoadResourceTaskBase>
             {
-                private static readonly Dictionary<string, string> s_CachedResourceNames = new Dictionary<string, string>();
-                private static readonly HashSet<string> s_LoadingAssetNames = new HashSet<string>();
-                private static readonly HashSet<string> s_LoadingResourceNames = new HashSet<string>();
+                private static readonly Dictionary<string, string> s_CachedResourceNames = new Dictionary<string, string>(StringComparer.Ordinal);
+                private static readonly HashSet<string> s_LoadingAssetNames = new HashSet<string>(StringComparer.Ordinal);
+                private static readonly HashSet<string> s_LoadingResourceNames = new HashSet<string>(StringComparer.Ordinal);
 
                 private readonly ILoadResourceAgentHelper m_Helper;
                 private readonly IResourceHelper m_ResourceHelper;
@@ -148,6 +149,13 @@ namespace GameFramework.Resource
 
                     m_Task = task;
                     m_Task.StartTime = DateTime.Now;
+                    ResourceInfo resourceInfo = m_Task.ResourceInfo;
+
+                    if (!resourceInfo.Ready)
+                    {
+                        m_Task.StartTime = default(DateTime);
+                        return StartTaskStatus.HasToWait;
+                    }
 
                     if (IsAssetLoading(m_Task.AssetName))
                     {
@@ -174,7 +182,7 @@ namespace GameFramework.Resource
                         }
                     }
 
-                    string resourceName = m_Task.ResourceInfo.ResourceName.Name;
+                    string resourceName = resourceInfo.ResourceName.Name;
                     if (IsResourceLoading(resourceName))
                     {
                         m_Task.StartTime = default(DateTime);
@@ -195,17 +203,37 @@ namespace GameFramework.Resource
                     string fullPath = null;
                     if (!s_CachedResourceNames.TryGetValue(resourceName, out fullPath))
                     {
-                        fullPath = Utility.Path.GetRegularPath(Path.Combine(m_Task.ResourceInfo.StorageInReadOnly ? m_ReadOnlyPath : m_ReadWritePath, m_Task.ResourceInfo.ResourceName.FullName));
+                        fullPath = Utility.Path.GetRegularPath(Path.Combine(resourceInfo.StorageInReadOnly ? m_ReadOnlyPath : m_ReadWritePath, resourceInfo.UseFileSystem ? resourceInfo.FileSystemName : resourceInfo.ResourceName.FullName));
                         s_CachedResourceNames.Add(resourceName, fullPath);
                     }
 
-                    if (m_Task.ResourceInfo.LoadType == LoadType.LoadFromFile)
+                    if (resourceInfo.LoadType == LoadType.LoadFromFile)
                     {
-                        m_Helper.ReadFile(fullPath);
+                        if (resourceInfo.UseFileSystem)
+                        {
+                            IFileSystem fileSystem = m_ResourceLoader.m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
+                            m_Helper.ReadFile(fileSystem, resourceInfo.ResourceName.FullName);
+                        }
+                        else
+                        {
+                            m_Helper.ReadFile(fullPath);
+                        }
+                    }
+                    else if (resourceInfo.LoadType == LoadType.LoadFromMemory || resourceInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt)
+                    {
+                        if (resourceInfo.UseFileSystem)
+                        {
+                            IFileSystem fileSystem = m_ResourceLoader.m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
+                            m_Helper.ReadBytes(fileSystem, resourceInfo.ResourceName.FullName);
+                        }
+                        else
+                        {
+                            m_Helper.ReadBytes(fullPath);
+                        }
                     }
                     else
                     {
-                        m_Helper.ReadBytes(fullPath);
+                        throw new GameFrameworkException(Utility.Text.Format("Resource load type '{0}' is not supported.", resourceInfo.LoadType.ToString()));
                     }
 
                     return StartTaskStatus.CanResume;
@@ -274,9 +302,10 @@ namespace GameFramework.Resource
                 private void OnLoadResourceAgentHelperReadBytesComplete(object sender, LoadResourceAgentHelperReadBytesCompleteEventArgs e)
                 {
                     byte[] bytes = e.GetBytes();
-                    if (m_Task.ResourceInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || m_Task.ResourceInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt)
+                    ResourceInfo resourceInfo = m_Task.ResourceInfo;
+                    if (resourceInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt)
                     {
-                        bytes = m_DecryptResourceCallback(m_Task.ResourceInfo.ResourceName.Name, m_Task.ResourceInfo.ResourceName.Variant, (byte)m_Task.ResourceInfo.LoadType, m_Task.ResourceInfo.Length, m_Task.ResourceInfo.HashCode, m_Task.ResourceInfo.StorageInReadOnly, bytes);
+                        m_DecryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name, resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension, resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
                     }
 
                     m_Helper.ParseBytes(bytes);

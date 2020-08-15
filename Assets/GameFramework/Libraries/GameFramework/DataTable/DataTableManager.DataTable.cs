@@ -97,7 +97,7 @@ namespace GameFramework.DataTable
             /// </summary>
             /// <param name="id">数据表行的编号。</param>
             /// <returns>是否存在数据表行。</returns>
-            public bool HasDataRow(int id)
+            public override bool HasDataRow(int id)
             {
                 return m_DataSet.ContainsKey(id);
             }
@@ -367,15 +367,15 @@ namespace GameFramework.DataTable
             /// <summary>
             /// 增加数据表行。
             /// </summary>
-            /// <param name="dataRowSegment">要解析的数据表行片段。</param>
-            /// <param name="dataTableUserData">数据表用户自定义数据。</param>
+            /// <param name="dataRowString">要解析的数据表行字符串。</param>
+            /// <param name="userData">用户自定义数据。</param>
             /// <returns>是否增加数据表行成功。</returns>
-            public override bool AddDataRow(GameFrameworkDataSegment dataRowSegment, object dataTableUserData)
+            public override bool AddDataRow(string dataRowString, object userData)
             {
                 try
                 {
                     T dataRow = new T();
-                    if (!dataRow.ParseDataRow(dataRowSegment, dataTableUserData))
+                    if (!dataRow.ParseDataRow(dataRowString, userData))
                     {
                         return false;
                     }
@@ -390,7 +390,39 @@ namespace GameFramework.DataTable
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
+                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data row string for data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
+                }
+            }
+
+            /// <summary>
+            /// 增加数据表行。
+            /// </summary>
+            /// <param name="dataRowBytes">要解析的数据表行二进制流。</param>
+            /// <param name="startIndex">数据表行二进制流的起始位置。</param>
+            /// <param name="length">数据表行二进制流的长度。</param>
+            /// <param name="userData">用户自定义数据。</param>
+            /// <returns>是否增加数据表行成功。</returns>
+            public override bool AddDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
+            {
+                try
+                {
+                    T dataRow = new T();
+                    if (!dataRow.ParseDataRow(dataRowBytes, startIndex, length, userData))
+                    {
+                        return false;
+                    }
+
+                    InternalAddDataRow(dataRow);
+                    return true;
+                }
+                catch (Exception exception)
+                {
+                    if (exception is GameFrameworkException)
+                    {
+                        throw;
+                    }
+
+                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data row bytes for data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
                 }
             }
 
@@ -399,7 +431,7 @@ namespace GameFramework.DataTable
             /// </summary>
             /// <param name="id">要移除数据表行的编号。</param>
             /// <returns>是否移除数据表行成功。</returns>
-            public bool RemoveDataRow(int id)
+            public override bool RemoveDataRow(int id)
             {
                 if (!HasDataRow(id))
                 {
@@ -435,7 +467,7 @@ namespace GameFramework.DataTable
             /// <summary>
             /// 清空所有数据表行。
             /// </summary>
-            public void RemoveAllDataRows()
+            public override void RemoveAllDataRows()
             {
                 m_DataSet.Clear();
                 m_MinIdDataRow = null;
@@ -443,14 +475,18 @@ namespace GameFramework.DataTable
             }
 
             /// <summary>
-            /// 返回一个循环访问数据表的枚举器。
+            /// 返回循环访问集合的枚举数。
             /// </summary>
-            /// <returns>可用于循环访问数据表的对象。</returns>
+            /// <returns>循环访问集合的枚举数。</returns>
             public IEnumerator<T> GetEnumerator()
             {
                 return m_DataSet.Values.GetEnumerator();
             }
 
+            /// <summary>
+            /// 返回循环访问集合的枚举数。
+            /// </summary>
+            /// <returns>循环访问集合的枚举数。</returns>
             IEnumerator IEnumerable.GetEnumerator()
             {
                 return m_DataSet.Values.GetEnumerator();

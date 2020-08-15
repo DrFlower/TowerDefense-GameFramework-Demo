@@ -17,31 +17,19 @@ namespace GameFramework.Localization
     internal sealed partial class LocalizationManager : GameFrameworkModule, ILocalizationManager
     {
         private readonly Dictionary<string, string> m_Dictionary;
-        private readonly LoadAssetCallbacks m_LoadAssetCallbacks;
-        private readonly LoadBinaryCallbacks m_LoadBinaryCallbacks;
-        private IResourceManager m_ResourceManager;
+        private readonly DataProvider<ILocalizationManager> m_DataProvider;
         private ILocalizationHelper m_LocalizationHelper;
         private Language m_Language;
-        private EventHandler<LoadDictionarySuccessEventArgs> m_LoadDictionarySuccessEventHandler;
-        private EventHandler<LoadDictionaryFailureEventArgs> m_LoadDictionaryFailureEventHandler;
-        private EventHandler<LoadDictionaryUpdateEventArgs> m_LoadDictionaryUpdateEventHandler;
-        private EventHandler<LoadDictionaryDependencyAssetEventArgs> m_LoadDictionaryDependencyAssetEventHandler;
 
         /// <summary>
         /// 初始化本地化管理器的新实例。
         /// </summary>
         public LocalizationManager()
         {
-            m_Dictionary = new Dictionary<string, string>();
-            m_LoadAssetCallbacks = new LoadAssetCallbacks(LoadAssetSuccessCallback, LoadAssetOrBinaryFailureCallback, LoadAssetUpdateCallback, LoadAssetDependencyAssetCallback);
-            m_LoadBinaryCallbacks = new LoadBinaryCallbacks(LoadBinarySuccessCallback, LoadAssetOrBinaryFailureCallback);
-            m_ResourceManager = null;
+            m_Dictionary = new Dictionary<string, string>(StringComparer.Ordinal);
+            m_DataProvider = new DataProvider<ILocalizationManager>(this);
             m_LocalizationHelper = null;
             m_Language = Language.Unspecified;
-            m_LoadDictionarySuccessEventHandler = null;
-            m_LoadDictionaryFailureEventHandler = null;
-            m_LoadDictionaryUpdateEventHandler = null;
-            m_LoadDictionaryDependencyAssetEventHandler = null;
         }
 
         /// <summary>
@@ -92,62 +80,62 @@ namespace GameFramework.Localization
         }
 
         /// <summary>
-        /// 加载字典成功事件。
+        /// 读取字典成功事件。
         /// </summary>
-        public event EventHandler<LoadDictionarySuccessEventArgs> LoadDictionarySuccess
+        public event EventHandler<ReadDataSuccessEventArgs> ReadDataSuccess
         {
             add
             {
-                m_LoadDictionarySuccessEventHandler += value;
+                m_DataProvider.ReadDataSuccess += value;
             }
             remove
             {
-                m_LoadDictionarySuccessEventHandler -= value;
+                m_DataProvider.ReadDataSuccess -= value;
             }
         }
 
         /// <summary>
-        /// 加载字典失败事件。
+        /// 读取字典失败事件。
         /// </summary>
-        public event EventHandler<LoadDictionaryFailureEventArgs> LoadDictionaryFailure
+        public event EventHandler<ReadDataFailureEventArgs> ReadDataFailure
         {
             add
             {
-                m_LoadDictionaryFailureEventHandler += value;
+                m_DataProvider.ReadDataFailure += value;
             }
             remove
             {
-                m_LoadDictionaryFailureEventHandler -= value;
+                m_DataProvider.ReadDataFailure -= value;
             }
         }
 
         /// <summary>
-        /// 加载字典更新事件。
+        /// 读取字典更新事件。
         /// </summary>
-        public event EventHandler<LoadDictionaryUpdateEventArgs> LoadDictionaryUpdate
+        public event EventHandler<ReadDataUpdateEventArgs> ReadDataUpdate
         {
             add
             {
-                m_LoadDictionaryUpdateEventHandler += value;
+                m_DataProvider.ReadDataUpdate += value;
             }
             remove
             {
-                m_LoadDictionaryUpdateEventHandler -= value;
+                m_DataProvider.ReadDataUpdate -= value;
             }
         }
 
         /// <summary>
-        /// 加载字典时加载依赖资源事件。
+        /// 读取字典时加载依赖资源事件。
         /// </summary>
-        public event EventHandler<LoadDictionaryDependencyAssetEventArgs> LoadDictionaryDependencyAsset
+        public event EventHandler<ReadDataDependencyAssetEventArgs> ReadDataDependencyAsset
         {
             add
             {
-                m_LoadDictionaryDependencyAssetEventHandler += value;
+                m_DataProvider.ReadDataDependencyAsset += value;
             }
             remove
             {
-                m_LoadDictionaryDependencyAssetEventHandler -= value;
+                m_DataProvider.ReadDataDependencyAsset -= value;
             }
         }
 
@@ -173,12 +161,16 @@ namespace GameFramework.Localization
         /// <param name="resourceManager">资源管理器。</param>
         public void SetResourceManager(IResourceManager resourceManager)
         {
-            if (resourceManager == null)
-            {
-                throw new GameFrameworkException("Resource manager is invalid.");
-            }
+            m_DataProvider.SetResourceManager(resourceManager);
+        }
 
-            m_ResourceManager = resourceManager;
+        /// <summary>
+        /// 设置本地化数据提供者辅助器。
+        /// </summary>
+        /// <param name="dataProviderHelper">本地化数据提供者辅助器。</param>
+        public void SetDataProviderHelper(IDataProviderHelper<ILocalizationManager> dataProviderHelper)
+        {
+            m_DataProvider.SetDataProviderHelper(dataProviderHelper);
         }
 
         /// <summary>
@@ -196,103 +188,110 @@ namespace GameFramework.Localization
         }
 
         /// <summary>
-        /// 加载字典。
+        /// 读取字典。
         /// </summary>
         /// <param name="dictionaryAssetName">字典资源名称。</param>
-        public void LoadDictionary(string dictionaryAssetName)
+        public void ReadData(string dictionaryAssetName)
         {
-            LoadDictionary(dictionaryAssetName, Constant.DefaultPriority, null);
+            m_DataProvider.ReadData(dictionaryAssetName);
         }
 
         /// <summary>
-        /// 加载字典。
+        /// 读取字典。
         /// </summary>
         /// <param name="dictionaryAssetName">字典资源名称。</param>
         /// <param name="priority">加载字典资源的优先级。</param>
-        public void LoadDictionary(string dictionaryAssetName, int priority)
+        public void ReadData(string dictionaryAssetName, int priority)
         {
-            LoadDictionary(dictionaryAssetName, priority, null);
+            m_DataProvider.ReadData(dictionaryAssetName, priority);
         }
 
         /// <summary>
-        /// 加载字典。
+        /// 读取字典。
         /// </summary>
         /// <param name="dictionaryAssetName">字典资源名称。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void LoadDictionary(string dictionaryAssetName, object userData)
+        public void ReadData(string dictionaryAssetName, object userData)
         {
-            LoadDictionary(dictionaryAssetName, Constant.DefaultPriority, userData);
+            m_DataProvider.ReadData(dictionaryAssetName, userData);
         }
 
         /// <summary>
-        /// 加载字典。
+        /// 读取字典。
         /// </summary>
         /// <param name="dictionaryAssetName">字典资源名称。</param>
         /// <param name="priority">加载字典资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void LoadDictionary(string dictionaryAssetName, int priority, object userData)
+        public void ReadData(string dictionaryAssetName, int priority, object userData)
         {
-            if (m_ResourceManager == null)
-            {
-                throw new GameFrameworkException("You must set resource manager first.");
-            }
-
-            if (m_LocalizationHelper == null)
-            {
-                throw new GameFrameworkException("You must set localization helper first.");
-            }
-
-            switch (m_ResourceManager.HasAsset(dictionaryAssetName))
-            {
-                case HasAssetResult.Asset:
-                    m_ResourceManager.LoadAsset(dictionaryAssetName, priority, m_LoadAssetCallbacks, userData);
-                    break;
-
-                case HasAssetResult.Binary:
-                    m_ResourceManager.LoadBinary(dictionaryAssetName, m_LoadBinaryCallbacks, userData);
-                    break;
-
-                default:
-                    throw new GameFrameworkException(Utility.Text.Format("Dictionary asset '{0}' is not exist.", dictionaryAssetName));
-            }
+            m_DataProvider.ReadData(dictionaryAssetName, priority, userData);
         }
 
         /// <summary>
         /// 解析字典。
         /// </summary>
-        /// <param name="dictionaryData">要解析的字典数据。</param>
+        /// <param name="dictionaryString">要解析的字典字符串。</param>
         /// <returns>是否解析字典成功。</returns>
-        public bool ParseDictionary(object dictionaryData)
+        public bool ParseData(string dictionaryString)
         {
-            return ParseDictionary(dictionaryData, null);
+            return m_DataProvider.ParseData(dictionaryString);
         }
 
         /// <summary>
         /// 解析字典。
         /// </summary>
-        /// <param name="dictionaryData">要解析的字典数据。</param>
+        /// <param name="dictionaryString">要解析的字典字符串。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否解析字典成功。</returns>
-        public bool ParseDictionary(object dictionaryData, object userData)
+        public bool ParseData(string dictionaryString, object userData)
         {
-            if (m_LocalizationHelper == null)
-            {
-                throw new GameFrameworkException("You must set localization helper first.");
-            }
+            return m_DataProvider.ParseData(dictionaryString, userData);
+        }
 
-            try
-            {
-                return m_LocalizationHelper.ParseDictionary(dictionaryData, userData);
-            }
-            catch (Exception exception)
-            {
-                if (exception is GameFrameworkException)
-                {
-                    throw;
-                }
+        /// <summary>
+        /// 解析字典。
+        /// </summary>
+        /// <param name="dictionaryBytes">要解析的字典二进制流。</param>
+        /// <returns>是否解析字典成功。</returns>
+        public bool ParseData(byte[] dictionaryBytes)
+        {
+            return m_DataProvider.ParseData(dictionaryBytes);
+        }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
-            }
+        /// <summary>
+        /// 解析字典。
+        /// </summary>
+        /// <param name="dictionaryBytes">要解析的字典二进制流。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        /// <returns>是否解析字典成功。</returns>
+        public bool ParseData(byte[] dictionaryBytes, object userData)
+        {
+            return m_DataProvider.ParseData(dictionaryBytes, userData);
+        }
+
+        /// <summary>
+        /// 解析字典。
+        /// </summary>
+        /// <param name="dictionaryBytes">要解析的字典二进制流。</param>
+        /// <param name="startIndex">字典二进制流的起始位置。</param>
+        /// <param name="length">字典二进制流的长度。</param>
+        /// <returns>是否解析字典成功。</returns>
+        public bool ParseData(byte[] dictionaryBytes, int startIndex, int length)
+        {
+            return m_DataProvider.ParseData(dictionaryBytes, startIndex, length);
+        }
+
+        /// <summary>
+        /// 解析字典。
+        /// </summary>
+        /// <param name="dictionaryBytes">要解析的字典二进制流。</param>
+        /// <param name="startIndex">字典二进制流的起始位置。</param>
+        /// <param name="length">字典二进制流的长度。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        /// <returns>是否解析字典成功。</returns>
+        public bool ParseData(byte[] dictionaryBytes, int startIndex, int length, object userData)
+        {
+            return m_DataProvider.ParseData(dictionaryBytes, startIndex, length, userData);
         }
 
         /// <summary>
@@ -302,13 +301,8 @@ namespace GameFramework.Localization
         /// <returns>要获取的字典内容字符串。</returns>
         public string GetString(string key)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new GameFrameworkException("Key is invalid.");
-            }
-
-            string value = null;
-            if (!m_Dictionary.TryGetValue(key, out value))
+            string value = GetRawString(key);
+            if (value == null)
             {
                 return Utility.Text.Format("<NoKey>{0}", key);
             }
@@ -324,13 +318,8 @@ namespace GameFramework.Localization
         /// <returns>要获取的字典内容字符串。</returns>
         public string GetString(string key, object arg0)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new GameFrameworkException("Key is invalid.");
-            }
-
-            string value = null;
-            if (!m_Dictionary.TryGetValue(key, out value))
+            string value = GetRawString(key);
+            if (value == null)
             {
                 return Utility.Text.Format("<NoKey>{0}", key);
             }
@@ -354,13 +343,8 @@ namespace GameFramework.Localization
         /// <returns>要获取的字典内容字符串。</returns>
         public string GetString(string key, object arg0, object arg1)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new GameFrameworkException("Key is invalid.");
-            }
-
-            string value = null;
-            if (!m_Dictionary.TryGetValue(key, out value))
+            string value = GetRawString(key);
+            if (value == null)
             {
                 return Utility.Text.Format("<NoKey>{0}", key);
             }
@@ -385,13 +369,8 @@ namespace GameFramework.Localization
         /// <returns>要获取的字典内容字符串。</returns>
         public string GetString(string key, object arg0, object arg1, object arg2)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new GameFrameworkException("Key is invalid.");
-            }
-
-            string value = null;
-            if (!m_Dictionary.TryGetValue(key, out value))
+            string value = GetRawString(key);
+            if (value == null)
             {
                 return Utility.Text.Format("<NoKey>{0}", key);
             }
@@ -414,13 +393,8 @@ namespace GameFramework.Localization
         /// <returns>要获取的字典内容字符串。</returns>
         public string GetString(string key, params object[] args)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new GameFrameworkException("Key is invalid.");
-            }
-
-            string value = null;
-            if (!m_Dictionary.TryGetValue(key, out value))
+            string value = GetRawString(key);
+            if (value == null)
             {
                 return Utility.Text.Format("<NoKey>{0}", key);
             }
@@ -473,12 +447,12 @@ namespace GameFramework.Localization
             }
 
             string value = null;
-            if (m_Dictionary.TryGetValue(key, out value))
+            if (!m_Dictionary.TryGetValue(key, out value))
             {
-                return value;
+                return null;
             }
 
-            return Utility.Text.Format("<NoKey>{0}", key);
+            return value;
         }
 
         /// <summary>
@@ -489,7 +463,12 @@ namespace GameFramework.Localization
         /// <returns>是否增加字典成功。</returns>
         public bool AddRawString(string key, string value)
         {
-            if (HasRawString(key))
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new GameFrameworkException("Key is invalid.");
+            }
+
+            if (m_Dictionary.ContainsKey(key))
             {
                 return false;
             }
@@ -505,9 +484,9 @@ namespace GameFramework.Localization
         /// <returns>是否移除字典成功。</returns>
         public bool RemoveRawString(string key)
         {
-            if (!HasRawString(key))
+            if (string.IsNullOrEmpty(key))
             {
-                return false;
+                throw new GameFrameworkException("Key is invalid.");
             }
 
             return m_Dictionary.Remove(key);
@@ -519,104 +498,6 @@ namespace GameFramework.Localization
         public void RemoveAllRawStrings()
         {
             m_Dictionary.Clear();
-        }
-
-        private void LoadAssetSuccessCallback(string dictionaryAssetName, object dictionaryAsset, float duration, object userData)
-        {
-            try
-            {
-                if (!m_LocalizationHelper.LoadDictionary(dictionaryAssetName, dictionaryAsset, userData))
-                {
-                    throw new GameFrameworkException(Utility.Text.Format("Load dictionary failure in helper, asset name '{0}'.", dictionaryAssetName));
-                }
-
-                if (m_LoadDictionarySuccessEventHandler != null)
-                {
-                    LoadDictionarySuccessEventArgs loadDictionarySuccessEventArgs = LoadDictionarySuccessEventArgs.Create(dictionaryAssetName, duration, userData);
-                    m_LoadDictionarySuccessEventHandler(this, loadDictionarySuccessEventArgs);
-                    ReferencePool.Release(loadDictionarySuccessEventArgs);
-                }
-            }
-            catch (Exception exception)
-            {
-                if (m_LoadDictionaryFailureEventHandler != null)
-                {
-                    LoadDictionaryFailureEventArgs loadDictionaryFailureEventArgs = LoadDictionaryFailureEventArgs.Create(dictionaryAssetName, exception.ToString(), userData);
-                    m_LoadDictionaryFailureEventHandler(this, loadDictionaryFailureEventArgs);
-                    ReferencePool.Release(loadDictionaryFailureEventArgs);
-                    return;
-                }
-
-                throw;
-            }
-            finally
-            {
-                m_LocalizationHelper.ReleaseDictionaryAsset(dictionaryAsset);
-            }
-        }
-
-        private void LoadAssetOrBinaryFailureCallback(string dictionaryAssetName, LoadResourceStatus status, string errorMessage, object userData)
-        {
-            string appendErrorMessage = Utility.Text.Format("Load dictionary failure, asset name '{0}', status '{1}', error message '{2}'.", dictionaryAssetName, status.ToString(), errorMessage);
-            if (m_LoadDictionaryFailureEventHandler != null)
-            {
-                LoadDictionaryFailureEventArgs loadDictionaryFailureEventArgs = LoadDictionaryFailureEventArgs.Create(dictionaryAssetName, appendErrorMessage, userData);
-                m_LoadDictionaryFailureEventHandler(this, loadDictionaryFailureEventArgs);
-                ReferencePool.Release(loadDictionaryFailureEventArgs);
-                return;
-            }
-
-            throw new GameFrameworkException(appendErrorMessage);
-        }
-
-        private void LoadAssetUpdateCallback(string dictionaryAssetName, float progress, object userData)
-        {
-            if (m_LoadDictionaryUpdateEventHandler != null)
-            {
-                LoadDictionaryUpdateEventArgs loadDictionaryUpdateEventArgs = LoadDictionaryUpdateEventArgs.Create(dictionaryAssetName, progress, userData);
-                m_LoadDictionaryUpdateEventHandler(this, loadDictionaryUpdateEventArgs);
-                ReferencePool.Release(loadDictionaryUpdateEventArgs);
-            }
-        }
-
-        private void LoadAssetDependencyAssetCallback(string dictionaryAssetName, string dependencyAssetName, int loadedCount, int totalCount, object userData)
-        {
-            if (m_LoadDictionaryDependencyAssetEventHandler != null)
-            {
-                LoadDictionaryDependencyAssetEventArgs loadDictionaryDependencyAssetEventArgs = LoadDictionaryDependencyAssetEventArgs.Create(dictionaryAssetName, dependencyAssetName, loadedCount, totalCount, userData);
-                m_LoadDictionaryDependencyAssetEventHandler(this, loadDictionaryDependencyAssetEventArgs);
-                ReferencePool.Release(loadDictionaryDependencyAssetEventArgs);
-            }
-        }
-
-        private void LoadBinarySuccessCallback(string dictionaryAssetName, byte[] dictionaryBytes, float duration, object userData)
-        {
-            try
-            {
-                if (!m_LocalizationHelper.LoadDictionary(dictionaryAssetName, dictionaryBytes, userData))
-                {
-                    throw new GameFrameworkException(Utility.Text.Format("Load dictionary failure in helper, asset name '{0}'.", dictionaryAssetName));
-                }
-
-                if (m_LoadDictionarySuccessEventHandler != null)
-                {
-                    LoadDictionarySuccessEventArgs loadDictionarySuccessEventArgs = LoadDictionarySuccessEventArgs.Create(dictionaryAssetName, duration, userData);
-                    m_LoadDictionarySuccessEventHandler(this, loadDictionarySuccessEventArgs);
-                    ReferencePool.Release(loadDictionarySuccessEventArgs);
-                }
-            }
-            catch (Exception exception)
-            {
-                if (m_LoadDictionaryFailureEventHandler != null)
-                {
-                    LoadDictionaryFailureEventArgs loadDictionaryFailureEventArgs = LoadDictionaryFailureEventArgs.Create(dictionaryAssetName, exception.ToString(), userData);
-                    m_LoadDictionaryFailureEventHandler(this, loadDictionaryFailureEventArgs);
-                    ReferencePool.Release(loadDictionaryFailureEventArgs);
-                    return;
-                }
-
-                throw;
-            }
         }
     }
 }

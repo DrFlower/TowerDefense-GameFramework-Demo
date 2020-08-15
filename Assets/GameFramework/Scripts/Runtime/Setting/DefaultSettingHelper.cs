@@ -23,6 +23,9 @@ namespace UnityGameFramework.Runtime
         private DefaultSetting m_Settings = null;
         private DefaultSettingSerializer m_Serializer = null;
 
+        /// <summary>
+        /// 获取游戏配置文件路径。
+        /// </summary>
         public virtual string FilePath
         {
             get
@@ -74,9 +77,17 @@ namespace UnityGameFramework.Runtime
         /// <returns>是否保存游戏配置成功。</returns>
         public override bool Save()
         {
-            using (FileStream fileStream = new FileStream(FilePath, FileMode.Create, FileAccess.Write))
+            try
             {
-                return m_Serializer.Serialize(fileStream, m_Settings);
+                using (FileStream fileStream = new FileStream(FilePath, FileMode.Create, FileAccess.Write))
+                {
+                    return m_Serializer.Serialize(fileStream, m_Settings);
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.Warning("Save settings failure with exception '{0}'.", exception.ToString());
+                return false;
             }
         }
 

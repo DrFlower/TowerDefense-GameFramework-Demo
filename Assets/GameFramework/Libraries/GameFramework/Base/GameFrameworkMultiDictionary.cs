@@ -195,11 +195,19 @@ namespace GameFramework
             return new Enumerator(m_Dictionary);
         }
 
+        /// <summary>
+        /// 返回循环访问集合的枚举数。
+        /// </summary>
+        /// <returns>循环访问集合的枚举数。</returns>
         IEnumerator<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>> IEnumerable<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>>.GetEnumerator()
         {
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// 返回循环访问集合的枚举数。
+        /// </summary>
+        /// <returns>循环访问集合的枚举数。</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
