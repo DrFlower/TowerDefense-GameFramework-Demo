@@ -27,7 +27,7 @@ namespace Flower
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            ChangeState<ProcedurePreload>(procedureOwner);
+            ChangeState<ProcedureCheckResources>(procedureOwner);
         }
 
 

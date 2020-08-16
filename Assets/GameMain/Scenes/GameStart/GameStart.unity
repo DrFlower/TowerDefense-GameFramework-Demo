@@ -1166,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AvailableProcedureTypeNames:
+  - Flower.ProcedureCheckResources
   - Flower.ProcedureLaunch
   - Flower.ProcedureLevel
   - Flower.ProcedureLoadingScene
@@ -1359,7 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98acd7d3bd2bf54dadf9644f60e5cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EditorResourceMode: 1
+  m_EditorResourceMode: 0
   m_EditorLanguage: 0
   m_VersionHelperTypeName: UnityGameFramework.Runtime.DefaultVersionHelper
   m_LogHelperTypeName: UnityGameFramework.Runtime.DefaultLogHelper
