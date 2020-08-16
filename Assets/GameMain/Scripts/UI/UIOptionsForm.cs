@@ -57,7 +57,7 @@ namespace Flower
 
             masterVolumeSlider.value = GameEntry.Sound.GetVolume("Music");
             sFXVolumeSlider.value = GameEntry.Sound.GetVolume("SFX");
-            musicVolumeSlider.value = GameEntry.Sound.GetVolume("UI");
+            musicVolumeSlider.value = GameEntry.Sound.GetVolume("SFX/UI");
 
             currentLanguage = (Language)GameEntry.Setting.GetInt(Constant.Setting.Language, (int)Language.English);
             selectLanguage = currentLanguage;
@@ -93,7 +93,7 @@ namespace Flower
 
         private void OnMusicVolumeSliderChange(float value)
         {
-            GameEntry.Sound.SetVolume("UI", value);
+            GameEntry.Sound.SetVolume("SFX/UI", value);
         }
 
 
