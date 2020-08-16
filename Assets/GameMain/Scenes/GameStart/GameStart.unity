@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EnableCachedAssets: 1
-  m_LoadAssetCountPerFrame: 1
+  m_LoadAssetCountPerFrame: 100
   m_MinLoadAssetRandomDelaySeconds: 0
   m_MaxLoadAssetRandomDelaySeconds: 0
 --- !u!114 &1753258678
