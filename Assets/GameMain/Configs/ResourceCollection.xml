@@ -36,6 +36,7 @@
       <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" />
       <Resource Name="LightMapMenu" LoadType="0" Packed="True" />
       <Resource Name="Localization/ChineseSimplified/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Dictionaries/Default" LoadType="0" Packed="False" />
       <Resource Name="Localization/English/Dictionaries/Default" LoadType="0" Packed="False" />
       <Resource Name="MissileArray" LoadType="0" Packed="False" />
       <Resource Name="PlasmaLance" LoadType="0" Packed="False" />
@@ -183,6 +184,7 @@
       <Asset Guid="b58c1ce8197772c44b235fe060b3b66d" ResourceName="Scenes/Level3/Level3" />
       <Asset Guid="b80fca6a02f62444ea5f1a82bcfce2dd" ResourceName="LightMapMenu" />
       <Asset Guid="bd48eea0ced6c45419b418dcfe222495" ResourceName="DataTable" />
+      <Asset Guid="bee7b15a9e66ce0419c4d7a7be10a5e1" ResourceName="Localization/ChineseTraditional/Dictionaries/Default" />
       <Asset Guid="c707bc95ab948454ca1e378dce5e9358" ResourceName="Item/PlacementTile" />
       <Asset Guid="c73fe5387e987544ba174c742865ed84" ResourceName="SoundTowerRockerLauncher" />
       <Asset Guid="c7f59e0c0be460e4bbdeb2128cbc1752" ResourceName="DataTable" />
