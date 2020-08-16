@@ -399,6 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButton: {fileID: 5367988062137958564}
   levelSelectButtonRoot: {fileID: 5367988062803975897}
+  mouseScroll: {fileID: 413142970616082997}
 --- !u!1 &5367988062305950229
 GameObject:
   m_ObjectHideFlags: 0

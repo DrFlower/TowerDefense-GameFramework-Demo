@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityInput = UnityEngine.Input;
 
-namespace Flower.UI
+namespace Flower
 {
     /// <summary>
     /// Component to override ScrollRect, uses normalized mouse position inside ScrollRect to scroll
@@ -36,7 +36,7 @@ namespace Flower.UI
         /// <summary>
         /// If appropriate, we cache ScrollRect reference, disable it and enable scrolling override
         /// </summary>
-        void Start()
+        public void Init()
         {
 #if UNITY_STANDALONE || UNITY_EDITOR
             m_ScrollRect = GetComponent<ScrollRect>();

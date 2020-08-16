@@ -13,6 +13,7 @@ namespace Flower
     {
         public Button backButton;
         public Transform levelSelectButtonRoot;
+        public MouseScroll mouseScroll;
 
         protected override void OnInit(object userData)
         {
@@ -24,6 +25,7 @@ namespace Flower
         {
             base.OnOpen(userData);
             ShowLevelSelectionButtonItems();
+            mouseScroll.Init();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
