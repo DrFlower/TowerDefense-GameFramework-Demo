@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <ResourceCollection>
+    <Resources>
+      <Resource Name="AssaultCannon" LoadType="0" Packed="False" />
+      <Resource Name="BaseAttack" LoadType="0" Packed="False" />
+      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="False" />
+      <Resource Name="DataTable" LoadType="0" Packed="True" />
+      <Resource Name="EMPGenerator" LoadType="0" Packed="False" />
+      <Resource Name="EnemiesExploding" LoadType="0" Packed="False" />
+      <Resource Name="EnergyPylon" LoadType="0" Packed="False" />
+      <Resource Name="Entity/BigDeathExplosionPfx" LoadType="0" Packed="False" />
+      <Resource Name="Entity/BuildPfx" LoadType="0" Packed="False" />
+      <Resource Name="Entity/BulletHit" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/Hoverboss" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/Hoverbuggy" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/Hovercopter" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/Hovertank" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/SuperHoverboss" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/SuperHoverbuggy" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/SuperHovercopter" LoadType="0" Packed="False" />
+      <Resource Name="Entity/Enemies/SuperHovertank" LoadType="0" Packed="False" />
+      <Resource Name="Entity/EnemyProjectile" LoadType="0" Packed="False" />
+      <Resource Name="Entity/EnemyShootEffect" LoadType="0" Packed="False" />
+      <Resource Name="Entity/EntityPlayer" LoadType="0" Packed="False" />
+      <Resource Name="Entity/HPBar" LoadType="0" Packed="False" />
+      <Resource Name="Entity/LaserImpactPFX" LoadType="0" Packed="False" />
+      <Resource Name="Entity/RadiusVisualiser" LoadType="0" Packed="False" />
+      <Resource Name="Entity/RocketExplosionPfx" LoadType="0" Packed="False" />
+      <Resource Name="Entity/RocketTrail" LoadType="0" Packed="False" />
+      <Resource Name="Entity/SlowFx" LoadType="0" Packed="False" />
+      <Resource Name="Entity/SmallDeathExplosionPfx" LoadType="0" Packed="False" />
+      <Resource Name="Entity/SupertowerMissileTrail" LoadType="0" Packed="False" />
+      <Resource Name="Entity/TowerDeathExplosion" LoadType="0" Packed="False" />
+      <Resource Name="Item/PlacementTile" LoadType="0" Packed="False" />
+      <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" />
+      <Resource Name="LightMapMenu" LoadType="0" Packed="True" />
+      <Resource Name="Localization/ChineseSimplified/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="MissileArray" LoadType="0" Packed="False" />
+      <Resource Name="PlasmaLance" LoadType="0" Packed="False" />
+      <Resource Name="RocketPlatform" LoadType="0" Packed="False" />
+      <Resource Name="Scenes/GameStart/GameStart" LoadType="0" Packed="True" />
+      <Resource Name="Scenes/Level1/Level1" LoadType="0" Packed="False" />
+      <Resource Name="Scenes/Level2/Level2" LoadType="0" Packed="False" />
+      <Resource Name="Scenes/Level3/Level3" LoadType="0" Packed="False" />
+      <Resource Name="Scenes/Level4/Level4" LoadType="0" Packed="False" />
+      <Resource Name="Scenes/Level5/Level5" LoadType="0" Packed="False" />
+      <Resource Name="Scenes/Menu/Menu" LoadType="0" Packed="True" />
+      <Resource Name="SoundEMPIdle" LoadType="0" Packed="False" />
+      <Resource Name="SoundEnemyFire" LoadType="0" Packed="False" />
+      <Resource Name="SoundGameMusic" LoadType="0" Packed="False" />
+      <Resource Name="SoundMenuMusic" LoadType="0" Packed="True" />
+      <Resource Name="SoundTowerDestriction" LoadType="0" Packed="False" />
+      <Resource Name="SoundTowerLaser" LoadType="0" Packed="False" />
+      <Resource Name="SoundTowerMachineGun" LoadType="0" Packed="False" />
+      <Resource Name="SoundTowerRockerLauncher" LoadType="0" Packed="False" />
+      <Resource Name="SoundTowerSuperTower" LoadType="0" Packed="False" />
+      <Resource Name="SoundUIBase" LoadType="0" Packed="True" />
+      <Resource Name="SoundUISFX" LoadType="0" Packed="False" />
+      <Resource Name="UI/Dynamic/LevelSelectionButton" LoadType="0" Packed="True" />
+      <Resource Name="UI/Dynamic/TowerBuildButton" LoadType="0" Packed="False" />
+      <Resource Name="UI/UIForms/UIGameOverForm" LoadType="0" Packed="False" />
+      <Resource Name="UI/UIForms/UILevelMainInfoForm" LoadType="0" Packed="False" />
+      <Resource Name="UI/UIForms/UILevelSelectForm" LoadType="0" Packed="True" />
+      <Resource Name="UI/UIForms/UIMainMenuForm" LoadType="0" Packed="True" />
+      <Resource Name="UI/UIForms/UIMask" LoadType="0" Packed="False" />
+      <Resource Name="UI/UIForms/UIOptionsForm" LoadType="0" Packed="True" />
+      <Resource Name="UI/UIForms/UIPausePanelForm" LoadType="0" Packed="False" />
+      <Resource Name="UI/UIForms/UITowerControllerForm" LoadType="0" Packed="False" />
+      <Resource Name="UI/UIForms/UITowerListForm" LoadType="0" Packed="False" />
+    </Resources>
+    <Assets>
+      <Asset Guid="01befc377d267aa47a659fd688128509" ResourceName="EnemiesExploding" />
+      <Asset Guid="02c80739782053b46a95a7fc5da4de3b" ResourceName="SoundUISFX" />
+      <Asset Guid="06f4152eb680617479812853ed8a581f" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="073ca2ed003aedf4cb608d9ce2d58514" ResourceName="Entity/Enemies/SuperHovercopter" />
+      <Asset Guid="098e32d1faf93fe40918be076db3b5ae" ResourceName="Entity/RocketExplosionPfx" />
+      <Asset Guid="0a1acdd7bb5a0534881a7db04fbea0b6" ResourceName="Entity/LaserImpactPFX" />
+      <Asset Guid="0b333bfceb3d4934d9e68b22ee836b09" ResourceName="DataTable" />
+      <Asset Guid="0d8eea74c36e49b4bbec75045042d923" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="0da5d1fab0b4f5f4c9c2354b9a121259" ResourceName="RocketPlatform" />
+      <Asset Guid="1380728d7d4c6c6459c823647dd4c7d3" ResourceName="Entity/TowerDeathExplosion" />
+      <Asset Guid="14b4165fcc6426f40844fbeccb0cb0cf" ResourceName="DataTable" />
+      <Asset Guid="154fba15a6072fb4db21704a44e7fb05" ResourceName="BaseAttack" />
+      <Asset Guid="16a99d0a844afa843b94afffc73b5162" ResourceName="RocketPlatform" />
+      <Asset Guid="190a86d0a03bbbb42bc98caf6c500483" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="1e64f1602ed529546b5d624245ad27b4" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="1e8f5015922b04dd1b862cf76c53775a" ResourceName="SoundMenuMusic" />
+      <Asset Guid="21b3cf78465345e4e88545e54ca54c2a" ResourceName="EMPGenerator" />
+      <Asset Guid="2231750fbe379494fa73ba554ad0be2d" ResourceName="UI/UIForms/UITowerListForm" />
+      <Asset Guid="24361001568ff6043bed9d103572addb" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="2684a1c4db9d69d41b3f07c6d26ea92d" ResourceName="Entity/Enemies/SuperHoverboss" />
+      <Asset Guid="26f3a8e13948f6f45a8743289c6f25dd" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="27155cca3c0c5a5419d4c3c11f4a4060" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="2755130a89be3604db5471bc22e7ba33" ResourceName="LightMapMenu" />
+      <Asset Guid="2937e46b4cc55fd4891f3f3ab8c3f18b" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="293df2a6d0c1fe2419f7fead8f64d9ad" ResourceName="PlasmaLance" />
+      <Asset Guid="345d5c19a669de74caf5dd5c61c1e8b3" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="3553810b91eba5440b10f0abdfcd2bab" ResourceName="EnemiesExploding" />
+      <Asset Guid="35e7666ce1d5bdf45a46447e9c108f62" ResourceName="BaseAttack" />
+      <Asset Guid="35ea3d79e6d719b4fbbae5f68e64f43b" ResourceName="RocketPlatform" />
+      <Asset Guid="36356b516d304b7479265f64647bde90" ResourceName="LightMapMenu" />
+      <Asset Guid="3697436845ba744408916597c5b5c50c" ResourceName="EnemiesExploding" />
+      <Asset Guid="384b67841c5396a4db0b83b4a08fe735" ResourceName="Scenes/Menu/Menu" />
+      <Asset Guid="3a8ffd16aeae9fd4091c154184e0d5d5" ResourceName="Scenes/Level5/Level5" />
+      <Asset Guid="3be5d87b18055e3458fd11ba66cfa94f" ResourceName="AssaultCannon" />
+      <Asset Guid="3d3a3a9531758ac4085f59930022c426" ResourceName="Entity/BulletHit" />
+      <Asset Guid="4361f589f95c04c42bdcf4793b7353dc" ResourceName="EnergyPylon" />
+      <Asset Guid="43777447cf66e7e4a9acc74a83035555" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="43ae2a440a3f03a428445a47c0b749b5" ResourceName="DataTable" />
+      <Asset Guid="472ed7c77852d9246b992f343f81a8f2" ResourceName="Entity/EnemyShootEffect" />
+      <Asset Guid="474ea29b517c95848bbe596875ca0593" ResourceName="AssaultCannon" />
+      <Asset Guid="47d081471431a6141abbd27d8b6b36aa" ResourceName="AssaultCannon" />
+      <Asset Guid="49a3969d998dbff4bb8afbb1715b580f" ResourceName="EnergyPylon" />
+      <Asset Guid="4db00e1153a3ba24b83c8aa44e59bcb2" ResourceName="RocketPlatform" />
+      <Asset Guid="4f7608bbbc6b81346bcfde1e8a65c6ad" ResourceName="UI/UIForms/UIMask" />
+      <Asset Guid="4f88d4301ee8ad14d86c544dced13f23" ResourceName="EnemiesExploding" />
+      <Asset Guid="5035a572b6f50414c93745e0ca4e3a01" ResourceName="DataTable" />
+      <Asset Guid="52813b4616870d743a86e8917a87b42a" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="534a05923a7ddbe4a8f7c7519f73778a" ResourceName="Entity/BuildPfx" />
+      <Asset Guid="541ab289e59da4e4281d981b7f31ea13" ResourceName="Entity/Enemies/Hovercopter" />
+      <Asset Guid="54f2752d08d923946bc84fe79ef27860" ResourceName="DataTable" />
+      <Asset Guid="567f4800fefa8d843835478dc75616af" ResourceName="SoundUIBase" />
+      <Asset Guid="57b31c5335be7fb41a1b4b1fa098785b" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="5a4b7618f48551643aaceba542fed0af" ResourceName="PlasmaLance" />
+      <Asset Guid="5b558de65359c1a4d9b394817d76bfa8" ResourceName="Entity/SlowFx" />
+      <Asset Guid="5dbdfd0a67d92474e974c3a4e7f5ce88" ResourceName="DataTable" />
+      <Asset Guid="5f81224f9c2105d439fa1d0bccfe2d28" ResourceName="UI/Dynamic/LevelSelectionButton" />
+      <Asset Guid="610cc044cb888b74b9e4bb0114340538" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="610dea3bfb715434483f0da8284fc96e" ResourceName="DataTable" />
+      <Asset Guid="6383895fc3769164d90be5679dea0cc2" ResourceName="PlasmaLance" />
+      <Asset Guid="654ac13bf998f464189815de72434588" ResourceName="DataTable" />
+      <Asset Guid="6a343bb1046518e43aff8354326dec45" ResourceName="Entity/SupertowerMissileTrail" />
+      <Asset Guid="6b0f6e2d35e637e4cb97cc619c129118" ResourceName="DataTable" />
+      <Asset Guid="6c61621905bdcec4b960f2f6fd92ee86" ResourceName="EnemiesExploding" />
+      <Asset Guid="6c63b4e8a9a78b94da4eb0497f842615" ResourceName="EnergyPylon" />
+      <Asset Guid="6ce6d7c4d4f6140f68d2c18955f02e8c" ResourceName="SoundGameMusic" />
+      <Asset Guid="6e3fa86cb35f69045bb379bab5dde150" ResourceName="UI/UIForms/UITowerControllerForm" />
+      <Asset Guid="703ea25111bccbd4db4d58a741d4699e" ResourceName="Scenes/Level2/Level2" />
+      <Asset Guid="7112532e3e9e3c246b2fe456781a9c28" ResourceName="SoundUISFX" />
+      <Asset Guid="728fbe3d625a4d249ae167a2f8a7f077" ResourceName="SoundEMPIdle" />
+      <Asset Guid="7292d1ebf364bd9409fd4b6fc6ee75fe" ResourceName="PlasmaLance" />
+      <Asset Guid="73badf10872f4af4396837e26b708838" ResourceName="SoundUISFX" />
+      <Asset Guid="74f7712c01fbe59418a236f0a575ae0c" ResourceName="DataTable" />
+      <Asset Guid="767e541ba9b8d154ba3e8a45aba8ff6b" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="7725ecb5bd0093c43969275f1109042d" ResourceName="SoundUISFX" />
+      <Asset Guid="7a835e50914362e49acff264d5ce41ca" ResourceName="DataTable" />
+      <Asset Guid="7d93ef64014fd6a4d9bb47a39a3a20e3" ResourceName="Entity/EnemyProjectile" />
+      <Asset Guid="7e1550d1279a6a04fb4fc06d48a5c41d" ResourceName="Entity/Enemies/Hoverbuggy" />
+      <Asset Guid="80635ad12c1cfb34fad5483bfe75459d" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="80c018f4dc6c4454d881705d0e1e63be" ResourceName="DataTable" />
+      <Asset Guid="811cd4b23353a924cacfc442592c5db9" ResourceName="Entity/BigDeathExplosionPfx" />
+      <Asset Guid="820e4fdcb4c95ef4095ae722cbd3277b" ResourceName="MissileArray" />
+      <Asset Guid="8459948c5a0088248a727f510f5ae681" ResourceName="PlasmaLance" />
+      <Asset Guid="87b1bb64b83880c4580ca412e0ca5f90" ResourceName="MissileArray" />
+      <Asset Guid="88d3ee3b94fdb764a9577770cbf88ae3" ResourceName="SoundUIBase" />
+      <Asset Guid="89d3180f8b763bc45a73f70e294b0aec" ResourceName="DataTable" />
+      <Asset Guid="8b31927881dde1540b137b7f89bd0cdc" ResourceName="Entity/Enemies/Hoverboss" />
+      <Asset Guid="8b988349d3373bd479a6c1cf5e79cbf0" ResourceName="LightMapMenu" />
+      <Asset Guid="8c39c07e09be28e4dbbc18bbf5bb3f86" ResourceName="SoundEnemyFire" />
+      <Asset Guid="8c96726848dd838449d38ebe49a4af04" ResourceName="MissileArray" />
+      <Asset Guid="8e62aad79aa61b046bccf48c741b9e29" ResourceName="Entity/SmallDeathExplosionPfx" />
+      <Asset Guid="917941f1d8862ff4a8dbcd474757c151" ResourceName="AssaultCannon" />
+      <Asset Guid="9186dc5f0afedc347afe444cef4b486a" ResourceName="EMPGenerator" />
+      <Asset Guid="91e0d08e16df6f7418b8769badf6468c" ResourceName="UI/UIForms/UIPausePanelForm" />
+      <Asset Guid="91e34a761e6547a4fb2b6376f4034214" ResourceName="PlasmaLance" />
+      <Asset Guid="9649279ea3b34d141b0aac3f46d82aef" ResourceName="Localization/ChineseSimplified/Dictionaries/Default" />
+      <Asset Guid="97e58792ffd96ee44a8cda8fda0dd30e" ResourceName="UI/UIForms/UIMainMenuForm" />
+      <Asset Guid="994878880e02bc4459198aaec0a5ebfe" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="9a7040bd5c6b20a4887fa5e4588a4f3e" ResourceName="AssaultCannon" />
+      <Asset Guid="9a808201ed47c54458dca12e2c41a018" ResourceName="UI/UIForms/UILevelSelectForm" />
+      <Asset Guid="9f73f2e992c8e844bb2579ebcb3dfcf4" ResourceName="AssaultCannon" />
+      <Asset Guid="a2c2a6ec392666d43bc1904741758f04" ResourceName="Entity/Enemies/SuperHoverbuggy" />
+      <Asset Guid="a40e18b36a1177c44945d4812b7c9d45" ResourceName="UI/UIForms/UIGameOverForm" />
+      <Asset Guid="ab7fe05f924ed8346833726831cefc20" ResourceName="UI/UIForms/UIOptionsForm" />
+      <Asset Guid="ababca0ffcf5c2245b287ea882bbf20c" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="aec58fc4be56e5c42b13d4363f8cd283" ResourceName="EnergyPylon" />
+      <Asset Guid="af0927bda82e7134f8087223e68e6c2c" ResourceName="Entity/Enemies/SuperHovertank" />
+      <Asset Guid="b13da774a1c144b498cc82fc5cb01e73" ResourceName="Scenes/GameStart/GameStart" />
+      <Asset Guid="b1dd30f2294c3d64e86a37c8a3e142ad" ResourceName="EMPGenerator" />
+      <Asset Guid="b452648877e07ee4390ebd4f9803dcd8" ResourceName="Entity/RadiusVisualiser" />
+      <Asset Guid="b58c1ce8197772c44b235fe060b3b66d" ResourceName="Scenes/Level3/Level3" />
+      <Asset Guid="b80fca6a02f62444ea5f1a82bcfce2dd" ResourceName="LightMapMenu" />
+      <Asset Guid="bd48eea0ced6c45419b418dcfe222495" ResourceName="DataTable" />
+      <Asset Guid="c707bc95ab948454ca1e378dce5e9358" ResourceName="Item/PlacementTile" />
+      <Asset Guid="c73fe5387e987544ba174c742865ed84" ResourceName="SoundTowerRockerLauncher" />
+      <Asset Guid="c7f59e0c0be460e4bbdeb2128cbc1752" ResourceName="DataTable" />
+      <Asset Guid="cc044ae1c50f8dd4aaa0aacec3101b3e" ResourceName="Configs/DefaultConfig" />
+      <Asset Guid="ceed5926a63a2244085adb17f49b3b89" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="d07ecebe09082a54b9f4a0d6b2bf91e4" ResourceName="RocketPlatform" />
+      <Asset Guid="d95e38fd6f021674d83ba81cc0554ff1" ResourceName="RocketPlatform" />
+      <Asset Guid="d9bc94d3d05608248a02a1b06ad2358a" ResourceName="SoundTowerLaser" />
+      <Asset Guid="da00db877b7e8ec41bf83dcc6ba0edc8" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="da411bef1885c9c4fb241d192d02f27c" ResourceName="Scenes/Level4/Level4" />
+      <Asset Guid="da473c16b9ad5474cb0d410ba45f691a" ResourceName="DataTable" />
+      <Asset Guid="e0d13eeff961a9f48aa1eca9722fcf23" ResourceName="DataTable" />
+      <Asset Guid="e36205a3385eb6144be0c524b88ddcb3" ResourceName="EMPGenerator" />
+      <Asset Guid="e3e1ee90c7762ff4e8c79a4b1a712402" ResourceName="MissileArray" />
+      <Asset Guid="e62cab01a56d60544ab7f8ea2d194834" ResourceName="Entity/RocketTrail" />
+      <Asset Guid="e63c9c0622200794095d8095800730bf" ResourceName="Localization/English/Dictionaries/Default" />
+      <Asset Guid="e70d3ffc3d68f294388ba19573669874" ResourceName="DataTable" />
+      <Asset Guid="e7ea0259da0ad1040aea7b4d864fe206" ResourceName="Entity/HPBar" />
+      <Asset Guid="e97249d7f37fcb140bad429afb8c1018" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="ea02aff524dd2a44883d5a4f80892790" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="ea4d23971c755a8428965bc49024c813" ResourceName="UI/Dynamic/TowerBuildButton" />
+      <Asset Guid="ea66f874b31107f4497509197a5ea34e" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="ede4a4cc95325d44183336d9f166acbe" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="ef4461c923b09994584fdb6563d3faf1" ResourceName="Entity/EntityPlayer" />
+      <Asset Guid="f13500b418c84db489bb75d7234cd343" ResourceName="EnergyPylon" />
+      <Asset Guid="f1faaa7f89244084f8723904918d06eb" ResourceName="DataTable" />
+      <Asset Guid="f280ba1d06344f54891778e91627ebf6" ResourceName="EMPGenerator" />
+      <Asset Guid="f4a1b9dd197e70840a959476d5cd1e29" ResourceName="UI/UIForms/UILevelMainInfoForm" />
+      <Asset Guid="f4cf204343b91944aa36cf75ce6f4d19" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="f6bad708ea84eb74e8b328d6e6fa98a4" ResourceName="SoundUISFX" />
+      <Asset Guid="f7b8cccf982339a44b69647c8093dc6d" ResourceName="Scenes/Level1/Level1" />
+      <Asset Guid="f8ac83d6dce50644bb8d1a34fc5b287e" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="faa270e3d0214c242bcbde40d8acb7a9" ResourceName="Item/SinglePlacementTile" />
+      <Asset Guid="fb6cc224229e9f04b84157a6dfed7851" ResourceName="Entity/Enemies/Hovertank" />
+      <Asset Guid="fff1ab3c8467b5647bd28d0233d308a5" ResourceName="SoundTowerMachineGun" />
+    </Assets>
+  </ResourceCollection>
+</UnityGameFramework>
