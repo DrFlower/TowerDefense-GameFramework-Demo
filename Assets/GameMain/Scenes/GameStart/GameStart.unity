@@ -148,6 +148,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 394742710}
   - {fileID: 375202365}
   - {fileID: 1787484375}
   m_Father: {fileID: 434310080}
@@ -182,7 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 116271287}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &375202366
 MonoBehaviour:
@@ -204,6 +205,55 @@ MonoBehaviour:
   m_ItemGroupHelperTypeName: UnityGameFramework.Runtime.DefaultItemGroupHelper
   m_CustomItemGroupHelper: {fileID: 0}
   m_ItemGroups: []
+--- !u!1 &394742709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394742710}
+  - component: {fileID: 394742711}
+  m_Layer: 0
+  m_Name: BuiltinData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &394742710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394742709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 116271287}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &394742711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394742709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c502f0e7aa4c49e4a99da12ede7fa8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BuildInfoTextAsset: {fileID: 4900000, guid: 247c6b81e258656418deff7861816d33,
+    type: 3}
+  m_DefaultDictionaryTextAsset: {fileID: 4900000, guid: 9649279ea3b34d141b0aac3f46d82aef,
+    type: 3}
+  m_UpdateResourceFormTemplate: {fileID: 4863827266948120156, guid: 065453d18e51b5940b16de60e8f371f9,
+    type: 3}
 --- !u!1 &406464887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,11 +1217,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AvailableProcedureTypeNames:
   - Flower.ProcedureCheckResources
+  - Flower.ProcedureCheckVersion
+  - Flower.ProcedureInitResources
   - Flower.ProcedureLaunch
   - Flower.ProcedureLevel
   - Flower.ProcedureLoadingScene
   - Flower.ProcedureMenu
   - Flower.ProcedurePreload
+  - Flower.ProcedureSplash
+  - Flower.ProcedureUpdateResources
+  - Flower.ProcedureUpdateVersion
   m_EntranceProcedureTypeName: Flower.ProcedureLaunch
 --- !u!114 &1753256980
 MonoBehaviour:
@@ -1328,7 +1383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eff66e40586ec14d8a301d416f17f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ResourceMode: 1
+  m_ResourceMode: 2
   m_ReadWritePathType: 0
   m_UnloadUnusedAssetsInterval: 60
   m_AssetAutoReleaseInterval: 60
@@ -1347,7 +1402,7 @@ MonoBehaviour:
   m_CustomResourceHelper: {fileID: 0}
   m_LoadResourceAgentHelperTypeName: UnityGameFramework.Runtime.DefaultLoadResourceAgentHelper
   m_CustomLoadResourceAgentHelper: {fileID: 0}
-  m_LoadResourceAgentHelperCount: 3
+  m_LoadResourceAgentHelperCount: 71
 --- !u!114 &1753288672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1420,7 @@ MonoBehaviour:
   m_VersionHelperTypeName: UnityGameFramework.Runtime.DefaultVersionHelper
   m_LogHelperTypeName: UnityGameFramework.Runtime.DefaultLogHelper
   m_ZipHelperTypeName: UnityGameFramework.Runtime.DefaultZipHelper
-  m_JsonHelperTypeName: UnityGameFramework.Runtime.DefaultJsonHelper
+  m_JsonHelperTypeName: Flower.LitJsonHelper
   m_FrameRate: 60
   m_GameSpeed: 1
   m_RunInBackground: 1
@@ -1493,7 +1548,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 116271287}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1787484376
 MonoBehaviour:

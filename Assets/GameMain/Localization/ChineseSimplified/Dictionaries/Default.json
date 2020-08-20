@@ -66,7 +66,11 @@
       "Energy Pylon Upgrade Des 1": "+ 能量产生",
       "Energy Pylon Upgrade Des 2": "+ 能量产生",
       "EMP Generator Upgrade Des 1": "+ 减速率",
-      "EMP Generator Upgrade Des 2": "+ 减速率和范围"
+      "EMP Generator Upgrade Des 2": "+ 减速率和范围",
+      "ForceUpdate.Title": "强制更新",
+      "ForceUpdate.Message": "当前游戏版本过旧，是否前往更新？",
+      "ForceUpdate.UpdateButton": "更新",
+      "ForceUpdate.QuitButton": "退出"
     }
   }
 ]

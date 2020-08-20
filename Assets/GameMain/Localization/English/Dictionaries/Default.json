@@ -66,7 +66,11 @@
       "Energy Pylon Upgrade Des 1": "+ energy production",
       "Energy Pylon Upgrade Des 2": "+ energy production",
       "EMP Generator Upgrade Des 1": "+ slow",
-      "EMP Generator Upgrade Des 2": "+ slow and range"
+      "EMP Generator Upgrade Des 2": "+ slow and range",
+      "ForceUpdate.Title": "FORCE UPDATE",
+      "ForceUpdate.Message": "Current version is too old. Do you want to update it?",
+      "ForceUpdate.UpdateButton": "Update",
+      "ForceUpdate.QuitButton": "Quick"
     }
   }
 ]

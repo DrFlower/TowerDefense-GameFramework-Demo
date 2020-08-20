@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using GameFramework.Localization;
-using GameFramework.Procedure;
-using UnityEngine;
+﻿using GameFramework.Procedure;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -10,61 +6,51 @@ namespace Flower
 {
     public class ProcedureCheckResources : ProcedureBase
     {
-        private bool complete = false;
-
-        protected override void OnInit(ProcedureOwner procedureOwner)
-        {
-            base.OnInit(procedureOwner);
-        }
+        private bool m_CheckResourcesComplete = false;
+        private bool m_NeedUpdateResources = false;
+        private int m_UpdateResourceCount = 0;
+        private long m_UpdateResourceTotalZipLength = 0L;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
-
             base.OnEnter(procedureOwner);
-            complete = false;
 
-            if (GameEntry.Base.EditorResourceMode)
-            {
-                ChangeState<ProcedurePreload>(procedureOwner);
-            }
-            else if (GameEntry.Resource.ResourceMode == GameFramework.Resource.ResourceMode.Package)
-            {
-                GameEntry.Resource.InitResources(OnInitResourceComplete);
-            }
-            else if (GameEntry.Resource.ResourceMode == GameFramework.Resource.ResourceMode.Updatable)
-            {
-                GameEntry.Resource.CheckResources(OnCheckResourcesComplete);
-            }
+            m_CheckResourcesComplete = false;
+            m_NeedUpdateResources = false;
+            m_UpdateResourceCount = 0;
+            m_UpdateResourceTotalZipLength = 0L;
+
+            GameEntry.Resource.CheckResources(OnCheckResourcesComplete);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (complete)
+            if (!m_CheckResourcesComplete)
+            {
+                return;
+            }
+
+            if (m_NeedUpdateResources)
+            {
+                procedureOwner.SetData<VarInt>("UpdateResourceCount", m_UpdateResourceCount);
+                procedureOwner.SetData<VarLong>("UpdateResourceTotalZipLength", m_UpdateResourceTotalZipLength);
+                ChangeState<ProcedureUpdateResources>(procedureOwner);
+            }
+            else
+            {
                 ChangeState<ProcedurePreload>(procedureOwner);
-        }
-
-
-        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
-        {
-            base.OnLeave(procedureOwner, isShutdown);
-        }
-
-        protected override void OnDestroy(ProcedureOwner procedureOwner)
-        {
-            base.OnDestroy(procedureOwner);
-        }
-
-        private void OnInitResourceComplete()
-        {
-            complete = true;
+            }
         }
 
         private void OnCheckResourcesComplete(int movedCount, int removedCount, int updateCount, long updateTotalLength, long updateTotalZipLength)
         {
-
+            m_CheckResourcesComplete = true;
+            m_NeedUpdateResources = updateCount > 0;
+            m_UpdateResourceCount = updateCount;
+            m_UpdateResourceTotalZipLength = updateTotalZipLength;
+            Log.Info("Check resources complete, '{0}' resources need to update, zip length is '{1}', unzip length is '{2}'.", updateCount.ToString(), updateTotalZipLength.ToString(), updateTotalLength.ToString());
         }
     }
 }
-

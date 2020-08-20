@@ -2,7 +2,7 @@
 <UnityGameFramework>
   <ResourceBuilder>
     <Settings>
-      <InternalResourceVersion>3</InternalResourceVersion>
+      <InternalResourceVersion>2</InternalResourceVersion>
       <Platforms>1</Platforms>
       <ZipSelected>True</ZipSelected>
       <UncompressedAssetBundleSelected>False</UncompressedAssetBundleSelected>
@@ -12,12 +12,12 @@
       <IgnoreTypeTreeChangesSelected>False</IgnoreTypeTreeChangesSelected>
       <AppendHashToAssetBundleNameSelected>False</AppendHashToAssetBundleNameSelected>
       <ChunkBasedCompressionSelected>True</ChunkBasedCompressionSelected>
-      <OutputPackageSelected>True</OutputPackageSelected>
-      <OutputFullSelected>False</OutputFullSelected>
-      <OutputPackedSelected>False</OutputPackedSelected>
+      <OutputPackageSelected>False</OutputPackageSelected>
+      <OutputFullSelected>True</OutputFullSelected>
+      <OutputPackedSelected>True</OutputPackedSelected>
       <BuildEventHandlerTypeName>
       </BuildEventHandlerTypeName>
-      <OutputDirectory>C:/Users/未闻花名/Desktop</OutputDirectory>
+      <OutputDirectory>C:/Users/未闻花名/Desktop/AB</OutputDirectory>
     </Settings>
   </ResourceBuilder>
 </UnityGameFramework>

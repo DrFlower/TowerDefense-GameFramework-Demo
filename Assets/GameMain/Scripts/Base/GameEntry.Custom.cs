@@ -8,11 +8,11 @@ namespace Flower
     /// </summary>
     public partial class GameEntry : MonoBehaviour
     {
-        //public static BuiltinDataComponent BuiltinData
-        //{
-        //    get;
-        //    private set;
-        //}
+        public static BuiltinDataComponent BuiltinData
+        {
+            get;
+            private set;
+        }
 
         public static ItemComponent Item
         {
@@ -29,6 +29,7 @@ namespace Flower
 
         private static void InitCustomComponents()
         {
+            BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             Item = UnityGameFramework.Runtime.GameEntry.GetComponent<ItemComponent>();
             Data = UnityGameFramework.Runtime.GameEntry.GetComponent<DataComponent>();
         }
