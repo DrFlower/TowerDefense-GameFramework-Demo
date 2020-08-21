@@ -2,74 +2,74 @@
 <UnityGameFramework>
   <ResourceCollection>
     <Resources>
-      <Resource Name="AssaultCannon" LoadType="0" Packed="False" />
-      <Resource Name="BaseAttack" LoadType="0" Packed="False" />
-      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="False" />
-      <Resource Name="DataTable" LoadType="0" Packed="True" />
-      <Resource Name="EMPGenerator" LoadType="0" Packed="False" />
-      <Resource Name="EnemiesExploding" LoadType="0" Packed="False" />
-      <Resource Name="EnergyPylon" LoadType="0" Packed="False" />
-      <Resource Name="Entity/BigDeathExplosionPfx" LoadType="0" Packed="False" />
-      <Resource Name="Entity/BuildPfx" LoadType="0" Packed="False" />
-      <Resource Name="Entity/BulletHit" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/Hoverboss" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/Hoverbuggy" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/Hovercopter" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/Hovertank" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/SuperHoverboss" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/SuperHoverbuggy" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/SuperHovercopter" LoadType="0" Packed="False" />
-      <Resource Name="Entity/Enemies/SuperHovertank" LoadType="0" Packed="False" />
-      <Resource Name="Entity/EnemyProjectile" LoadType="0" Packed="False" />
-      <Resource Name="Entity/EnemyShootEffect" LoadType="0" Packed="False" />
-      <Resource Name="Entity/EntityPlayer" LoadType="0" Packed="False" />
-      <Resource Name="Entity/HPBar" LoadType="0" Packed="False" />
-      <Resource Name="Entity/LaserImpactPFX" LoadType="0" Packed="False" />
-      <Resource Name="Entity/RadiusVisualiser" LoadType="0" Packed="False" />
-      <Resource Name="Entity/RocketExplosionPfx" LoadType="0" Packed="False" />
-      <Resource Name="Entity/RocketTrail" LoadType="0" Packed="False" />
-      <Resource Name="Entity/SlowFx" LoadType="0" Packed="False" />
-      <Resource Name="Entity/SmallDeathExplosionPfx" LoadType="0" Packed="False" />
-      <Resource Name="Entity/SupertowerMissileTrail" LoadType="0" Packed="False" />
-      <Resource Name="Entity/TowerDeathExplosion" LoadType="0" Packed="False" />
-      <Resource Name="Item/PlacementTile" LoadType="0" Packed="False" />
-      <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" />
-      <Resource Name="LightMapMenu" LoadType="0" Packed="True" />
-      <Resource Name="Localization/ChineseSimplified/Dictionaries/Default" LoadType="0" Packed="False" />
-      <Resource Name="Localization/ChineseTraditional/Dictionaries/Default" LoadType="0" Packed="False" />
-      <Resource Name="Localization/English/Dictionaries/Default" LoadType="0" Packed="False" />
-      <Resource Name="MissileArray" LoadType="0" Packed="False" />
-      <Resource Name="PlasmaLance" LoadType="0" Packed="False" />
-      <Resource Name="RocketPlatform" LoadType="0" Packed="False" />
-      <Resource Name="Scenes/GameStart/GameStart" LoadType="0" Packed="True" />
-      <Resource Name="Scenes/Level1/Level1" LoadType="0" Packed="False" />
-      <Resource Name="Scenes/Level2/Level2" LoadType="0" Packed="False" />
-      <Resource Name="Scenes/Level3/Level3" LoadType="0" Packed="False" />
-      <Resource Name="Scenes/Level4/Level4" LoadType="0" Packed="False" />
-      <Resource Name="Scenes/Level5/Level5" LoadType="0" Packed="False" />
-      <Resource Name="Scenes/Menu/Menu" LoadType="0" Packed="True" />
-      <Resource Name="SoundEMPIdle" LoadType="0" Packed="False" />
-      <Resource Name="SoundEnemyFire" LoadType="0" Packed="False" />
-      <Resource Name="SoundGameMusic" LoadType="0" Packed="False" />
-      <Resource Name="SoundMenuMusic" LoadType="0" Packed="True" />
-      <Resource Name="SoundTowerDestriction" LoadType="0" Packed="False" />
-      <Resource Name="SoundTowerLaser" LoadType="0" Packed="False" />
-      <Resource Name="SoundTowerMachineGun" LoadType="0" Packed="False" />
-      <Resource Name="SoundTowerRockerLauncher" LoadType="0" Packed="False" />
-      <Resource Name="SoundTowerSuperTower" LoadType="0" Packed="False" />
-      <Resource Name="SoundUIBase" LoadType="0" Packed="True" />
-      <Resource Name="SoundUISFX" LoadType="0" Packed="False" />
-      <Resource Name="UI/Dynamic/LevelSelectionButton" LoadType="0" Packed="True" />
-      <Resource Name="UI/Dynamic/TowerBuildButton" LoadType="0" Packed="False" />
-      <Resource Name="UI/UIForms/UIGameOverForm" LoadType="0" Packed="False" />
-      <Resource Name="UI/UIForms/UILevelMainInfoForm" LoadType="0" Packed="False" />
-      <Resource Name="UI/UIForms/UILevelSelectForm" LoadType="0" Packed="True" />
-      <Resource Name="UI/UIForms/UIMainMenuForm" LoadType="0" Packed="True" />
-      <Resource Name="UI/UIForms/UIMask" LoadType="0" Packed="False" />
-      <Resource Name="UI/UIForms/UIOptionsForm" LoadType="0" Packed="True" />
-      <Resource Name="UI/UIForms/UIPausePanelForm" LoadType="0" Packed="False" />
-      <Resource Name="UI/UIForms/UITowerControllerForm" LoadType="0" Packed="False" />
-      <Resource Name="UI/UIForms/UITowerListForm" LoadType="0" Packed="False" />
+      <Resource Name="AssaultCannon" LoadType="0" Packed="False" ResourceGroups="0,1,2,3,4,5" />
+      <Resource Name="BaseAttack" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="DataTable" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,4" />
+      <Resource Name="EnemiesExploding" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="EnergyPylon" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/BigDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/BuildPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/BulletHit" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hoverboss" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hoverbuggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hovercopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hovertank" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHoverboss" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHoverbuggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHovercopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHovertank" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/EnemyProjectile" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Entity/EnemyShootEffect" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Entity/EntityPlayer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/HPBar" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/LaserImpactPFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RadiusVisualiser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketTrail" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/SmallDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/SupertowerMissileTrail" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/TowerDeathExplosion" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Item/PlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="LightMapMenu" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Localization/ChineseSimplified/Dictionaries/Default" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Localization/ChineseTraditional/Dictionaries/Default" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Localization/English/Dictionaries/Default" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="MissileArray" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="PlasmaLance" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="RocketPlatform" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Scenes/GameStart/GameStart" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Scenes/Level1/Level1" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Scenes/Level2/Level2" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Scenes/Level3/Level3" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Scenes/Level4/Level4" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Scenes/Level5/Level5" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Scenes/Menu/Menu" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="SoundEMPIdle" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="SoundEnemyFire" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="SoundGameMusic" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="SoundMenuMusic" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="SoundTowerDestriction" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="SoundTowerLaser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="SoundTowerMachineGun" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="SoundTowerRockerLauncher" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="SoundTowerSuperTower" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="SoundUIBase" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="SoundUISFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/Dynamic/LevelSelectionButton" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/Dynamic/TowerBuildButton" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UIGameOverForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UILevelMainInfoForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UILevelSelectForm" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIMainMenuForm" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIMask" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UIOptionsForm" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIPausePanelForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UITowerControllerForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UITowerListForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
     </Resources>
     <Assets>
       <Asset Guid="01befc377d267aa47a659fd688128509" ResourceName="EnemiesExploding" />
