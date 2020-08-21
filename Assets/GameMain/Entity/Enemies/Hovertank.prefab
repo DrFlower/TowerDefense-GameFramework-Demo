@@ -193,7 +193,7 @@ MonoBehaviour:
     weight: 1
   - sound: 22004
     weight: 1
-  - sound: 23005
+  - sound: 22005
     weight: 1
 --- !u!114 &-4639151799659281000
 MonoBehaviour:
