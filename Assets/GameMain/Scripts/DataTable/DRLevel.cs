@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2020-08-15 14:09:04.096
+// 生成时间：2020-08-22 00:54:14.824
 //------------------------------------------------------------
 
 using GameFramework;
@@ -58,6 +58,15 @@ namespace Flower
         /// 获取场景Id。
         /// </summary>
         public int SceneId
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取资源组名字。
+        /// </summary>
+        public string ResourceGroupName
         {
             get;
             private set;
@@ -123,6 +132,7 @@ namespace Flower
             NameId = columnStrings[index++];
             DescriptionId = columnStrings[index++];
             SceneId = int.Parse(columnStrings[index++]);
+            ResourceGroupName = columnStrings[index++];
             InitEnergy = int.Parse(columnStrings[index++]);
             PlayerPosition = DataTableExtension.ParseVector3(columnStrings[index++]);
             PlayerQuaternion = DataTableExtension.ParseVector3(columnStrings[index++]);
@@ -143,6 +153,7 @@ namespace Flower
                     NameId = binaryReader.ReadString();
                     DescriptionId = binaryReader.ReadString();
                     SceneId = binaryReader.Read7BitEncodedInt32();
+                    ResourceGroupName = binaryReader.ReadString();
                     InitEnergy = binaryReader.Read7BitEncodedInt32();
                     PlayerPosition = binaryReader.ReadVector3();
                     PlayerQuaternion = binaryReader.ReadVector3();

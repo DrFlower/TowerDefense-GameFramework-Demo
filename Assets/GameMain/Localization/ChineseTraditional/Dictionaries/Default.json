@@ -70,7 +70,8 @@
       "ForceUpdate.Title": "強制更新",
       "ForceUpdate.Message": "當前遊戲版本過舊，是否前往更新？",
       "ForceUpdate.UpdateButton": "更新",
-      "ForceUpdate.QuitButton": "退出"
+      "ForceUpdate.QuitButton": "退出",
+      "Download": "下載"
     }
   }
 ]

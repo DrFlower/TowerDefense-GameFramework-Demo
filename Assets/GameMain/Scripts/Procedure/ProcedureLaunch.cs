@@ -25,7 +25,7 @@ namespace Flower
 
             // 默认字典：加载默认字典文件 Assets/GameMain/Configs/DefaultDictionary
             // 此字典文件记录了资源更新前使用的各种语言的字符串，会随 App 一起发布，故不可更新
-            //GameEntry.BuiltinData.InitDefaultDictionary();
+            GameEntry.BuiltinData.InitDefaultDictionary();
 
             base.OnEnter(procedureOwner);
         }

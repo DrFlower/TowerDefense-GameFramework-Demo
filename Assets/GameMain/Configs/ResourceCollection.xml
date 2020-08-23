@@ -2,11 +2,11 @@
 <UnityGameFramework>
   <ResourceCollection>
     <Resources>
-      <Resource Name="AssaultCannon" LoadType="0" Packed="False" ResourceGroups="0,1,2,3,4,5" />
+      <Resource Name="AssaultCannon" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="BaseAttack" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="False" ResourceGroups="0" />
       <Resource Name="DataTable" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,4" />
+      <Resource Name="EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
       <Resource Name="EnemiesExploding" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="EnergyPylon" LoadType="0" Packed="False" ResourceGroups="5" />
       <Resource Name="Entity/BigDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />

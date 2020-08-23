@@ -1,4 +1,5 @@
 ﻿using GameFramework.Procedure;
+using GameFramework.Resource;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -35,7 +36,6 @@ namespace Flower
             if (m_NeedUpdateResources)
             {
                 procedureOwner.SetData<VarInt>("UpdateResourceCount", m_UpdateResourceCount);
-                procedureOwner.SetData<VarLong>("UpdateResourceTotalZipLength", m_UpdateResourceTotalZipLength);
                 ChangeState<ProcedureUpdateResources>(procedureOwner);
             }
             else
@@ -46,11 +46,18 @@ namespace Flower
 
         private void OnCheckResourcesComplete(int movedCount, int removedCount, int updateCount, long updateTotalLength, long updateTotalZipLength)
         {
+            IResourceGroup resourceGroup = GameEntry.Resource.GetResourceGroup("0");
+            if (resourceGroup == null)
+            {
+                Log.Error("has no resource group '{0}',", "0");
+                return;
+            }
+
             m_CheckResourcesComplete = true;
-            m_NeedUpdateResources = updateCount > 0;
-            m_UpdateResourceCount = updateCount;
-            m_UpdateResourceTotalZipLength = updateTotalZipLength;
-            Log.Info("Check resources complete, '{0}' resources need to update, zip length is '{1}', unzip length is '{2}'.", updateCount.ToString(), updateTotalZipLength.ToString(), updateTotalLength.ToString());
+            m_NeedUpdateResources = !resourceGroup.Ready;
+            m_UpdateResourceCount = resourceGroup.TotalCount - resourceGroup.ReadyCount;
+            m_UpdateResourceTotalZipLength = resourceGroup.TotalZipLength;
+            Log.Info("Check resources complete, '{0}' resources need to update,  unzip length is '{1}'.", m_UpdateResourceCount.ToString(), (resourceGroup.TotalLength - resourceGroup.ReadyLength).ToString());
         }
     }
 }

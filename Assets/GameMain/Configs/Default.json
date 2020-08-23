@@ -1,0 +1,20 @@
+﻿[
+  {
+    "language": "ChineseSimplified",
+    "dic": {
+      "UpdateResource.Tips": "正在更新:{0}/{1}, {2}/{3}, {4:P0}, {5}/s"
+    }
+  },
+  {
+    "language": "ChineseTraditional",
+    "dic": {
+      "UpdateResource.Tips": "正在更新:{0}/{1}, {2}/{3}, {4:P0}, {5}/s"
+    }
+  },
+  {
+    "language": "English",
+    "dic": {
+      "UpdateResource.Tips": "Updating:{0}/{1}, {2}/{3}, {4:P0}, {5}/s"
+    }
+  }
+]

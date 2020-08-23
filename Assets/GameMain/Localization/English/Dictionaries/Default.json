@@ -70,7 +70,8 @@
       "ForceUpdate.Title": "FORCE UPDATE",
       "ForceUpdate.Message": "Current version is too old. Do you want to update it?",
       "ForceUpdate.UpdateButton": "Update",
-      "ForceUpdate.QuitButton": "Quick"
+      "ForceUpdate.QuitButton": "Quick",
+      "Download": "Download"
     }
   }
 ]

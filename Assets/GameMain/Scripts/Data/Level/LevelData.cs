@@ -39,6 +39,14 @@ namespace Flower.Data
             }
         }
 
+        public string ResourceGroupName
+        {
+            get
+            {
+                return dRLevel.ResourceGroupName;
+            }
+        }
+
         public int InitEnergy
         {
             get

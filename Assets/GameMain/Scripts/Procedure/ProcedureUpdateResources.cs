@@ -24,8 +24,6 @@ namespace Flower
             m_UpdateResourcesComplete = false;
             m_UpdateCount = procedureOwner.GetData<VarInt>("UpdateResourceCount");
             procedureOwner.RemoveData("UpdateResourceCount");
-            m_UpdateTotalZipLength = procedureOwner.GetData<VarLong>("UpdateResourceTotalZipLength");
-            procedureOwner.RemoveData("UpdateResourceTotalZipLength");
             m_UpdateSuccessCount = 0;
             m_UpdateLengthData.Clear();
             m_UpdateResourceForm = null;
@@ -35,7 +33,8 @@ namespace Flower
             GameEntry.Event.Subscribe(ResourceUpdateSuccessEventArgs.EventId, OnResourceUpdateSuccess);
             GameEntry.Event.Subscribe(ResourceUpdateFailureEventArgs.EventId, OnResourceUpdateFailure);
 
-            StartUpdateResources(null);
+            //StartUpdateResources(null);
+            StartUpdateResources("0");
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -66,7 +65,7 @@ namespace Flower
             ChangeState<ProcedurePreload>(procedureOwner);
         }
 
-        private void StartUpdateResources(object userData)
+        private void StartUpdateResources(string resourceGroupName)
         {
             if (m_UpdateResourceForm == null)
             {
@@ -74,19 +73,21 @@ namespace Flower
             }
 
             Log.Info("Start update resources...");
-            GameEntry.Resource.UpdateResources(OnUpdateResourcesComplete);
+            GameEntry.Resource.UpdateResources(resourceGroupName, OnUpdateResourcesComplete);
         }
 
         private void RefreshProgress()
         {
             long currentTotalUpdateLength = 0L;
+            long totalZipLength = 0L;
             for (int i = 0; i < m_UpdateLengthData.Count; i++)
             {
                 currentTotalUpdateLength += m_UpdateLengthData[i].Length;
+                totalZipLength += m_UpdateLengthData[i].TotalZipLength;
             }
 
-            float progressTotal = (float)currentTotalUpdateLength / m_UpdateTotalZipLength;
-            string descriptionText = GameEntry.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(m_UpdateTotalZipLength), progressTotal, GetByteLengthString((int)GameEntry.Download.CurrentSpeed));
+            float progressTotal = (float)currentTotalUpdateLength / totalZipLength;
+            string descriptionText = GameEntry.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(totalZipLength), progressTotal, GetByteLengthString((int)GameEntry.Download.CurrentSpeed));
             m_UpdateResourceForm.SetProgress(progressTotal, descriptionText);
         }
 
@@ -153,7 +154,7 @@ namespace Flower
                 }
             }
 
-            m_UpdateLengthData.Add(new UpdateLengthData(ne.Name));
+            m_UpdateLengthData.Add(new UpdateLengthData(ne.Name, ne.ZipLength));
         }
 
         private void OnResourceUpdateChanged(object sender, GameEventArgs e)
@@ -222,9 +223,10 @@ namespace Flower
         {
             private readonly string m_Name;
 
-            public UpdateLengthData(string name)
+            public UpdateLengthData(string name, int totalZipLength)
             {
                 m_Name = name;
+                TotalZipLength = totalZipLength;
             }
 
             public string Name
@@ -233,6 +235,12 @@ namespace Flower
                 {
                     return m_Name;
                 }
+            }
+
+            public int TotalZipLength
+            {
+                get;
+                set;
             }
 
             public int Length
