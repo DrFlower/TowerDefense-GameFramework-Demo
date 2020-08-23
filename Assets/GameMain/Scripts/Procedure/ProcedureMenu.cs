@@ -30,6 +30,7 @@ namespace Flower
             GameEntry.Event.Subscribe(LoadLevelEventArgs.EventId, OnLoadLevel);
 
             GameEntry.UI.OpenUIForm(EnumUIForm.UIMainMenuForm);
+            GameEntry.UI.OpenDownloadForm();
             GameEntry.Sound.PlayMusic(EnumSound.MenuBGM);
         }
 

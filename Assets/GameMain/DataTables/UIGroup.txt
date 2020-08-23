@@ -9,3 +9,4 @@
 	1005	游戏结束	GameOver	4
 	1006	UI遮罩	UIMask	5
 	1007	炮塔控制面板	TowerController	6
+	1008	下载速度界面	DownloadForm	7

@@ -61,6 +61,7 @@
       <Resource Name="SoundUISFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="UI/Dynamic/LevelSelectionButton" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="UI/Dynamic/TowerBuildButton" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UIDownloadForm" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="UI/UIForms/UIGameOverForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="UI/UIForms/UILevelMainInfoForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="UI/UIForms/UILevelSelectForm" LoadType="0" Packed="True" ResourceGroups="0" />
@@ -123,6 +124,7 @@
       <Asset Guid="541ab289e59da4e4281d981b7f31ea13" ResourceName="Entity/Enemies/Hovercopter" />
       <Asset Guid="54f2752d08d923946bc84fe79ef27860" ResourceName="DataTable" />
       <Asset Guid="567f4800fefa8d843835478dc75616af" ResourceName="SoundUIBase" />
+      <Asset Guid="56fbb0c4526becf4c91c0e5e14ff492b" ResourceName="UI/UIForms/UIDownloadForm" />
       <Asset Guid="57b31c5335be7fb41a1b4b1fa098785b" ResourceName="SoundTowerSuperTower" />
       <Asset Guid="5a4b7618f48551643aaceba542fed0af" ResourceName="PlasmaLance" />
       <Asset Guid="5b558de65359c1a4d9b394817d76bfa8" ResourceName="Entity/SlowFx" />

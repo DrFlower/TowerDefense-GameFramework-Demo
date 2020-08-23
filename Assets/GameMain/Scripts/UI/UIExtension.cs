@@ -17,6 +17,8 @@ namespace Flower
 {
     public static class UIExtension
     {
+        private static int? downloadFormId = null;
+
         public static IEnumerator FadeToAlpha(this CanvasGroup canvasGroup, float alpha, float duration)
         {
             float time = 0f;
@@ -111,6 +113,23 @@ namespace Flower
             }
 
             return (UGuiForm)uiForm.Logic;
+        }
+
+        public static void OpenDownloadForm(this UIComponent uiComponent, object userData = null)
+        {
+            if (downloadFormId == null)
+                downloadFormId = uiComponent.OpenUIForm(EnumUIForm.UIDownloadForm, userData);
+        }
+
+        public static void CloseDownloadForm(this UIComponent uiComponent)
+        {
+            if (downloadFormId != null)
+            {
+                UIForm uIForm = uiComponent.GetUIForm((int)downloadFormId);
+                if (uIForm != null)
+                    uiComponent.CloseUIForm(uIForm);
+                downloadFormId = null;
+            }
         }
 
         public static void CloseUIForm(this UIComponent uiComponent, UGuiForm uiForm)

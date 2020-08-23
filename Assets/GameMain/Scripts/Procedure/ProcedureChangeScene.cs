@@ -41,6 +41,7 @@ namespace Flower
                 GameEntry.Scene.UnloadScene(loadedSceneAssetNames[i]);
             }
 
+            GameEntry.UI.CloseDownloadForm();
             GameEntry.UI.CloseAllLoadedUIForms();
 
             loadingSceneId = procedureOwner.GetData<VarInt>(Constant.ProcedureData.NextSceneId).Value;

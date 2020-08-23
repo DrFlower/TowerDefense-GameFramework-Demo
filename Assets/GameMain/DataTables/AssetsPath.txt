@@ -19,6 +19,7 @@
 	1007	游戏结束	Assets/GameMain/UI/UIForms/UIGameOverForm.prefab
 	1008	UI遮罩	Assets/GameMain/UI/UIForms/UIMask.prefab
 	1009	炮塔控制面板	Assets/GameMain/UI/UIForms/UITowerControllerForm.prefab
+	1010	下载速度界面	Assets/GameMain/UI/UIForms/UIDownloadForm.prefab
 #Item			
 	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
 	2002	构建炮塔按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab

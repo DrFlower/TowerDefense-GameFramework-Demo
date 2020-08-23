@@ -63,6 +63,8 @@ namespace Flower
 
             GameEntry.Sound.PlayMusic(EnumSound.GameBGM);
 
+            GameEntry.UI.OpenDownloadForm();
+
             levelControl.OnEnter();
         }
 
