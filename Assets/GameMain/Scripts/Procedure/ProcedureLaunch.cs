@@ -23,7 +23,10 @@ namespace Flower
             // 语言配置：设置当前使用的语言，如果不设置，则默认使用操作系统语言。
             InitLanguageSettings();
 
-            // 默认字典：加载默认字典文件 Assets/GameMain/Configs/DefaultDictionary
+            // 变体配置：根据使用的语言，通知底层加载对应的资源变体
+            InitCurrentVariant();
+
+            // 默认字典：加载默认字典文件 Assets/GameMain/Configs/Default
             // 此字典文件记录了资源更新前使用的各种语言的字符串，会随 App 一起发布，故不可更新
             GameEntry.BuiltinData.InitDefaultDictionary();
 
@@ -75,6 +78,38 @@ namespace Flower
             GameEntry.Localization.Language = language;
 
             Log.Info("Init language settings complete, current language is '{0}'.", language.ToString());
+        }
+
+        private void InitCurrentVariant()
+        {
+            if (GameEntry.Base.EditorResourceMode)
+            {
+                // 编辑器资源模式不使用 AssetBundle，也就没有变体了
+                return;
+            }
+
+            string currentVariant = null;
+            switch (GameEntry.Localization.Language)
+            {
+                case Language.English:
+                    currentVariant = "en-us";
+                    break;
+
+                case Language.ChineseSimplified:
+                    currentVariant = "zh-cn";
+                    break;
+
+                case Language.ChineseTraditional:
+                    currentVariant = "zh-tw";
+                    break;
+
+                default:
+                    currentVariant = "en-us";
+                    break;
+            }
+
+            GameEntry.Resource.SetCurrentVariant(currentVariant);
+            Log.Info("Init current variant complete.current variant :{0}.", currentVariant);
         }
     }
 }

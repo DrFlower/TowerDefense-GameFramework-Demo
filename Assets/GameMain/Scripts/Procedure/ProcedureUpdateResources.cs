@@ -33,7 +33,6 @@ namespace Flower
             GameEntry.Event.Subscribe(ResourceUpdateSuccessEventArgs.EventId, OnResourceUpdateSuccess);
             GameEntry.Event.Subscribe(ResourceUpdateFailureEventArgs.EventId, OnResourceUpdateFailure);
 
-            //StartUpdateResources(null);
             StartUpdateResources("0");
         }
 

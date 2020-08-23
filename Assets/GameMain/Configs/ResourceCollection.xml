@@ -4,7 +4,7 @@
     <Resources>
       <Resource Name="AssaultCannon" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="BaseAttack" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="DataTable" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
       <Resource Name="EnemiesExploding" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
@@ -35,13 +35,12 @@
       <Resource Name="Item/PlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="LightMapMenu" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Localization/ChineseSimplified/Dictionaries/Default" LoadType="0" Packed="False" ResourceGroups="0" />
-      <Resource Name="Localization/ChineseTraditional/Dictionaries/Default" LoadType="0" Packed="False" ResourceGroups="0" />
-      <Resource Name="Localization/English/Dictionaries/Default" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Localization/Dictionaries" Variant="en-us" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Localization/Dictionaries" Variant="zh-cn" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Localization/Dictionaries" Variant="zh-tw" LoadType="0" Packed="False" ResourceGroups="0" />
       <Resource Name="MissileArray" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
       <Resource Name="PlasmaLance" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="RocketPlatform" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Scenes/GameStart/GameStart" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="Scenes/Level1/Level1" LoadType="0" Packed="False" ResourceGroups="1" />
       <Resource Name="Scenes/Level2/Level2" LoadType="0" Packed="False" ResourceGroups="2" />
       <Resource Name="Scenes/Level3/Level3" LoadType="0" Packed="False" ResourceGroups="3" />
@@ -179,14 +178,13 @@
       <Asset Guid="ababca0ffcf5c2245b287ea882bbf20c" ResourceName="SoundTowerMachineGun" />
       <Asset Guid="aec58fc4be56e5c42b13d4363f8cd283" ResourceName="EnergyPylon" />
       <Asset Guid="af0927bda82e7134f8087223e68e6c2c" ResourceName="Entity/Enemies/SuperHovertank" />
-      <Asset Guid="b13da774a1c144b498cc82fc5cb01e73" ResourceName="Scenes/GameStart/GameStart" />
       <Asset Guid="b1dd30f2294c3d64e86a37c8a3e142ad" ResourceName="EMPGenerator" />
       <Asset Guid="b452648877e07ee4390ebd4f9803dcd8" ResourceName="Entity/RadiusVisualiser" />
       <Asset Guid="b58c1ce8197772c44b235fe060b3b66d" ResourceName="Scenes/Level3/Level3" />
       <Asset Guid="b80fca6a02f62444ea5f1a82bcfce2dd" ResourceName="LightMapMenu" />
       <Asset Guid="bd48eea0ced6c45419b418dcfe222495" ResourceName="DataTable" />
-      <Asset Guid="bee7b15a9e66ce0419c4d7a7be10a5e1" ResourceName="Localization/ChineseTraditional/Dictionaries/Default" />
-      <Asset Guid="c2d4e2ee7b56bf24e9d4b651be4950e7" ResourceName="Localization/ChineseSimplified/Dictionaries/Default" />
+      <Asset Guid="bee7b15a9e66ce0419c4d7a7be10a5e1" ResourceName="Localization/Dictionaries" ResourceVariant="zh-tw" />
+      <Asset Guid="c2d4e2ee7b56bf24e9d4b651be4950e7" ResourceName="Localization/Dictionaries" ResourceVariant="zh-cn" />
       <Asset Guid="c707bc95ab948454ca1e378dce5e9358" ResourceName="Item/PlacementTile" />
       <Asset Guid="c73fe5387e987544ba174c742865ed84" ResourceName="SoundTowerRockerLauncher" />
       <Asset Guid="c7f59e0c0be460e4bbdeb2128cbc1752" ResourceName="DataTable" />
@@ -202,7 +200,7 @@
       <Asset Guid="e36205a3385eb6144be0c524b88ddcb3" ResourceName="EMPGenerator" />
       <Asset Guid="e3e1ee90c7762ff4e8c79a4b1a712402" ResourceName="MissileArray" />
       <Asset Guid="e62cab01a56d60544ab7f8ea2d194834" ResourceName="Entity/RocketTrail" />
-      <Asset Guid="e63c9c0622200794095d8095800730bf" ResourceName="Localization/English/Dictionaries/Default" />
+      <Asset Guid="e63c9c0622200794095d8095800730bf" ResourceName="Localization/Dictionaries" ResourceVariant="en-us" />
       <Asset Guid="e70d3ffc3d68f294388ba19573669874" ResourceName="DataTable" />
       <Asset Guid="e7ea0259da0ad1040aea7b4d864fe206" ResourceName="Entity/HPBar" />
       <Asset Guid="e97249d7f37fcb140bad429afb8c1018" ResourceName="SoundTowerDestriction" />
