@@ -2,16 +2,24 @@
 <UnityGameFramework>
   <ResourceCollection>
     <Resources>
-      <Resource Name="AssaultCannon" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="BaseAttack" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="DataTable" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="EnemiesExploding" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="EnergyPylon" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Base/Attack" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="False" />
+      <Resource Name="DataTable" LoadType="0" Packed="False" />
+      <Resource Name="Enemies/Exploding" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannonPreview" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/MachineGunProjectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/BigDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/BuildPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/BulletHit" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level1" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level2" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level3" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGeneratorPreview" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
       <Resource Name="Entity/Enemies/Hoverboss" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/Enemies/Hoverbuggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/Enemies/Hovercopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
@@ -22,42 +30,269 @@
       <Resource Name="Entity/Enemies/SuperHovertank" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/EnemyProjectile" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
       <Resource Name="Entity/EnemyShootEffect" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level1" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level2" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level3" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylonPreview" LoadType="0" Packed="False" ResourceGroups="5" />
       <Resource Name="Entity/EntityPlayer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/HPBar" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/LaserImpactPFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/MissileArray/MissileArray" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/MissileArray/MissileArray_Level1" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/MissileArray/MissileArrayPreview" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/MissileArray/SuperTowerProjectile" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/PlasmaLance/LaserProjectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLancePreview" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/RadiusVisualiser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/RocketExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatformPreview" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketProjectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/RocketTrail" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
       <Resource Name="Entity/SmallDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Entity/SupertowerMissileTrail" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
       <Resource Name="Entity/TowerDeathExplosion" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Fonts" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="Item/PlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
       <Resource Name="LightMapMenu" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Localization/Dictionaries" Variant="en-us" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Localization/Dictionaries" Variant="zh-cn" LoadType="0" Packed="False" ResourceGroups="0" />
-      <Resource Name="Localization/Dictionaries" Variant="zh-tw" LoadType="0" Packed="False" ResourceGroups="0" />
-      <Resource Name="MissileArray" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="PlasmaLance" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="RocketPlatform" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Localization/Dictionaries" Variant="en-us" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Dictionaries" Variant="zh-cn" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Dictionaries" Variant="zh-tw" LoadType="0" Packed="False" />
+      <Resource Name="Res/Animations/HoverCopterGlow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Animations/HoverTankGlow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Animations/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Levels/Level01_Environment" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Levels/Level01_Road" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Res/Materials/Levels/Level02_Environment" LoadType="0" Packed="False" ResourceGroups="2,3" />
+      <Resource Name="Res/Materials/Levels/Level02_Road" LoadType="0" Packed="False" ResourceGroups="2,3,4" />
+      <Resource Name="Res/Materials/Levels/Level03_Environment" LoadType="0" Packed="False" ResourceGroups="2,3" />
+      <Resource Name="Res/Materials/Levels/Level03_Road" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Res/Materials/Levels/Level04_Environment" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Res/Materials/Levels/Level04_Road" LoadType="0" Packed="False" ResourceGroups="2,4" />
+      <Resource Name="Res/Materials/Levels/Level05_Environment" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Levels/Level05_Road" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Levels/Skybox" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/AttackLightning" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/BossHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/BuggyHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/BulletImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/EnergyGainGlow" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/EnergyGainLightning" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/explosion_Flame" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Flame_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Flame_4" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Smoke_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Spark_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Spark_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Spark_3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/Flare" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/Helicopter_Hover" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/LaserBeam" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/LaserImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/LaserMuzzleFlashMaterial" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Particles/Smoke" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/TankHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/Tracer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Player/HeadQuarters_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Projectiles/Rocket_Projectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/ShadowCaster" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_1_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_2_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_3_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L02_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level1_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level2_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level3_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L01_Texture_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L02_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L03_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/SuperTower/SuperTower_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Materials/Towers/TowerGhost" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/TowerGhostInvalid" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/HealthBarGreen" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/HealthBarRed" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/HomeBaseTargetZone" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/PlacementArea" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/PlacementAreaFillled" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/RadiusVisualiser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
+      <Resource Name="Res/Materials/UI/SinglePlacementTileFilled" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
+      <Resource Name="Res/Materials/Units/Buggy_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/Buggy_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/Helicopter_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/Helicopter_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBasic_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBasic_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBoss_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBoss_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_1" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_1_COL" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_2" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_2_COL" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_3" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_3_COL" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_4" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_4_COL" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_5" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_5_COL" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Levels/Road_Tile_NormalMap_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Levels/Skybox" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Player/HeadQuarters" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Player/HeadQuarters_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Projectiles/Rocket_Projectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Projectiles/Rocket_Projectile_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1_Shadow" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2_Shadow" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3_Shadow" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_1_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_2_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_3_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L03" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_L02_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L03" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L02_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level1_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level2_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level3_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L01_Texture_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L02_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L03_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Base" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Base_Shadow" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Turret" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Turret_Shadow" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Base" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Base_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Turret" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Turret_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Disk" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Units/Helicopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Helicopter_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Helicopter_FX_Cones" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Helicopter_Orange_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/HoverTank_Base" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/HoverTank_Base_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/HoverTank_Turret" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Materials/TankBasic_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Materials/TankBoss_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBasic_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBasic_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBoss_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBoss_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/AttackLightning" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/BossHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/BuggyHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/BulletImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/EnergyGainGlow" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/EnergyGainLightning" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/explosion_Flame" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Flame_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Flame_4" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Smoke_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Spark_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Spark_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Spark_3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/Flare" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/HelicopterHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/LaserBeam" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/LaserImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/LaserMuzzleFlash" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Particles/Textures/Smoke" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/TankHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/Tracer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="Scenes/Level1/Level1" LoadType="0" Packed="False" ResourceGroups="1" />
       <Resource Name="Scenes/Level2/Level2" LoadType="0" Packed="False" ResourceGroups="2" />
       <Resource Name="Scenes/Level3/Level3" LoadType="0" Packed="False" ResourceGroups="3" />
       <Resource Name="Scenes/Level4/Level4" LoadType="0" Packed="False" ResourceGroups="4" />
       <Resource Name="Scenes/Level5/Level5" LoadType="0" Packed="False" ResourceGroups="5" />
       <Resource Name="Scenes/Menu/Menu" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="SoundEMPIdle" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="SoundEnemyFire" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="SoundGameMusic" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="SoundMenuMusic" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="SoundTowerDestriction" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="SoundTowerLaser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="SoundTowerMachineGun" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="SoundTowerRockerLauncher" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="SoundTowerSuperTower" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="SoundUIBase" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="SoundUISFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/EMPIdle" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Sound/EnemyFire" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Sound/GameMusic" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/MenuMusic" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Sound/TowerDestriction" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Sound/TowerLaser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/TowerMachineGun" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/TowerRockerLauncher" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/TowerSuperTower" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Sound/UIBase" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Sound/UISFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sprites" LoadType="0" Packed="True" ResourceGroups="0,1,2,3,4,5" />
       <Resource Name="UI/Dynamic/LevelSelectionButton" LoadType="0" Packed="True" ResourceGroups="0" />
       <Resource Name="UI/Dynamic/TowerBuildButton" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
       <Resource Name="UI/UIForms/UIDownloadForm" LoadType="0" Packed="True" ResourceGroups="0" />
@@ -72,154 +307,397 @@
       <Resource Name="UI/UIForms/UITowerListForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
     </Resources>
     <Assets>
-      <Asset Guid="01befc377d267aa47a659fd688128509" ResourceName="EnemiesExploding" />
-      <Asset Guid="02c80739782053b46a95a7fc5da4de3b" ResourceName="SoundUISFX" />
-      <Asset Guid="06f4152eb680617479812853ed8a581f" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="00317337bdfee49e29ab684e6af81a3b" ResourceName="Res/Materials/Particles/BuggyHover_sprite" />
+      <Asset Guid="008790df986e3469285ea0c078de4b7f" ResourceName="Res/Materials/UI/HealthBarRed" />
+      <Asset Guid="01befc377d267aa47a659fd688128509" ResourceName="Enemies/Exploding" />
+      <Asset Guid="02c80739782053b46a95a7fc5da4de3b" ResourceName="Sound/UISFX" />
+      <Asset Guid="038543adefb3c46ad8de9ba4238f40af" ResourceName="Res/Particles/Textures/EnergyGainGlow" />
+      <Asset Guid="0409152adf7314e2195e11ac9ea2d7cc" ResourceName="Sprites" />
+      <Asset Guid="0469414daa61e4dec9cdcdfa9bd58f74" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L01" />
+      <Asset Guid="06f4152eb680617479812853ed8a581f" ResourceName="Sound/TowerSuperTower" />
       <Asset Guid="073ca2ed003aedf4cb608d9ce2d58514" ResourceName="Entity/Enemies/SuperHovercopter" />
       <Asset Guid="098e32d1faf93fe40918be076db3b5ae" ResourceName="Entity/RocketExplosionPfx" />
       <Asset Guid="0a1acdd7bb5a0534881a7db04fbea0b6" ResourceName="Entity/LaserImpactPFX" />
+      <Asset Guid="0a2cc98c77c2e4668b2e400f341e1a74" ResourceName="Res/Models/Towers/MachineGun/Base_MachineGun_L02_Shadow" />
       <Asset Guid="0b333bfceb3d4934d9e68b22ee836b09" ResourceName="DataTable" />
-      <Asset Guid="0d8eea74c36e49b4bbec75045042d923" ResourceName="SoundTowerSuperTower" />
-      <Asset Guid="0da5d1fab0b4f5f4c9c2354b9a121259" ResourceName="RocketPlatform" />
+      <Asset Guid="0cada90001ebfe6418122d4488ae5535" ResourceName="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_2_tex_v001" />
+      <Asset Guid="0d476ca4e633b4f8d9a46f3b25579fa8" ResourceName="Sprites" />
+      <Asset Guid="0d8eea74c36e49b4bbec75045042d923" ResourceName="Sound/TowerSuperTower" />
+      <Asset Guid="0da5d1fab0b4f5f4c9c2354b9a121259" ResourceName="Entity/RocketPlatform/RocketProjectile" />
+      <Asset Guid="10f6c8d03930b4a449f543633892e711" ResourceName="Sprites" />
+      <Asset Guid="119db9c13428347e8b12ca223fa67385" ResourceName="Res/Materials/Particles/BulletImpact" />
+      <Asset Guid="12255f6709b004328a084b049551b342" ResourceName="Res/Materials/Levels/Level03_Environment" />
+      <Asset Guid="130c02f63c5e04bc7b4c526420052385" ResourceName="Res/Materials/Particles/LaserImpact" />
+      <Asset Guid="1361a7ad4c5a14db584c87ffddd81b29" ResourceName="Sprites" />
       <Asset Guid="1380728d7d4c6c6459c823647dd4c7d3" ResourceName="Entity/TowerDeathExplosion" />
       <Asset Guid="14b4165fcc6426f40844fbeccb0cb0cf" ResourceName="DataTable" />
-      <Asset Guid="154fba15a6072fb4db21704a44e7fb05" ResourceName="BaseAttack" />
-      <Asset Guid="16a99d0a844afa843b94afffc73b5162" ResourceName="RocketPlatform" />
-      <Asset Guid="190a86d0a03bbbb42bc98caf6c500483" ResourceName="SoundTowerDestriction" />
-      <Asset Guid="1e64f1602ed529546b5d624245ad27b4" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="1e8f5015922b04dd1b862cf76c53775a" ResourceName="SoundMenuMusic" />
-      <Asset Guid="21b3cf78465345e4e88545e54ca54c2a" ResourceName="EMPGenerator" />
+      <Asset Guid="14c1ded5940d444d888803bc9cad78a6" ResourceName="Res/Materials/Particles/LaserMuzzleFlashMaterial" />
+      <Asset Guid="1516d145af6a74a2c9a24b3333dc64b2" ResourceName="Res/Materials/Towers/Rocket/Rocket_Tower_L03_Texture_V003" />
+      <Asset Guid="154fba15a6072fb4db21704a44e7fb05" ResourceName="Base/Attack" />
+      <Asset Guid="16a99d0a844afa843b94afffc73b5162" ResourceName="Entity/RocketPlatform/RocketPlatformPreview" />
+      <Asset Guid="16e785c45e68e4ac6aefc28aa512b71a" ResourceName="Res/Models/Units/TankBasic_Orange_Albedo_V001" />
+      <Asset Guid="1746bc6cb1bbc4c838b0dc492b4d195c" ResourceName="Res/Materials/Towers/EMPTower/EMP_Tower_level_2_tex_v001" />
+      <Asset Guid="188f9a8488e154edf8adf142f5696547" ResourceName="Res/Models/Towers/Rocket/Base_RocketTower_L01" />
+      <Asset Guid="19049764cb9244e399c35d55307516bc" ResourceName="Res/Materials/Player/HeadQuarters_tex_v001" />
+      <Asset Guid="190712892bdc046c184d20fad6097c80" ResourceName="Res/Particles/Textures/LaserBeam" />
+      <Asset Guid="190a86d0a03bbbb42bc98caf6c500483" ResourceName="Sound/TowerDestriction" />
+      <Asset Guid="192535fb7c11042b7982f930f099f426" ResourceName="Sprites" />
+      <Asset Guid="1994e9b0703b64990950fac39016b391" ResourceName="Res/Models/Units/TankBoss_Albedo_V001" />
+      <Asset Guid="19ee0cb90aa04476ab8f4bd83da46786" ResourceName="Sprites" />
+      <Asset Guid="1b4311186ee324102874b001dd058145" ResourceName="Res/Animations/HoverCopterGlow" />
+      <Asset Guid="1ba446b13ace04844b8a65c7f903c2a1" ResourceName="Res/Models/Levels/Enviro_Level_3" />
+      <Asset Guid="1bc90cfbc927b44b4aaabc56a6e0b14c" ResourceName="Res/Materials/Towers/MachineGun/MachineGun_Level2_tex_v003" />
+      <Asset Guid="1bfcbc6372f4d45f19690ea277e1019f" ResourceName="Res/Materials/UI/HealthBarGreen" />
+      <Asset Guid="1c9385b2c3c07479f80437a2cef1fafa" ResourceName="Res/Models/Towers/Rocket/Turret_RocketTower_L03" />
+      <Asset Guid="1e64f1602ed529546b5d624245ad27b4" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="1e8f5015922b04dd1b862cf76c53775a" ResourceName="Sound/MenuMusic" />
+      <Asset Guid="21b3cf78465345e4e88545e54ca54c2a" ResourceName="Entity/EMPGenerator/EMPGeneratorPreview" />
+      <Asset Guid="220c2363b8fb44e4287e83ab206d82d5" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_3" />
       <Asset Guid="2231750fbe379494fa73ba554ad0be2d" ResourceName="UI/UIForms/UITowerListForm" />
-      <Asset Guid="24361001568ff6043bed9d103572addb" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="23ac691ae76604964857686fac3afecd" ResourceName="Res/Models/Towers/Rocket/Rocket_Tower_L02_Texture_V003" />
+      <Asset Guid="24361001568ff6043bed9d103572addb" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="25834cacbbf5e4c9e8e23d0159570146" ResourceName="Res/Models/Towers/Rocket/Turret_RocketTower_L02" />
       <Asset Guid="2684a1c4db9d69d41b3f07c6d26ea92d" ResourceName="Entity/Enemies/SuperHoverboss" />
-      <Asset Guid="26f3a8e13948f6f45a8743289c6f25dd" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="27155cca3c0c5a5419d4c3c11f4a4060" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="26f3a8e13948f6f45a8743289c6f25dd" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="27155cca3c0c5a5419d4c3c11f4a4060" ResourceName="Sound/TowerMachineGun" />
       <Asset Guid="2755130a89be3604db5471bc22e7ba33" ResourceName="LightMapMenu" />
-      <Asset Guid="2937e46b4cc55fd4891f3f3ab8c3f18b" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="293df2a6d0c1fe2419f7fead8f64d9ad" ResourceName="PlasmaLance" />
-      <Asset Guid="345d5c19a669de74caf5dd5c61c1e8b3" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="3553810b91eba5440b10f0abdfcd2bab" ResourceName="EnemiesExploding" />
-      <Asset Guid="35e7666ce1d5bdf45a46447e9c108f62" ResourceName="BaseAttack" />
-      <Asset Guid="35ea3d79e6d719b4fbbae5f68e64f43b" ResourceName="RocketPlatform" />
+      <Asset Guid="2937e46b4cc55fd4891f3f3ab8c3f18b" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="293df2a6d0c1fe2419f7fead8f64d9ad" ResourceName="Entity/PlasmaLance/LaserProjectile" />
+      <Asset Guid="294f92d21d8ab4241aa55b1670e20f3c" ResourceName="Res/Models/Levels/Enviro_Level_5_COL" />
+      <Asset Guid="2a4e1d387d0f54096923078ee7d03dcd" ResourceName="Res/Models/Units/Helicopter_Albedo_V002" />
+      <Asset Guid="2be281650d1134d16a0d7495ebf44612" ResourceName="Res/Models/Levels/Skybox" />
+      <Asset Guid="2cae8e904154e4fff85163cc3c6f4180" ResourceName="Res/Models/Towers/Laser/LaserTower_BASE_L03_Shadow" />
+      <Asset Guid="2e04dff9c064c4e9e895a2396156bd66" ResourceName="Res/Materials/Towers/SuperTower/SuperTower_Albedo_V001" />
+      <Asset Guid="3193fb3698c1040779ae6240896338dd" ResourceName="Res/Materials/Levels/Level02_Environment" />
+      <Asset Guid="33306dfdeac694f39bc2c2674f969f9c" ResourceName="Res/Particles/Textures/explosion_Smoke_1" />
+      <Asset Guid="3338f664595ab4c84ba377f3c47e11d8" ResourceName="Res/Materials/Units/Helicopter_Orange_Albedo_V001" />
+      <Asset Guid="3397fc22ec76148f08f7b799db8a1a2c" ResourceName="Sprites" />
+      <Asset Guid="345d5c19a669de74caf5dd5c61c1e8b3" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="3553810b91eba5440b10f0abdfcd2bab" ResourceName="Enemies/Exploding" />
+      <Asset Guid="355eef21a2d5d465f85c17a020a2f278" ResourceName="Res/Particles/Textures/TankHover_sprite" />
+      <Asset Guid="3568b996ada474c18bb75841d1116d7e" ResourceName="Sprites" />
+      <Asset Guid="356b96f82f25742778c3132e0efded21" ResourceName="Res/Materials/Particles/SlowFx" />
+      <Asset Guid="3584259b38f3647699aa52084d205a3e" ResourceName="Res/Models/Levels/Enviro_Level_3_COL" />
+      <Asset Guid="35e7666ce1d5bdf45a46447e9c108f62" ResourceName="Base/Attack" />
+      <Asset Guid="35ea3d79e6d719b4fbbae5f68e64f43b" ResourceName="Entity/RocketPlatform/RocketPlatform" />
+      <Asset Guid="3631244dc04164d079a3302a39dbc0c6" ResourceName="Sprites" />
       <Asset Guid="36356b516d304b7479265f64647bde90" ResourceName="LightMapMenu" />
-      <Asset Guid="3697436845ba744408916597c5b5c50c" ResourceName="EnemiesExploding" />
+      <Asset Guid="365cc224435a64a2a94ac10812f9019e" ResourceName="Res/Models/Units/TankBoss_Orange_Albedo_V001" />
+      <Asset Guid="3697436845ba744408916597c5b5c50c" ResourceName="Enemies/Exploding" />
+      <Asset Guid="36be37cf1318040a9995e9fa24699757" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" />
+      <Asset Guid="36f30b3140b8843c5bc3469e1a5763fe" ResourceName="Res/Particles/Textures/AttackLightning" />
       <Asset Guid="384b67841c5396a4db0b83b4a08fe735" ResourceName="Scenes/Menu/Menu" />
+      <Asset Guid="38c1bfd61d1d143019784cec5a19e6ad" ResourceName="Sprites" />
+      <Asset Guid="38edcf9973f284b92a2cd360c60cae6e" ResourceName="Res/Materials/Units/TankBoss_Albedo_V001" />
       <Asset Guid="3a8ffd16aeae9fd4091c154184e0d5d5" ResourceName="Scenes/Level5/Level5" />
-      <Asset Guid="3be5d87b18055e3458fd11ba66cfa94f" ResourceName="AssaultCannon" />
+      <Asset Guid="3a9d6407c0d384d03a9f2f93a0a437be" ResourceName="Sprites" />
+      <Asset Guid="3a9fb61ffbe5144c7bcdf82cd331932f" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Shadow" />
+      <Asset Guid="3b94fc014291b427a8c54078b6002a1e" ResourceName="Res/Models/Towers/MachineGun/MachineGun_Level2_tex_v003" />
+      <Asset Guid="3be5d87b18055e3458fd11ba66cfa94f" ResourceName="Entity/AssaultCannon/AssaultCannon_Level2" />
       <Asset Guid="3d3a3a9531758ac4085f59930022c426" ResourceName="Entity/BulletHit" />
-      <Asset Guid="4361f589f95c04c42bdcf4793b7353dc" ResourceName="EnergyPylon" />
-      <Asset Guid="43777447cf66e7e4a9acc74a83035555" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="3d51fdac1cf5b4c9f80488ae73e3e3cd" ResourceName="Res/Materials/Units/Buggy_Orange_Albedo_V001" />
+      <Asset Guid="3fb6ef455a5ff447d88cfd8c44789e06" ResourceName="Res/Models/Towers/Laser/LaserTower_TURRET_L03_Shadow" />
+      <Asset Guid="407d8b3d1bcc34a20b93b10e98939419" ResourceName="Res/Materials/Particles/AttackLightning" />
+      <Asset Guid="415bbc8731ed6497e8514203f3158c16" ResourceName="Res/Materials/Particles/EnergyGainLightning" />
+      <Asset Guid="42dbe9bf2ee7f413099ff6353ea3c67d" ResourceName="Res/Models/Units/BossTank_Base_Shadow" />
+      <Asset Guid="4361f589f95c04c42bdcf4793b7353dc" ResourceName="Entity/EnergyPylon/EnergyPylon_Level3" />
+      <Asset Guid="43777447cf66e7e4a9acc74a83035555" ResourceName="Sound/TowerMachineGun" />
       <Asset Guid="43ae2a440a3f03a428445a47c0b749b5" ResourceName="DataTable" />
+      <Asset Guid="43f833ce23e7a4f458e75331121b2ccc" ResourceName="Res/Materials/Particles/TankHover_sprite" />
+      <Asset Guid="446a72560c44e44d8acea2562be7901a" ResourceName="Res/Materials/UI/PlacementAreaFillled" />
+      <Asset Guid="44aee12985d2e445fbd29e104b9b2856" ResourceName="Res/Models/Towers/Laser/LaserTower_BASE_L01_Shadow" />
+      <Asset Guid="46e42d258343c40dd887fb4b272e1e4d" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_2_Shadow" />
       <Asset Guid="472ed7c77852d9246b992f343f81a8f2" ResourceName="Entity/EnemyShootEffect" />
-      <Asset Guid="474ea29b517c95848bbe596875ca0593" ResourceName="AssaultCannon" />
-      <Asset Guid="47d081471431a6141abbd27d8b6b36aa" ResourceName="AssaultCannon" />
-      <Asset Guid="49a3969d998dbff4bb8afbb1715b580f" ResourceName="EnergyPylon" />
-      <Asset Guid="4db00e1153a3ba24b83c8aa44e59bcb2" ResourceName="RocketPlatform" />
+      <Asset Guid="474ea29b517c95848bbe596875ca0593" ResourceName="Entity/AssaultCannon/AssaultCannon" />
+      <Asset Guid="47d081471431a6141abbd27d8b6b36aa" ResourceName="Entity/AssaultCannon/MachineGunProjectile" />
+      <Asset Guid="47fc7f40915844782be68fcc221f57d6" ResourceName="Res/Materials/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" />
+      <Asset Guid="48efc3760d51645329779dabd538be0c" ResourceName="Res/Materials/Units/TankBoss_Orange_Albedo_V001" />
+      <Asset Guid="490fe486658304ca6887fd910d5ed644" ResourceName="Res/Models/Towers/MachineGun/Base_MachineGun_L01_Shadow" />
+      <Asset Guid="49a3969d998dbff4bb8afbb1715b580f" ResourceName="Entity/EnergyPylon/EnergyPylon_Level2" />
+      <Asset Guid="49ca83f24389b4af09be3adc1de25341" ResourceName="Res/Models/Towers/Rocket/Base_RocketTower_L03_Shadow" />
+      <Asset Guid="4a4f98795c1bb4f299e0a3d35e32dc0e" ResourceName="Res/Models/Levels/Enviro_Level_1" />
+      <Asset Guid="4a657ce0af6254431b1df620a2872e1e" ResourceName="Res/Materials/Levels/Level04_Environment" />
+      <Asset Guid="4a93fe8f69ec84f549c5b0c42c1deb5e" ResourceName="Sprites" />
+      <Asset Guid="4db00e1153a3ba24b83c8aa44e59bcb2" ResourceName="Entity/RocketPlatform/RocketPlatform_Level2" />
+      <Asset Guid="4e9bdb986bdc54cf79e5ea7f079df436" ResourceName="Res/Models/Towers/Rocket/Base_RocketTower_L02_Shadow" />
       <Asset Guid="4f7608bbbc6b81346bcfde1e8a65c6ad" ResourceName="UI/UIForms/UIMask" />
-      <Asset Guid="4f88d4301ee8ad14d86c544dced13f23" ResourceName="EnemiesExploding" />
+      <Asset Guid="4f88d4301ee8ad14d86c544dced13f23" ResourceName="Enemies/Exploding" />
+      <Asset Guid="4feed95418adc4168a0dcdbc33177fe6" ResourceName="Res/Models/Towers/Laser/LaserTower_TURRET_L02" />
       <Asset Guid="5035a572b6f50414c93745e0ca4e3a01" ResourceName="DataTable" />
-      <Asset Guid="52813b4616870d743a86e8917a87b42a" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="5138d41854f774b01aaeecdef78d31fe" ResourceName="Sprites" />
+      <Asset Guid="513d334ef78544f129afabc1ad5af28b" ResourceName="Sprites" />
+      <Asset Guid="518f26152095f425f86fc3ac2a7f7a39" ResourceName="Res/Materials/Levels/Level04_Road" />
+      <Asset Guid="5264b22d57d4e4c9c9caec9d8b65452c" ResourceName="Res/Models/Towers/Laser/LaserTower_TURRET_L01_Shadow" />
+      <Asset Guid="52813b4616870d743a86e8917a87b42a" ResourceName="Sound/TowerDestriction" />
       <Asset Guid="534a05923a7ddbe4a8f7c7519f73778a" ResourceName="Entity/BuildPfx" />
+      <Asset Guid="53652022b1d444a5c9e9630488e44e13" ResourceName="Sprites" />
+      <Asset Guid="538648978bbe842cc86a9bb06f0f1bc7" ResourceName="Res/Materials/Particles/explosion_Smoke_1" />
       <Asset Guid="541ab289e59da4e4281d981b7f31ea13" ResourceName="Entity/Enemies/Hovercopter" />
       <Asset Guid="54f2752d08d923946bc84fe79ef27860" ResourceName="DataTable" />
-      <Asset Guid="567f4800fefa8d843835478dc75616af" ResourceName="SoundUIBase" />
+      <Asset Guid="567f4800fefa8d843835478dc75616af" ResourceName="Sound/UIBase" />
+      <Asset Guid="5694b141fdeef254d8fd282fa1d95350" ResourceName="Res/Models/Units/Materials/TankBasic_Albedo_V001" />
       <Asset Guid="56fbb0c4526becf4c91c0e5e14ff492b" ResourceName="UI/UIForms/UIDownloadForm" />
-      <Asset Guid="57b31c5335be7fb41a1b4b1fa098785b" ResourceName="SoundTowerSuperTower" />
-      <Asset Guid="5a4b7618f48551643aaceba542fed0af" ResourceName="PlasmaLance" />
+      <Asset Guid="57b31c5335be7fb41a1b4b1fa098785b" ResourceName="Sound/TowerSuperTower" />
+      <Asset Guid="58ecb9799c1d20e4c893d2b251ece2ac" ResourceName="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_3_tex_v001" />
+      <Asset Guid="592800eaa57a9407a91c20aead2b3d03" ResourceName="Res/Materials/Units/TankBasic_Albedo_V001" />
+      <Asset Guid="5a21a3f7bd3c644fb9b36035645566b9" ResourceName="Res/Models/Towers/SuperTower/SuperTower_Base" />
+      <Asset Guid="5a4b7618f48551643aaceba542fed0af" ResourceName="Entity/PlasmaLance/PlasmaLance" />
+      <Asset Guid="5afc16a53649d4b94874501d8e6ee959" ResourceName="Res/Models/Towers/Laser/LaserTower_L01_Albedo_V001" />
       <Asset Guid="5b558de65359c1a4d9b394817d76bfa8" ResourceName="Entity/SlowFx" />
+      <Asset Guid="5b9fbf6723e204fb3b3694feab6a2cf3" ResourceName="Sprites" />
       <Asset Guid="5dbdfd0a67d92474e974c3a4e7f5ce88" ResourceName="DataTable" />
+      <Asset Guid="5def8b427d86445b190c94dde26b0112" ResourceName="Res/Materials/Towers/Laser/LaserTower_L03_Albedo_V001" />
+      <Asset Guid="5efb5ebf8259c497899b736e8bdbb2fb" ResourceName="Res/Models/Towers/Rocket/Base_RocketTower_L03" />
       <Asset Guid="5f81224f9c2105d439fa1d0bccfe2d28" ResourceName="UI/Dynamic/LevelSelectionButton" />
-      <Asset Guid="610cc044cb888b74b9e4bb0114340538" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="60ef6e57f00d84ceea154bb83f48a345" ResourceName="Res/Particles/Textures/Flare" />
+      <Asset Guid="610cc044cb888b74b9e4bb0114340538" ResourceName="Sound/TowerSuperTower" />
       <Asset Guid="610dea3bfb715434483f0da8284fc96e" ResourceName="DataTable" />
-      <Asset Guid="6383895fc3769164d90be5679dea0cc2" ResourceName="PlasmaLance" />
+      <Asset Guid="612fb0e64364342c7ba6c8e80d842ca6" ResourceName="Res/Models/Towers/Rocket/Base_RocketTower_L01_Shadow" />
+      <Asset Guid="617480999c0dc45179a0e237b678012d" ResourceName="Res/Models/Units/BossTank_Turret" />
+      <Asset Guid="620e186321a7e40c1af7cbea17e7a242" ResourceName="Res/Models/Towers/Rocket/Turret_RocketTower_L03_Shadow" />
+      <Asset Guid="633304ca6deaf4c0da384a79d43a91df" ResourceName="Res/Materials/Levels/Level05_Road" />
+      <Asset Guid="6383895fc3769164d90be5679dea0cc2" ResourceName="Entity/PlasmaLance/PlasmaLancePreview" />
+      <Asset Guid="6456fd7e2260b45febee82488eca4496" ResourceName="Res/Materials/Projectiles/Rocket_Projectile" />
+      <Asset Guid="6476fa37afe8f46a7825bf79a9e5d28d" ResourceName="Sprites" />
       <Asset Guid="654ac13bf998f464189815de72434588" ResourceName="DataTable" />
+      <Asset Guid="65d6cc8eca1be4a9bb2c73168993e39d" ResourceName="Res/Materials/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" />
+      <Asset Guid="67a055578b26444708b7df8956cd1336" ResourceName="Res/Models/Towers/Rocket/Turret_RocketTower_L01" />
+      <Asset Guid="6809b64b208a343588a4976e78668769" ResourceName="Res/Particles/Textures/Tracer" />
+      <Asset Guid="68e49a39c5e764c6c9f006b43150f29f" ResourceName="Res/Animations/SlowFx" />
       <Asset Guid="6a343bb1046518e43aff8354326dec45" ResourceName="Entity/SupertowerMissileTrail" />
       <Asset Guid="6b0f6e2d35e637e4cb97cc619c129118" ResourceName="DataTable" />
-      <Asset Guid="6c61621905bdcec4b960f2f6fd92ee86" ResourceName="EnemiesExploding" />
-      <Asset Guid="6c63b4e8a9a78b94da4eb0497f842615" ResourceName="EnergyPylon" />
-      <Asset Guid="6ce6d7c4d4f6140f68d2c18955f02e8c" ResourceName="SoundGameMusic" />
+      <Asset Guid="6b6852729eeab45e9bf2fa22196afeea" ResourceName="Res/Materials/Particles/EnergyGainGlow" />
+      <Asset Guid="6bf5dca62a2204b17841dccad7db30f8" ResourceName="Res/Materials/Particles/explosion_Flame_4" />
+      <Asset Guid="6c61621905bdcec4b960f2f6fd92ee86" ResourceName="Enemies/Exploding" />
+      <Asset Guid="6c63b4e8a9a78b94da4eb0497f842615" ResourceName="Entity/EnergyPylon/EnergyPylon" />
+      <Asset Guid="6ce6d7c4d4f6140f68d2c18955f02e8c" ResourceName="Sound/GameMusic" />
+      <Asset Guid="6d0f3745ac74f4783907288920b96775" ResourceName="Res/Materials/Units/Buggy_Albedo_V001" />
       <Asset Guid="6e3fa86cb35f69045bb379bab5dde150" ResourceName="UI/UIForms/UITowerControllerForm" />
+      <Asset Guid="6fe9580bd67b34580977e0aa4eab9755" ResourceName="Res/Materials/Towers/TowerGhost" />
       <Asset Guid="703ea25111bccbd4db4d58a741d4699e" ResourceName="Scenes/Level2/Level2" />
-      <Asset Guid="7112532e3e9e3c246b2fe456781a9c28" ResourceName="SoundUISFX" />
-      <Asset Guid="728fbe3d625a4d249ae167a2f8a7f077" ResourceName="SoundEMPIdle" />
-      <Asset Guid="7292d1ebf364bd9409fd4b6fc6ee75fe" ResourceName="PlasmaLance" />
-      <Asset Guid="73badf10872f4af4396837e26b708838" ResourceName="SoundUISFX" />
+      <Asset Guid="7084429b061944eb98d2cb35c262f1b4" ResourceName="Res/Materials/Units/TankBasic_Orange_Albedo_V001" />
+      <Asset Guid="7112532e3e9e3c246b2fe456781a9c28" ResourceName="Sound/UISFX" />
+      <Asset Guid="71168782495474ac69411fd475ef70e6" ResourceName="Res/Models/Player/HeadQuarters" />
+      <Asset Guid="728fbe3d625a4d249ae167a2f8a7f077" ResourceName="Sound/EMPIdle" />
+      <Asset Guid="7292d1ebf364bd9409fd4b6fc6ee75fe" ResourceName="Entity/PlasmaLance/PlasmaLance_Level3" />
+      <Asset Guid="732c0de21fbcd4a2eaa23fe81f207c08" ResourceName="Res/Materials/UI/SinglePlacementTileFilled" />
+      <Asset Guid="73badf10872f4af4396837e26b708838" ResourceName="Sound/UISFX" />
+      <Asset Guid="7462df81b88c94f7f91bbb8b4fda9f30" ResourceName="Res/Materials/Levels/Level02_Road" />
       <Asset Guid="74f7712c01fbe59418a236f0a575ae0c" ResourceName="DataTable" />
-      <Asset Guid="767e541ba9b8d154ba3e8a45aba8ff6b" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="7725ecb5bd0093c43969275f1109042d" ResourceName="SoundUISFX" />
+      <Asset Guid="76423a82f9c0241df9f051e3c0f4722d" ResourceName="Res/Materials/Towers/MachineGun/MachineGun_Level1_tex_v001" />
+      <Asset Guid="767e541ba9b8d154ba3e8a45aba8ff6b" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="7725ecb5bd0093c43969275f1109042d" ResourceName="Sound/UISFX" />
+      <Asset Guid="777f93d3f41014072b87a1eadb929fdc" ResourceName="Res/Models/Levels/Road_Tile_NormalMap_V003" />
+      <Asset Guid="779bf64d18fe54a7b9035172378af80c" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_1_Shadow" />
+      <Asset Guid="797155fd5d32b4e2e86c57d06205110b" ResourceName="Res/Materials/Particles/Tracer" />
+      <Asset Guid="79bd163cf8abc40d19f4130454cbba7e" ResourceName="Res/Materials/Towers/EMPTower/EMP_Tower_level_3_tex_v001" />
       <Asset Guid="7a835e50914362e49acff264d5ce41ca" ResourceName="DataTable" />
+      <Asset Guid="7aec95210fbee42c4bdb81634224facf" ResourceName="Res/Materials/Levels/Level01_Environment" />
+      <Asset Guid="7b3ddb10d473c439dae0a10631f93b01" ResourceName="Res/Materials/Particles/BossHover_sprite" />
+      <Asset Guid="7b4f0cb8fc3314059b88194196134996" ResourceName="Res/Models/Towers/MachineGun/Turret_MachineGun_L03" />
+      <Asset Guid="7cea8ac03b57a40f8be2baa55f4f4146" ResourceName="Sprites" />
+      <Asset Guid="7d5b20c8a4bb94a7faea8717dd4aced1" ResourceName="Res/Models/Levels/Enviro_Level_1_COL" />
       <Asset Guid="7d93ef64014fd6a4d9bb47a39a3a20e3" ResourceName="Entity/EnemyProjectile" />
       <Asset Guid="7e1550d1279a6a04fb4fc06d48a5c41d" ResourceName="Entity/Enemies/Hoverbuggy" />
-      <Asset Guid="80635ad12c1cfb34fad5483bfe75459d" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="7eac4c2ebcb084f8b9968be4f7984306" ResourceName="Sprites" />
+      <Asset Guid="7ed09e549e5c94af5b7f16ddfb122f43" ResourceName="Sprites" />
+      <Asset Guid="7f1957ba236084cfcaa1f5c9da66a68b" ResourceName="Res/Materials/ShadowCaster" />
+      <Asset Guid="7f2c9f12f6e3a4814ba939bafefe0fd3" ResourceName="Res/Particles/Textures/HelicopterHover_sprite" />
+      <Asset Guid="7f2d0a0b1ba19433a954387696a7d4d0" ResourceName="Res/Models/Units/Buggy_Shadow" />
+      <Asset Guid="7fe1f87e6cab946e4bbe5b6316a48a30" ResourceName="Res/Materials/Particles/Helicopter_Hover" />
+      <Asset Guid="8031707b196244358abb896d165def8f" ResourceName="Res/Models/Towers/Laser/LaserTower_TURRET_L03" />
+      <Asset Guid="80635ad12c1cfb34fad5483bfe75459d" ResourceName="Sound/TowerSuperTower" />
       <Asset Guid="80c018f4dc6c4454d881705d0e1e63be" ResourceName="DataTable" />
       <Asset Guid="811cd4b23353a924cacfc442592c5db9" ResourceName="Entity/BigDeathExplosionPfx" />
-      <Asset Guid="820e4fdcb4c95ef4095ae722cbd3277b" ResourceName="MissileArray" />
-      <Asset Guid="8459948c5a0088248a727f510f5ae681" ResourceName="PlasmaLance" />
-      <Asset Guid="87b1bb64b83880c4580ca412e0ca5f90" ResourceName="MissileArray" />
-      <Asset Guid="88d3ee3b94fdb764a9577770cbf88ae3" ResourceName="SoundUIBase" />
+      <Asset Guid="820e4fdcb4c95ef4095ae722cbd3277b" ResourceName="Entity/MissileArray/MissileArrayPreview" />
+      <Asset Guid="836b2be9efdfb438b98aea9315952698" ResourceName="Res/Particles/Textures/Smoke" />
+      <Asset Guid="8459948c5a0088248a727f510f5ae681" ResourceName="Entity/PlasmaLance/PlasmaLance_Level1" />
+      <Asset Guid="845f9df773be94e26aa80e92ad483534" ResourceName="Res/Models/Units/HoverTank_Base" />
+      <Asset Guid="855893e92f3cf4555aad85c898c241d0" ResourceName="Res/Materials/UI/RadiusVisualiser" />
+      <Asset Guid="85a7f547df06a4dd0a488c2c45f76e64" ResourceName="Res/Models/Towers/Laser/LaserTower_BASE_L02" />
+      <Asset Guid="86203932126304aeead1295fd2bdd303" ResourceName="Res/Materials/Towers/Rocket/Rocket_Tower_L02_Texture_V003" />
+      <Asset Guid="87b1bb64b83880c4580ca412e0ca5f90" ResourceName="Entity/MissileArray/MissileArray_Level1" />
+      <Asset Guid="87e47e3172ee14b53a135e99633fe791" ResourceName="Res/Models/Levels/Enviro_Level_4" />
+      <Asset Guid="886239b1d8d2045869a91612d6d6650b" ResourceName="Res/Models/Levels/Enviro_Level_5" />
+      <Asset Guid="88d3ee3b94fdb764a9577770cbf88ae3" ResourceName="Sound/UIBase" />
       <Asset Guid="89d3180f8b763bc45a73f70e294b0aec" ResourceName="DataTable" />
+      <Asset Guid="8a63d33908cde4af1a45ebdde7141783" ResourceName="Res/Particles/Textures/explosion_Spark_3" />
       <Asset Guid="8b31927881dde1540b137b7f89bd0cdc" ResourceName="Entity/Enemies/Hoverboss" />
+      <Asset Guid="8b55a8881f9db400eb8a844c0a7e0f77" ResourceName="Sprites" />
       <Asset Guid="8b988349d3373bd479a6c1cf5e79cbf0" ResourceName="LightMapMenu" />
-      <Asset Guid="8c39c07e09be28e4dbbc18bbf5bb3f86" ResourceName="SoundEnemyFire" />
-      <Asset Guid="8c96726848dd838449d38ebe49a4af04" ResourceName="MissileArray" />
+      <Asset Guid="8c39c07e09be28e4dbbc18bbf5bb3f86" ResourceName="Sound/EnemyFire" />
+      <Asset Guid="8c96726848dd838449d38ebe49a4af04" ResourceName="Entity/MissileArray/MissileArray" />
+      <Asset Guid="8de2b0ca8a36944a9b9dd75dff42644f" ResourceName="Sprites" />
       <Asset Guid="8e62aad79aa61b046bccf48c741b9e29" ResourceName="Entity/SmallDeathExplosionPfx" />
-      <Asset Guid="917941f1d8862ff4a8dbcd474757c151" ResourceName="AssaultCannon" />
-      <Asset Guid="9186dc5f0afedc347afe444cef4b486a" ResourceName="EMPGenerator" />
+      <Asset Guid="8e6e6f20a4c004c14882d03b06b6d349" ResourceName="Res/Models/Units/Helicopter_FX_Cones" />
+      <Asset Guid="8eae55ad119bf43f0ace155a53fd2b29" ResourceName="Res/Materials/Particles/Smoke" />
+      <Asset Guid="8ecaa67fd9e2a495d9ba1343b126c651" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_3_Shadow" />
+      <Asset Guid="8ed331977508048a49204cf83142545c" ResourceName="Res/Materials/UI/PlacementArea" />
+      <Asset Guid="8ed8f5d3949844de39683546c79c9723" ResourceName="Res/Models/Towers/SuperTower/SuperTower_Turret_Shadow" />
+      <Asset Guid="8eff134bfd79a4eb08e8fca44b80843a" ResourceName="Res/Materials/Towers/Laser/LaserTower_L02_Albedo_V001" />
+      <Asset Guid="8fb585f7e9d4c49219e693a26a303efd" ResourceName="Res/Models/Levels/Enviro_Level_2_COL" />
+      <Asset Guid="917941f1d8862ff4a8dbcd474757c151" ResourceName="Entity/AssaultCannon/AssaultCannonPreview" />
+      <Asset Guid="9186dc5f0afedc347afe444cef4b486a" ResourceName="Entity/EMPGenerator/EMPGenerator_Level2" />
       <Asset Guid="91e0d08e16df6f7418b8769badf6468c" ResourceName="UI/UIForms/UIPausePanelForm" />
-      <Asset Guid="91e34a761e6547a4fb2b6376f4034214" ResourceName="PlasmaLance" />
+      <Asset Guid="91e34a761e6547a4fb2b6376f4034214" ResourceName="Entity/PlasmaLance/PlasmaLance_Level2" />
+      <Asset Guid="91ff98883d8094fbbac75c115c18f6e1" ResourceName="Res/Models/Player/HeadQuarters_tex_v001" />
+      <Asset Guid="92fbbb607856b484295b0810d1baecac" ResourceName="Res/Materials/Particles/explosion_Spark_2" />
+      <Asset Guid="92ff3e2c433684de6b80ed9f6f48f0ea" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_2_tex_v001" />
+      <Asset Guid="943e4e2635b824286b03c4d819c3c0b3" ResourceName="Res/Models/Towers/Laser/LaserTower_BASE_L02_Shadow" />
+      <Asset Guid="94633ab8756ce4633a647281533c0c1b" ResourceName="Res/Particles/Textures/EnergyGainLightning" />
+      <Asset Guid="96c827f63b5004e0583fe6ac7d168334" ResourceName="Res/Materials/Levels/Level01_Road" />
+      <Asset Guid="973112698195146508777a0d8555d486" ResourceName="Res/Models/Units/Buggy_Albedo_V001" />
       <Asset Guid="97e58792ffd96ee44a8cda8fda0dd30e" ResourceName="UI/UIForms/UIMainMenuForm" />
-      <Asset Guid="994878880e02bc4459198aaec0a5ebfe" ResourceName="SoundTowerDestriction" />
-      <Asset Guid="9a7040bd5c6b20a4887fa5e4588a4f3e" ResourceName="AssaultCannon" />
+      <Asset Guid="9887a4dd80b104bd891b506842104b30" ResourceName="Res/Materials/Levels/Level05_Environment" />
+      <Asset Guid="989fb7eab843640c7ada0607778bcf7e" ResourceName="Res/Models/Units/HoverTank_Turret" />
+      <Asset Guid="990dec5933dcb4fcc964d597b2b43970" ResourceName="Res/Models/Units/Helicopter" />
+      <Asset Guid="994878880e02bc4459198aaec0a5ebfe" ResourceName="Sound/TowerDestriction" />
+      <Asset Guid="997285826a7c945008c144da7cdc3689" ResourceName="Res/Models/Towers/MachineGun/Base_MachineGun_L03_Shadow" />
+      <Asset Guid="99c42a7789cc340e9ac3292001fe27e3" ResourceName="Res/Models/Towers/MachineGun/Turret_MachineGun_L02_Shadow" />
+      <Asset Guid="9a7040bd5c6b20a4887fa5e4588a4f3e" ResourceName="Entity/AssaultCannon/AssaultCannon_Level1" />
       <Asset Guid="9a808201ed47c54458dca12e2c41a018" ResourceName="UI/UIForms/UILevelSelectForm" />
-      <Asset Guid="9f73f2e992c8e844bb2579ebcb3dfcf4" ResourceName="AssaultCannon" />
+      <Asset Guid="9ae2d788754504bfb8897d297b01c279" ResourceName="Res/Materials/Levels/Level03_Road" />
+      <Asset Guid="9bed81abda7f94105b1115af45d355a5" ResourceName="Res/Particles/Textures/LaserImpact" />
+      <Asset Guid="9d544fb1ef2ef4e1b915677e4ec04cb6" ResourceName="Res/Materials/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" />
+      <Asset Guid="9e7a2f91333814d1ba21be6f54e64af8" ResourceName="Res/Particles/Textures/explosion_Spark_2" />
+      <Asset Guid="9e9c8eefde8d54604877bc88f64d9b19" ResourceName="Res/Models/Towers/MachineGun/Turret_MachineGun_L03_Shadow" />
+      <Asset Guid="9eeda62a73aff4818af7e5b2f9126959" ResourceName="Res/Materials/Particles/explosion_Spark_1" />
+      <Asset Guid="9f73f2e992c8e844bb2579ebcb3dfcf4" ResourceName="Entity/AssaultCannon/AssaultCannon_Level3" />
+      <Asset Guid="9f90d0f5966744c19881d6ddebe87a58" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L02" />
+      <Asset Guid="9fcb8be040ce34b6099e8561eb9f94fa" ResourceName="Res/Particles/Textures/explosion_Flame" />
+      <Asset Guid="a0c0b78d3cfda4eb6acd5752a0eda707" ResourceName="Sprites" />
+      <Asset Guid="a168f3fb2c74046abbf9d283fffc73bd" ResourceName="Res/Particles/Textures/BossHover_sprite" />
       <Asset Guid="a2c2a6ec392666d43bc1904741758f04" ResourceName="Entity/Enemies/SuperHoverbuggy" />
+      <Asset Guid="a33edf12f3c0044e8ba582a16ddaae3f" ResourceName="Res/Materials/Towers/TowerGhostInvalid" />
       <Asset Guid="a40e18b36a1177c44945d4812b7c9d45" ResourceName="UI/UIForms/UIGameOverForm" />
+      <Asset Guid="a43023b0c4b884a1a8db3b57f1602440" ResourceName="Res/Materials/UI/SinglePlacementTile" />
+      <Asset Guid="a45f07d0792af48c991867ca0ad0f244" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" />
+      <Asset Guid="a48a2c9e336474aa48f8827646fe8d3a" ResourceName="Res/Models/Towers/SuperTower/SuperTower_Turret" />
+      <Asset Guid="a4c612832912c4f7babb09fb717bb527" ResourceName="Sprites" />
+      <Asset Guid="a7802b36d3aa74adea88c646f6982ca7" ResourceName="Res/Materials/Towers/Laser/LaserTower_L01_Albedo_V001" />
+      <Asset Guid="a78dd0f6e2aa54870b8ced4051fd71e0" ResourceName="Res/Materials/Particles/explosion_Spark_3" />
+      <Asset Guid="a7d9664f855274f51b308ad4c6350871" ResourceName="Sprites" />
+      <Asset Guid="a80ea39eabaf149638edf17de562b887" ResourceName="Res/Models/Projectiles/Rocket_Projectile_Shadow" />
+      <Asset Guid="a946c0e0594604ba194f28022bbc3b9d" ResourceName="Res/Materials/Towers/EMPTower/EMP_Tower_level_1_tex_v001" />
+      <Asset Guid="a9a5ed9e4d3114c74b9733f0485da335" ResourceName="Res/Materials/Particles/LaserBeam" />
+      <Asset Guid="a9bce825525c74dfe815157e2c49f268" ResourceName="Res/Models/Units/Disk" />
+      <Asset Guid="aa18303c92d9e490abfac36b6e0e8646" ResourceName="Sprites" />
+      <Asset Guid="aa641dfadd2d1490fa27b0dbdfb7f121" ResourceName="Res/Models/Towers/SuperTower/SuperTower_Albedo_V001" />
+      <Asset Guid="aafdb491e8b4e405291199aab7b146ba" ResourceName="Res/Particles/Textures/SlowFx" />
       <Asset Guid="ab7fe05f924ed8346833726831cefc20" ResourceName="UI/UIForms/UIOptionsForm" />
-      <Asset Guid="ababca0ffcf5c2245b287ea882bbf20c" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="aec58fc4be56e5c42b13d4363f8cd283" ResourceName="EnergyPylon" />
+      <Asset Guid="ababca0ffcf5c2245b287ea882bbf20c" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="ac34ab42336e14c2393b35ce459ec2c9" ResourceName="Res/Models/Towers/MachineGun/MachineGun_Level1_tex_v001" />
+      <Asset Guid="acf4716a8fa254a2589ba008c867a3bc" ResourceName="Fonts" />
+      <Asset Guid="ad5cc5335413e43df84ae6caa151caf6" ResourceName="Res/Materials/Towers/MachineGun/MachineGun_Level3_tex_v003" />
+      <Asset Guid="ae0df43d824ba4648821b8b7bea6a956" ResourceName="Res/Models/Levels/Enviro_Level_4_COL" />
+      <Asset Guid="ae83b87fc59fb4b81b58448f1903ba85" ResourceName="Res/Models/Units/Helicopter_Orange_Albedo_V002" />
+      <Asset Guid="aea6ab446662e4aee89e07d1cbab468f" ResourceName="Res/Models/Towers/MachineGun/Turret_MachineGun_L01_Shadow" />
+      <Asset Guid="aec58fc4be56e5c42b13d4363f8cd283" ResourceName="Entity/EnergyPylon/EnergyPylonPreview" />
       <Asset Guid="af0927bda82e7134f8087223e68e6c2c" ResourceName="Entity/Enemies/SuperHovertank" />
-      <Asset Guid="b1dd30f2294c3d64e86a37c8a3e142ad" ResourceName="EMPGenerator" />
+      <Asset Guid="afcf8eec8162947e48439011ecb77f51" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_3_tex_v001" />
+      <Asset Guid="b033c863a55c94b0faefde576ffd460a" ResourceName="Res/Models/Towers/Laser/LaserTower_BASE_L01" />
+      <Asset Guid="b1dd30f2294c3d64e86a37c8a3e142ad" ResourceName="Entity/EMPGenerator/EMPGenerator" />
+      <Asset Guid="b2321b12dddb84659b9608663218e77b" ResourceName="Res/Models/Towers/Rocket/Rocket_Tower_L03_Texture_V003" />
+      <Asset Guid="b29d7ff11c99340e38246a09f771946f" ResourceName="Res/Models/Towers/MachineGun/Turret_MachineGun_L02" />
       <Asset Guid="b452648877e07ee4390ebd4f9803dcd8" ResourceName="Entity/RadiusVisualiser" />
+      <Asset Guid="b5794b1d89e5b4b5baf713e7eeab9c3f" ResourceName="Sprites" />
       <Asset Guid="b58c1ce8197772c44b235fe060b3b66d" ResourceName="Scenes/Level3/Level3" />
+      <Asset Guid="b5e0b3982ded947cda17890e729362aa" ResourceName="Res/Materials/Particles/Flare" />
+      <Asset Guid="b665f727f980d441bb9aefcd169f872f" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_1" />
+      <Asset Guid="b7726eac847aa40dfaf13be34338c0ad" ResourceName="Res/Models/Units/TankBasic_Albedo_V001" />
+      <Asset Guid="b7d3ea14f798b45309e64cbf222d83ad" ResourceName="Res/Models/Units/Buggy" />
       <Asset Guid="b80fca6a02f62444ea5f1a82bcfce2dd" ResourceName="LightMapMenu" />
+      <Asset Guid="b86728f8eac124dc2a36d8e4dba69cb2" ResourceName="Res/Models/Units/Buggy_Orange_Albedo_V001" />
+      <Asset Guid="b88344621c1aa461f9f426b4146b3cd2" ResourceName="Res/Models/Units/BossTank_Base" />
+      <Asset Guid="b9f2a11f3e13a884998bba58aaa61c4b" ResourceName="Res/Models/Units/Materials/TankBoss_Albedo_V001" />
       <Asset Guid="bd48eea0ced6c45419b418dcfe222495" ResourceName="DataTable" />
+      <Asset Guid="bde13cf56aaca4e55a00e43c8985a596" ResourceName="Res/Models/Towers/Rocket/Rocket_Tower_L01_Texture_V001" />
       <Asset Guid="bee7b15a9e66ce0419c4d7a7be10a5e1" ResourceName="Localization/Dictionaries" ResourceVariant="zh-tw" />
+      <Asset Guid="c0a039e78e66a44f8b90ddafc2c87582" ResourceName="Res/Materials/Units/Helicopter_Albedo_V001" />
+      <Asset Guid="c0acb67cc67044ec792123c78a445c25" ResourceName="Res/Models/Levels/Enviro_Level_2" />
+      <Asset Guid="c0d2f67af84a842359fbd3fe34000c64" ResourceName="Res/Models/Projectiles/Rocket_Projectile" />
       <Asset Guid="c2d4e2ee7b56bf24e9d4b651be4950e7" ResourceName="Localization/Dictionaries" ResourceVariant="zh-cn" />
+      <Asset Guid="c5281a82deb8f42e5ba57e4aaab6dc3a" ResourceName="Res/Models/Towers/Rocket/Turret_RocketTower_L02_Shadow" />
+      <Asset Guid="c52f50d993c82b64a9a4f740e63cdf1e" ResourceName="Res/Models/Towers/Laser/Materials/LaserTower_L02_Albedo_V001" />
+      <Asset Guid="c5ce927c163e14f079dbc5f7a1d419a1" ResourceName="Sprites" />
+      <Asset Guid="c61682045d83c4e7ea60f770a7947a71" ResourceName="Res/Models/Towers/Laser/LaserTower_L02_Albedo_V001" />
       <Asset Guid="c707bc95ab948454ca1e378dce5e9358" ResourceName="Item/PlacementTile" />
-      <Asset Guid="c73fe5387e987544ba174c742865ed84" ResourceName="SoundTowerRockerLauncher" />
+      <Asset Guid="c73fe5387e987544ba174c742865ed84" ResourceName="Sound/TowerRockerLauncher" />
       <Asset Guid="c7f59e0c0be460e4bbdeb2128cbc1752" ResourceName="DataTable" />
+      <Asset Guid="c814a2622f6ef4814ac3535985aa6bdf" ResourceName="Res/Particles/Textures/BuggyHover_sprite" />
+      <Asset Guid="ca1b398fbc1a64abaaf160449dab6c93" ResourceName="Res/Models/Towers/MachineGun/Turret_MachineGun_L01" />
       <Asset Guid="cc044ae1c50f8dd4aaa0aacec3101b3e" ResourceName="Configs/DefaultConfig" />
-      <Asset Guid="ceed5926a63a2244085adb17f49b3b89" ResourceName="SoundTowerSuperTower" />
-      <Asset Guid="d07ecebe09082a54b9f4a0d6b2bf91e4" ResourceName="RocketPlatform" />
-      <Asset Guid="d95e38fd6f021674d83ba81cc0554ff1" ResourceName="RocketPlatform" />
-      <Asset Guid="d9bc94d3d05608248a02a1b06ad2358a" ResourceName="SoundTowerLaser" />
-      <Asset Guid="da00db877b7e8ec41bf83dcc6ba0edc8" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="cd4aa88c43e9b4a008ef41890d804843" ResourceName="Res/Models/Towers/Laser/LaserTower_TURRET_L02_Shadow" />
+      <Asset Guid="cddcc00347bda495ca38d235fd7bce46" ResourceName="Res/Models/Units/BossTank_Turret_Shadow" />
+      <Asset Guid="ceed5926a63a2244085adb17f49b3b89" ResourceName="Sound/TowerSuperTower" />
+      <Asset Guid="cf9a13f1c5163457eaad64d224ce1df6" ResourceName="Sprites" />
+      <Asset Guid="d07ecebe09082a54b9f4a0d6b2bf91e4" ResourceName="Entity/RocketPlatform/RocketPlatform_Level1" />
+      <Asset Guid="d158cd1ed36df4fed93c13f4cbf91f99" ResourceName="Res/Models/Towers/Laser/LaserTower_TURRET_L01" />
+      <Asset Guid="d1c3a235beb7046a69ab15a9d7be2d39" ResourceName="Res/Materials/UI/HomeBaseTargetZone" />
+      <Asset Guid="d364d4a5494f9466b8d3596f900afd8c" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Shadow" />
+      <Asset Guid="d5fce1ef7f53e4b6384af86a686e95c9" ResourceName="Res/Models/Towers/Laser/LaserTower_BASE_L03" />
+      <Asset Guid="d63c06c24facc47b6a4f28642b9b8277" ResourceName="Res/Particles/Textures/explosion_Flame_2" />
+      <Asset Guid="d6c11b9a43dfb413b86a3ff8908088db" ResourceName="Sprites" />
+      <Asset Guid="d7e80cbd04e364360b128effe2033b7e" ResourceName="Res/Models/Towers/Laser/LaserTower_L03_Albedo_V001" />
+      <Asset Guid="d95e38fd6f021674d83ba81cc0554ff1" ResourceName="Entity/RocketPlatform/RocketPlatform_Level3" />
+      <Asset Guid="d989217fb3c914fe3bcc1134909a6523" ResourceName="Res/Materials/Levels/Skybox" />
+      <Asset Guid="d9b2a39b852b44dc29a992c5bdd7da42" ResourceName="Res/Models/Towers/Rocket/Base_RocketTower_L02" />
+      <Asset Guid="d9bc94d3d05608248a02a1b06ad2358a" ResourceName="Sound/TowerLaser" />
+      <Asset Guid="da00db877b7e8ec41bf83dcc6ba0edc8" ResourceName="Sound/TowerMachineGun" />
       <Asset Guid="da411bef1885c9c4fb241d192d02f27c" ResourceName="Scenes/Level4/Level4" />
+      <Asset Guid="da42da7650c9a43d2a79636cc00ade3e" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" />
       <Asset Guid="da473c16b9ad5474cb0d410ba45f691a" ResourceName="DataTable" />
+      <Asset Guid="dca1d127a63854ace99cfd10bf9916cd" ResourceName="Res/Models/Towers/MachineGun/Base_MachineGun_L03" />
+      <Asset Guid="dcbc668accbf94d9c9c29035688aafb2" ResourceName="Fonts" />
+      <Asset Guid="dd040609d7aef419b9c85fc5bfa91345" ResourceName="Res/Models/Towers/MachineGun/Base_MachineGun_L01" />
+      <Asset Guid="dda571f6dbd694b2b9ef9e97209dd450" ResourceName="Res/Models/Units/HoverTank_Base_Shadow" />
+      <Asset Guid="de71096fe1f7240cdbd41d7a05a18524" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L03" />
+      <Asset Guid="dfa8345d0505b480d9c59a30298ac258" ResourceName="Res/Animations/HoverTankGlow" />
       <Asset Guid="e0d13eeff961a9f48aa1eca9722fcf23" ResourceName="DataTable" />
-      <Asset Guid="e36205a3385eb6144be0c524b88ddcb3" ResourceName="EMPGenerator" />
-      <Asset Guid="e3e1ee90c7762ff4e8c79a4b1a712402" ResourceName="MissileArray" />
+      <Asset Guid="e313567b9545d254d84c58218d20ca44" ResourceName="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_1_tex_v001" />
+      <Asset Guid="e36205a3385eb6144be0c524b88ddcb3" ResourceName="Entity/EMPGenerator/EMPGenerator_Level1" />
+      <Asset Guid="e3de1acb1ed3a4656bb68c4db2123bab" ResourceName="Sprites" />
+      <Asset Guid="e3e1ee90c7762ff4e8c79a4b1a712402" ResourceName="Entity/MissileArray/SuperTowerProjectile" />
       <Asset Guid="e62cab01a56d60544ab7f8ea2d194834" ResourceName="Entity/RocketTrail" />
+      <Asset Guid="e63234a5bcebc41de96bbde36fccd9f0" ResourceName="Res/Materials/Towers/Rocket/Rocket_Tower_L01_Texture_V001" />
       <Asset Guid="e63c9c0622200794095d8095800730bf" ResourceName="Localization/Dictionaries" ResourceVariant="en-us" />
       <Asset Guid="e70d3ffc3d68f294388ba19573669874" ResourceName="DataTable" />
+      <Asset Guid="e7348375241624b91a5dde0b774294a3" ResourceName="Sprites" />
       <Asset Guid="e7ea0259da0ad1040aea7b4d864fe206" ResourceName="Entity/HPBar" />
-      <Asset Guid="e97249d7f37fcb140bad429afb8c1018" ResourceName="SoundTowerDestriction" />
-      <Asset Guid="ea02aff524dd2a44883d5a4f80892790" ResourceName="SoundTowerSuperTower" />
+      <Asset Guid="e97249d7f37fcb140bad429afb8c1018" ResourceName="Sound/TowerDestriction" />
+      <Asset Guid="e97894936c58c3646aa5225b0ab9520a" ResourceName="Res/Models/Towers/Laser/Materials/LaserTower_L01_Albedo_V001" />
+      <Asset Guid="ea02aff524dd2a44883d5a4f80892790" ResourceName="Sound/TowerSuperTower" />
       <Asset Guid="ea4d23971c755a8428965bc49024c813" ResourceName="UI/Dynamic/TowerBuildButton" />
-      <Asset Guid="ea66f874b31107f4497509197a5ea34e" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="ede4a4cc95325d44183336d9f166acbe" ResourceName="SoundTowerDestriction" />
+      <Asset Guid="ea66f874b31107f4497509197a5ea34e" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="eae20296c1c9b4145bb345e04a908cfc" ResourceName="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Shadow" />
+      <Asset Guid="eb03fc59f2ff54c8cb14ed0c1e5e032a" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_1_tex_v001" />
+      <Asset Guid="edbec92379537441bbfdc3eab21363bc" ResourceName="Res/Models/Towers/SuperTower/SuperTower_Base_Shadow" />
+      <Asset Guid="ede4a4cc95325d44183336d9f166acbe" ResourceName="Sound/TowerDestriction" />
+      <Asset Guid="eef9d1528875a43edb151eb2f6326ff4" ResourceName="Res/Models/Towers/MachineGun/Base_MachineGun_L02" />
       <Asset Guid="ef4461c923b09994584fdb6563d3faf1" ResourceName="Entity/EntityPlayer" />
-      <Asset Guid="f13500b418c84db489bb75d7234cd343" ResourceName="EnergyPylon" />
+      <Asset Guid="ef458285bf640a444b82d49287074a59" ResourceName="Res/Models/Towers/Laser/Materials/LaserTower_L03_Albedo_V001" />
+      <Asset Guid="f114a7eb5ccbb4160ab790fcf4500e22" ResourceName="Res/Particles/Textures/explosion_Flame_4" />
+      <Asset Guid="f13500b418c84db489bb75d7234cd343" ResourceName="Entity/EnergyPylon/EnergyPylon_Level1" />
+      <Asset Guid="f1af2deb9e6d84bc091947966f7e17ff" ResourceName="Res/Particles/Textures/LaserMuzzleFlash" />
+      <Asset Guid="f1d2742654601415894e1089b3dddc00" ResourceName="Res/Particles/Textures/explosion_Spark_1" />
       <Asset Guid="f1faaa7f89244084f8723904918d06eb" ResourceName="DataTable" />
-      <Asset Guid="f280ba1d06344f54891778e91627ebf6" ResourceName="EMPGenerator" />
+      <Asset Guid="f280ba1d06344f54891778e91627ebf6" ResourceName="Entity/EMPGenerator/EMPGenerator_Level3" />
+      <Asset Guid="f35086d0b6e364570a50a905e1866ca6" ResourceName="Res/Models/Towers/MachineGun/MachineGun_Level3_tex_v003" />
       <Asset Guid="f4a1b9dd197e70840a959476d5cd1e29" ResourceName="UI/UIForms/UILevelMainInfoForm" />
-      <Asset Guid="f4cf204343b91944aa36cf75ce6f4d19" ResourceName="SoundTowerMachineGun" />
-      <Asset Guid="f6bad708ea84eb74e8b328d6e6fa98a4" ResourceName="SoundUISFX" />
+      <Asset Guid="f4cf204343b91944aa36cf75ce6f4d19" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="f672b73decdc5432686a09bb689c7e2d" ResourceName="Res/Materials/Particles/explosion_Flame" />
+      <Asset Guid="f6bad708ea84eb74e8b328d6e6fa98a4" ResourceName="Sound/UISFX" />
       <Asset Guid="f7b8cccf982339a44b69647c8093dc6d" ResourceName="Scenes/Level1/Level1" />
-      <Asset Guid="f8ac83d6dce50644bb8d1a34fc5b287e" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="f870bad7fe0264670a3e08374df02d4b" ResourceName="Res/Materials/Particles/explosion_Flame_2" />
+      <Asset Guid="f8ac83d6dce50644bb8d1a34fc5b287e" ResourceName="Sound/TowerMachineGun" />
+      <Asset Guid="fa8bb063ccd904dd39b00c479f9e1484" ResourceName="Res/Models/Towers/EMPTower/EMP_Tower_level_2" />
+      <Asset Guid="fa91237b5487541158165bfce6ebfa0c" ResourceName="Sprites" />
       <Asset Guid="faa270e3d0214c242bcbde40d8acb7a9" ResourceName="Item/SinglePlacementTile" />
+      <Asset Guid="fb2ca01f402634342831214f5defb063" ResourceName="Res/Models/Towers/Rocket/Turret_RocketTower_L01_Shadow" />
       <Asset Guid="fb6cc224229e9f04b84157a6dfed7851" ResourceName="Entity/Enemies/Hovertank" />
-      <Asset Guid="fff1ab3c8467b5647bd28d0233d308a5" ResourceName="SoundTowerMachineGun" />
+      <Asset Guid="fd0d4b91e29b5414da4fb6ac6296a55b" ResourceName="Sprites" />
+      <Asset Guid="fe9b460536dce4dae81dbb3e752a55bc" ResourceName="Res/Particles/Textures/BulletImpact" />
+      <Asset Guid="fff1ab3c8467b5647bd28d0233d308a5" ResourceName="Sound/TowerMachineGun" />
     </Assets>
   </ResourceCollection>
 </UnityGameFramework>
