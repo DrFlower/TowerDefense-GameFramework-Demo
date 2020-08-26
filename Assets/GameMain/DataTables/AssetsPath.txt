@@ -1,132 +1,132 @@
-﻿#	资源路径配置表		
-#	Id		AssetPath
-#	int		string
-#	资源编号	策划备注	资源名称
-	101	启动场景	Assets/GameMain/Scenes/GameStart/GameStart.unity
-	102	菜单场景	Assets/GameMain/Scenes/Menu/Menu.unity
-	103	第一关	Assets/GameMain/Scenes/Level1/Level1.unity
-	104	第二关	Assets/GameMain/Scenes/Level2/Level2.unity
-	105	第三关	Assets/GameMain/Scenes/Level3/Level3.unity
-	106	第四关	Assets/GameMain/Scenes/Level4/Level4.unity
-	107	第五关	Assets/GameMain/Scenes/Level5/Level5.unity
-#UI			
-	1001	主菜单	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab
-	1002	设置界面	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab
-	1003	关卡选择界面	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab
-	1004	关卡主界面	Assets/GameMain/UI/UIForms/UILevelMainInfoForm.prefab
-	1005	炮塔列表	Assets/GameMain/UI/UIForms/UITowerListForm.prefab
-	1006	暂停界面	Assets/GameMain/UI/UIForms/UIPausePanelForm.prefab
-	1007	游戏结束	Assets/GameMain/UI/UIForms/UIGameOverForm.prefab
-	1008	UI遮罩	Assets/GameMain/UI/UIForms/UIMask.prefab
-	1009	炮塔控制面板	Assets/GameMain/UI/UIForms/UITowerControllerForm.prefab
-	1010	下载速度界面	Assets/GameMain/UI/UIForms/UIDownloadForm.prefab
-#Item			
-	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab
-	2002	构建炮塔按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab
-#Entity			
-	3001	突击加农炮预览	Assets/GameMain/Entity/AssaultCannon/AssaultCannonPreview.prefab
-	3002	火箭预览	Assets/GameMain/Entity/RocketPlatform/RocketPlatformPreview.prefab
-	3003	等离子喷枪预览	Assets/GameMain/Entity/PlasmaLance/PlasmaLancePreview.prefab
-	3004	能量塔预览	Assets/GameMain/Entity/EnergyPylon/EnergyPylonPreview.prefab
-	3005	电磁脉冲发生器预览	Assets/GameMain/Entity/EMPGenerator/EMPGeneratorPreview.prefab
-	3006	导弹阵列预览	Assets/GameMain/Entity/MissileArray/MissileArrayPreview.prefab
-	3007	突击加农炮	Assets/GameMain/Entity/AssaultCannon/AssaultCannon.prefab
-	3008	火箭	Assets/GameMain/Entity/RocketPlatform/RocketPlatform.prefab
-	3009	等离子喷枪	Assets/GameMain/Entity/PlasmaLance/PlasmaLance.prefab
-	3010	能量塔	Assets/GameMain/Entity/EnergyPylon/EnergyPylon.prefab
-	3011	电磁脉冲发生器	Assets/GameMain/Entity/EMPGenerator/EMPGenerator.prefab
-	3012	导弹阵列	Assets/GameMain/Entity/MissileArray/MissileArray.prefab
-	3013	突击加农炮等级1	Assets/GameMain/Entity/AssaultCannon/AssaultCannon_Level1.prefab
-	3014	突击加农炮等级2	Assets/GameMain/Entity/AssaultCannon/AssaultCannon_Level2.prefab
-	3015	突击加农炮等级3	Assets/GameMain/Entity/AssaultCannon/AssaultCannon_Level3.prefab
-	3016	火箭等级1	Assets/GameMain/Entity/RocketPlatform/RocketPlatform_Level1.prefab
-	3017	火箭等级2	Assets/GameMain/Entity/RocketPlatform/RocketPlatform_Level2.prefab
-	3018	火箭等级3	Assets/GameMain/Entity/RocketPlatform/RocketPlatform_Level3.prefab
-	3019	等离子喷枪等级1	Assets/GameMain/Entity/PlasmaLance/PlasmaLance_Level1.prefab
-	3020	等离子喷枪等级2	Assets/GameMain/Entity/PlasmaLance/PlasmaLance_Level2.prefab
-	3021	等离子喷枪等级3	Assets/GameMain/Entity/PlasmaLance/PlasmaLance_Level3.prefab
-	3022	能量塔等级1	Assets/GameMain/Entity/EnergyPylon/EnergyPylon_Level1.prefab
-	3023	能量塔等级2	Assets/GameMain/Entity/EnergyPylon/EnergyPylon_Level2.prefab
-	3024	能量塔等级3	Assets/GameMain/Entity/EnergyPylon/EnergyPylon_Level3.prefab
-	3025	电磁脉冲发生器等级1	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level1.prefab
-	3026	电磁脉冲发生器等级2	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level2.prefab
-	3027	电磁脉冲发生器等级3	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level3.prefab
-	3028	导弹阵列等级1	Assets/GameMain/Entity/MissileArray/MissileArray_Level1.prefab
-	3029	范围指示器	Assets/GameMain/Entity/RadiusVisualiser.prefab
-	3030	炮塔放置特效	Assets/GameMain/Entity/BuildPfx.prefab
-	3031	虫子	Assets/GameMain/Entity/Enemies/Hoverbuggy.prefab
-	3032	直升机	Assets/GameMain/Entity/Enemies/Hovercopter.prefab
-	3033	坦克	Assets/GameMain/Entity/Enemies/Hovertank.prefab
-	3034	首领	Assets/GameMain/Entity/Enemies/Hoverboss.prefab
-	3035	超级虫子	Assets/GameMain/Entity/Enemies/SuperHoverbuggy.prefab
-	3036	超级直升机	Assets/GameMain/Entity/Enemies/SuperHovercopter.prefab
-	3037	超级坦克	Assets/GameMain/Entity/Enemies/SuperHovertank.prefab
-	3038	超级首领	Assets/GameMain/Entity/Enemies/SuperHoverboss.prefab
-	3039	玩家	Assets/GameMain/Entity/EntityPlayer.prefab
-	3040	突击加农炮炮弹	Assets/GameMain/Entity/AssaultCannon/MachineGunProjectile.prefab
-	3041	火箭炮弹	Assets/GameMain/Entity/RocketPlatform/RocketProjectile.prefab
-	3042	等离子喷枪炮弹	Assets/GameMain/Entity/PlasmaLance/LaserProjectile.prefab
-	3043	导弹阵列炮弹	Assets/GameMain/Entity/MissileArray/SuperTowerProjectile.prefab
-	3044	子弹击中特效	Assets/GameMain/Entity/BulletHit.prefab
-	3045	激光击中特效	Assets/GameMain/Entity/LaserImpactPFX.prefab
-	3046	火箭尾部特效	Assets/GameMain/Entity/RocketTrail.prefab
-	3047	火箭爆炸特效	Assets/GameMain/Entity/RocketExplosionPfx.prefab
-	3048	导弹尾部特效	Assets/GameMain/Entity/SupertowerMissileTrail.prefab
-	3049	敌人死亡特效1	Assets/GameMain/Entity/SmallDeathExplosionPfx.prefab
-	3050	敌人死亡特效2	Assets/GameMain/Entity/BigDeathExplosionPfx.prefab
-	3051	敌人减速	Assets/GameMain/Entity/SlowFx.prefab
-	3052	血条	Assets/GameMain/Entity/HPBar.prefab
-	3053	敌人攻击炮弹	Assets/GameMain/Entity/EnemyProjectile.prefab
-	3054	敌人攻击特效	Assets/GameMain/Entity/EnemyShootEffect.prefab
-	3055	炮塔死亡特效	Assets/GameMain/Entity/TowerDeathExplosion.prefab
-#Sound			
-	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3
-	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3
-	20001	Enemy Fire	Assets/GameMain/Sounds/SFX/Enemy Fire.wav
-	20002	Macross Placement	Assets/GameMain/Sounds/SFX/Macross Placement.wav
-	20003	Weapon Placement 1	Assets/GameMain/Sounds/SFX/Weapon Placement 1.wav
-	20004	Weapon Placement 2	Assets/GameMain/Sounds/SFX/Weapon Placement 2.wav
-	21001	base_attack	Assets/GameMain/Sounds/SFX/Base Attack/base_attack.wav
-	21002	zone_enter	Assets/GameMain/Sounds/SFX/Base Attack/zone_enter.wav
-	22001	Enemies Exploding 1	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 1.wav
-	22002	Enemies Exploding 2	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 2.wav
-	22003	Enemies Exploding 3	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 3.wav
-	22004	Enemies Exploding 4	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 4.wav
-	22005	Enemies Exploding 5	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 5.wav
-	23001	Destruction 1	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 1.wav
-	23002	Destruction 2	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 2.wav
-	23003	Destruction 3	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 3.wav
-	23004	Destruction 4	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 4.wav
-	23005	Destruction 5	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 5.wav
-	24001	LaserFire	Assets/GameMain/Sounds/SFX/Towers/Laser/LaserFire.wav
-	25001	MG 1	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 1.wav
-	25002	MG 2	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 2.wav
-	25003	MG 3	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 3.wav
-	25004	MG 4	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 4.wav
-	25005	MG 5	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 5.wav
-	25006	MG 6	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 6.wav
-	25007	MG 7	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 7.wav
-	25008	MG 8	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 8.wav
-	25009	MG 9	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 9.wav
-	25010	MG 10	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 10.wav
-	25011	MG 11	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 11.wav
-	25012	MG 12	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 12.wav
-	25013	MG 13	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 13.wav
-	25014	MG 14	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 14.wav
-	26001	Rocket Tower Shoot	Assets/GameMain/Sounds/SFX/Towers/RocketLauncher/Rocket Tower Shoot.wav
-	27001	Super Tower Shot 1	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 1.wav
-	27002	Super Tower Shot 2	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 2.wav
-	27003	Super Tower Shot 3	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 3.wav
-	27004	Super Tower Shot 4	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 4.wav
-	27005	Super Tower Shot 5	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 5.wav
-	27006	Super Tower Shot 6	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 6.wav
-	27007	Super Tower Shot 7	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 7.wav
-	30001	TD Currency	Assets/GameMain/Sounds/SFX/UI/TD Currency.wav
-	30002	TD Defeat	Assets/GameMain/Sounds/SFX/UI/TD Defeat .wav
-	30003	TD EMP Idle	Assets/GameMain/Sounds/SFX/UI/TD EMP Idle.wav
-	30004	TD Tower Sell	Assets/GameMain/Sounds/SFX/UI/TD Tower Sell.wav
-	30005	TD Tower Upgrade	Assets/GameMain/Sounds/SFX/UI/TD Tower Upgrade.wav
-	30006	TD Victory	Assets/GameMain/Sounds/SFX/UI/TD Victory.wav
-	30007	ui_sound_back	Assets/GameMain/Sounds/UI/ui_sound_back.mp3
-	30008	ui_sound_forward	Assets/GameMain/Sounds/UI/ui_sound_forward.mp3
-#			
+﻿#	资源路径配置表			
+#	Id		AssetPath	ResourceGroupIndexs
+#	int		string	string
+#	资源编号	策划备注	资源名称	资源组Id
+	101	启动场景	Assets/GameMain/Scenes/GameStart/GameStart.unity	0
+	102	菜单场景	Assets/GameMain/Scenes/Menu/Menu.unity	0
+	103	第一关	Assets/GameMain/Scenes/Level1/Level1.unity	1
+	104	第二关	Assets/GameMain/Scenes/Level2/Level2.unity	2
+	105	第三关	Assets/GameMain/Scenes/Level3/Level3.unity	3
+	106	第四关	Assets/GameMain/Scenes/Level4/Level4.unity	4
+	107	第五关	Assets/GameMain/Scenes/Level5/Level5.unity	5
+#UI				
+	1001	主菜单	Assets/GameMain/UI/UIForms/UIMainMenuForm.prefab	0
+	1002	设置界面	Assets/GameMain/UI/UIForms/UIOptionsForm.prefab	0
+	1003	关卡选择界面	Assets/GameMain/UI/UIForms/UILevelSelectForm.prefab	0
+	1004	关卡主界面	Assets/GameMain/UI/UIForms/UILevelMainInfoForm.prefab	1|2|3|4|5
+	1005	炮塔列表	Assets/GameMain/UI/UIForms/UITowerListForm.prefab	1|2|3|4|5
+	1006	暂停界面	Assets/GameMain/UI/UIForms/UIPausePanelForm.prefab	1|2|3|4|5
+	1007	游戏结束	Assets/GameMain/UI/UIForms/UIGameOverForm.prefab	1|2|3|4|5
+	1008	UI遮罩	Assets/GameMain/UI/UIForms/UIMask.prefab	1|2|3|4|5
+	1009	炮塔控制面板	Assets/GameMain/UI/UIForms/UITowerControllerForm.prefab	1|2|3|4|5
+	1010	下载速度界面	Assets/GameMain/UI/UIForms/UIDownloadForm.prefab	0
+#Item				
+	2001	关卡选择按钮	Assets/GameMain/UI/Dynamic/LevelSelectionButton.prefab	0
+	2002	构建炮塔按钮	Assets/GameMain/UI/Dynamic/TowerBuildButton.prefab	1|2|3|4|5
+#Entity				
+	3001	突击加农炮预览	Assets/GameMain/Entity/AssaultCannon/AssaultCannonPreview.prefab	1|2|3|4|5
+	3002	火箭预览	Assets/GameMain/Entity/RocketPlatform/RocketPlatformPreview.prefab	1|2|3|4|5
+	3003	等离子喷枪预览	Assets/GameMain/Entity/PlasmaLance/PlasmaLancePreview.prefab	1|2|3|4|5
+	3004	能量塔预览	Assets/GameMain/Entity/EnergyPylon/EnergyPylonPreview.prefab	5
+	3005	电磁脉冲发生器预览	Assets/GameMain/Entity/EMPGenerator/EMPGeneratorPreview.prefab	2|3|5
+	3006	导弹阵列预览	Assets/GameMain/Entity/MissileArray/MissileArrayPreview.prefab	3|4|5
+	3007	突击加农炮	Assets/GameMain/Entity/AssaultCannon/AssaultCannon.prefab	1|2|3|4|5
+	3008	火箭	Assets/GameMain/Entity/RocketPlatform/RocketPlatform.prefab	1|2|3|4|5
+	3009	等离子喷枪	Assets/GameMain/Entity/PlasmaLance/PlasmaLance.prefab	1|2|3|4|5
+	3010	能量塔	Assets/GameMain/Entity/EnergyPylon/EnergyPylon.prefab	5
+	3011	电磁脉冲发生器	Assets/GameMain/Entity/EMPGenerator/EMPGenerator.prefab	2|3|5
+	3012	导弹阵列	Assets/GameMain/Entity/MissileArray/MissileArray.prefab	3|4|5
+	3013	突击加农炮等级1	Assets/GameMain/Entity/AssaultCannon/AssaultCannon_Level1.prefab	1|2|3|4|5
+	3014	突击加农炮等级2	Assets/GameMain/Entity/AssaultCannon/AssaultCannon_Level2.prefab	1|2|3|4|5
+	3015	突击加农炮等级3	Assets/GameMain/Entity/AssaultCannon/AssaultCannon_Level3.prefab	1|2|3|4|5
+	3016	火箭等级1	Assets/GameMain/Entity/RocketPlatform/RocketPlatform_Level1.prefab	1|2|3|4|5
+	3017	火箭等级2	Assets/GameMain/Entity/RocketPlatform/RocketPlatform_Level2.prefab	1|2|3|4|5
+	3018	火箭等级3	Assets/GameMain/Entity/RocketPlatform/RocketPlatform_Level3.prefab	1|2|3|4|5
+	3019	等离子喷枪等级1	Assets/GameMain/Entity/PlasmaLance/PlasmaLance_Level1.prefab	1|2|3|4|5
+	3020	等离子喷枪等级2	Assets/GameMain/Entity/PlasmaLance/PlasmaLance_Level2.prefab	1|2|3|4|5
+	3021	等离子喷枪等级3	Assets/GameMain/Entity/PlasmaLance/PlasmaLance_Level3.prefab	1|2|3|4|5
+	3022	能量塔等级1	Assets/GameMain/Entity/EnergyPylon/EnergyPylon_Level1.prefab	5
+	3023	能量塔等级2	Assets/GameMain/Entity/EnergyPylon/EnergyPylon_Level2.prefab	5
+	3024	能量塔等级3	Assets/GameMain/Entity/EnergyPylon/EnergyPylon_Level3.prefab	5
+	3025	电磁脉冲发生器等级1	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level1.prefab	2|3|5
+	3026	电磁脉冲发生器等级2	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level2.prefab	2|3|5
+	3027	电磁脉冲发生器等级3	Assets/GameMain/Entity/EMPGenerator/EMPGenerator_Level3.prefab	2|3|5
+	3028	导弹阵列等级1	Assets/GameMain/Entity/MissileArray/MissileArray_Level1.prefab	3|4|5
+	3029	范围指示器	Assets/GameMain/Entity/RadiusVisualiser.prefab	1|2|3|4|5
+	3030	炮塔放置特效	Assets/GameMain/Entity/BuildPfx.prefab	1|2|3|4|5
+	3031	虫子	Assets/GameMain/Entity/Enemies/Hoverbuggy.prefab	1|2|3|4|5
+	3032	直升机	Assets/GameMain/Entity/Enemies/Hovercopter.prefab	1|2|3|4|5
+	3033	坦克	Assets/GameMain/Entity/Enemies/Hovertank.prefab	1|2|3|4|5
+	3034	首领	Assets/GameMain/Entity/Enemies/Hoverboss.prefab	1|2|3|4|5
+	3035	超级虫子	Assets/GameMain/Entity/Enemies/SuperHoverbuggy.prefab	1|2|3|4|5
+	3036	超级直升机	Assets/GameMain/Entity/Enemies/SuperHovercopter.prefab	1|2|3|4|5
+	3037	超级坦克	Assets/GameMain/Entity/Enemies/SuperHovertank.prefab	1|2|3|4|5
+	3038	超级首领	Assets/GameMain/Entity/Enemies/SuperHoverboss.prefab	1|2|3|4|5
+	3039	玩家	Assets/GameMain/Entity/EntityPlayer.prefab	1|2|3|4|5
+	3040	突击加农炮炮弹	Assets/GameMain/Entity/AssaultCannon/MachineGunProjectile.prefab	1|2|3|4|5
+	3041	火箭炮弹	Assets/GameMain/Entity/RocketPlatform/RocketProjectile.prefab	1|2|3|4|5
+	3042	等离子喷枪炮弹	Assets/GameMain/Entity/PlasmaLance/LaserProjectile.prefab	1|2|3|4|5
+	3043	导弹阵列炮弹	Assets/GameMain/Entity/MissileArray/SuperTowerProjectile.prefab	3|4|5
+	3044	子弹击中特效	Assets/GameMain/Entity/BulletHit.prefab	1|2|3|4|5
+	3045	激光击中特效	Assets/GameMain/Entity/LaserImpactPFX.prefab	1|2|3|4|5
+	3046	火箭尾部特效	Assets/GameMain/Entity/RocketTrail.prefab	1|2|3|4|5
+	3047	火箭爆炸特效	Assets/GameMain/Entity/RocketExplosionPfx.prefab	1|2|3|4|5
+	3048	导弹尾部特效	Assets/GameMain/Entity/SupertowerMissileTrail.prefab	3|4|5
+	3049	敌人死亡特效1	Assets/GameMain/Entity/SmallDeathExplosionPfx.prefab	1|2|3|4|5
+	3050	敌人死亡特效2	Assets/GameMain/Entity/BigDeathExplosionPfx.prefab	1|2|3|4|5
+	3051	敌人减速	Assets/GameMain/Entity/SlowFx.prefab	2|3|5
+	3052	血条	Assets/GameMain/Entity/HPBar.prefab	1|2|3|4|5
+	3053	敌人攻击炮弹	Assets/GameMain/Entity/EnemyProjectile.prefab	2|3|4|5
+	3054	敌人攻击特效	Assets/GameMain/Entity/EnemyShootEffect.prefab	2|3|4|5
+	3055	炮塔死亡特效	Assets/GameMain/Entity/TowerDeathExplosion.prefab	2|3|4|5
+#Sound				
+	10001	游戏背景音乐	Assets/GameMain/Sounds/Music/Game Music.mp3	1|2|3|4|5
+	10002	主菜单背景音乐	Assets/GameMain/Sounds/Music/Menu Music.mp3	0
+	20001	Enemy Fire	Assets/GameMain/Sounds/SFX/Enemy Fire.wav	2|3|4|5
+	20002	Macross Placement	Assets/GameMain/Sounds/SFX/Macross Placement.wav	0
+	20003	Weapon Placement 1	Assets/GameMain/Sounds/SFX/Weapon Placement 1.wav	0
+	20004	Weapon Placement 2	Assets/GameMain/Sounds/SFX/Weapon Placement 2.wav	0
+	21001	base_attack	Assets/GameMain/Sounds/SFX/Base Attack/base_attack.wav	1|2|3|4|5
+	21002	zone_enter	Assets/GameMain/Sounds/SFX/Base Attack/zone_enter.wav	1|2|3|4|5
+	22001	Enemies Exploding 1	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 1.wav	2|3|4|5
+	22002	Enemies Exploding 2	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 2.wav	2|3|4|5
+	22003	Enemies Exploding 3	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 3.wav	2|3|4|5
+	22004	Enemies Exploding 4	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 4.wav	2|3|4|5
+	22005	Enemies Exploding 5	Assets/GameMain/Sounds/SFX/Enemies Exploding/Enemies Exploding 5.wav	2|3|4|5
+	23001	Destruction 1	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 1.wav	2|3|4|5
+	23002	Destruction 2	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 2.wav	2|3|4|5
+	23003	Destruction 3	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 3.wav	2|3|4|5
+	23004	Destruction 4	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 4.wav	2|3|4|5
+	23005	Destruction 5	Assets/GameMain/Sounds/SFX/Tower Destruction/Destruction 5.wav	2|3|4|5
+	24001	LaserFire	Assets/GameMain/Sounds/SFX/Towers/Laser/LaserFire.wav	1|2|3|4|5
+	25001	MG 1	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 1.wav	1|2|3|4|5
+	25002	MG 2	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 2.wav	1|2|3|4|5
+	25003	MG 3	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 3.wav	1|2|3|4|5
+	25004	MG 4	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 4.wav	1|2|3|4|5
+	25005	MG 5	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 5.wav	1|2|3|4|5
+	25006	MG 6	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 6.wav	1|2|3|4|5
+	25007	MG 7	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 7.wav	1|2|3|4|5
+	25008	MG 8	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 8.wav	1|2|3|4|5
+	25009	MG 9	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 9.wav	1|2|3|4|5
+	25010	MG 10	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 10.wav	1|2|3|4|5
+	25011	MG 11	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 11.wav	1|2|3|4|5
+	25012	MG 12	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 12.wav	1|2|3|4|5
+	25013	MG 13	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 13.wav	1|2|3|4|5
+	25014	MG 14	Assets/GameMain/Sounds/SFX/Towers/MachineGun/MG 14.wav	1|2|3|4|5
+	26001	Rocket Tower Shoot	Assets/GameMain/Sounds/SFX/Towers/RocketLauncher/Rocket Tower Shoot.wav	1|2|3|4|5
+	27001	Super Tower Shot 1	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 1.wav	3|4|5
+	27002	Super Tower Shot 2	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 2.wav	3|4|5
+	27003	Super Tower Shot 3	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 3.wav	3|4|5
+	27004	Super Tower Shot 4	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 4.wav	3|4|5
+	27005	Super Tower Shot 5	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 5.wav	3|4|5
+	27006	Super Tower Shot 6	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 6.wav	3|4|5
+	27007	Super Tower Shot 7	Assets/GameMain/Sounds/SFX/Towers/SuperTower/Super Tower Shot 7.wav	3|4|5
+	30001	TD Currency	Assets/GameMain/Sounds/SFX/UI/TD Currency.wav	5
+	30002	TD Defeat	Assets/GameMain/Sounds/SFX/UI/TD Defeat .wav	1|2|3|4|5
+	30003	TD EMP Idle	Assets/GameMain/Sounds/SFX/UI/TD EMP Idle.wav	2|3|5
+	30004	TD Tower Sell	Assets/GameMain/Sounds/SFX/UI/TD Tower Sell.wav	1|2|3|4|5
+	30005	TD Tower Upgrade	Assets/GameMain/Sounds/SFX/UI/TD Tower Upgrade.wav	1|2|3|4|5
+	30006	TD Victory	Assets/GameMain/Sounds/SFX/UI/TD Victory.wav	1|2|3|4|5
+	30007	ui_sound_back	Assets/GameMain/Sounds/UI/ui_sound_back.mp3	0
+	30008	ui_sound_forward	Assets/GameMain/Sounds/UI/ui_sound_forward.mp3	0
+#				
