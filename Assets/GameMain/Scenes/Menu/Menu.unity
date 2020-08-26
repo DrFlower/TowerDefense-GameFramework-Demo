@@ -14606,10 +14606,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385391967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16acee6bdae4a4358b2b241b35529805, type: 3}
+  m_Script: {fileID: 11500000, guid: efc11f184999d78459cbfb849c1c8ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 0.25, z: 0}
+  rotationSpeed: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1516071091
 GameObject:
   m_ObjectHideFlags: 0
