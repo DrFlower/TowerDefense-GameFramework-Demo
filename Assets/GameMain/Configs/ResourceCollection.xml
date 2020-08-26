@@ -2,314 +2,314 @@
 <UnityGameFramework>
   <ResourceCollection>
     <Resources>
-      <Resource Name="Base/Attack" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Configs/DefaultConfig" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="DataTable" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Enemies/Exploding" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/AssaultCannon/AssaultCannon" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/AssaultCannon/AssaultCannonPreview" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/AssaultCannon/MachineGunProjectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/BigDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/BuildPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/BulletHit" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/EMPGenerator/EMPGenerator" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level1" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level2" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level3" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Entity/EMPGenerator/EMPGeneratorPreview" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Entity/Enemies/Hoverboss" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/Hoverbuggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/Hovercopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/Hovertank" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/SuperHoverboss" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/SuperHoverbuggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/SuperHovercopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/Enemies/SuperHovertank" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/EnemyProjectile" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="Entity/EnemyShootEffect" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="Entity/EnergyPylon/EnergyPylon" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level1" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level2" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level3" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Entity/EnergyPylon/EnergyPylonPreview" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Entity/EntityPlayer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/HPBar" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/LaserImpactPFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/MissileArray/MissileArray" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Entity/MissileArray/MissileArray_Level1" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Entity/MissileArray/MissileArrayPreview" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Entity/MissileArray/SuperTowerProjectile" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Entity/PlasmaLance/LaserProjectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/PlasmaLance/PlasmaLance" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/PlasmaLance/PlasmaLancePreview" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RadiusVisualiser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketPlatform/RocketPlatform" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketPlatform/RocketPlatformPreview" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketPlatform/RocketProjectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/RocketTrail" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Entity/SmallDeathExplosionPfx" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Entity/SupertowerMissileTrail" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Entity/TowerDeathExplosion" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="Fonts" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Item/PlacementTile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Item/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
-      <Resource Name="Localization/Dictionaries" Variant="en-us" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Localization/Dictionaries" Variant="zh-cn" LoadType="0" Packed="False" ResourceGroups="0" />
-      <Resource Name="Localization/Dictionaries" Variant="zh-tw" LoadType="0" Packed="False" ResourceGroups="0" />
-      <Resource Name="Res/Animations/HoverCopterGlow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Animations/HoverTankGlow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Animations/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Materials/Levels/Level01_Environment" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Levels/Level01_Road" LoadType="0" Packed="False" ResourceGroups="1" />
-      <Resource Name="Res/Materials/Levels/Level02_Environment" LoadType="0" Packed="False" ResourceGroups="2,3" />
-      <Resource Name="Res/Materials/Levels/Level02_Road" LoadType="0" Packed="False" ResourceGroups="2,3,4" />
-      <Resource Name="Res/Materials/Levels/Level03_Environment" LoadType="0" Packed="False" ResourceGroups="2,3" />
-      <Resource Name="Res/Materials/Levels/Level03_Road" LoadType="0" Packed="False" ResourceGroups="3" />
-      <Resource Name="Res/Materials/Levels/Level04_Environment" LoadType="0" Packed="False" ResourceGroups="4" />
-      <Resource Name="Res/Materials/Levels/Level04_Road" LoadType="0" Packed="False" ResourceGroups="2,4" />
-      <Resource Name="Res/Materials/Levels/Level05_Environment" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Materials/Levels/Level05_Road" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Materials/Levels/Skybox" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Particles/AttackLightning" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/BossHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/BuggyHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/BulletImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/EnergyGainGlow" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Particles/EnergyGainLightning" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Particles/explosion_Flame" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/explosion_Flame_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/explosion_Flame_4" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/explosion_Smoke_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/explosion_Spark_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/explosion_Spark_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/explosion_Spark_3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/Flare" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Particles/Helicopter_Hover" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/LaserBeam" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Particles/LaserImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/LaserMuzzleFlashMaterial" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Particles/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Materials/Particles/Smoke" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/TankHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Particles/Tracer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Player/HeadQuarters_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Projectiles/Rocket_Projectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/ShadowCaster" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_1_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_2_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_3_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L02_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level1_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level2_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level3_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L01_Texture_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L02_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L03_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/SuperTower/SuperTower_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Res/Materials/Towers/TowerGhost" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Towers/TowerGhostInvalid" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/HealthBarGreen" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/HealthBarRed" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/HomeBaseTargetZone" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/PlacementArea" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/PlacementAreaFillled" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/RadiusVisualiser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/UI/SinglePlacementTile" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
-      <Resource Name="Res/Materials/UI/SinglePlacementTileFilled" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
-      <Resource Name="Res/Materials/Units/Buggy_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/Buggy_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/Helicopter_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/Helicopter_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/TankBasic_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/TankBasic_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/TankBoss_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Materials/Units/TankBoss_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_1" LoadType="0" Packed="False" ResourceGroups="1" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_1_COL" LoadType="0" Packed="False" ResourceGroups="1" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_2" LoadType="0" Packed="False" ResourceGroups="2" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_2_COL" LoadType="0" Packed="False" ResourceGroups="2" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_3" LoadType="0" Packed="False" ResourceGroups="3" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_3_COL" LoadType="0" Packed="False" ResourceGroups="3" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_4" LoadType="0" Packed="False" ResourceGroups="4" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_4_COL" LoadType="0" Packed="False" ResourceGroups="4" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_5" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Levels/Enviro_Level_5_COL" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Levels/Road_Tile_NormalMap_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Levels/Skybox" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Player/HeadQuarters" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Player/HeadQuarters_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Projectiles/Rocket_Projectile" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Projectiles/Rocket_Projectile_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1_Shadow" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2_Shadow" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3_Shadow" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_1_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_2_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_3_tex_v001" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L03" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_L02_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L03" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L01_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L02_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L03_Albedo_V001" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level1_tex_v001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level2_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level3_tex_v003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L01_Texture_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L02_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L03_Texture_V003" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L01" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L01_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L02" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L02_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L03" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L03_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Base" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Base_Shadow" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Turret" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Turret_Shadow" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Res/Models/Units/BossTank_Base" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/BossTank_Base_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/BossTank_Turret" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/BossTank_Turret_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Buggy" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Buggy_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Buggy_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Buggy_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Disk" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Models/Units/Helicopter" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Helicopter_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Helicopter_FX_Cones" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Helicopter_Orange_Albedo_V002" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/HoverTank_Base" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/HoverTank_Base_Shadow" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/HoverTank_Turret" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Materials/TankBasic_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/Materials/TankBoss_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/TankBasic_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/TankBasic_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/TankBoss_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Models/Units/TankBoss_Orange_Albedo_V001" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/AttackLightning" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/BossHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/BuggyHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/BulletImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/EnergyGainGlow" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Particles/Textures/EnergyGainLightning" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Particles/Textures/explosion_Flame" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/explosion_Flame_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/explosion_Flame_4" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/explosion_Smoke_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/explosion_Spark_1" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/explosion_Spark_2" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/explosion_Spark_3" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/Flare" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Particles/Textures/HelicopterHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/LaserBeam" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Particles/Textures/LaserImpact" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/LaserMuzzleFlash" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Res/Particles/Textures/SlowFx" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Res/Particles/Textures/Smoke" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/TankHover_sprite" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Res/Particles/Textures/Tracer" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Scenes/Level1/Level1" LoadType="0" Packed="False" ResourceGroups="1" />
-      <Resource Name="Scenes/Level1/Lightmap" LoadType="0" Packed="False" ResourceGroups="1" />
-      <Resource Name="Scenes/Level2/Level2" LoadType="0" Packed="False" ResourceGroups="2" />
-      <Resource Name="Scenes/Level2/Lightmap" LoadType="0" Packed="False" ResourceGroups="2" />
-      <Resource Name="Scenes/Level3/Level3" LoadType="0" Packed="False" ResourceGroups="3" />
-      <Resource Name="Scenes/Level3/Lightmap" LoadType="0" Packed="False" ResourceGroups="3" />
-      <Resource Name="Scenes/Level4/Level4" LoadType="0" Packed="False" ResourceGroups="4" />
-      <Resource Name="Scenes/Level4/Lightmap" LoadType="0" Packed="False" ResourceGroups="4" />
-      <Resource Name="Scenes/Level5/Level5" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Scenes/Level5/Lightmap" LoadType="0" Packed="False" ResourceGroups="5" />
-      <Resource Name="Scenes/Menu/Lightmap" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Scenes/Menu/Menu" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Sound/EMPIdle" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
-      <Resource Name="Sound/EnemyFire" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="Sound/GameMusic" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Sound/MenuMusic" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Sound/TowerDestriction" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
-      <Resource Name="Sound/TowerLaser" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Sound/TowerMachineGun" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Sound/TowerRockerLauncher" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Sound/TowerSuperTower" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
-      <Resource Name="Sound/UIBase" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="Sound/UISFX" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="Sprites" LoadType="0" Packed="True" ResourceGroups="0,1,2,3,4,5" />
-      <Resource Name="UI/Dynamic/LevelSelectionButton" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="UI/Dynamic/TowerBuildButton" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="UI/UIForms/UIDownloadForm" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="UI/UIForms/UIGameOverForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="UI/UIForms/UILevelMainInfoForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="UI/UIForms/UILevelSelectForm" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="UI/UIForms/UIMainMenuForm" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="UI/UIForms/UIMask" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="UI/UIForms/UIOptionsForm" LoadType="0" Packed="True" ResourceGroups="0" />
-      <Resource Name="UI/UIForms/UIPausePanelForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="UI/UIForms/UITowerControllerForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
-      <Resource Name="UI/UIForms/UITowerListForm" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Base/Attack" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Configs/DefaultConfig" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="DataTable" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Enemies/Exploding" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannon_Level3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/AssaultCannonPreview" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/AssaultCannon/MachineGunProjectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/BigDeathExplosionPfx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/BuildPfx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/BulletHit" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGenerator_Level3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/EMPGenerator/EMPGeneratorPreview" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/Enemies/Hoverboss" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hoverbuggy" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hovercopter" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/Hovertank" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHoverboss" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHoverbuggy" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHovercopter" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/Enemies/SuperHovertank" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/EnemyProjectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Entity/EnemyShootEffect" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylon_Level3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EnergyPylon/EnergyPylonPreview" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Entity/EntityPlayer" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/HPBar" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/LaserImpactPFX" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/MissileArray/MissileArray" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/MissileArray/MissileArray_Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/MissileArray/MissileArrayPreview" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/MissileArray/SuperTowerProjectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/PlasmaLance/LaserProjectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLance_Level3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/PlasmaLance/PlasmaLancePreview" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RadiusVisualiser" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketExplosionPfx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatform_Level3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketPlatformPreview" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketPlatform/RocketProjectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/RocketTrail" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/SlowFx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Entity/SmallDeathExplosionPfx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Entity/SupertowerMissileTrail" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Entity/TowerDeathExplosion" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Fonts" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Item/PlacementTile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Item/SinglePlacementTile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
+      <Resource Name="Localization/Dictionaries" Variant="en-us" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Localization/Dictionaries" Variant="zh-cn" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Localization/Dictionaries" Variant="zh-tw" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="0" />
+      <Resource Name="Res/Animations/HoverCopterGlow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Animations/HoverTankGlow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Animations/SlowFx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Levels/Level01_Environment" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Levels/Level01_Road" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Res/Materials/Levels/Level02_Environment" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3" />
+      <Resource Name="Res/Materials/Levels/Level02_Road" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,4" />
+      <Resource Name="Res/Materials/Levels/Level03_Environment" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3" />
+      <Resource Name="Res/Materials/Levels/Level03_Road" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Res/Materials/Levels/Level04_Environment" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Res/Materials/Levels/Level04_Road" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,4" />
+      <Resource Name="Res/Materials/Levels/Level05_Environment" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Levels/Level05_Road" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Levels/Skybox" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/AttackLightning" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/BossHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/BuggyHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/BulletImpact" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/EnergyGainGlow" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/EnergyGainLightning" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/explosion_Flame" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Flame_2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Flame_4" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Smoke_1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Spark_1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Spark_2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/explosion_Spark_3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/Flare" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/Helicopter_Hover" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/LaserBeam" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/LaserImpact" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/LaserMuzzleFlashMaterial" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Particles/SlowFx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Particles/Smoke" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/TankHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Particles/Tracer" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Player/HeadQuarters_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Projectiles/Rocket_Projectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/ShadowCaster" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_1_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_2_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Towers/EMPTower/EMP_Tower_level_3_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Materials/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L01_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L02_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Laser/LaserTower_L03_Albedo_V001" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level1_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level2_tex_v003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/MachineGun/MachineGun_Level3_tex_v003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L01_Texture_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L02_Texture_V003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/Rocket/Rocket_Tower_L03_Texture_V003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/SuperTower/SuperTower_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Materials/Towers/TowerGhost" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Towers/TowerGhostInvalid" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/HealthBarGreen" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/HealthBarRed" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/HomeBaseTargetZone" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/PlacementArea" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/PlacementAreaFillled" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/RadiusVisualiser" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/UI/SinglePlacementTile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
+      <Resource Name="Res/Materials/UI/SinglePlacementTileFilled" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,4,5" />
+      <Resource Name="Res/Materials/Units/Buggy_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/Buggy_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/Helicopter_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/Helicopter_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBasic_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBasic_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBoss_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Materials/Units/TankBoss_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_1_COL" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_2_COL" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_3_COL" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_4" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_4_COL" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_5" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Levels/Enviro_Level_5_COL" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Levels/Road_Tile_NormalMap_V003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Levels/Skybox" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Player/HeadQuarters" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Player/HeadQuarters_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Projectiles/Rocket_Projectile" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Projectiles/Rocket_Projectile_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_1_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_2_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/EMP_Tower_level_3_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_1_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_2_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EMPTower/Materials/EMP_Tower_level_3_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Albedo_V002" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Albedo_V001" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/EnergyPylon/EnergyPylon_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L03" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_BASE_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_L01_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_L02_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_L03_Albedo_V001" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L03" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/Laser/LaserTower_TURRET_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L01_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L02_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Laser/Materials/LaserTower_L03_Albedo_V001" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L03" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Base_MachineGun_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level1_tex_v001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level2_tex_v003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/MachineGun_Level3_tex_v003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L03" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/MachineGun/Turret_MachineGun_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L03" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Base_RocketTower_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L01_Texture_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L02_Texture_V003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Rocket_Tower_L03_Texture_V003" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L01" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L01_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L02" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L02_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L03" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/Rocket/Turret_RocketTower_L03_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Base" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Base_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Turret" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Towers/SuperTower/SuperTower_Turret_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Base" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Base_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Turret" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/BossTank_Turret_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Buggy_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Disk" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Models/Units/Helicopter" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Helicopter_Albedo_V002" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Helicopter_FX_Cones" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Helicopter_Orange_Albedo_V002" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/HoverTank_Base" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/HoverTank_Base_Shadow" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/HoverTank_Turret" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Materials/TankBasic_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/Materials/TankBoss_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBasic_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBasic_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBoss_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Models/Units/TankBoss_Orange_Albedo_V001" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/AttackLightning" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/BossHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/BuggyHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/BulletImpact" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/EnergyGainGlow" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/EnergyGainLightning" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/explosion_Flame" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Flame_2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Flame_4" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Smoke_1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Spark_1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Spark_2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/explosion_Spark_3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/Flare" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/HelicopterHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/LaserBeam" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/LaserImpact" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/LaserMuzzleFlash" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Res/Particles/Textures/SlowFx" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Res/Particles/Textures/Smoke" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/TankHover_sprite" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Res/Particles/Textures/Tracer" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Scenes/Level1/Level1" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Scenes/Level1/Lightmap" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1" />
+      <Resource Name="Scenes/Level2/Level2" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Scenes/Level2/Lightmap" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2" />
+      <Resource Name="Scenes/Level3/Level3" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Scenes/Level3/Lightmap" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3" />
+      <Resource Name="Scenes/Level4/Level4" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Scenes/Level4/Lightmap" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="4" />
+      <Resource Name="Scenes/Level5/Level5" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Scenes/Level5/Lightmap" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="5" />
+      <Resource Name="Scenes/Menu/Lightmap" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Scenes/Menu/Menu" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Sound/EMPIdle" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,5" />
+      <Resource Name="Sound/EnemyFire" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Sound/GameMusic" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/MenuMusic" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Sound/TowerDestriction" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="2,3,4,5" />
+      <Resource Name="Sound/TowerLaser" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/TowerMachineGun" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/TowerRockerLauncher" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sound/TowerSuperTower" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="3,4,5" />
+      <Resource Name="Sound/UIBase" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="Sound/UISFX" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="Sprites" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0,1,2,3,4,5" />
+      <Resource Name="UI/Dynamic/LevelSelectionButton" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/Dynamic/TowerBuildButton" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UIDownloadForm" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIGameOverForm" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UILevelMainInfoForm" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UILevelSelectForm" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIMainMenuForm" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIMask" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UIOptionsForm" FileSystem="Base" LoadType="0" Packed="True" ResourceGroups="0" />
+      <Resource Name="UI/UIForms/UIPausePanelForm" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UITowerControllerForm" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
+      <Resource Name="UI/UIForms/UITowerListForm" FileSystem="Resource" LoadType="0" Packed="False" ResourceGroups="1,2,3,4,5" />
     </Resources>
     <Assets>
       <Asset Guid="00317337bdfee49e29ab684e6af81a3b" ResourceName="Res/Materials/Particles/BuggyHover_sprite" />
