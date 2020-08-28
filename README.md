@@ -4,6 +4,12 @@
 
 这是一款基于开源框架[GameFramework][1]（以下简称GF）实现的一款塔防游戏Demo。Demo原型是Unity官方放在Assets Store上的Demo [Tower Defense Template][2]。此项目是对Demo原型使用GF进行再实现以及扩展，主要用于个人对GF的学习和实践，也给其他学习GF的同学一个参考。
 
+## 版本信息
+
+- Unity 2019.4.1f1
+- GameFramework 2020.07.30
+- Tower Defense Template 1.4
+
 ## 游戏简介
 
 ### 游戏预览
@@ -50,12 +56,6 @@
 #### 关卡结算
 
 若玩家在消灭关卡所有敌人且基地血量不为0时，则通关成功，若在消灭所有怪物前，基地血量被攻击至0，则游戏失败。通关成功会根据基地剩余血量进行评分。
-
-## 版本信息
-
-- Unity 2019.4.1f1
-- GameFramework 2020.07.30
-- Tower Defense Template 1.4
 
 ## 相关实现
 
