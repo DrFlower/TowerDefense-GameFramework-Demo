@@ -1,9 +1,11 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
+
+using System.Runtime.InteropServices;
 
 namespace GameFramework.FileSystem
 {
@@ -12,6 +14,7 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 块数据。
         /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
         private struct BlockData
         {
             public static readonly BlockData Empty = new BlockData(0, 0);

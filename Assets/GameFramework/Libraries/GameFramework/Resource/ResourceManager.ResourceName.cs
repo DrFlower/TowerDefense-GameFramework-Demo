@@ -1,11 +1,12 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace GameFramework.Resource
 {
@@ -14,6 +15,7 @@ namespace GameFramework.Resource
         /// <summary>
         /// 资源名称。
         /// </summary>
+        [StructLayout(LayoutKind.Auto)]
         private struct ResourceName : IComparable, IComparable<ResourceName>, IEquatable<ResourceName>
         {
             private readonly string m_Name;

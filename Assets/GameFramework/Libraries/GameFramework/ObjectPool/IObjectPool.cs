@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -171,6 +171,20 @@ namespace GameFramework.ObjectPool
         /// <param name="target">要设置优先级的对象。</param>
         /// <param name="priority">优先级。</param>
         void SetPriority(object target, int priority);
+
+        /// <summary>
+        /// 释放对象。
+        /// </summary>
+        /// <param name="obj">要释放的对象。</param>
+        /// <returns>释放对象是否成功。</returns>
+        bool ReleaseObject(T obj);
+
+        /// <summary>
+        /// 释放对象。
+        /// </summary>
+        /// <param name="target">要释放的对象。</param>
+        /// <returns>释放对象是否成功。</returns>
+        bool ReleaseObject(object target);
 
         /// <summary>
         /// 释放对象池中的可释放对象。

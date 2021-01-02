@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -242,7 +242,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             private void LogInternal(string type, string format, object[] args)
             {
                 m_LogBuilder.Append("[");
-                m_LogBuilder.Append(DateTime.Now.ToString("HH:mm:ss.fff"));
+                m_LogBuilder.Append(DateTime.UtcNow.ToLocalTime().ToString("HH:mm:ss.fff"));
                 m_LogBuilder.Append("][");
                 m_LogBuilder.Append(type);
                 m_LogBuilder.Append("] ");

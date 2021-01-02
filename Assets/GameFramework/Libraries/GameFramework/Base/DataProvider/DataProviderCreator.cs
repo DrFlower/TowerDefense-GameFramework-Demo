@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -17,12 +17,30 @@ namespace GameFramework
         /// <summary>
         /// 获取缓冲二进制流的大小。
         /// </summary>
-        public static int CachedBytesSize
+        /// <typeparam name="T">数据提供者的持有者的类型。</typeparam>
+        /// <returns>缓冲二进制流的大小。</returns>
+        public static int GetCachedBytesSize<T>()
         {
-            get
-            {
-                return DataProvider<object>.CachedBytesSize;
-            }
+            return DataProvider<T>.CachedBytesSize;
+        }
+
+        /// <summary>
+        /// 确保二进制流缓存分配足够大小的内存并缓存。
+        /// </summary>
+        /// <typeparam name="T">数据提供者的持有者的类型。</typeparam>
+        /// <param name="ensureSize">要确保二进制流缓存分配内存的大小。</param>
+        public static void EnsureCachedBytesSize<T>(int ensureSize)
+        {
+            DataProvider<T>.EnsureCachedBytesSize(ensureSize);
+        }
+
+        /// <summary>
+        /// 释放缓存的二进制流。
+        /// </summary>
+        /// <typeparam name="T">数据提供者的持有者的类型。</typeparam>
+        public static void FreeCachedBytes<T>()
+        {
+            DataProvider<T>.FreeCachedBytes();
         }
 
         /// <summary>

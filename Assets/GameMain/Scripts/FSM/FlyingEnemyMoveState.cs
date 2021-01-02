@@ -73,7 +73,7 @@ namespace Flower
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-            procedureOwner.SetData<VarInt>(Constant.ProcedureData.TargetPathNodeIndex, targetPathNodeIndex);
+            procedureOwner.SetData<VarInt32>(Constant.ProcedureData.TargetPathNodeIndex, targetPathNodeIndex);
             owner = null;
         }
 

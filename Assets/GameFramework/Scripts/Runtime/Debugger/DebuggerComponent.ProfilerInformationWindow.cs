@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -54,9 +54,8 @@ namespace UnityGameFramework.Runtime
 #endif
 #if UNITY_5_5_OR_NEWER
                     DrawItem("Temp Allocator Size", GetByteLengthString(Profiler.GetTempAllocatorSize()));
-                    DrawItem("Marshal Cached HGlobal Size", GetByteLengthString(Utility.Marshal.CachedHGlobalSize));
-                    DrawItem("Data Provider Cached Bytes Size", GetByteLengthString(DataProviderCreator.CachedBytesSize));
 #endif
+                    DrawItem("Marshal Cached HGlobal Size", GetByteLengthString(Utility.Marshal.CachedHGlobalSize));
                 }
                 GUILayout.EndVertical();
             }

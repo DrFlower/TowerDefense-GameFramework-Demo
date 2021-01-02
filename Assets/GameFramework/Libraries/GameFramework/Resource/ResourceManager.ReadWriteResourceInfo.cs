@@ -1,14 +1,17 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
+
+using System.Runtime.InteropServices;
 
 namespace GameFramework.Resource
 {
     internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
     {
+        [StructLayout(LayoutKind.Auto)]
         private struct ReadWriteResourceInfo
         {
             private readonly string m_FileSystemName;

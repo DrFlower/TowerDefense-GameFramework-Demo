@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -439,6 +439,7 @@ namespace GameFramework.Resource
                 {
                     m_SceneToAssetMap.Remove(sceneAssetName);
                     m_AssetPool.Unspawn(asset);
+                    m_AssetPool.ReleaseObject(asset);
                 }
                 else
                 {

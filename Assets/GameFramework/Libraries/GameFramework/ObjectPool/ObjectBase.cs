@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -169,7 +169,7 @@ namespace GameFramework.ObjectPool
             m_Target = target;
             m_Locked = locked;
             m_Priority = priority;
-            m_LastUseTime = DateTime.Now;
+            m_LastUseTime = DateTime.UtcNow;
         }
 
         /// <summary>

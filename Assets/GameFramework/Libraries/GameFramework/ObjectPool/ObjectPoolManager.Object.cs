@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -163,7 +163,7 @@ namespace GameFramework.ObjectPool
             public T Spawn()
             {
                 m_SpawnCount++;
-                m_Object.LastUseTime = DateTime.Now;
+                m_Object.LastUseTime = DateTime.UtcNow;
                 m_Object.OnSpawn();
                 return m_Object;
             }
@@ -174,7 +174,7 @@ namespace GameFramework.ObjectPool
             public void Unspawn()
             {
                 m_Object.OnUnspawn();
-                m_Object.LastUseTime = DateTime.Now;
+                m_Object.LastUseTime = DateTime.UtcNow;
                 m_SpawnCount--;
                 if (m_SpawnCount < 0)
                 {

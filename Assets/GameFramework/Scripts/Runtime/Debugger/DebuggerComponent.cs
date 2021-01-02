@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -324,7 +324,7 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取记录的全部日志。
+        /// 获取记录的所有日志。
         /// </summary>
         /// <param name="results">要获取的日志。</param>
         public void GetRecentLogs(List<LogNode> results)

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -76,6 +76,17 @@ namespace GameFramework.Localization
             get
             {
                 return m_Dictionary.Count;
+            }
+        }
+
+        /// <summary>
+        /// 获取缓冲二进制流的大小。
+        /// </summary>
+        public int CachedBytesSize
+        {
+            get
+            {
+                return DataProvider<ILocalizationManager>.CachedBytesSize;
             }
         }
 
@@ -185,6 +196,23 @@ namespace GameFramework.Localization
             }
 
             m_LocalizationHelper = localizationHelper;
+        }
+
+        /// <summary>
+        /// 确保二进制流缓存分配足够大小的内存并缓存。
+        /// </summary>
+        /// <param name="ensureSize">要确保二进制流缓存分配内存的大小。</param>
+        public void EnsureCachedBytesSize(int ensureSize)
+        {
+            DataProvider<ILocalizationManager>.EnsureCachedBytesSize(ensureSize);
+        }
+
+        /// <summary>
+        /// 释放缓存的二进制流。
+        /// </summary>
+        public void FreeCachedBytes()
+        {
+            DataProvider<ILocalizationManager>.FreeCachedBytes();
         }
 
         /// <summary>

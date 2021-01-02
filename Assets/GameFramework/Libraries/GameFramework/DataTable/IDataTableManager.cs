@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -25,6 +25,14 @@ namespace GameFramework.DataTable
         }
 
         /// <summary>
+        /// 获取缓冲二进制流的大小。
+        /// </summary>
+        int CachedBytesSize
+        {
+            get;
+        }
+
+        /// <summary>
         /// 设置资源管理器。
         /// </summary>
         /// <param name="resourceManager">资源管理器。</param>
@@ -41,6 +49,17 @@ namespace GameFramework.DataTable
         /// </summary>
         /// <param name="dataTableHelper">数据表辅助器。</param>
         void SetDataTableHelper(IDataTableHelper dataTableHelper);
+
+        /// <summary>
+        /// 确保二进制流缓存分配足够大小的内存并缓存。
+        /// </summary>
+        /// <param name="ensureSize">要确保二进制流缓存分配内存的大小。</param>
+        void EnsureCachedBytesSize(int ensureSize);
+
+        /// <summary>
+        /// 释放缓存的二进制流。
+        /// </summary>
+        void FreeCachedBytes();
 
         /// <summary>
         /// 是否存在数据表。

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -15,6 +15,7 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 字符串数据。
         /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
         private struct StringData
         {
             private static readonly byte[] s_CachedBytes = new byte[byte.MaxValue + 1];

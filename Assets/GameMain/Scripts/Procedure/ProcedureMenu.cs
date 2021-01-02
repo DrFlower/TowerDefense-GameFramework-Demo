@@ -75,7 +75,7 @@ namespace Flower
                 return;
 
             changeScene = true;
-            procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.SceneId);
+            procedureOwner.SetData<VarInt32>(Constant.ProcedureData.NextSceneId, ne.SceneId);
         }
 
         private void OnLoadLevel(object sender, GameEventArgs e)
@@ -97,7 +97,7 @@ namespace Flower
             }
 
             changeScene = true;
-            procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, ne.LevelData.SceneData.Id);
+            procedureOwner.SetData<VarInt32>(Constant.ProcedureData.NextSceneId, ne.LevelData.SceneData.Id);
         }
 
     }

@@ -1,17 +1,19 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace GameFramework
 {
     /// <summary>
     /// 类型和名称的组合值。
     /// </summary>
+    [StructLayout(LayoutKind.Auto)]
     internal struct TypeNamePair : IEquatable<TypeNamePair>
     {
         private readonly Type m_Type;

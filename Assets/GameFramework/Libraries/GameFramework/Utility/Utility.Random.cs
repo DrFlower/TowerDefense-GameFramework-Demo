@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -16,7 +16,7 @@ namespace GameFramework
         /// </summary>
         public static class Random
         {
-            private static System.Random s_Random = new System.Random((int)DateTime.Now.Ticks);
+            private static System.Random s_Random = new System.Random((int)DateTime.UtcNow.Ticks);
 
             /// <summary>
             /// 设置随机数种子。

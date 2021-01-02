@@ -22,7 +22,7 @@ namespace Flower
             base.OnEnter(procedureOwner);
 
             m_UpdateResourcesComplete = false;
-            m_UpdateCount = procedureOwner.GetData<VarInt>("UpdateResourceCount");
+            m_UpdateCount = procedureOwner.GetData<VarInt32>("UpdateResourceCount");
             procedureOwner.RemoveData("UpdateResourceCount");
             m_UpdateSuccessCount = 0;
             m_UpdateLengthData.Clear();

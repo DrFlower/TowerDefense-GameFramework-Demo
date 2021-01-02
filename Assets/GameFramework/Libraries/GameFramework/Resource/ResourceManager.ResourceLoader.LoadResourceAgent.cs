@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -148,7 +148,7 @@ namespace GameFramework.Resource
                     }
 
                     m_Task = task;
-                    m_Task.StartTime = DateTime.Now;
+                    m_Task.StartTime = DateTime.UtcNow;
                     ResourceInfo resourceInfo = m_Task.ResourceInfo;
 
                     if (!resourceInfo.Ready)
@@ -268,7 +268,7 @@ namespace GameFramework.Resource
                         m_ResourceLoader.m_SceneToAssetMap.Add(m_Task.AssetName, asset);
                     }
 
-                    m_Task.OnLoadAssetSuccess(this, asset, (float)(DateTime.Now - m_Task.StartTime).TotalSeconds);
+                    m_Task.OnLoadAssetSuccess(this, asset, (float)(DateTime.UtcNow - m_Task.StartTime).TotalSeconds);
                     m_Task.Done = true;
                 }
 

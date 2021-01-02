@@ -75,7 +75,7 @@ namespace Flower
             }
 
             SetComponents();
-            procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, GameEntry.Config.GetInt("Scene.Menu"));
+            procedureOwner.SetData<VarInt32>(Constant.ProcedureData.NextSceneId, GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureLoadingScene>(procedureOwner);
         }
 

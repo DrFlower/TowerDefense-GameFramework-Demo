@@ -1,15 +1,18 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
+
+using System.Runtime.InteropServices;
 
 namespace GameFramework.Resource
 {
     /// <summary>
     /// 单机模式版本资源列表。
     /// </summary>
+    [StructLayout(LayoutKind.Auto)]
     public partial struct PackageVersionList
     {
         private static readonly Asset[] EmptyAssetArray = new Asset[] { };

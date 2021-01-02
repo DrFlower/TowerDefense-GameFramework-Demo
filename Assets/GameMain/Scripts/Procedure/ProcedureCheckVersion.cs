@@ -55,10 +55,10 @@ namespace Flower
 
             if (m_NeedUpdateVersion)
             {
-                procedureOwner.SetData<VarInt>("VersionListLength", m_VersionInfo.VersionListLength);
-                procedureOwner.SetData<VarInt>("VersionListHashCode", m_VersionInfo.VersionListHashCode);
-                procedureOwner.SetData<VarInt>("VersionListZipLength", m_VersionInfo.VersionListZipLength);
-                procedureOwner.SetData<VarInt>("VersionListZipHashCode", m_VersionInfo.VersionListZipHashCode);
+                procedureOwner.SetData<VarInt32>("VersionListLength", m_VersionInfo.VersionListLength);
+                procedureOwner.SetData<VarInt32>("VersionListHashCode", m_VersionInfo.VersionListHashCode);
+                procedureOwner.SetData<VarInt32>("VersionListZipLength", m_VersionInfo.VersionListZipLength);
+                procedureOwner.SetData<VarInt32>("VersionListZipHashCode", m_VersionInfo.VersionListZipHashCode);
                 ChangeState<ProcedureUpdateVersion>(procedureOwner);
             }
             else

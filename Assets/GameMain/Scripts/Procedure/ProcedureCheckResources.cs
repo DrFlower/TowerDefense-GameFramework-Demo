@@ -35,7 +35,7 @@ namespace Flower
 
             if (m_NeedUpdateResources)
             {
-                procedureOwner.SetData<VarInt>("UpdateResourceCount", m_UpdateResourceCount);
+                procedureOwner.SetData<VarInt32>("UpdateResourceCount", m_UpdateResourceCount);
                 ChangeState<ProcedureUpdateResources>(procedureOwner);
             }
             else

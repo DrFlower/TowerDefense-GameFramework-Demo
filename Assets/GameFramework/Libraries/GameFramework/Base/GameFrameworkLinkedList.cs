@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace GameFramework
 {
@@ -104,15 +105,6 @@ namespace GameFramework
             {
                 return ((ICollection)m_LinkedList).IsSynchronized;
             }
-        }
-
-        /// <summary>
-        /// 将值添加到 ICollection`1 的结尾处。
-        /// </summary>
-        /// <param name="value">要添加的值。</param>
-        public void Add(T value)
-        {
-            AddLast(value);
         }
 
         /// <summary>
@@ -366,6 +358,15 @@ namespace GameFramework
         }
 
         /// <summary>
+        /// 将值添加到 ICollection`1 的结尾处。
+        /// </summary>
+        /// <param name="value">要添加的值。</param>
+        void ICollection<T>.Add(T value)
+        {
+            AddLast(value);
+        }
+
+        /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
         /// <returns>循环访问集合的枚举数。</returns>
@@ -386,6 +387,7 @@ namespace GameFramework
         /// <summary>
         /// 循环访问集合的枚举数。
         /// </summary>
+        [StructLayout(LayoutKind.Auto)]
         public struct Enumerator : IEnumerator<T>, IEnumerator
         {
             private LinkedList<T>.Enumerator m_Enumerator;

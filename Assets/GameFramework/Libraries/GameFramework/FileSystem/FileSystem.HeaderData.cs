@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -14,6 +14,7 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 头数据。
         /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
         private struct HeaderData
         {
             private const int HeaderLength = 3;

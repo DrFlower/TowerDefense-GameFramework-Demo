@@ -1,9 +1,11 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
+
+using System.Runtime.InteropServices;
 
 namespace GameFramework.Resource
 {
@@ -12,6 +14,7 @@ namespace GameFramework.Resource
         /// <summary>
         /// 资源组。
         /// </summary>
+        [StructLayout(LayoutKind.Auto)]
         public struct ResourceGroup
         {
             private static readonly int[] EmptyIntArray = new int[] { };

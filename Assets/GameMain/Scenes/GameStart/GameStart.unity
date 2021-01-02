@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_EnableLoadDictionaryDependencyAssetEvent: 0
   m_LocalizationHelperTypeName: Flower.JsonLocallizationHelper
   m_CustomLocalizationHelper: {fileID: 0}
+  m_CachedBytesSize: 0
 --- !u!114 &1753260652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,6 +1343,7 @@ MonoBehaviour:
   m_EnableLoadDataTableDependencyAssetEvent: 0
   m_DataTableHelperTypeName: UnityGameFramework.Runtime.DefaultDataTableHelper
   m_CustomDataTableHelper: {fileID: 0}
+  m_CachedBytesSize: 0
 --- !u!114 &1753273168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1415,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98acd7d3bd2bf54dadf9644f60e5cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EditorResourceMode: 1
+  m_EditorResourceMode: 0
   m_EditorLanguage: 0
   m_VersionHelperTypeName: UnityGameFramework.Runtime.DefaultVersionHelper
   m_LogHelperTypeName: UnityGameFramework.Runtime.DefaultLogHelper
@@ -1461,6 +1463,7 @@ MonoBehaviour:
   m_EnableLoadConfigDependencyAssetEvent: 0
   m_ConfigHelperTypeName: UnityGameFramework.Runtime.DefaultConfigHelper
   m_CustomConfigHelper: {fileID: 0}
+  m_CachedBytesSize: 0
 --- !u!114 &1753315242
 MonoBehaviour:
   m_ObjectHideFlags: 0

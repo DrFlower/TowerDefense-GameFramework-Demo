@@ -35,7 +35,7 @@ namespace Flower
             owner.Agent.enabled = false;
             m_CurrentWaitTime = m_WaitTime;
 
-            targetPathNodeIndex = procedureOwner.GetData<VarInt>(Constant.ProcedureData.TargetPathNodeIndex).Value;
+            targetPathNodeIndex = procedureOwner.GetData<VarInt32>(Constant.ProcedureData.TargetPathNodeIndex).Value;
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

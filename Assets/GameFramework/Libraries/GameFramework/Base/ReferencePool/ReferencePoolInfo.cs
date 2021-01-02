@@ -1,17 +1,19 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace GameFramework
 {
     /// <summary>
     /// 引用池信息。
     /// </summary>
+    [StructLayout(LayoutKind.Auto)]
     public struct ReferencePoolInfo
     {
         private readonly Type m_Type;

@@ -1,14 +1,17 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
+
+using System.Runtime.InteropServices;
 
 namespace GameFramework.Config
 {
     internal sealed partial class ConfigManager : GameFrameworkModule, IConfigManager
     {
+        [StructLayout(LayoutKind.Auto)]
         private struct ConfigData
         {
             private readonly bool m_BoolValue;

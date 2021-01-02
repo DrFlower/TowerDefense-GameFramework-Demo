@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // Game Framework
-// Copyright © 2013-2020 Jiang Yin. All rights reserved.
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
@@ -384,6 +384,52 @@ namespace GameFramework.ObjectPool
             }
 
             /// <summary>
+            /// 释放对象。
+            /// </summary>
+            /// <param name="obj">要释放的对象。</param>
+            /// <returns>释放对象是否成功。</returns>
+            public bool ReleaseObject(T obj)
+            {
+                if (obj == null)
+                {
+                    throw new GameFrameworkException("Object is invalid.");
+                }
+
+                return ReleaseObject(obj.Target);
+            }
+
+            /// <summary>
+            /// 释放对象。
+            /// </summary>
+            /// <param name="target">要释放的对象。</param>
+            /// <returns>释放对象是否成功。</returns>
+            public bool ReleaseObject(object target)
+            {
+                if (target == null)
+                {
+                    throw new GameFrameworkException("Target is invalid.");
+                }
+
+                Object<T> internalObject = GetObject(target);
+                if (internalObject == null)
+                {
+                    return false;
+                }
+
+                if (internalObject.IsInUse || internalObject.Locked || !internalObject.CustomCanReleaseFlag)
+                {
+                    return false;
+                }
+
+                m_Objects.Remove(internalObject.Name, internalObject);
+                m_ObjectMap.Remove(internalObject.Peek().Target);
+
+                internalObject.Release(false);
+                ReferencePool.Release(internalObject);
+                return true;
+            }
+
+            /// <summary>
             /// 释放对象池中的可释放对象。
             /// </summary>
             public override void Release()
@@ -429,7 +475,7 @@ namespace GameFramework.ObjectPool
                 DateTime expireTime = DateTime.MinValue;
                 if (m_ExpireTime < float.MaxValue)
                 {
-                    expireTime = DateTime.Now.AddSeconds(-m_ExpireTime);
+                    expireTime = DateTime.UtcNow.AddSeconds(-m_ExpireTime);
                 }
 
                 m_AutoReleaseTime = 0f;
@@ -516,26 +562,6 @@ namespace GameFramework.ObjectPool
                 }
 
                 return null;
-            }
-
-            private void ReleaseObject(T obj)
-            {
-                if (obj == null)
-                {
-                    throw new GameFrameworkException("Object is invalid.");
-                }
-
-                Object<T> internalObject = GetObject(obj.Target);
-                if (internalObject == null)
-                {
-                    throw new GameFrameworkException("Can not release object which is not found.");
-                }
-
-                m_Objects.Remove(obj.Name, internalObject);
-                m_ObjectMap.Remove(obj.Target);
-
-                internalObject.Release(false);
-                ReferencePool.Release(internalObject);
             }
 
             private void GetCanReleaseObjects(List<T> results)
