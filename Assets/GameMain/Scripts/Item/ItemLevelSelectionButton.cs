@@ -54,7 +54,6 @@ namespace Flower
             bool ready = GetResourceGroupIsReady();
             float progress = GetResourceGroupProgress();
 
-
             if (ready)
                 SetDownFinishState();
             else
@@ -62,6 +61,14 @@ namespace Flower
 
             if (ready)
                 return;
+
+            IResourceGroup resourceGroup = GetResourceGroup();
+            IResourceGroup updatingResouceGroup = GameEntry.Resource.UpdatingResourceGroup;
+            if (updatingResouceGroup != null && resourceGroup.Name == updatingResouceGroup.Name)
+            {
+                updateResourceGroup = true;
+                UpdateDownloadProgress();
+            }
 
             Subscribe(UnityGameFramework.Runtime.ResourceUpdateStartEventArgs.EventId, (sender, ge) => UpdateDownloadProgress());
             Subscribe(UnityGameFramework.Runtime.ResourceUpdateChangedEventArgs.EventId, (sender, ge) => UpdateDownloadProgress());
@@ -152,9 +159,17 @@ namespace Flower
         {
             if (levelData == null)
                 return;
-
+   
             if (!GetResourceGroupIsReady())
             {
+                IResourceGroup resourceGroup = GetResourceGroup();
+                IResourceGroup updatingResouceGroup = GameEntry.Resource.UpdatingResourceGroup;
+                if (updatingResouceGroup != null && resourceGroup.Name != updatingResouceGroup.Name)
+                {
+                    Log.Error(string.Format("There is already a resource group '{0}' being updated.", updatingResouceGroup.Name));
+                    return;
+                }
+
                 if (!updateResourceGroup)
                 {
                     updateResourceGroup = true;
