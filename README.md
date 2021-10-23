@@ -2,7 +2,7 @@
 
 ## 简介
 
-这是一款基于开源框架[GameFramework][1]（以下简称GF）实现的一款塔防游戏Demo。Demo原型是Unity官方放在Assets Store上的Demo [Tower Defense Template][2]。此项目是对Demo原型使用GF进行再实现以及扩展，主要用于个人对GF的学习和实践，也给其他学习GF的同学一个参考。
+这是一款基于开源框架[GameFramework][1]（以下简称GF）实现的塔防游戏Demo。Demo原型是Unity官方放在Assets Store上的Demo [Tower Defense Template][2]。此项目是对Demo原型使用GF进行再实现以及扩展，主要用于个人对GF的学习和实践，也给其他学习GF的同学一个参考。
 
 ## 版本信息
 
