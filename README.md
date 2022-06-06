@@ -10,6 +10,10 @@
 - GameFramework 2020.12.31
 - Tower Defense Template 1.4
 
+## 框架代码解析
+
+这里是本人在知乎上对GF代码分析的专栏：[GameFramework解析：开篇](https://zhuanlan.zhihu.com/p/426136370)
+
 ## 游戏简介
 
 ### 游戏预览
